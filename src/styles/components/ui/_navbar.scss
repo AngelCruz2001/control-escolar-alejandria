@@ -1,0 +1,50 @@
+.navbar {
+    margin: 0rem 1rem;
+    height: $navbar-height;
+    width: calc(100vw - 2rem);
+    display: flex;
+    position: sticky;
+
+    &__logo {
+        display: flex;
+        width: 33.333%;
+        height: 100%;
+        img {
+            height: 100%;
+        }
+        &__text {
+            content: "";
+            color: $black;
+            text-align: center;
+            align-self: center;
+            font-size: calc(1rem + 0.5rem / 5);
+            letter-spacing: 0.5px;
+        }
+    }
+
+    &__text {
+        height: 100%;
+        color: $blue-heroLogin;
+        display: flex;
+        justify-content: center;
+        width: 33.33%;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-transform: uppercase;
+        font-size: calc(.8rem + 0.5rem / 5);
+    }
+
+    &__logout {
+        width: 33.33%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        i {
+            margin-right: 3rem;
+            font-size: 37px;
+            color: $blue-heroLogin;
+        }
+    }
+}

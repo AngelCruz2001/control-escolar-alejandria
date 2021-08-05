@@ -1,0 +1,317 @@
+.make__ {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &date {
+    }
+
+    &container {
+        display: flex;
+        height: 90%;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &subContainerLeft,
+    &subContainerRight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 37%;
+    }
+
+    &subContainerRight {
+        width: 38%;
+    }
+
+    &containerInput {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            border: 1px solid $gray-bars;
+            border-radius: 7px;
+            padding: 5px;
+            width: 70%;
+        }
+    }
+
+    &titleSection {
+        font-size: calc(5px + 0.5vw);
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+    }
+    &subTitleSection {
+        font-size: calc(5px + 0.5vw);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+    }
+
+    &studentInformation {
+        .data {
+            background-color: $blue-sky3;
+            border-radius: 7px;
+            padding: 0rem 3rem 0px 10px;
+            p {
+                padding: 0.5rem 0px;
+                font-size: calc(6px + 0.5vw);
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &conceptPay {
+        display: flex;
+        flex-direction: column;
+        &-data {
+            input {
+                border: none;
+                background-color: $blue-sky3;
+                text-transform: uppercase;
+                border-radius: 7px;
+                padding: 0.55rem 0.4rem;
+                width: calc(100% - 0.8rem);
+                font-size: calc(4.5px + 0.5vw);
+                font-weight: 600;
+                pointer-events: none;
+            }
+        }
+    }
+
+    //Right Part
+    &card {
+        h5 {
+            font-size: calc(6px + 0.5vw);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        p {
+            opacity: 0.6;
+            font-size: calc(6px + 0.5vw);
+        }
+    }
+    &account {
+        position: relative;
+        display: flex;
+        select {
+            -moz-appearance: none; /* Firefox */
+            -webkit-appearance: none; /* Safari and Chrome */
+            appearance: none;
+            border: 1px solid $gray-changePage;
+            border-radius: 5px;
+            padding: 0.2rem;
+            height: 100%;
+            margin: 0;
+            font-weight: bold;
+            color: $black;
+            font-family: "Segoe UI", sans-serif !important;
+        }
+        .iconContainer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            top: 0;
+            pointer-events: none;
+            i {
+                margin-right: 0.5rem;
+                font-size: calc(5px + 0.5vw);
+                color: $gray-changePage;
+            }
+        }
+    }
+    &containerListConcepts {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 43.5%;
+        left: 52%;
+        width: 45%;
+        height: 53%;
+        background-color: red;
+        pointer-events: all;
+        background-color: $blue-sky;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 10;
+        &__show {
+            height: 90%;
+            width: 90%;
+
+            &__form {
+                width: 100%;
+                height: 20%;
+                form {
+                    width: 100% !important;
+                }
+            }
+            &__data {
+                height: 80%;
+                margin-top: 0.4rem;
+                background-color: $white;
+                border: 1px solid $filterPaid-back;
+                border-radius: 5px;
+                padding: 0.3rem;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    width: 4px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #ccc;
+                    border-radius: 2px;
+                }
+
+                &::-webkit-scrollbar-thumb:active {
+                    background-color: #999999;
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #b3b3b3;
+                }
+
+                /* Estilos track de scroll */
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+
+                p {
+                    padding: 2px;
+                    border: 1px solid transparent;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                }
+                p:hover {
+                    border: 1px solid #7ca5ce;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+
+    &total{
+        width: 100%;
+        display: flex;
+        
+        &-pay{
+            width: 40%;
+        }
+
+        &-quantity{            
+            border: 1px solid $black;
+            width: 30%;
+            height:95%;
+            position: relative;
+            text-align: center;
+            
+            &::before{
+                content: "";
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                border-left: 8px solid transparent;
+                border-right: 8px solid $black;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                left: -16px;
+                top: 20%;
+              }
+              
+              &:after {
+                content: "";
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                border-left: 8px solid transparent;
+                border-right: 8px solid #fff;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                left: -15px;
+                top: 20%;
+              }
+            
+        }
+    }
+
+    &formMoney {
+        div {
+            display: flex;
+            flex-direction: column;
+            input {
+                margin-bottom: 0.6rem;
+                width: 80%;
+            }
+        }
+    }
+
+    &submit {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+    }
+}
+
+//Generals
+.btn-payContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .btn-payElement {
+        display: flex;
+        font-size: calc(4.5px + 0.5vw);
+        align-items: center;
+        justify-content: center;
+        background-color: $filterPaid-back;
+        border-radius: 7px;
+        padding: 0.5rem 0.7rem;
+        cursor: pointer;
+        div {
+            margin-left: 0.3rem;
+            i {
+                font-size: calc(2px + 0.5vw);
+                color: $gray-changePage;
+            }
+        }
+        a {
+            margin-left: 0.3rem;
+            i {
+                font-size: calc(2px + 0.5vw);
+                color: $gray-changePage;
+            }
+        }
+
+        &.selected {
+            background-color: $yellow-radius;
+        }
+    }
+}
+
+.btn-blue {
+    &.getPay {
+        padding: 0.6rem;
+        background-color: $blue-solid;
+        border: none;
+        color: $white;
+        border-radius: 9px;
+        margin-right: 2rem;
+    }
+    &.submitPay {
+        background-color: $blue-solid;
+        border: none;
+        color: $white;
+        border-radius: 8px;
+        padding: 0.6rem 2rem;
+    }
+}
+
+
+

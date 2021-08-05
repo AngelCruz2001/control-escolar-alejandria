@@ -1,0 +1,58 @@
+* {
+    margin: 0px;
+}
+
+html,
+body {
+    font-family: "Philosopher", sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+.btn {
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+}
+input {
+    border: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.containerSection {
+    width: 100vw;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+a {
+    color: initial;
+    text-decoration: none;
+}
+
+.overTexture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}

@@ -1,0 +1,19 @@
+@import "./base/base";
+@import "./base/settings";
+
+
+/*Components*/
+
+/*Payments*/
+@import "./components/payments/changeRouterPay";
+@import "./components/payments/makePay";
+@import "./components/payments/checkStatePay";
+@import "./components/payments/fertilizerPay";
+@import "./components/payments/date";
+
+/*General*/
+@import "./components/general/general";
+
+/*Ui*/
+@import "./components/ui/texture";
+@import "./components/ui/navbar";

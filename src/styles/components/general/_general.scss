@@ -1,0 +1,39 @@
+.general {
+    height: calc(100vh - 120px - 4.5rem);
+    width: calc(100vw - 4rem);
+    display: flex;
+    margin: 1.5rem auto 3rem auto;
+    justify-content: space-between;
+    &__menu {
+        height: 100%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+            
+            margin: 1rem 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: $gray-bars;
+            display: flex;
+            font-size: calc(25px - 0.5vh);
+            align-items: center;
+            i {
+                align-self: center;
+                width: 5%;
+            }
+            a {
+                margin-left: 1rem;
+            }
+
+            &:first {
+                margin: 0;
+            }
+        }
+    }
+    &__overtexture {
+        background-color: blue;
+        height: 100%;
+        width: 65%;
+    }
+}
