@@ -1,7 +1,4 @@
 export const types = {
-<<<<<<< HEAD
-
-=======
     
     authCheckingStart: '[auth] Start checking login state',
     authCheckingFinish: '[auth] Finish checking login state',
@@ -10,5 +7,4 @@ export const types = {
     authStartRegister: '[auth] Start Register',
     authStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
->>>>>>> login
 }
