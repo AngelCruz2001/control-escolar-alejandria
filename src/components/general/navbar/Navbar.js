@@ -1,10 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { authStartLogout } from '../../../actions/auth';
 
 // Images imports 
 import logoAleNoText from '../../../helpers/resources/images/logoAleNoText.png'
 
 
 export const Navbar = () => {
+
+    const dispatch = useDispatch();
+    const handleClickLogout = (e) => {
+        e.preventDefault();
+        dispatch(authStartLogout())
+    }
+
     return (
         <div className="navbar" >
             <div className="navbar__logo">
@@ -14,8 +23,8 @@ export const Navbar = () => {
             <div className="navbar__text">
                 <h2>Recepción</h2>
             </div>
-            <div className="navbar__logout">
-                <i className="fas fa-user-circle"></i>
+            <div className="navbar__logout " onClick={handleClickLogout}>
+                <i className="fas fa-user-circle btn"></i>
             </div>
         </div>
     )
