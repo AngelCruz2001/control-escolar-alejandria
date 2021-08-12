@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
@@ -14,6 +15,12 @@ const itemsMenu = [
 ]
 
 export const Main = () => {
+
+
+    //Borrar de aqui
+    const {active} = useSelector(state => state.document)
+ 
+
     return (
         <div>
             <Texture />
