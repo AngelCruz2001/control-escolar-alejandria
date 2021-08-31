@@ -6,7 +6,7 @@
     justify-content: space-between;
     &__menu {
         height: 100%;
-        width: 30%;
+        width: 23%;
         display: flex;
         flex-direction: column;
 
@@ -44,11 +44,22 @@
     &__overtexture {
         background-color: rgb(255, 255, 255);
         height: 100%;
-        width: 80%;
+        width: 77%;
         background: #ffffff 0% 0% no-repeat padding-box;
         box-shadow: 0px 3px 6px #00000017;
         border: 0.5px solid $gray-border;
         border-radius: 10px;
         opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__titleSection {
+        font-size: calc(8.5px + 0.5vw);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin-left: 3%;
     }
 }

@@ -10,11 +10,14 @@
 @import "./components/payments/makePay";
 @import "./components/payments/checkStatePay";
 @import "./components/payments/fertilizerPay";
-@import "./components/payments/date";
 
 /*General*/
 @import "./components/general/general";
+@import "./components/general/sections/requestDocument";
 
 /*Ui*/
 @import "./components/ui/texture";
 @import "./components/ui/navbar";
+@import "./components/ui/matricula";
+@import "./components/ui/date";
+@import "./components/ui/buttons";

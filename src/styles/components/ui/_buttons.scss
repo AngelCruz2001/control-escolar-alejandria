@@ -1,0 +1,20 @@
+.btn {
+    cursor: pointer;
+
+    &-primary {
+        color: $white;
+        background-color: $blue-button;
+        border-radius: 10px;
+        font-size: calc(0.6em + 0.4vw);
+        font-weight: 500;
+        width: 12%;
+        height: 60%;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: none;
+        border: none;
+    }
+
+    &-primary.active {
+        background-color: $blue-btn-text;
+    }
+}
