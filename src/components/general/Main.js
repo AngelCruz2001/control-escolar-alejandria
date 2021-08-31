@@ -1,6 +1,8 @@
 import React from 'react'
+
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom'
 import { RequestGrades } from '../requestGrades/RequestGrades'
+
 import { Navbar } from './navbar/Navbar'
 import { RequestDocument } from './sections/RequestDocument'
 import { Texture } from './texture/Texture'
@@ -16,6 +18,12 @@ const itemsMenu = [
 ]
 
 export const Main = () => {
+
+
+    //Borrar de aqui
+    const {active} = useSelector(state => state.document)
+ 
+
     return (
         <div>
             <Texture />
