@@ -21,7 +21,7 @@ export const Main = () => {
 
 
     //Borrar de aqui
-    const {active} = useSelector(state => state.document)
+    // const {active} = useSelector(state => state.document)
  
 
     return (
