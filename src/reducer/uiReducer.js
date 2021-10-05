@@ -2,8 +2,11 @@ import { types } from '../types/types';
 
 const initialState = {
     loading: false,
+    loadingCards: false,
     msgError: null,
+    openDropMenu: false,
     correct: null,
+    loadingStudent: false,
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -38,6 +41,38 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
             }
+
+            case types.uiStartLoadingCards:
+                return {
+                    ...state,
+                    loadingCards: true,
+                }
+            case types.uiFinishLoadingCards:
+                return {
+                    ...state,
+                    loadingCards: false,
+                }
+            case types.uiOpenDropMenu:
+                return {
+                    ...state,
+                    openDropMenu: true,
+                }
+            case types.uiCloseDropMenu:
+                return {
+                    ...state,
+                    openDropMenu: false,
+                }
+    
+            case types.uiStartLoadingStudents:
+                return {
+                    ...state,
+                    loadingStudent: true
+                }
+            case types.uiFinishLoadingStudents:
+                return {
+                    ...state,
+                    loadingStudent: false
+                }
         
         default:
             return state;

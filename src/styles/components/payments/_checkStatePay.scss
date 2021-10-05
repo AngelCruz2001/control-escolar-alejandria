@@ -1,12 +1,24 @@
 .check-state-pay {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: 96%;
+    width: 96%;
     margin: auto;
+    position: relative;
+
     &__form {
         display: flex;
         height: 1.8rem;
+
+        &__timesCircle {
+            position: absolute;
+            right: 1%;
+            background: RGB(255, 255, 255) 0% 0% no-repeat padding-box;
+            box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: #00407e;
+            padding: 0.3em 0.5em !important;
+        }
         form {
             width: 55%;
             div {
@@ -71,6 +83,9 @@
     &__list {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        height: 90%;
+
         &__headers {
             text-align: center;
             display: flex;
@@ -98,8 +113,8 @@
             }
         }
         &__container {
-            overflow-y: scroll;
-            height: 22rem;
+            overflow-y: auto;
+            // height: 100%;
 
             &__item {
                 display: flex;
@@ -109,7 +124,7 @@
                 span {
                     padding: 0.5rem 0;
                 }
-                p.general {
+                p.nameGroup {
                     text-align: initial;
                     width: 50%;
                     border-radius: 9px 0 0 9px;
@@ -129,6 +144,7 @@
                 }
                 p:nth-child(2n + 1) {
                     background-color: $blue-sky4;
+
                 }
                 span {
                     background-color: $blue-sky4;

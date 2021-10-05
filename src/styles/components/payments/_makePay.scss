@@ -1,17 +1,23 @@
 .make__ {
-    height: 100%;
     display: flex;
     flex-direction: column;
-
+    height: 100%;
+    width: 89%;
+    font-family: "Philosopher", sans-serif ;
+    position: relative;
     &date {
+        padding-top: 1.5em;
     }
 
     &container {
         display: flex;
-        height: 90%;
+        height: 100%;
         width: 100%;
-        align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+        // height: 90%;
+        // width: 100%;
+        // align-items: center;
+        // justify-content: space-around;
     }
 
     &subContainerLeft,
@@ -19,11 +25,12 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 37%;
+        width: 45%;
+        justify-content: space-evenly;
     }
 
     &subContainerRight {
-        width: 38%;
+        width: 44%;
     }
 
     &containerInput {
@@ -35,6 +42,7 @@
             border-radius: 7px;
             padding: 5px;
             width: 70%;
+            height: calc(5.5vh - 1rem);
         }
     }
 
@@ -67,6 +75,8 @@
         display: flex;
         flex-direction: column;
         &-data {
+            margin-top: 2em;
+
             input {
                 border: none;
                 background-color: $blue-sky3;
@@ -78,6 +88,15 @@
                 font-weight: 600;
                 pointer-events: none;
             }
+        }
+    }
+
+    &payMethod__{
+        &container {
+            padding-bottom: 1em;
+        }
+        &items {
+            width: 83%;
         }
     }
 
@@ -129,10 +148,10 @@
         position: absolute;
         display: flex;
         align-items: center;
-        top: 43.5%;
-        left: 52%;
-        width: 45%;
-        height: 53%;
+        top: 35.5%;
+        left: 47.5%;
+        width: 45.5%;
+        height: 59%;
         background-color: red;
         pointer-events: all;
         background-color: $blue-sky;
@@ -198,22 +217,22 @@
         }
     }
 
-    &total{
-        width: 100%;
+    &total {
+        width: 90%;
         display: flex;
-        
-        &-pay{
+
+        &-pay {
             width: 40%;
         }
 
-        &-quantity{            
+        &-quantity {
             border: 1px solid $black;
             width: 30%;
-            height:95%;
+            height: 95%;
             position: relative;
             text-align: center;
-            
-            &::before{
+
+            &::before {
                 content: "";
                 width: 0px;
                 height: 0px;
@@ -224,9 +243,9 @@
                 border-bottom: 8px solid transparent;
                 left: -16px;
                 top: 20%;
-              }
-              
-              &:after {
+            }
+
+            &:after {
                 content: "";
                 width: 0px;
                 height: 0px;
@@ -237,8 +256,7 @@
                 border-bottom: 8px solid transparent;
                 left: -15px;
                 top: 20%;
-              }
-            
+            }
         }
     }
 
@@ -271,8 +289,8 @@
         align-items: center;
         justify-content: center;
         background-color: $filterPaid-back;
-        border-radius: 7px;
-        padding: 0.5rem 0.7rem;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
         cursor: pointer;
         div {
             margin-left: 0.3rem;
@@ -312,6 +330,3 @@
         padding: 0.6rem 2rem;
     }
 }
-
-
-

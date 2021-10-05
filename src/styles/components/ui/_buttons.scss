@@ -1,6 +1,8 @@
 .btn {
     cursor: pointer;
-
+    padding:.4em 1em;
+    text-decoration: none;
+    border: none;
 
     &-primary {
         color: $white;
@@ -8,11 +10,12 @@
         border-radius: 10px;
         font-size: calc(0.6em + 0.4vw);
         font-weight: 500;
-        width: 12%;
-        height: 60%;
+        // width: 12%;
+        // height: 60%;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         box-shadow: none;
         border: none;
+        
     }
 
     &-primary.active {
@@ -20,10 +23,10 @@
     }
 }
 
-    // text-align: center;
-    // text-decoration: none;
-    // border: none;
-    // background-color: transparent;
+//     text-align: center;
+//     text-decoration: none;
+//     border: none;
+//     // background-color: transparent;
 // }
 .btn__actions {
     width: 90%;
