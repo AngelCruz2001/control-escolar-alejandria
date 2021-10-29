@@ -1,0 +1,16 @@
+.gra__ {
+    &container {
+        height: 87%;
+        width: 92%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+        h4 {
+            margin: 1.8rem;
+            align-self: center;
+            color: $black;
+            font-weight: bold;
+        }
+    }
+}

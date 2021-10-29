@@ -14,6 +14,7 @@
 /*General*/
 @import "./components/general/general";
 @import "./components/general/sections/requestDocument";
+@import "./components/general/sections/requestGrades";
 
 /*Ui*/
 @import "./components/ui/texture";
@@ -25,3 +26,11 @@
 @import "./components/ui/animations";
 
 @import "./components/ui/buttons";
+
+@import "./components/ui/table";
+
+@import "./components/ui/search";
+
+@import "./components/ui/radioButtonList";
+
+@import "./components/ui/studentInformation";

@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom'
+import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
+import { RequestDocument } from '../requestDocument/RequestDocument'
 import { RequestGrades } from '../requestGrades/RequestGrades'
 
 import { Navbar } from './navbar/Navbar'
-import { RequestDocument } from './sections/RequestDocument'
 import { Texture } from './texture/Texture'
 
 const itemsMenu = [
@@ -22,7 +23,7 @@ export const Main = () => {
 
     //Borrar de aqui
     // const {active} = useSelector(state => state.document)
- 
+
 
     return (
         <div>
@@ -43,6 +44,7 @@ export const Main = () => {
                         <Switch>
                             <Route path="/solicitud_de_documento" component={RequestDocument} />
                             <Route path="/consulta_de_calificaciones" component={RequestGrades} />
+                            <Route path="/registro_de_gastos" component={ExpenseRecord} />
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>
                     </div>

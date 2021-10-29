@@ -1,0 +1,53 @@
+.table {
+    width: 100%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    &__headers {
+        display: flex;
+        text-align: center;
+        &__cell {
+            padding: 0.4rem;
+            color: $black;
+            font-size: 0.9rem;
+            padding-bottom: 0;
+            font-weight: 500;
+
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        &__row {
+            display: flex;
+            width: 100%;
+            margin: 0.3rem 0 0.3rem 0;
+            box-shadow: 0px 3px 6px #00000029;
+            border-radius: 10px;
+
+            &__cell {
+                display: flex;
+                padding: 0.5rem;
+            }
+            div:nth-child(odd) {
+                background-color: $blue-sky3;
+            }
+            div:nth-child(even) {
+                background-color: $white;
+            }
+            div:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+            div:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+    }
+}

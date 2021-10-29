@@ -1,7 +1,7 @@
 .btn {
     cursor: pointer;
-
-
+    border: none;
+    background: none;
     &-primary {
         color: $white;
         background-color: $blue-button;
@@ -20,10 +20,10 @@
     }
 }
 
-    // text-align: center;
-    // text-decoration: none;
-    // border: none;
-    // background-color: transparent;
+// text-align: center;
+// text-decoration: none;
+// border: none;
+// background-color: transparent;
 // }
 .btn__actions {
     width: 90%;
@@ -77,4 +77,16 @@
     }
 }
 
+// Buttons table
 
+.btnTableSee {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+        color: $blue-btn-text;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
