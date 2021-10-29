@@ -2,6 +2,9 @@
 @import "./base/settings";
 
 
+/*General*/
+@import "./components/general/general";
+
 /*Components*/
 @import "./components/auth";
 
@@ -11,9 +14,10 @@
 @import "./components/payments/checkStatePay";
 @import "./components/payments/fertilizerPay";
 
-/*General*/
-@import "./components/general/general";
-@import "./components/general/sections/requestDocument";
+/* Request */
+@import "./components/requestRequest/requestDocument";
+@import "./components/requestRequest/requestHistoryView";
+
 
 /*Ui*/
 @import "./components/ui/texture";

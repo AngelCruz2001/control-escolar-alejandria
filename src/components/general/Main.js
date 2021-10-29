@@ -1,14 +1,15 @@
 import React from "react";
+import { NavLink, Route, Switch } from "react-router-dom";
 
-import { NavLink, Redirect, Route, Switch } from "react-router-dom";
-import { RequestGrades } from "../requestGrades/RequestGrades";
-
-import { Navbar } from "./navbar/Navbar";
-import { RequestDocument } from "../requestDocuments/RequestDocument";
 import { Texture } from "./texture/Texture";
+import { Navbar } from "./navbar/Navbar";
+
+import { RequestDocument } from "../requests/RequestScreen";
+import { RequestGrades } from "../requestGrades/RequestGrades";
 import { FertilizerPay } from "../fertilizerPay/FertilizerPay";
 import { MakePay } from "../makePay/MakePay";
 import { CheckStatePay } from "../checkStatePay/CheckStatePay";
+import { RequestHistory } from "../requests/RequestHistory";
 
 const itemsMenu = [
   {
@@ -48,10 +49,19 @@ export const Main = () => {
           </div>
           <div className="general__overtexture">
             <Switch>
+              
               <Route
+                exact
                 path="/solicitud_de_documento"
                 component={RequestDocument}
               />
+              
+              <Route
+                exact
+                path="/solicitud_de_documento/historial"
+                component={RequestHistory}
+              />
+    
               <Route
                 path="/consulta_de_calificaciones"
                 component={RequestGrades}

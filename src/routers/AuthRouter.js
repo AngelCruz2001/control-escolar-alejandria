@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { LoginScreen } from '../components/auth/LoginScreen'
 
-export const AuthRouter = ({ history }) => {
+export const AuthRouter = () => {
 
     return (
         <div className="">

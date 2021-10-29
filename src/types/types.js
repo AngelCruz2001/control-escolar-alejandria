@@ -36,9 +36,11 @@ export const types = {
     paySetPayments: '[pay] Set payments',
     paySetStudents: '[pay] set students',
 
-    documentSetActive: '[document] Set Active',
-    documentSetDocument: '[document] Set Document',
-    documentClearActive: '[document] Clear Active',
-    documentClearData: '[document] Clear document data',
+    requestSetActive: '[request] Set Active',
+    requestSetStudent: '[request] Set request Student',
+    requestSetHistory: '[request] Set History Requests',
+    requestDelete: '[request] Delete Request',
+    requestClearActive: '[request] Clear Active',
+    requestClearData: '[request] Clear request data',
 
 }

@@ -1,13 +1,42 @@
-import React from 'react';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { requestStartGetStudentByMatricula } from "../../actions/request";
+import { useForm } from "../../hooks/useForm";
 
 export const Matricula = () => {
 
-    return (
-        // <form action="" onSubmit={() => console.log("Este debería ser un 'SubmitMatricula', pero no sé realmente si jala. ")}>
-        <div className="matri__container">
-            <label className="general__titleSection matri__label" htmlFor="matricula">Matrícula</label>
-            <input placeholder="0000000000000" maxLength="13" id="matricula" name="matricula" value={"ASDFSADFASDF"} onChange={""} />
-        </div>
-        // </form>}
-    )
-}
+  const dispatch = useDispatch()
+
+
+
+  const [ matriculaIputValue, handleMatriculaInputChange ] = useForm({
+      matricula: ''
+  })
+
+  const {matricula} = matriculaIputValue;
+
+  const handleMarticulaSubmit = (e) => {
+
+      e.preventDefault();
+      dispatch(requestStartGetStudentByMatricula(matricula))
+      // console.log('Enviando')
+  }
+
+  return (
+    <form onSubmit={handleMarticulaSubmit}>
+    <div className="matri__container">
+      <label className="general__titleSection matri__label" htmlFor="matricula">
+        Matrícula
+      </label>
+      <input
+        placeholder="DEDG202103002"
+        maxLength="13"
+        id="matricula"
+        value={matricula}
+        onChange={handleMatriculaInputChange}
+        name="matricula"
+      />
+    </div>
+    </form>
+  );
+};

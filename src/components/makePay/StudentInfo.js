@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Matricula } from "../Matricula";
+import { payStartGetStudentByMatricula } from '../../actions/pay';
+
 
 export const StudentInfo = () => {
   const { active } = useSelector((state) => state.pay);
   const { loading, correct } = useSelector((state) => state.ui);
   return (
     <>
-      <Matricula />
+      <Matricula  reduxAction={payStartGetStudentByMatricula}/>
 
       <div className="make__studentInformation">
         <p className="make__subTitleSection">Información del alumno</p>
-        <div className="data">
+        <div className="data dataPay__grid">
           {correct === null ? (
             <div style={{ height: "100.8px" }}></div>
           ) : correct ? (
@@ -22,9 +24,12 @@ export const StudentInfo = () => {
                 </div>
               ) : active ? (
                 <>
-                  <p>Alumno: {active.student_fullname}</p>
-                  <p>Grupo: {active.name_group}</p>
-                  <p>Campus: {active.campus_name}</p>
+                  <p className="dataPay__grid-header">Nombre:</p>
+                  <p className="dataPay__grid-item"> {active.student_fullname}</p>
+                  <p className="dataPay__grid-header">Grupo: </p>
+                  <p className="dataPay__grid-item">{active.name_group} </p>
+                  <p className="dataPay__grid-header">Campus:</p>
+                  <p className="dataPay__grid-item"> {active.campus_name}</p>
                 </>
               ) : (
                 <div

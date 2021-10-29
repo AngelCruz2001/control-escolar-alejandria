@@ -1,23 +1,19 @@
 .make__ {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 89%;
-    font-family: "Philosopher", sans-serif ;
+    height: 89%;
+    width: 87%;
+    // font-family: "Philosopher", sans-serif ;
     position: relative;
     &date {
-        padding-top: 1.5em;
+        height: 8%;
     }
 
     &container {
         display: flex;
-        height: 100%;
+        height: 92%;
         width: 100%;
         justify-content: space-between;
-        // height: 90%;
-        // width: 100%;
-        // align-items: center;
-        // justify-content: space-around;
     }
 
     &subContainerLeft,
@@ -25,45 +21,56 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 45%;
-        justify-content: space-evenly;
+        justify-content: space-between;
+    }
+
+    &subContainerLeft {
+        width: 50%;
     }
 
     &subContainerRight {
-        width: 44%;
+        width: 42.5%;
     }
 
     &containerInput {
         display: flex;
         flex-direction: column;
+        //left
+        justify-content: space-between;
+        height: 12.5%;
+        margin-top: 1em;
 
         input {
             border: 1px solid $gray-bars;
             border-radius: 7px;
+            height: 41.5%;
             padding: 5px;
-            width: 70%;
-            height: calc(5.5vh - 1rem);
+            width: 60%;
+            font-size: calc(4.5px + 0.5vw);
         }
     }
 
     &titleSection {
-        font-size: calc(5px + 0.5vw);
+        font-size: calc(5.5px + 0.5vw);
         font-weight: bold;
-        margin-bottom: 0.3rem;
+        // height: 30%;s
     }
     &subTitleSection {
         font-size: calc(5px + 0.5vw);
         font-weight: 600;
-        margin-bottom: 0.3rem;
+        // height: 7.5%;
     }
 
     &studentInformation {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 32.5%;
         .data {
             background-color: $blue-sky3;
             border-radius: 7px;
-            padding: 0rem 3rem 0px 10px;
+            height: 87%;
             p {
-                padding: 0.5rem 0px;
                 font-size: calc(6px + 0.5vw);
                 text-transform: uppercase;
                 font-weight: 600;
@@ -74,8 +81,25 @@
     &conceptPay {
         display: flex;
         flex-direction: column;
+        height: 37.5%;
+        justify-content: space-between;
+
+        &-way {
+            height: 35.2%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         &-data {
-            margin-top: 2em;
+            display: flex;
+            flex-direction: column;
+            height: 31.5%;
+            justify-content: space-between;
+
+            &-input {
+                height: 28.5%;
+            }
 
             input {
                 border: none;
@@ -91,12 +115,17 @@
         }
     }
 
-    &payMethod__{
-        &container {
-            padding-bottom: 1em;
-        }
-        &items {
-            width: 83%;
+    &payMethod {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        height: 14%;
+
+        // &container {
+        //     padding-top: 0.5em;
+        // }
+        &__items {
+            height: 51%!important;
         }
     }
 
@@ -218,8 +247,8 @@
     }
 
     &total {
-        width: 90%;
         display: flex;
+        height: 8.6%;
 
         &-pay {
             width: 40%;
@@ -261,6 +290,7 @@
     }
 
     &formMoney {
+        height: 27%;
         div {
             display: flex;
             flex-direction: column;
@@ -275,6 +305,12 @@
         display: flex;
         justify-content: center;
         cursor: pointer;
+        height: 10%;
+        width: 100%;
+
+        &-button {
+            width: 33.5%;
+        }
     }
 }
 
@@ -282,16 +318,18 @@
 .btn-payContainer {
     display: flex;
     justify-content: space-between;
+    height: 54%;
 
     .btn-payElement {
         display: flex;
-        font-size: calc(4.5px + 0.5vw);
+        font-size: calc(6px + 0.5vw);
         align-items: center;
         justify-content: center;
         background-color: $filterPaid-back;
         border-radius: 10px;
-        padding: 0.5rem 1rem;
         cursor: pointer;
+        width: 28%;
+        // height: 94%;
         div {
             margin-left: 0.3rem;
             i {
@@ -327,6 +365,23 @@
         border: none;
         color: $white;
         border-radius: 8px;
-        padding: 0.6rem 2rem;
+    }
+}
+
+.dataPay__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+
+    &-header {
+        font-weight: bold !important;
+        place-self: center;
+    }
+
+    &-item {
+        font-weight: bold !important;
+        grid-column: span 4;
+        text-align: initial;
     }
 }

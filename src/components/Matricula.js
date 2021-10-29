@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { payStartGetStudentByMatricula } from '../actions/pay';
 import { uiSetCorrect } from '../actions/ui';
 import { useForm } from '../hooks/useForm';
 import { useValidator } from '../hooks/useValidator';
 import { typesRegex } from '../types/typesValidators';
 
-export const Matricula = () => {
+export const Matricula = ({ reduxAction }) => {
     const dispatch = useDispatch()
     const { active } = useSelector((state) => state.pay)
     const [formValues, handleInputChange, reset, setValue] = useForm({
@@ -25,15 +24,24 @@ export const Matricula = () => {
 
     useEffect(() => { active === null && setValue({ matricula: "" }); }, [active])
 
+
     const getStudentInformation = () => {
-        active ? (active.matricula !== matricula) && dispatch(payStartGetStudentByMatricula(matricula)) : dispatch(payStartGetStudentByMatricula(matricula))
+        // e.preventDefault();
+        active ? (active.matricula !== matricula) && dispatch(reduxAction(matricula)) : dispatch(reduxAction(matricula))
     }
+
+    // useEffect(() => {
+    //     reset()
+    // }, [reduxAction])
+    // const getStudentInformation = () => {
+    //     active ? (active.matricula !== matricula) && dispatch(payStartGetStudentByMatricula(matricula)) : dispatch(payStartGetStudentByMatricula(matricula))
+    // }
     return (
-        <form action="" onSubmit={() => console.log("Este debería ser un 'SubmitMatricula', pero no sé realmente si jala. ")}>
+        
             <div className="make__containerInput">
-                <label className="make__titleSection" htmlFor="matricula">MATRÍCULA</label>
+                <label className="make__titleSection" htmlFor="matricula">Matrícula</label>
                 <input maxLength="13" id="matricula" name="matricula" value={matricula} onChange={handleInputChange} />
             </div>
-        </form>
+        
     )
 }
