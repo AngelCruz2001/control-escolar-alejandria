@@ -13,7 +13,7 @@ export const DataStudentTableFer = () => {
     }
   }, [active]);
   return (
-    <div className="fer__table__data__container ">
+    <div className="fer__table__data__container scroll">
       {active ? (
         loading ? (
           <p>Cargandoooooooooooooooooooooooo</p>

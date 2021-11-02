@@ -19,30 +19,30 @@ export const DataStudentItem = ({last_payment_date, name, expected, current, mis
     }
     return (
         <div className="fer__table__data__container__box">
-            <div className="fer__table__data__container__box__item">
+            <div className="fer__table__data__container__box__item fer__table-data-item-blue">
                 <p>
                     {last_payment_date}
                 </p>
             </div>
-            <div className="fer__table__data__container__box__item">
+            <div className="fer__table__data__container__box__item fer__table-data-item-blueLight">
                 <p>
                     {name}
                 </p>
             </div>
-            <div className="fer__table__data__container__box__item">
+            <div className="fer__table__data__container__box__item fer__table-data-item-blue">
                 <p>
                     {`$${expected}.00`}
                 </p>
             </div>
-            <div className="fer__table__data__container__box__item">
+            <div className="fer__table__data__container__box__item fer__table-data-item-blueLight">
                 <p>
                     {`$${current}.00`}
                 </p>
             </div>
-            <div className="fer__table__data__container__box__item">
+            <div className="fer__table__data__container__box__item fer__table-data-item-blueStrong">
                 <p>{`$${missing}.00`}</p>
             </div>
-            <NavLink to="/pagos/pagar" className="fer__table__data__container__box__item">
+            <NavLink to="/pagos/pagar" className="fer__table__data__container__box__item fer__table-data-item-blueLight">
                 <p onClick={handleClickPayFertilizer}>LIQUIDAR O ABONAR</p>
                 <div onClick={handleClickPayFertilizer}>
                     <i className="fas fa-chevron-circle-right"></i>
