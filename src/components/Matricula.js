@@ -38,7 +38,7 @@ export const Matricula = ({ reduxAction }) => {
     // }
     return (
         
-            <div className="make__containerInput">
+            <div className="make__containerInput make__idSection">
                 <label className="make__titleSection" htmlFor="matricula">Matrícula</label>
                 <input maxLength="13" id="matricula" name="matricula" value={matricula} onChange={handleInputChange} />
             </div>

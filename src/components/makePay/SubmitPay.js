@@ -1,18 +1,25 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { payStartFertilizer, payStartMakePay } from '../../actions/pay'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { payStartFertilizer, payStartMakePay } from "../../actions/pay";
 
 export const SubmitPay = () => {
+  const dispatch = useDispatch();
+  const { amountToPay, idPayment, method } = useSelector((state) => state.pay);
+  const handleSubmitMakePay = () => {
+    idPayment ? dispatch(payStartFertilizer()) : dispatch(payStartMakePay());
+  };
 
-    const dispatch = useDispatch();
-    const { amountToPay, idPayment, method } = useSelector(state => state.pay);
-    const handleSubmitMakePay = () => {
-        idPayment ? dispatch(payStartFertilizer()) : dispatch(payStartMakePay())
-    }
-
-    return (
-        <div className={`make__submit `} >
-            <button className={`make__submit-button btn-blue submitPay ${!method && 'ui__disabledEffect totalPay' }`} onClick={handleSubmitMakePay}>Pagar</button>
-        </div>
-    )
-}
+  return (
+    <div className={`make__submit `}>
+      <button
+        disabled={amountToPay ? false : true}
+        className={`make__submit-button btn-blue submitPay ${
+          !amountToPay && "ui__disabledEffectBtn totalPay"
+        }`}
+        onClick={handleSubmitMakePay}
+      >
+        Pagar
+      </button>
+    </div>
+  );
+};

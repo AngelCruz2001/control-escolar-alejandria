@@ -48,7 +48,7 @@ export const MakePay = () => {
             <></>
           )}
 
-          <ReceiveMoney />
+          {!!concept && <ReceiveMoney />}
 
           <SubmitPay />
         </div>

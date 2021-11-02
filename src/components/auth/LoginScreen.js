@@ -24,7 +24,6 @@ export const LoginScreen = () => {
         // e.preventDefault();
         dispatch(authStartLogin(username, password))
         history.replace(lastPath)
-       
     }
    
     return (

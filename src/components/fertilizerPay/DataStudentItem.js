@@ -5,11 +5,12 @@ import 'moment/locale/es';
 import { NavLink } from 'react-router-dom';
 import { paySetConcept, paySetThingToPay, paySetPrice, paySetIdPayment } from '../../actions/pay';
 
-export const DataStudentItem = ({ payment_date, name, expected, current, missing, payment_type, id_payment }) => {
+export const DataStudentItem = ({last_payment_date, name, expected, current, missing, payment_type, id_payment }) => {
 
+    console.log(last_payment_date);
     const dispatch = useDispatch();
-    const dateMoment = moment(payment_date).format("MMMM - D - YYYY");
-    const dateMeraMera = dateMoment[0].toUpperCase() + dateMoment.slice(1);
+    // const dateMoment = moment(payment_date).format("MMMM - D - YYYY");
+    // const dateMeraMera = dateMoment[0].toUpperCase() + dateMoment.slice(1);
     const handleClickPayFertilizer = () => {
         dispatch(paySetPrice(missing));
         dispatch(paySetConcept(payment_type));
@@ -20,7 +21,7 @@ export const DataStudentItem = ({ payment_date, name, expected, current, missing
         <div className="fer__table__data__container__box">
             <div className="fer__table__data__container__box__item">
                 <p>
-                    {/* {dateMeraMera} */} 12345
+                    {last_payment_date}
                 </p>
             </div>
             <div className="fer__table__data__container__box__item">

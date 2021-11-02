@@ -4,6 +4,7 @@ import { Date } from "../../helpers/ui/Date";
 import { Matricula } from "../Matricula";
 import { DataStudentTableFer } from "./DataStudentTableFer";
 import { HeadersStudentTableFer } from "./HeadersStudentTableFer";
+import { payStartGetStudentByMatricula } from "../../actions/pay";
 
 export const FertilizerPay = () => {
   const { active } = useSelector((state) => state.pay);
@@ -19,7 +20,9 @@ export const FertilizerPay = () => {
           <Date />
         </div>
         <div className="fer__header__matri-text">
-          <Matricula />
+          <div className="fer__header-matricula">
+            <Matricula reduxAction={payStartGetStudentByMatricula} />
+          </div>
           {active ? (
             <div className="fer__header__matri-text__dataStudent">
               <p>Información del alumno</p>
@@ -37,8 +40,8 @@ export const FertilizerPay = () => {
               </p>
             </div>
           ) : (
-            <h4>
-              ¿Deseas liquidar o realizar un abono? Introduce la matrícula del
+            <h4 className="fer__header-instructions">
+              ¿Deseas liquidar o realizar un abono? Introduce la matrícula<br /> del 
               alumno para conocer sus conceptos de adeudo.
             </h4>
           )}

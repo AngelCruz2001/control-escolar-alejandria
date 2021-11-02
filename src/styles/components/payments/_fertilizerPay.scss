@@ -1,4 +1,4 @@
-.fer {
+.fer{
     &__container {
         display: flex;
         flex-direction: column;
@@ -14,27 +14,42 @@
         margin: 0 auto;
         position: relative;
 
-        &__date{
+        &__date {
             display: flex;
-            gap:.5em;
+            gap: 0.5em;
             font-size: calc(0.4rem + 0.6vw);
             align-items: center;
         }
+        &-matricula{
+            grid-column: 1/6;
+        }
+
+        &-instructions {
+            grid-column: 6/13;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
 
         &__matri-text {
-            display: flex;
+            display: grid;
             width: 100%;
             margin-top: 1.3rem;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(1, 1fr);
             form {
                 width: 33%;
                 input {
                     width: 80% !important;
                 }
             }
+
+            
+
             h4 {
                 color: $fertilizer-text;
                 text-align: center;
-                width: 60%;
+                // width: 60%;
                 font-family: "Noto Sans", sans-serif;
                 font-size: 0.9rem;
             }

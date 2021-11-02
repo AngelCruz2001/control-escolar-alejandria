@@ -9,6 +9,10 @@
         height: 8%;
     }
 
+    &idSection {
+        margin-top: 1em;
+    }
+
     &container {
         display: flex;
         height: 92%;
@@ -21,15 +25,17 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        justify-content: space-between;
     }
 
     &subContainerLeft {
         width: 50%;
+        justify-content: space-between;
     }
 
     &subContainerRight {
         width: 42.5%;
+        justify-content: space-around;
+        position: relative;
     }
 
     &containerInput {
@@ -37,21 +43,22 @@
         flex-direction: column;
         //left
         justify-content: space-between;
-        height: 12.5%;
-        margin-top: 1em;
+        // height: 12.5%;
+        // margin-top: 1em;
 
         input {
             border: 1px solid $gray-bars;
             border-radius: 7px;
             height: 41.5%;
-            padding: 5px;
+            padding: 8.9px 5px;
             width: 60%;
-            font-size: calc(4.5px + 0.5vw);
+            margin-top: .2em;
+            font-size: calc(6.7px + 0.5vw);
         }
     }
 
     &titleSection {
-        font-size: calc(5.5px + 0.5vw);
+        font-size: calc(6.7px + 0.5vw);
         font-weight: bold;
         // height: 30%;s
     }
@@ -69,9 +76,9 @@
         .data {
             background-color: $blue-sky3;
             border-radius: 7px;
-            height: 87%;
+            height: 85%;
             p {
-                font-size: calc(6px + 0.5vw);
+                font-size: calc(6.7px + 0.5vw);
                 text-transform: uppercase;
                 font-weight: 600;
             }
@@ -94,11 +101,11 @@
         &-data {
             display: flex;
             flex-direction: column;
-            height: 31.5%;
-            justify-content: space-between;
+            height: 37.5%;
+            justify-content: space-evenly;
 
             &-input {
-                height: 28.5%;
+                height: 29%;
             }
 
             input {
@@ -108,7 +115,7 @@
                 border-radius: 7px;
                 padding: 0.55rem 0.4rem;
                 width: calc(100% - 0.8rem);
-                font-size: calc(4.5px + 0.5vw);
+                font-size: calc(6.7px + 0.5vw);
                 font-weight: 600;
                 pointer-events: none;
             }
@@ -120,30 +127,35 @@
         justify-content: space-around;
         flex-direction: column;
         height: 14%;
+        margin-bottom: 8%;
 
         // &container {
         //     padding-top: 0.5em;
         // }
         &__items {
-            height: 51%!important;
+            height: 51% !important;
         }
     }
 
     //Right Part
     &card {
+        margin-bottom: 5%;
         h5 {
-            font-size: calc(6px + 0.5vw);
+            font-size: calc(7.7px + 0.5vw);
             font-weight: 600;
             margin-bottom: 0.3rem;
         }
         p {
             opacity: 0.6;
-            font-size: calc(6px + 0.5vw);
+            font-size: calc(8.7px + 0.5vw);
         }
     }
     &account {
         position: relative;
         display: flex;
+        height: 7.5%;
+        margin-bottom: 7%;
+
         select {
             -moz-appearance: none; /* Firefox */
             -webkit-appearance: none; /* Safari and Chrome */
@@ -177,25 +189,23 @@
         position: absolute;
         display: flex;
         align-items: center;
-        top: 35.5%;
-        left: 47.5%;
-        width: 45.5%;
-        height: 59%;
-        background-color: red;
+        width: 110%;
+        height: 80%;
         pointer-events: all;
-        background-color: $blue-sky;
-        border-radius: 7px;
-        display: flex;
-        flex-direction: column;
+        background-color: #7ca5ce;
         justify-content: center;
-        z-index: 10;
+        bottom: 0;
+        left: -4%;
+        border-radius: 7px;
         &__show {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             height: 90%;
             width: 90%;
 
             &__form {
-                width: 100%;
-                height: 20%;
+                height: 12% !important;
                 form {
                     width: 100% !important;
                 }
@@ -248,92 +258,111 @@
 
     &total {
         display: flex;
-        height: 8.6%;
+        height: 7.6%;
+        margin-bottom: 8%;
 
         &-pay {
-            width: 40%;
+            font-size: calc(7.7px + 0.5vw);
         }
 
         &-quantity {
             border: 1px solid $black;
             width: 30%;
-            height: 95%;
+            height: 90%;
             position: relative;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: calc(9.7px + 0.5vw);
+            font-weight: 600;
 
-            &::before {
-                content: "";
-                width: 0px;
-                height: 0px;
-                position: absolute;
-                border-left: 8px solid transparent;
-                border-right: 8px solid $black;
-                border-top: 8px solid transparent;
-                border-bottom: 8px solid transparent;
-                left: -16px;
-                top: 20%;
-            }
-
+            &::before,
             &:after {
                 content: "";
                 width: 0px;
                 height: 0px;
                 position: absolute;
-                border-left: 8px solid transparent;
+                left: -16px;
+                border: 8px solid transparent;
+                border-right-color: black;
+            }
+
+            &:after {
                 border-right: 8px solid #fff;
-                border-top: 8px solid transparent;
-                border-bottom: 8px solid transparent;
                 left: -15px;
-                top: 20%;
+                // content: "";
+                // width: 0px;
+                // height: 0px;
+                // position: absolute;
+                // border-left: 8px solid transparent;
+                // border-top: 8px solid transparent;
+                // border-bottom: 8px solid transparent;
+                // top: 20%;
             }
         }
     }
 
     &formMoney {
-        height: 27%;
+        display: grid;
+        height: 30%;
         div {
             display: flex;
             flex-direction: column;
+            height: 100%;
+            justify-content: space-around;
             input {
                 margin-bottom: 0.6rem;
-                width: 80%;
+                width: 97%;
+                height: 38%;
             }
         }
+    }
+
+    &notAllowed {
+        cursor: not-allowed;
     }
 
     &submit {
         display: flex;
         justify-content: center;
-        cursor: pointer;
-        height: 10%;
-        width: 100%;
+        flex: 1 1 0;
+        align-items: flex-end;
 
         &-button {
-            width: 33.5%;
+            width: 30%;
+            padding: 0.7em 0;
+            cursor: pointer;
+            font-size: calc(7.7px + 0.5vw);
         }
     }
 }
 
 //Generals
+
 .btn-payContainer {
     display: flex;
     justify-content: space-between;
     height: 54%;
 
+    .btn-payElement:disabled {
+        cursor: not-allowed;
+        background-color: $filterPaid-back;
+        opacity: 1;
+    }
     .btn-payElement {
         display: flex;
-        font-size: calc(6px + 0.5vw);
+        font-size: calc(6.7px + 0.5vw);
         align-items: center;
         justify-content: center;
         background-color: $filterPaid-back;
         border-radius: 10px;
         cursor: pointer;
-        width: 28%;
-        // height: 94%;
+        padding: 1.3em 1.5em;
+
         div {
             margin-left: 0.3rem;
             i {
-                font-size: calc(2px + 0.5vw);
+                font-size: calc(5px + 0.5vw);
                 color: $gray-changePage;
             }
         }
@@ -353,15 +382,15 @@
 
 .btn-blue {
     &.getPay {
-        padding: 0.6rem;
-        background-color: $blue-solid;
+        padding: 0 1.5em;
+        background-color: $blue-btn-text;
         border: none;
         color: $white;
         border-radius: 9px;
         margin-right: 2rem;
     }
     &.submitPay {
-        background-color: $blue-solid;
+        background-color: $blue-btn-text;
         border: none;
         color: $white;
         border-radius: 8px;
@@ -377,11 +406,27 @@
     &-header {
         font-weight: bold !important;
         place-self: center;
+        font-size: calc(6.7px + 0.5vw);
     }
 
     &-item {
-        font-weight: bold !important;
+        // font-weight: bold !important;
         grid-column: span 4;
         text-align: initial;
+    }
+}
+
+/* UI */
+.ui__ {
+    &disabledEffectBtn {
+        background-color: $blue-button !important;
+        cursor: not-allowed !important;
+    }
+
+    &disabledEffectInfo-title {
+        color: $gray-disabled-title !important;
+    }
+    &disabledEffectInfo-data {
+        background-color: $gray-disabled !important;
     }
 }

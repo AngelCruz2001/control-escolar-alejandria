@@ -7,19 +7,20 @@ import { payStartGetStudentByMatricula } from '../../actions/pay';
 export const StudentInfo = () => {
   const { active } = useSelector((state) => state.pay);
   const { loading, correct } = useSelector((state) => state.ui);
+
   return (
     <>
       <Matricula  reduxAction={payStartGetStudentByMatricula}/>
 
       <div className="make__studentInformation">
-        <p className="make__subTitleSection">Información del alumno</p>
-        <div className="data dataPay__grid">
+        <p className={`make__titleSection ${!active && 'ui__disabledEffectInfo-title '}`} >Información del alumno</p>
+        <div className={`data dataPay__grid ${!active && 'ui__disabledEffectInfo-data '}`}>
           {correct === null ? (
             <div style={{ height: "100.8px" }}></div>
           ) : correct ? (
             <>
               {loading ? (
-                <div style={{ height: "100.8px" }}>
+                <div>
                   <h3>Cargando</h3>
                 </div>
               ) : active ? (

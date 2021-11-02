@@ -10,7 +10,7 @@ export const OverConceptPay = () => {
     const { concept } = useSelector(state => state.pay)
     const regex = new RegExp(findValue, 'gi');
     const months = ["Materia Enero", "Materia Febrero", "Materia Marzo", "Materia Abril", "Materia Mayo", "Materia Junio", "Materia Julio", "Materia Agosto", "Materia Septiembre", "Materia Octubre", "Materia Noviembre", "Materia Diciembre"];
-    const documents = ["Constancia con de estudios. (Con calificaciones)", "Constancia de estudios (Sin calificaciones)", "Carta maestrante", "Kardex", "Credenciales", "Certificado", "Acta de examen", "Oficio de servicio social y practicas", "Titulo", "Constancia de título en proceso"];
+    const documents = ["Constancia con de estudios. (Sin calificaciones)", "Constancia de estudios (Con calificaciones)", "Carta maestrante", "Credencial", "Certificado de maestro", "Certificado de licenciatura","Titulo de maestria", "Titulo de licenciatura", "Acta de examen", "Constancia de título en proceso"];
 
     return (
         <div className="make__containerListConcepts">

@@ -21,7 +21,7 @@ export const ConceptPay = () => {
            
 
             <div className="make__conceptPay-data">
-                <p className="make__titleSection">{payText}</p>
+                <p className={`make__titleSection ${!concept && 'ui__disabledEffectInfo-title '}`}>{payText}</p>
                 <input className="make__conceptPay-data-input" value={concept === "Inscripción" ? "Inscripción Correspondiente" : thingToPay.name} onChange={() => { console.log("You cannot change me.") }} />
             </div>
             {/*Inscripción correspondiente*/}
