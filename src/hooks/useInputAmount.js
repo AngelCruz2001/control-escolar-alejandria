@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { paySetAmountToPay } from '../actions/pay';
+// import { paySetAmountToPay } from '../actions/pay';
 import { numberToText } from '../helpers/numberToText';
 /*
     Notas: escoger el nombre
@@ -10,25 +10,42 @@ import { numberToText } from '../helpers/numberToText';
         - El 4 DEC(dias de estres y contando)...
 */
 // export const inputNumberText = (e, setamountToPay, setShowInput, amountToPay, totalPayMoney) => {
-export const useInputAmount = (setShowInput) => {
-    const dispatch = useDispatch();
-    const { amountToPay, totalPayMoney } = useSelector(state => state.pay);
+// export const useInputAmount = (setShowInput) => {
+//     const dispatch = useDispatch();
+//     const { amountToPay, totalPayMoney } = useSelector(state => state.pay);
+//     const handleInputChange = (e) => {
+//         if (parseInt(e.key) >= 0) {
+//             let newNumber = String(amountToPay).concat(e.key);
+//             newNumber = (parseInt(newNumber) > totalPayMoney) ? totalPayMoney.toString() : newNumber;
+//             dispatch(paySetAmountToPay(newNumber))
+//             setShowInput(`$${newNumber}.00 (${newNumber === '1' ? 'un peso' : `${numberToText(newNumber)} pesos`})`)
+//         } else if (e.key === "Backspace") {
+//             const deleteNumber = String(amountToPay).slice(0, -1)
+//             dispatch(paySetAmountToPay(deleteNumber))//error del mago 
+//             setShowInput(deleteNumber.length > 0 ? `$${deleteNumber}.00 ${numberToText(deleteNumber)}` : "$")
+//         }
+//     }
 
+//     return [handleInputChange];
+
+// }
+
+export const useInputAmount = () => {
+    const [amountToPay, setAmountToPay] = useState('')
+    const [showInput, setShowInput] = useState('$0.00')
     const handleInputChange = (e) => {
         if (parseInt(e.key) >= 0) {
             let newNumber = String(amountToPay).concat(e.key);
-            newNumber = (parseInt(newNumber) > totalPayMoney) ? totalPayMoney.toString() : newNumber;
-            dispatch(paySetAmountToPay(newNumber))
+            setAmountToPay(newNumber);
             setShowInput(`$${newNumber}.00 (${newNumber === '1' ? 'un peso' : `${numberToText(newNumber)} pesos`})`)
         } else if (e.key === "Backspace") {
             const deleteNumber = String(amountToPay).slice(0, -1)
-            dispatch(paySetAmountToPay(deleteNumber))//error del mago 
+            setAmountToPay(deleteNumber);
             setShowInput(deleteNumber.length > 0 ? `$${deleteNumber}.00 ${numberToText(deleteNumber)}` : "$")
         }
     }
-
-    return [handleInputChange];
-
+    console.log(amountToPay)
+    return [amountToPay, showInput, handleInputChange];
 }
 
 // if (parseInt(e.key) >= 0) {

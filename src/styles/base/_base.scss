@@ -19,6 +19,18 @@ input {
     border: none;
 }
 
+.styledInput {
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #c7c7c7;
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -55,4 +67,29 @@ a {
 input:focus,
 select:focus {
     outline: none;
+}
+
+
+.scroll{
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+        background-color: #999999;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #b3b3b3;
+    }
+
+    /* Estilos track de scroll */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }

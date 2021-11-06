@@ -1,7 +1,6 @@
 @import "./base/base";
 @import "./base/settings";
 
-
 /*Components*/
 @import "./components/auth";
 
@@ -15,6 +14,7 @@
 @import "./components/general/general";
 @import "./components/general/sections/requestDocument";
 @import "./components/general/sections/requestGrades";
+@import "./components/general/sections/expenseRecords";
 
 /*Ui*/
 @import "./components/ui/texture";
@@ -34,3 +34,4 @@
 @import "./components/ui/radioButtonList";
 
 @import "./components/ui/studentInformation";
+@import "./components/ui/quantity";

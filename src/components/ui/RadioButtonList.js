@@ -10,7 +10,6 @@ export const RadioButtonList = ({
         "Título de licenciatura",
         "Título de maestría",
         "Curso de titulación de licenciatura",
-        "Curso de titulación de maestría",
     ],
     onChangeValueDocument,
 }) => {

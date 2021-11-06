@@ -1,6 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { authStartLogout } from '../../actions/auth';
 import { Searchbar } from '../ui/Searchbar';
 import { Table } from '../ui/Table'
 import { ButtonTable } from '../ui/table/ButtonTable';
@@ -28,55 +26,109 @@ export const RequestGrades = () => {
         textAlign: 'center'
     }];
     const data = [
+       
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
         [
             <SpanTable text="Dayana Labrador Espino" />,
             <SpanTable text="XXX0002B0000" />,
             <SpanTable text="Domingos B" />,
             <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={'see'} title="Ver" />
+            <ButtonTable type={0} />
         ],
+       
+
+
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+        [
+            <SpanTable text="Dayana Labrador Espino" />,
+            <SpanTable text="XXX0002B0000" />,
+            <SpanTable text="Domingos B" />,
+            <SpanTable text="Licenciatura en innovación educativa" />,
+            <ButtonTable type={0} />
+        ],
+       
 
 
 

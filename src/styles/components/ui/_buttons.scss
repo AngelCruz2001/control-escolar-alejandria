@@ -79,14 +79,45 @@
 
 // Buttons table
 
-.btnTableSee {
-
+.btnTable {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    span {
+        padding-right: 0.3rem;
+        font-size: 0.8rem;
+        color: initial;
+    }
     i {
-        color: $blue-btn-text;
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: center;
     }
+}
+
+.btn__back {
+    width: 25px;
+    height: 25px;
+    background: RGB(255, 255, 255) 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: #00407e;
+    padding: 0.5em 0.5em !important;
+
+    & i {
+        font-size: 1.3em;
+    }
+}
+
+.btnBlue {
+    color: $blue-btn-text !important;
+}
+.btnRed {
+    color: $red-btn-text !important;
+}
+.btnGreen {
+    color: $green-btn-text !important;
 }
