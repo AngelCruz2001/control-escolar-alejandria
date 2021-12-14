@@ -12,6 +12,11 @@
     animation-name: fadeIn;
     animation-duration: 1s;
 }
+.animation__fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+}
+
 .animation__blur {
     animation-name: blur;
     animation-duration: 1s;
@@ -45,7 +50,14 @@
         opacity: 0;
     }
     to {
-
         opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }

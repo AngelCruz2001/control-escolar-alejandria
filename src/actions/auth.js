@@ -35,21 +35,23 @@ export const authStartLogin = (id, password) => {
 
 export const authStartChecking = () => {
     return async (dispatch) => {
-        dispatch(authCheckingStart())
-        const res = await fetchConToken('auth/renew')
-        const body = await res.json()
-        if (body.ok) {
-            localStorage.setItem('token', body.token);
-            localStorage.setItem('token-init-date', new Date().getTime());
-            dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
-            dispatch(authCheckingFinish())
-        } else {
-            dispatch(authCheckingFinish())
-            Swal.fire({
-                title: '¡Oops!',
-                text: body.msg,
-                icon: 'question',
-            })
+        if (localStorage.getItem('token')) {
+            dispatch(authCheckingStart())
+            const res = await fetchConToken('auth/renew')
+            const body = await res.json()
+            if (body.ok) {
+                localStorage.setItem('token', body.token);
+                localStorage.setItem('token-init-date', new Date().getTime());
+                dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
+                dispatch(authCheckingFinish())
+            } else {
+                dispatch(authCheckingFinish())
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
         }
     }
 }
@@ -77,4 +79,3 @@ const authLogout = () => ({
 
 const authCheckingStart = () => ({ type: types.authCheckingStart })
 const authCheckingFinish = () => ({ type: types.authCheckingFinish })
-  

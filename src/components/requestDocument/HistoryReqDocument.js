@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { documentStartGetHistory } from '../../actions/document';
+import { requestStartDeleteRequests, requestStartGetRequests } from '../../actions/requests';
 import { Filters } from '../ui/Filters'
 import { Searchbar } from '../ui/Searchbar'
 import { Table } from '../ui/Table'
 import { ButtonTable } from '../ui/table/ButtonTable';
 import { SpanTable } from '../ui/table/SpanTable';
 
+const documentsName = [
+    "Constancia de estudios",
+    "Constancia de estudios con calificaciones",
+    "Carta maestrante",
+    "Credencial",
+    "Certificado de maestría",
+    "Certificado de licenciatura",
+    "Titulo de maestri",
+    "Titulo de licenciatura",
+    "Acta de examen",
+    "Constancia de titulo en progreso",
+];
 export const HistoryReqDocument = ({
     setShowHistory,
+    requests,
+    loading,
 }) => {
     const headers = [{
         title: "Nombre del alumno",
@@ -28,74 +45,22 @@ export const HistoryReqDocument = ({
         title: "",
         textAlign: 'center'
     }];
-    const data = [
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(requestStartGetRequests())
+    }, [])
+    const handleCancelClick = (id) => {
+        dispatch(requestStartDeleteRequests(id));
+    }
+    const dataShow = requests.data.map(({ id_request, student_name, matricula, creation_date, document_name, belongsToARequest }) => (
 
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={3} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={4} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={4} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={3} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={3} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={3} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={4} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={4} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="15, junio, 2021" />,
-            <SpanTable text="Constancia de estudios" />,
-            <ButtonTable type={4} />
-        ],
-
-    ];
-
+        [<SpanTable text={student_name} />,
+        <SpanTable text={matricula} />,
+        <SpanTable text={creation_date} />,
+        <SpanTable text={document_name} />,
+        <ButtonTable type={3} onClick={handleCancelClick} id={id_request} />
+        ]
+    ))
     return (
         <>
             <div className="req__container__header">
@@ -109,8 +74,9 @@ export const HistoryReqDocument = ({
 
             <Table
                 headers={headers}
-                data={data}
-                sizesColumns={[30, 15, 20, 20, 15]}
+                data={dataShow}
+                sizesColumns={[30, 15, 15, 30, 10]}
+                loading={true}
 
             />
         </>

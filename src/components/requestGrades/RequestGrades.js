@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { gradesStartGetGrades } from '../../actions/grades';
 import { Searchbar } from '../ui/Searchbar';
 import { Table } from '../ui/Table'
 import { ButtonTable } from '../ui/table/ButtonTable';
@@ -25,121 +27,30 @@ export const RequestGrades = () => {
         title: "Ver",
         textAlign: 'center'
     }];
-    const data = [
-       
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-       
 
+    const dispatch = useDispatch();
+    const { grades } = useSelector(state => state.grades)
+    console.log(grades)
+    useEffect(() => {
+        dispatch(gradesStartGetGrades())
+    }, [])
+    // const dataShow = grades.data.map((i) => (
+    //     [
+    //         <SpanTable text="Dayana Labrador Espino" />,
+    //         <SpanTable text="XXX0002B0000" />,
+    //         <SpanTable text="Domingos B" />,
+    //         <SpanTable text="Licenciatura en innovación educativa" />,
+    //         <ButtonTable type={0} />
+    //     ]
+    // ))
 
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-        [
-            <SpanTable text="Dayana Labrador Espino" />,
-            <SpanTable text="XXX0002B0000" />,
-            <SpanTable text="Domingos B" />,
-            <SpanTable text="Licenciatura en innovación educativa" />,
-            <ButtonTable type={0} />
-        ],
-       
-
-
-
-    ];
     return (
         <div className="gra__container">
             <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" />
             <h4>Todos los alumnos</h4>
             <Table
                 headers={headers}
-                data={data}
+                data={[]}
                 sizesColumns={[29, 15, 15, 35, 7]}
             />
         </div>

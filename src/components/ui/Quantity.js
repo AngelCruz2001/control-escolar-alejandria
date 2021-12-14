@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react';
 import { useInputAmount } from '../../hooks/useInputAmount';
 
-export const Quantity = () => {
+export const Quantity = ({handleQuantityChange, startQuantity}) => {
 
-    const [amountToPay, showInput, handleInputChange] = useInputAmount();
-
+    const [amountToPay, showInput, handleInputChange] = useInputAmount(startQuantity);
+    useEffect(() => {
+        handleQuantityChange(amountToPay)
+    }, [amountToPay])
     return (
         <div className="quan__container ">
             <p className="general__titleSection quantity">Cantidad</p>

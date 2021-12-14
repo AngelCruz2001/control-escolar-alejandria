@@ -16,6 +16,7 @@ export const ButtonTable = ({
     type,
     onClick,
     title = '',
+    id
 }) => {
 
     const buttonGenerator = () => {
@@ -34,7 +35,7 @@ export const ButtonTable = ({
                 )
             case 3:
                 return (
-                    <button className="btn btnTable btnBlue"> <span className="btnBlue">Cancelar</span> <i className="fas fa-times-circle"></i> </button>
+                    <button className="btn btnTable btnBlue" onClick={() => onClick(id)}> <span className="btnBlue">Cancelar</span> <i className="fas fa-times-circle"></i> </button>
                 )
             case 4:
                 return (

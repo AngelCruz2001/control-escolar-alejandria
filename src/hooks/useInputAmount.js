@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 // import { paySetAmountToPay } from '../actions/pay';
 import { numberToText } from '../helpers/numberToText';
 /*
@@ -30,8 +29,8 @@ import { numberToText } from '../helpers/numberToText';
 
 // }
 
-export const useInputAmount = () => {
-    const [amountToPay, setAmountToPay] = useState('')
+export const useInputAmount = (startQuantity = 0) => {
+    const [amountToPay, setAmountToPay] = useState(startQuantity) //Se recibe el dato, se guarda en el estado
     const [showInput, setShowInput] = useState('$0.00')
     const handleInputChange = (e) => {
         if (parseInt(e.key) >= 0) {

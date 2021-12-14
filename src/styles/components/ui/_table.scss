@@ -38,6 +38,7 @@
                 display: flex;
                 padding: 0.5rem;
                 font-size: calc(0.4rem + 0.5vw);
+                align-items: center;
             }
             div:nth-child(odd) {
                 background-color: $blue-sky3;

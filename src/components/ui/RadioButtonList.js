@@ -1,26 +1,21 @@
 import React from 'react'
 
 export const RadioButtonList = ({
-    items = ["Constancia de estudios",
-        "Constancia con calificaciones",
-        "Credencial pvc",
-        "Carta pasante",
-        "Certificado de licenciatura",
-        "Certificado de maestría",
-        "Título de licenciatura",
-        "Título de maestría",
-        "Curso de titulación de licenciatura",
-    ],
+    items,
     onChangeValueDocument,
+    activeClassName,
+    idValue,
+    text
 }) => {
+
     return (
-        <div className="radioButtonList">
-            <p className="general__titleSection">Documento a solicitar</p>
+        <div className={"radioButtonList ".concat(activeClassName)}>
+            <p className="general__titleSection">{text}</p>
             <div className="radioButtonList__container" onChange={onChangeValueDocument}>
                 {items.map((item, index) => (
                     <div className="pretty-radio" key={index}>
-                        <input type="radio" class="radio" name="document" onClick={() => console.log("Click")} />
-                        <span class="radio-look"></span>
+                        <input type="radio" className="radio" name="document" id={index} checked={idValue == index} onChange={onChangeValueDocument} />
+                        <span className="radio-look"></span>
                         <span>{item}</span>
                     </div>
                 ))

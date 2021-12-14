@@ -1,41 +1,72 @@
-import React, { useRef, useState } from 'react'
-import { Date } from '../../helpers/ui/Date'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { expenseSetTypeExpense, expensesSetDataInputs, expensesStartGetExpenses, expenseStartCreateRequest } from '../../actions/expenses'
+import { typesExpenses } from '../../types/types'
+import { Date } from '../ui/Date'
 import { Quantity } from '../ui/Quantity'
 import { RadioButtonList } from '../ui/RadioButtonList'
 import { HistoryExpenses } from './HistoryExpenses'
 
 export const ExpenseRecord = () => {
+    const { idExpenseType, expenses, dataInputs } = useSelector(state => state.expenses);
+    const [showHistory, setShowHistory] = useState(false);
+    const dispatch = useDispatch();
+    const [dataForm, setDataForm] = useState(dataInputs);
 
-    const [description, setDescription] = useState('')
-    const [showHistory, setShowHistory] = useState(false)
-    const onChangeValueDocument = () => {
+    const onChangeValueDocument = ({ target }) => {
+        dispatch(expenseSetTypeExpense(parseInt(target.id)));
     }
-    const handleInputChangeTextArea = () => {
-        setDescription();
+
+    const handleQuantityChange = (amount) => {
+        dispatch(expensesSetDataInputs({ ...dataForm, amount }));
     }
+
+    const handleInputChangeTextArea = ({ target }) => {
+        setDataForm({ ...dataForm, description: target.value });
+        dispatch(expensesSetDataInputs({ ...dataForm, description: target.value }));
+    }
+
+    const handleSubmitSave = () => {
+        dispatch(expenseStartCreateRequest(dataForm));
+    }
+    const getExpenses = (filter) => {
+        dispatch(expensesStartGetExpenses(filter))
+    }
+    useEffect(() => {
+        getExpenses();
+    }, [])
     return (
         <div className="exp__container">
             {
                 showHistory ?
-                    <HistoryExpenses setShowHistory={setShowHistory} />
+                    <HistoryExpenses
+                        setShowHistory={setShowHistory}
+                        expenses={expenses}
+                    />
                     :
                     <>
                         <div className="exp__header">
                             <Date />
                         </div>
+
                         <div className="exp__body">
-                            <RadioButtonList onChangeValueDocument={onChangeValueDocument} />
+                            <RadioButtonList
+                                onChangeValueDocument={onChangeValueDocument}
+                                items={typesExpenses}
+                                text="Razón de gasto"
+                                idValue={idExpenseType}
+                            />
                             <div className="exp__body__quantity">
-                                <div className="exp__body__teacherName">
-                                    <p className="general__titleSection">Nombre del docente</p>
-                                    <input className="styledInput" type="text" value={'asdfasdf'} onChange={() => { }} />
-                                </div>
-                                <Quantity />
+                                <Quantity
+                                    handleQuantityChange={handleQuantityChange}
+                                    startQuantity={dataForm.amountToPay}
+                                />
                                 <p className="general__titleSection description">Descripción</p>
                                 <textarea
                                     className="styledInput"
                                     name="description"
-                                    value={description}
+
+                                    value={dataForm.description}
                                     placeholder="Escriba una breve descripción. Ej:&#10;Pago de transporte a la secretaria María Valenzuela."
                                     onChange={handleInputChangeTextArea}
                                     rows={5}
@@ -46,7 +77,7 @@ export const ExpenseRecord = () => {
                         </div>
                         <div className="exp__footer">
                             <button className="btn req__footer__checkHistory active" onClick={() => setShowHistory(true)}><i className="fas fa-history"></i><span>Ver Historial</span></button>
-                            <button className="btn btn-primary active" onClick={() => console.log('click')}>Guardar</button>
+                            <button className="btn btn-primary active" onClick={handleSubmitSave}>Guardar</button>
                         </div>
                     </>
 

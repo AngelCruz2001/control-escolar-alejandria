@@ -53,6 +53,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        &__modalEdit {
+            width: 90%;
+            height: 90%;
+            z-index: 100;
+            background: #ffffff 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 6px #6b8aa854;
+            border-radius: 10px;
+            display: flex;
+            background: url('../../../helpers/resources/images/logoAleNoText.png');
+            img {
+                width: calc(100% - 27rem);
+                object-fit: cover;
+                position: absolute;
+                display: none;
+            }
+        }
     }
 
     &__titleSection {
@@ -61,5 +78,21 @@
         margin-bottom: 0.3rem;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         margin-left: 1%;
+    }
+}
+
+.all {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
     }
 }

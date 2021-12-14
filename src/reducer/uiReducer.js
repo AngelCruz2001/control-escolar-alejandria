@@ -4,6 +4,7 @@ const initialState = {
     loading: false,
     msgError: null,
     correct: null,
+    current: 0,
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -16,11 +17,11 @@ export const uiReducer = (state = initialState, action) => {
             }
 
         case types.uiSetCorrect:
-            return{
+            return {
                 ...state,
                 correct: action.payload,
             }
-    
+
         case types.uiRemoveError:
             return {
                 ...state,
@@ -38,7 +39,13 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
             }
-        
+
+        case types.uiSetCurrent:
+            return {
+                ...state,
+                current: action.payload,
+            }
+
         default:
             return state;
     }
