@@ -2,20 +2,21 @@ import Swal from "sweetalert2"
 import { fetchConToken } from "../helpers/fetch"
 import { types } from "../types/types"
 
-export const expenseStartCreateRequest = ({observation, amount}) => {
+export const expenseStartCreateRequest = () => {
     return async (dispatch, getState) => {
+        const { expenses } = getState();
         console.log({
-            observation,
-            amount,
-            expense_type: getState().expenses.idExpenseType,
+            observation: expenses.dataInputs.observation,
+            amount: expenses.dataInputs.amount,
+            expense_type: expenses.idExpenseType,
             id_user: getState().auth.user.id_user
         })
         try {
             const res = await fetchConToken(`expenses`,
                 {
-                    observation,
-                    amount,
-                    expense_type: getState().expenses.idExpenseType,
+                    observation: expenses.dataInputs.observation,
+                    amount: expenses.dataInputs.amount,
+                    expense_type: expenses.idExpenseType,
                     id_user: getState().auth.user.id_user
                 }, 'POST'
             )
@@ -71,7 +72,7 @@ export const expensesStartGetExpenses = (filter = "all") => {
         }
     }
 }
-export const expensesSetDataInputs = (data) => ({type: types.expensesSetDataInputs, payload: data})
+export const expensesSetDataInputs = (data) => ({ type: types.expensesSetDataInputs, payload: data })
 export const expenseSetTypeExpense = (idExpense) => ({ type: types.expenseSetTypeExpenses, payload: idExpense })
 export const expensesSetExpenses = (expenses) => ({ type: types.expensesSetExpenses, payload: expenses })
 const expensesClearData = () => ({ type: types.expensesClearData })

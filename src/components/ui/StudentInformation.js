@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { uiSetCurrent } from '../../actions/ui';
 
@@ -16,15 +16,15 @@ export const StudentInformation = ({
     } = student;
 
     useEffect(() => {
-        if (!loading && activeClassName === 'active') {
+        if (!loading && activeClassName === 'activeGuide') {
             dispatch(uiSetCurrent(2));
         }
     }, [loading, dispatch])
     return (
-        <div className={`stuInfo ${activeClassName}`}>
+        <div className={`stuInfo son ${activeClassName}`}>
             <p className="general__titleSection">Información del alumno</p>
 
-            <div className="stuInfo__container">
+            <div className="stuInfo__container son">
 
                 {loading ?
                     <p>Cargando</p>

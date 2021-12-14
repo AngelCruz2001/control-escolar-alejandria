@@ -33,15 +33,7 @@
             }
         }
 
-        .active {
-            border: 1px solid $activeBorder;
-            box-shadow: 0px 3px 6px #00000017;
-        }
-        .disabled {
-            opacity: 0.7;
-            transition: all 0.3s;
-            pointer-events: none;
-        }
+       
     }
 
     &header {
@@ -53,7 +45,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        overflow: auto;
         height: 80%;
 
         &__student {

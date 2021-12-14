@@ -27,6 +27,9 @@ export const Main = () => {
 
     return (
         <div className="">
+
+            {/* <div className="blackFilter"></div> */}
+
             <Texture />
             <Navbar />
             <section>
