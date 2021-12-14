@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { documentStartGetHistory } from '../../actions/document';
 import { requestStartDeleteRequests, requestStartGetRequests } from '../../actions/requests';
@@ -52,6 +53,9 @@ export const HistoryReqDocument = ({
     const handleCancelClick = (id) => {
         dispatch(requestStartDeleteRequests(id));
     }
+
+    const [valueSearchFilter, setValueSearchFilter] = useState('');
+    console.log(valueSearchFilter)
     const dataShow = requests.data.map(({ id_request, student_name, matricula, creation_date, document_name, belongsToARequest }) => (
 
         [<SpanTable text={student_name} />,
@@ -67,8 +71,8 @@ export const HistoryReqDocument = ({
                 <button className="btn btn__back" onClick={() => setShowHistory(false)}>
                     <i className="fas fa-arrow-left"></i>
                 </button>
-                <Searchbar />
-                <Filters />
+                <Searchbar setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter}/>
+                <Filters valueSearchFilter={valueSearchFilter} setValueSearchFilter={setValueSearchFilter}/>
             </div>
             <h4>Historial de solicitud de documentos</h4>
 

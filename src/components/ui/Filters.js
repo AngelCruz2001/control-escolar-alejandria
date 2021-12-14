@@ -25,7 +25,6 @@ const daysDates = [
     23,
     24,
     25,
-    ,
     26,
     27,
     28,
@@ -48,14 +47,22 @@ const monthsDates = [
     "Diciembre",
 ];
 const yearsDates = [2021, 2020];
-export const Filters = () => {
+
+
+export const Filters = ({ valueSearchFilter, setValueSearchFilter }) => {
+
+
+    const handleInputValue = ({ target }) => {
+        setValueSearchFilter(target.value)
+    }
+
     return (
         <div className="req__container__header__filters">
 
             <p> Filtrar por: </p>
 
             <div className="reqHistory__dates">
-                <select className="scroll" name="day">
+                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="day">
                     <option hidden defaultValue>
                         Día
                     </option>
@@ -66,7 +73,7 @@ export const Filters = () => {
                         </option>
                     ))}
                 </select>
-                <select className="scroll" name="month" required>
+                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="month" required>
                     <option className="select__default" hidden defaultValue>
                         Mes
                     </option>
@@ -79,7 +86,7 @@ export const Filters = () => {
                     ))}
                 </select>
 
-                <select className="scroll" name="year" required>
+                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="year" required>
                     <option hidden defaultValue>
                         Año
                     </option>
