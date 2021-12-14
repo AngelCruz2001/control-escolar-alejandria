@@ -22,12 +22,12 @@ export const ExpenseRecord = () => {
     }
 
     const handleInputChangeTextArea = ({ target }) => {
-        setDataForm({ ...dataForm, description: target.value });
-        dispatch(expensesSetDataInputs({ ...dataForm, description: target.value }));
+        setDataForm({ ...dataForm, observation: target.value });
+        dispatch(expensesSetDataInputs({ ...dataForm, observation: target.value }));
     }
 
     const handleSubmitSave = () => {
-        dispatch(expenseStartCreateRequest(dataForm));
+        dispatch(expenseStartCreateRequest());
     }
     const getExpenses = (filter) => {
         dispatch(expensesStartGetExpenses(filter))

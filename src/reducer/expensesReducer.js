@@ -4,7 +4,7 @@ const initialState = {
     idExpenseType: null,
     expenses: [],
     dataInputs: {
-        description: '',
+        observation: '',
         amount: 0,
     },
 };

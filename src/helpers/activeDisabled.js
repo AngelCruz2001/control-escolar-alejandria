@@ -2,7 +2,7 @@
 export const activeDisabled = (item, current) => {
 
     if (item > current) {
-        return 'disabled'
+        return 'disabledGuide'
     }
 
     if (item < current) {
@@ -10,6 +10,6 @@ export const activeDisabled = (item, current) => {
     }
 
     if (item === current) {
-        return 'active'
+        return 'activeGuide'
     }
 }

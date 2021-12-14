@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { documentSetDocument } from '../../actions/document'
 import { requestStartRequestDocument } from '../../actions/requests'
 import { uiSetCurrent } from '../../actions/ui'
