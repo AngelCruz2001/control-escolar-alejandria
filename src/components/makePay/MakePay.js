@@ -9,6 +9,8 @@ import { StudentInfo } from "./StudentInfo";
 import { SubmitPay } from "./SubmitPay";
 import { ConceptPay } from "./conceptPay/ConceptPay";
 import { MethodPay } from "./methodPay/MethodPay";
+import { Matricula } from "../Matricula";
+import { payStartGetStudentByMatricula } from "../../actions/pay";
 
 export const MakePay = () => {
   const { concept, method, thingToPay, idPayment } = useSelector(
@@ -25,6 +27,7 @@ export const MakePay = () => {
         <div
           className={`make__subContainerLeft ${idPayment ? "ui__noTouch" : ""}`}
         >
+          <Matricula reduxAction={payStartGetStudentByMatricula} />
           <StudentInfo />
           <ConceptPay />
         </div>

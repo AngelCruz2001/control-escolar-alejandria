@@ -44,8 +44,6 @@
                 }
             }
 
-            
-
             h4 {
                 color: $fertilizer-text;
                 text-align: center;
@@ -60,8 +58,8 @@
                 color: $black;
                 text-align: center;
                 text-transform: uppercase;
-                top: 0;
-                left: 0;
+                top: 20%;
+                left: 10%;
                 right: 0;
                 line-height: 1.7rem;
                 pointer-events: none;
@@ -112,6 +110,7 @@
                         overflow: hidden;
                         white-space: nowrap;
                         justify-content: center;
+                        text-align: center;
                     }
                     &__item:nth-child(1) {
                         width: 14.7%;
@@ -124,6 +123,7 @@
                     &__item:nth-child(4),
                     &__item:nth-child(5) {
                         width: 8.7%;
+                        // justify-content: center;
                         p {
                             width: 100%;
                         }
@@ -159,7 +159,7 @@
         &-data-item-blueLight{
             display: flex;
             align-items: center;
-        }
+}
         &-data-item-blue{
             background-color:#D4E9FE;
         }

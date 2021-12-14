@@ -1,5 +1,5 @@
 import React from 'react'
-import {  useHistory  } from 'react-router-dom'
+// import {  useHistory  } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { authStartChecking, authStartLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
@@ -9,10 +9,10 @@ import logoAleNoText from '../../helpers/resources/images/logoAleNoText.png'
 export const LoginScreen = () => {
     const dispatch = useDispatch()
 
-    const history = useHistory()
-    console.log(history)
-    const lastPath = localStorage.getItem('lastPath')
-    console.log(lastPath)
+    // const history = useHistory()
+    // console.log(history)
+    // const lastPath = localStorage.getItem('lastPath')
+    // console.log(lastPath)
 
     const { checking } = useSelector(state => state.auth)
     const [formValues, handleInputChange,] = useForm({
@@ -23,7 +23,7 @@ export const LoginScreen = () => {
     const handleClickLogin = () => {
         // e.preventDefault();
         dispatch(authStartLogin(username, password))
-        history.replace(lastPath)
+        // history.replace(lastPath)
     }
    
     return (

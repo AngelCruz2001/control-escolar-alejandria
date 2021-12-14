@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Texture } from "./texture/Texture";
 import { Navbar } from "./navbar/Navbar";
@@ -10,6 +11,7 @@ import { FertilizerPay } from "../fertilizerPay/FertilizerPay";
 import { MakePay } from "../makePay/MakePay";
 import { CheckStatePay } from "../checkStatePay/CheckStatePay";
 import { RequestHistory } from "../requests/RequestHistory";
+import { InformationScreen } from "../checkStatePay/InformationScreen";
 
 const itemsMenu = [
   {
@@ -27,6 +29,14 @@ const itemsMenu = [
 export const Main = () => {
   //Borrar de aqui
   // const {active} = useSelector(state => state.document)
+
+  // const history = useHistory();
+  // console.log(history);
+  // const lastPath = localStorage.getItem("lastPath");
+  // console.log(lastPath);
+  // const h = () =>{
+  //   history.replace(lastPath);
+  // }
 
   return (
     <div>
@@ -49,19 +59,18 @@ export const Main = () => {
           </div>
           <div className="general__overtexture">
             <Switch>
-              
               <Route
                 exact
                 path="/solicitud_de_documento"
                 component={RequestDocument}
               />
-              
+
               <Route
                 exact
                 path="/solicitud_de_documento/historial"
                 component={RequestHistory}
               />
-    
+
               <Route
                 path="/consulta_de_calificaciones"
                 component={RequestGrades}
@@ -69,10 +78,17 @@ export const Main = () => {
               <Route path="/realizar_pago" component={MakePay} />
               <Route path="/abonos" component={FertilizerPay} />
               <Route
+                exact
                 path="/consultar_estado_de_pago"
                 component={CheckStatePay}
               />
-              {/* <Redirect to="/solicitud_de_documento" /> */}
+              <Route
+                exact
+                path="/consultar_estado_de_pago/informacion"
+                component={InformationScreen}
+              />
+        
+              <Redirect to="/consultar_estado_de_pago" />
             </Switch>
           </div>
         </div>
