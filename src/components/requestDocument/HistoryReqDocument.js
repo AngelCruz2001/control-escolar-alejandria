@@ -81,7 +81,7 @@ export const HistoryReqDocument = ({
                 data={dataShow}
                 sizesColumns={[30, 15, 15, 30, 10]}
                 loading={true}
-
+                
             />
         </>
     )
