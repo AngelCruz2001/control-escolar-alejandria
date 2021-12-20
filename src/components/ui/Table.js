@@ -1,19 +1,35 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { SkeletonTable } from './table/SkeletonTable';
 
 export const Table = ({
     headers = [], // array of objects with {title, textAlign}
     data = [], // array of objects with keys matching headers 
     sizesColumns = [], // array of numbers
 }) => {
+    const { loading } = useSelector(state => state.ui);
 
-    const { loading } = useSelector(state => state.ui)
-
+    function StarWrapper({ children }) {
+        return (
+            <div
+                style={{
+                    display: 'inline-block',
+                    clipPath:
+                        'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                    width: '100px',
+                    height: '100px'
+                }}
+            >
+                {children}
+            </div>
+        )
+    }
+    // console.log(data)
     return (
         <div className="table ">
-            {loading ?
+            {true ?
                 <>
-                    <p>Cargando</p>
+                    <SkeletonTable headers={headers} sizesColumns={sizesColumns} />
                 </>
                 :
                 <>

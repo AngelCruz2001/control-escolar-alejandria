@@ -1,4 +1,6 @@
-import React from 'react'
+import moment from "moment";
+import { useEffect, useState } from "react";
+
 const daysDates = [
     1,
     2,
@@ -46,47 +48,58 @@ const monthsDates = [
     "Noviembre",
     "Diciembre",
 ];
-const yearsDates = [2021, 2020];
+const yearsDates = [2021, 2020, 2044];
+export const Filters = ({ setValueSearchFilter }) => {
 
-
-export const Filters = ({ valueSearchFilter, setValueSearchFilter }) => {
-
-
-    const handleInputValue = ({ target }) => {
-        setValueSearchFilter(target.value)
+    const [maxDays, setMaxDays] = useState(daysDates);
+    const [date, setDate] = useState({ day: '', month: '', year: '' });
+    const { day, month, year } = date;
+    const handleInputChange = ({ target }) => {
+        const { name, value } = target;
+        setDate(prev => ({ ...prev, [name]: value }))
     }
 
+    useEffect(() => {
+        console.log(date)
+        setValueSearchFilter(prev => ({ ...prev, dateSearch: { ...date, month: month ? monthsDates[month] : '' } }));
+        if (month !== '') {
+            const yearRequestMoment = `${year ? year : moment().year()}`;
+            const monthRequestMoment = `${month.length == 1 ? `0${Number(month) + 1}` : Number(month) + 1}`;
+            // console.log(`${yearRequestMoment}-${monthRequestMoment}`)
+            // console.log(moment(`${yearRequestMoment}-${monthRequestMoment}`, "YYYY-MM").daysInMonth());
+            setMaxDays(daysDates.slice(0, moment(`${yearRequestMoment}-${monthRequestMoment}`, "YYYY-MM").daysInMonth()));
+        }
+    }, [date])
     return (
+
         <div className="req__container__header__filters">
 
             <p> Filtrar por: </p>
-
+            {/* <DatePicker locale="es" selected={startDate} onChange={(date) => setStartDate(date)} /> */}
             <div className="reqHistory__dates">
-                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="day">
+                <select value={day} onChange={handleInputChange} className="scroll" name="day">
                     <option hidden defaultValue>
                         Día
                     </option>
                     <option>Ninguno</option>
-                    {daysDates.map((day) => (
+                    {maxDays.map((day) => (
                         <option value={day} key={day}>
                             {day}
                         </option>
                     ))}
                 </select>
-                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="month" required>
+                <select value={month} onChange={handleInputChange} className="scroll" name="month" required>
                     <option className="select__default" hidden defaultValue>
                         Mes
                     </option>
-
-                    <option>Ninguno</option>
-                    {monthsDates.map((month) => (
-                        <option value={month} key={month}>
-                            {month}
+                    {monthsDates.map((month, index) => (
+                        <option value={index} key={month}>
+                            {monthsDates[index]}
                         </option>
                     ))}
                 </select>
 
-                <select value={valueSearchFilter} onChange={handleInputValue} className="scroll" name="year" required>
+                <select value={year} onChange={handleInputChange} className="scroll" name="year" required>
                     <option hidden defaultValue>
                         Año
                     </option>

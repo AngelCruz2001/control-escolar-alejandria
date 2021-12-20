@@ -28,12 +28,16 @@
         overflow: auto;
         flex: 1 1 0;
         flex-basis: 0px;
+        position: relative;
         &__row {
             display: flex;
             width: 100%;
+            height: 40px;
             margin: 0.3rem 0 0.3rem 0;
             box-shadow: 0px 3px 6px #00000029;
             border-radius: 10px;
+            position: relative;
+
             &__cell {
                 display: flex;
                 padding: 0.5rem;
@@ -55,5 +59,27 @@
                 border-bottom-right-radius: 10px;
             }
         }
+    }
+}
+
+.skeleton {
+    &__cell::after {
+        content: "";
+        position: absolute;
+        z-index: 10;
+        width: calc(100% / 7);
+        height: 100%;
+        background: linear-gradient(0.25turn, transparent, #c7dcf0, transparent);
+        background-repeat: no-repeat;
+        background-size: auto auto;
+        background-position: -100px 0;
+        // opacity: .5;
+        animation: loading 3s infinite;
+    }
+}
+
+@keyframes loading {
+    to {
+        background-position: 100px 0, 0 0;
     }
 }

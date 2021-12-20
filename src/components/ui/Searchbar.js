@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export const Searchbar = ({ placeholder, setValueSearchFilter, valueSearchFilter }) => {
-
     const handleInputChange = ({ target }) => {
-        setValueSearchFilter(target.value);
+        setValueSearchFilter(prev => ({ ...prev, searchWord: target.value }));
 
     }
     return (
@@ -11,5 +10,6 @@ export const Searchbar = ({ placeholder, setValueSearchFilter, valueSearchFilter
             <i className="fas fa-search"></i>
             <input type="sea__container__input" valueSearchFilter={valueSearchFilter} onChange={handleInputChange} placeholder={placeholder} />
         </div>
+
     )
 }
