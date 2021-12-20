@@ -5,6 +5,7 @@ import { RequestDocument } from '../requestDocument/RequestDocument'
 import { RequestGrades } from '../requestGrades/RequestGrades'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
+import { useSelector } from 'react-redux'
 
 
 
@@ -17,10 +18,10 @@ const itemsMenu = [
     { name: "Consultar estado de pago", icon: "fas fa-money-check-alt", css: {} },
 
 ]
-
 export const Main = () => {
 
-
+    
+    const {  expenses } = useSelector(state => state.expenses);
     //Borrar de aqui
     // const {active} = useSelector(state => state.document)
 
@@ -28,7 +29,7 @@ export const Main = () => {
     return (
         <div className="">
 
-            {/* <div className="blackFilter"></div> */}
+            {/* <div className={`${ expenses && 'blackFilter'}`}></div> */}
 
             <Texture />
             <Navbar />
