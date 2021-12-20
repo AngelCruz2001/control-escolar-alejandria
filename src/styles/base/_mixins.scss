@@ -1,0 +1,4 @@
+@mixin gridTable ($numCols: 1, $colsSizes) {
+    display: grid;
+    grid-template-columns: repeat($numCols, $colsSizes);
+}

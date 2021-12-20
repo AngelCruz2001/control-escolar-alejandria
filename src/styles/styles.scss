@@ -1,5 +1,10 @@
 @import "./base/base";
 @import "./base/settings";
+@import "./base/mixins";
+
+
+/*General*/
+@import "./components/general/general";
 
 /*Components*/
 @import "./components/auth";
@@ -10,11 +15,10 @@
 @import "./components/payments/checkStatePay";
 @import "./components/payments/fertilizerPay";
 
-/*General*/
-@import "./components/general/general";
-@import "./components/general/sections/requestDocument";
-@import "./components/general/sections/requestGrades";
-@import "./components/general/sections/expenseRecords";
+/* Request */
+@import "./components/requestRequest/requestDocument";
+@import "./components/requestRequest/requestHistoryView";
+
 
 /*Ui*/
 @import "./components/ui/texture";

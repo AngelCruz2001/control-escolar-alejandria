@@ -1,3 +1,6 @@
+html, body {
+    font-family: "Segoe UI", sans-serif !important
+}
 .general {
     height: calc(100vh - 120px - 4rem);
     width: calc(100vw - 4rem);
@@ -54,22 +57,6 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        &__modalEdit {
-            width: 90%;
-            height: 90%;
-            z-index: 100;
-            background: #ffffff 0% 0% no-repeat padding-box;
-            box-shadow: 0px 3px 6px #6b8aa854;
-            border-radius: 10px;
-            display: flex;
-            background: url("../../../helpers/resources/images/logoAleNoText.png");
-            img {
-                width: calc(100% - 27rem);
-                object-fit: cover;
-                position: absolute;
-                display: none;
-            }
-        }
     }
 
     &__titleSection {

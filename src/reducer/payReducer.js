@@ -71,7 +71,10 @@ export const payReducer = (state = initialState, action) => {
         case types.paySetFertilizers:
             return {
                 ...state,
-                fertilizers: action.payload
+                fertilizers: [{
+                    matricula: action.payload.matricula,
+                    fertilizers: action.payload.fertilizers
+                } ]
             }
         case types.paySetIdPayment:
             return {

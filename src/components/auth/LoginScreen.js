@@ -1,4 +1,5 @@
 import React from 'react'
+// import {  useHistory  } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { authStartChecking, authStartLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
@@ -6,17 +7,25 @@ import { useForm } from '../../hooks/useForm';
 import logoAleNoText from '../../helpers/resources/images/logoAleNoText.png'
 
 export const LoginScreen = () => {
-    const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
+
+    // const history = useHistory()
+    // console.log(history)
+    // const lastPath = localStorage.getItem('lastPath')
+    // console.log(lastPath)
+
+    const { checking } = useSelector(state => state.auth)
     const [formValues, handleInputChange,] = useForm({
         username: "admin",
         password: "sud0_c34_r00t"
     })
     const { username, password } = formValues;
-    const handleClickLogin = (e) => {
-        e.preventDefault();
+    const handleClickLogin = () => {
+        // e.preventDefault();
         dispatch(authStartLogin(username, password))
+        // history.replace(lastPath)
     }
+   
     return (
         <div className="container auth__container">
             <div className="auth__login">
@@ -49,15 +58,15 @@ export const LoginScreen = () => {
                     <button
                         className="auth__login-submit btn"
                         type="submit"
-                        onClick={handleClickLogin}
+                        // onClick={handleClickLogin}
                     >
                         <p>Ingresar</p>
                     </button>
                 </form>
                 {
                     (checking) &&
-                    <div className="ui_fadeIn ui_aniContainer">
-                        <div className="ui_loadIcon" />
+                    <div className="ui_fadeIn ui_aniContainer animation__loadIcon">
+                        <div className="animation__loadIcon" />
                     </div>
                 }
             </div>

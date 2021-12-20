@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    BrowserRouter as Router,
-    Redirect,
-    Switch
+    BrowserRouter as Router, Switch
 } from 'react-router-dom';
 import { authStartChecking } from '../actions/auth';
 import { AuthRouter } from './AuthRouter';
@@ -14,11 +12,15 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = ({ history }) => {
 
     const dispatch = useDispatch();
-    const { logged } = useSelector(state => state.auth)
+    const { logged, checking } = useSelector(state => state.auth)
     // const logged = true;
     useEffect(() => {
         dispatch(authStartChecking())
     }, [dispatch])
+
+    if(checking) {
+        return <div ></div>
+    }
     return (
         <Router>
             <main>
@@ -31,6 +33,7 @@ export const AppRouter = ({ history }) => {
                     />
 
                     <PrivateRoute
+                        
                         path="/"
                         isAuthenticated={logged}
                         component={DashBoardRoutes}

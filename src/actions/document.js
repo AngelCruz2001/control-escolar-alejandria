@@ -1,8 +1,4 @@
-import { types } from '../types/types'
-import Swal from 'sweetalert2'
-import { fetchConToken } from '../helpers/fetch';
-import { uiStartLoading, uiFinishLoading, uiSetCurrent } from './ui';
-import { studentClearData } from './student';
+import { types } from '../types/types';
 
 
 

@@ -1,12 +1,24 @@
 .check-state-pay {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: 96%;
+    width: 96%;
     margin: auto;
+    position: relative;
+
     &__form {
         display: flex;
         height: 1.8rem;
+
+        &__timesCircle {
+            position: absolute;
+            right: 1%;
+            background: RGB(255, 255, 255) 0% 0% no-repeat padding-box;
+            box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: #00407e;
+            padding: 0.3em 0.5em !important;
+        }
         form {
             width: 55%;
             div {
@@ -71,6 +83,9 @@
     &__list {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        height: 90%;
+
         &__headers {
             text-align: center;
             display: flex;
@@ -98,20 +113,22 @@
             }
         }
         &__container {
-            overflow-y: scroll;
-            height: 22rem;
+            overflow-y: auto;
+            flex: 1 1 0;
+            // height: 100%;
 
             &__item {
                 display: flex;
                 text-align: center;
-                margin: 0 0 0.3rem 0;
+                margin-bottom: 0.5em;
+                height: 8.4%;
                 p,
                 span {
                     padding: 0.5rem 0;
                 }
-                p.general {
+                p.nameGroup {
                     text-align: initial;
-                    width: 50%;
+                    width: 49.5%;
                     border-radius: 9px 0 0 9px;
                     padding-left: 10px;
                 }
@@ -119,19 +136,20 @@
                 p.paid,
                 p.pending {
                     width: 15%;
+                    margin-left: 0.5%;
                 }
 
                 p.total {
                     background-color: $white;
                 }
                 p.pending {
-                    background-color: $red-debt;
+                    background-color: $red-table;
                 }
                 p:nth-child(2n + 1) {
-                    background-color: $blue-sky4;
+                    background-color: $blue-sky3;
                 }
-                span {
-                    background-color: $blue-sky4;
+                div {
+                    background-color: $blue-sky3;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -141,31 +159,53 @@
                     cursor: pointer;
                 }
             }
-
-            &::-webkit-scrollbar {
-                width: 4px;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: #ccc;
-                border-radius: 2px;
-            }
-
-            &::-webkit-scrollbar-thumb:active {
-                background-color: #999999;
-            }
-
-            &::-webkit-scrollbar-thumb:hover {
-                background: #b3b3b3;
-            }
-
-            /* Estilos track de scroll */
-            &::-webkit-scrollbar-track {
-                background: transparent;
-            }
         }
-
         .school-list {
+        }
+    }
+}
+
+.fer__tableStudentInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 17rem;
+    background-color: $blue-sky3;
+    border-radius: 10px;
+    margin: 1em 0;
+    padding: 3% 0 2%;
+
+    &-headers {
+        @include gridTable(1, 19% 38% 14% 13% 8% 8%);
+        padding: 0 3%;
+        margin-bottom: 2%;
+        font-weight: bold;
+    }
+
+    &-body {
+        overflow: auto;
+        display: grid;
+        grid-auto-rows: 14%;
+        row-gap: 1%;
+        padding: 0 3%;
+
+        &-item {
+            @include gridTable(1, 19% 38% 14% 13% 8% 8%);
+        }
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: flex-end;
+        
+       
+
+        & button{
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: transparent;
+            color: #0E61B2;
+            margin-top: 2%;
         }
     }
 }
