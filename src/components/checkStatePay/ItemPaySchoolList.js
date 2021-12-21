@@ -64,14 +64,14 @@ export const ItemPaySchoolList = ({ data }) => {
             handleOnClick(name_group ? id_group : matricula, name_group, toggle)
           }
         >
-          <Link
+          {/* <Link
             to={`${
               !matricula && `./consultar_estado_de_pago/grupo`
               // : `/consultar_estado_de_pago/${active}/${matricula}`
             }`}
-          >
+          > */}
             <i className={`fas ${name_group ? "fa-eye" : "fa-sort-down"}`}></i>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
 

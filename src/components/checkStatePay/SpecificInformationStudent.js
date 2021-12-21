@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,10 +9,27 @@ import { payStartGetFertilizerPay, payStartGetStudentByMatricula } from "../../a
 export const SpecificInformationStudent = ({ currentStudentFerlizer }) => {
   const {active } = useSelector((state) => state.pay);
 
+  
+  const [rowDisplay, setRowDisplay] = useState([currentStudentFerlizer.fertilizers])
+  
+  console.log(rowDisplay[0]);
+
   const dispatch = useDispatch()
 
- 
 
+//  useEffect(() => {
+
+
+//   // const display = rowDisplay.filter( row => row[row.lengt < 6] );
+//    rowDisplay[0].length = 5;
+
+//   console.log(rowDisplay);
+
+  
+// }, [currentStudentFerlizer])
+
+console.log(currentStudentFerlizer);
+console.log(rowDisplay);
   return (
     <div className="fer__tableStudentInfo">
       <div className="fer__tableStudentInfo-headers">
@@ -23,7 +42,11 @@ export const SpecificInformationStudent = ({ currentStudentFerlizer }) => {
       </div>
 
       <div className="fer__tableStudentInfo-body scroll">
-        {currentStudentFerlizer.fertilizers.map((item) => (
+
+        {
+          
+        currentStudentFerlizer.fertilizers.map((item) => (
+          // rowDisplay[0].map((item) => (
           <div
             className="fer__tableStudentInfo-body-item"
             key={item.id_payment}

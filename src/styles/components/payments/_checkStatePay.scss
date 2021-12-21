@@ -232,6 +232,7 @@
         grid-auto-rows: 14%;
         row-gap: 1%;
         padding: 0 3%;
+        height: 100%;
 
         &-item {
             @include gridTable(1, 19% 38% 14% 13% 8% 8%);
