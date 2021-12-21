@@ -20,6 +20,7 @@ export const RequestDocument = () => {
 
     const { current, loading } = ui;
 
+  
     const onChangeValueDocument = ({ target }) => {
         dispatch(uiSetCurrent(3))
         dispatch(documentSetDocument(parseInt(target.id)))

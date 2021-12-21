@@ -23,15 +23,15 @@ export const ButtonTable = ({
         switch (type) {
             case 0:
                 return (
-                    <button className="btn btnTable btnBlue"> <span>{title}</span> <i className="fas fa-eye"> </i> </button>
+                    <button className="btn btnTable btnBlue" onClick={() => onClick(id)}> <span>{title}</span> <i className="fas fa-eye"> </i> </button>
                 )
             case 1:
                 return (
-                    <button className="btn btnTable btnBlue"> <span>{title}</span> <i className="fas fa-edit"></i> </button>
+                    <button className="btn btnTable btnBlue" onClick={() => onClick(id)}> <span>{title}</span> <i className="fas fa-edit"></i> </button>
                 )
             case 2:
                 return (
-                    <button className="btn btnTable btnRed"> <span>{title}</span> <i className="fas fa-trash"></i> </button>
+                    <button className="btn btnTable btnRed" onClick={() => onClick(id)}> <span>{title}</span> <i className="fas fa-trash"></i> </button>
                 )
             case 3:
                 return (
@@ -39,7 +39,7 @@ export const ButtonTable = ({
                 )
             case 4:
                 return (
-                    <button className="btn btnTable btnGreen"> <span className="btnGreen">Efectuado</span> <i className="fas fa-check-circle"></i> </button>
+                    <button className="btn btnTable btnGreen" onClick={() => onClick(id)}> <span className="btnGreen">Efectuado</span> <i className="fas fa-check-circle"></i> </button>
                 )
             default:
                 return (

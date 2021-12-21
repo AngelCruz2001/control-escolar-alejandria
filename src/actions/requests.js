@@ -60,7 +60,6 @@ export const requestStartGetRequests = () => {
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
         dispatch(uiFinishLoading())
-
     }
 }
 

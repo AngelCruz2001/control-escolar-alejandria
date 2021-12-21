@@ -8,26 +8,10 @@ export const Table = ({
     sizesColumns = [], // array of numbers
 }) => {
     const { loading } = useSelector(state => state.ui);
-
-    function StarWrapper({ children }) {
-        return (
-            <div
-                style={{
-                    display: 'inline-block',
-                    clipPath:
-                        'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-                    width: '100px',
-                    height: '100px'
-                }}
-            >
-                {children}
-            </div>
-        )
-    }
     // console.log(data)
     return (
         <div className="table ">
-            {true ?
+            {loading ?
                 <>
                     <SkeletonTable headers={headers} sizesColumns={sizesColumns} />
                 </>
@@ -42,15 +26,18 @@ export const Table = ({
                     </div>
                     <div className="table__body scroll">
                         {data.map((item, index) => (
-                            <div className="table__body__row" key={index}>
-                                {
-                                    item.map((cell, andex) => (
-                                        <div className="table__body__row__cell animation__fadeIn" style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
-                                            {cell}
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                            <>
+                                {item.length > 0 &&
+                                    <div className="table__body__row" key={index}>
+                                        {
+                                            item.map((cell, andex) => (
+                                                <div className="table__body__row__cell animation__fadeIn" style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
+                                                    {cell}
+                                                </div>
+                                            ))
+                                        }
+                                    </div>}
+                            </>
                         ))}
                     </div>
                 </>

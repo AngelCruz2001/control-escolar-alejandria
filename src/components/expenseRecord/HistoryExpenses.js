@@ -1,8 +1,6 @@
 import React from 'react';
+import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
-import { ButtonTable } from '../ui/table/ButtonTable';
-import { SpanTable } from '../ui/table/SpanTable';
-import { InformationModal } from './InformationModal';
 
 export const HistoryExpenses = ({
     setShowHistory,
@@ -29,26 +27,11 @@ export const HistoryExpenses = ({
         title: "",
         textAlign: 'center'
     }];
-    const dataTable = expenses.map((expense, index) => {
-        return [
-            <SpanTable text={expense.expenses_type} />,
-            <SpanTable text={expense.date} />,
-            <ButtonTable type={0} title="Ver" />,
-            <ButtonTable type={1} title="Editar" />,
-            <ButtonTable type={2} title="Borrar" />,
-        ]
-    })
-
-
+    const dataTable = expenses.map(({ id_expense, expenses_type, date }, index) => (buildDataExpenses(id_expense, expenses_type, date)));
     return (
         <>
-
             <div className="history__container">
-
-
-
-
-                {/* <div className="history__container__header">
+                <div className="history__container__header">
                     <button className="btn btn__back" onClick={() => setShowHistory(false)}>
                         <i className="fas fa-arrow-left"></i>
                     </button>
@@ -58,9 +41,9 @@ export const HistoryExpenses = ({
                     headers={headers}
                     data={dataTable}
                     sizesColumns={[35, 35, 10, 10, 10]}
-                /> */}
+                />
 
-                <div className="history__container__modal">
+                {/* <div className="history__container__modal">
 
                     <div className="history__container__modal__left">
 
@@ -87,6 +70,7 @@ export const HistoryExpenses = ({
                     </div>
                 </div>
 
+             */}
             </div>
         </>
     )

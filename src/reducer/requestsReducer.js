@@ -17,7 +17,7 @@ export const requestsReducer = (state = initialState, action) => {
         case types.requestDeleteRequest:
             return {
                 ...state,
-                data: state.data.filter(request => request.id_request !== action.payload) ,
+                data: state.data.filter(request => request.id_request !== action.payload),
             };
 
         default:

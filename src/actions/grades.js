@@ -1,10 +1,13 @@
 import Swal from "sweetalert2"
 import { fetchConToken } from "../helpers/fetch"
 import { types } from "../types/types"
+import { uiFinishLoading, uiStartLoading } from "./ui"
 
 export const gradesStartGetGrades = () => {
     return async (dispatch) => {
         try {
+            dispatch(uiStartLoading())
+
             const res = await fetchConToken(`grades/all`)
             const body = await res.json()
             if (body.ok) {
@@ -22,6 +25,8 @@ export const gradesStartGetGrades = () => {
             console.log(error)
             Swal.fire('Error', 'Hablar con el administrador', 'error')
         }
+        dispatch(uiFinishLoading())
+
     }
 }
 

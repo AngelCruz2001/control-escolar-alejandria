@@ -1,7 +1,7 @@
 import { types } from "../types/types";
 
 const initialState = {
-    grades: [],
+    data: [],
 }
 
 export const gradesReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ export const gradesReducer = (state = initialState, action) => {
         case types.gradesSetGrades:
             return {
                 ...state,
-                grades: action.payload
+                data: action.payload
             }
 
         default:
