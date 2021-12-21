@@ -12,6 +12,7 @@ import { MakePay } from "../makePay/MakePay";
 import { CheckStatePay } from "../checkStatePay/CheckStatePay";
 import { RequestHistory } from "../requests/RequestHistory";
 import { InformationScreen } from "../checkStatePay/InformationScreen";
+import { ItemPaySchoolList } from "../checkStatePay/ItemPaySchoolList";
 
 const itemsMenu = [
   {
@@ -82,6 +83,12 @@ export const Main = () => {
                 path="/consultar_estado_de_pago"
                 component={CheckStatePay}
               />
+              <Route
+                exact
+                path="/consultar_estado_de_pago/grupo"
+                component={CheckStatePay}
+              />
+              
               <Route
                 exact
                 path="/consultar_estado_de_pago/informacion"

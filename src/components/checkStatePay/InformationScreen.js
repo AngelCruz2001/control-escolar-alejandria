@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { StudentInfo } from "../makePay/StudentInfo";
 import { CheckHeader } from "./CheckHeader";
 import { SpecificInformationStudent } from "./SpecificInformationStudent";
+import { StudentInf } from "./StudentInf";
 
 export const InformationScreen = () => {
-  const { fertilizers, students } = useSelector((state) => state.pay);
+  const { fertilizers } = useSelector((state) => state.pay);
 
   const currentStudentFerlizer = fertilizers[0];
 
@@ -14,7 +14,7 @@ export const InformationScreen = () => {
     <>
       <div className="check-state-pay">
         <CheckHeader />
-        <StudentInfo />
+        <StudentInf />
         <div className="check-state-pay__list">
           {fertilizers[0] ? (
             <SpecificInformationStudent

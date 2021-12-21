@@ -5,22 +5,11 @@ import { Link } from "react-router-dom";
 import { payStartGetFertilizerPay, payStartGetStudentByMatricula } from "../../actions/pay";
 
 export const SpecificInformationStudent = ({ currentStudentFerlizer }) => {
-  // const { fertilizers } = useSelector((state) => state.pay);
+  const {active } = useSelector((state) => state.pay);
 
   const dispatch = useDispatch()
 
-  console.log(currentStudentFerlizer);
-  // const {
-  //   expected,
-  //   current,
-  //   missing,
-  //   name,
-  //   id_payment,
-  //   status_payment,
-  //   payment_date,
-  //   last_payment_date,
-  //   payment_type,
-  // } = fertilizers;
+ 
 
   return (
     <div className="fer__tableStudentInfo">
@@ -112,7 +101,8 @@ export const SpecificInformationStudent = ({ currentStudentFerlizer }) => {
             </p>
           </div>
         ))}
-        <Link
+        { !active?.student_fullname ?
+          <Link
           to="./consultar_estado_de_pago/informacion"
           className="fer__tableStudentInfo-footer "
           onClick={() => {
@@ -122,7 +112,9 @@ export const SpecificInformationStudent = ({ currentStudentFerlizer }) => {
           currentstudentferlizer={currentStudentFerlizer}
         >
           <button className="btn"> ver más... </button>
-        </Link>
+        </Link> :
+          null
+        }
       </div>
     </div>
   );

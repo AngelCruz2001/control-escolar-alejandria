@@ -22,7 +22,7 @@ export const StudentInfo = () => {
           }`}
         >
 
-          {!active && "Información del estudiante"}
+          {!active ? "Información del alumno" : "Información del estudiante"}
           
          
         </p>
@@ -53,7 +53,8 @@ export const StudentInfo = () => {
               ) : (
                 <div
                   style={{
-                    height: "100.8px",
+                    height: "139px",
+                    width: "539px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

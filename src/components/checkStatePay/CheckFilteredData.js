@@ -3,11 +3,11 @@ import React from "react";
 export const CheckFilteredData = () => {
   return (
     <>
-      <img
+      {/* <img
         className="check-state-pay__form__filterList"
         src={svgs.filterBackground}
         alt=""
-      />
+      /> */}
       <div className="check-state-pay__form__filterList">
         <p className="itemPFilterList">Todos los grupos</p>
         <p className="itemPFilterList">Licenciaturas</p>

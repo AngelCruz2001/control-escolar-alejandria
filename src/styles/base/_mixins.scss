@@ -2,3 +2,19 @@
     display: grid;
     grid-template-columns: repeat($numCols, $colsSizes);
 }
+
+@mixin transition {
+    transition: all .3s ease-in-out;
+}
+
+@mixin button($color, $bc) {
+    color: $color;
+    background-color: $bc;
+    @include transition;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color;
+        color: $bc;
+    }
+}

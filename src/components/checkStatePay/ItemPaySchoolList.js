@@ -35,8 +35,6 @@ export const ItemPaySchoolList = ({ data }) => {
     (item) => item.fertilizers.length !== 0
   );
   // console.log(currentFertilizerLenght);
-    
-  
 
   // useEffect(() => {
   //   dispatch(payStartGetFertilizerPay());
@@ -66,26 +64,22 @@ export const ItemPaySchoolList = ({ data }) => {
             handleOnClick(name_group ? id_group : matricula, name_group, toggle)
           }
         >
-          {/* <Link
+          <Link
             to={`${
-              !matricula
-                ? `/consultar_estado_de_pago/${name_group}`
-                : `/consultar_estado_de_pago/${active}/${matricula}`
+              !matricula && `./consultar_estado_de_pago/grupo`
+              // : `/consultar_estado_de_pago/${active}/${matricula}`
             }`}
           >
-          </Link> */}
             <i className={`fas ${name_group ? "fa-eye" : "fa-sort-down"}`}></i>
+          </Link>
         </div>
       </div>
-      
-        
-      
+
       {toggle && currentStudentFerlizer && currentFertilizerLenght && (
         <SpecificInformationStudent
           currentStudentFerlizer={currentStudentFerlizer || {}}
         />
       )}
-    
     </>
   );
 };

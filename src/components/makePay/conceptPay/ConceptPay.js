@@ -11,7 +11,9 @@ export const ConceptPay = () => {
     return (
         <div className={`make__conceptPay ${!active && 'ui__disabledEffect'}`}>
             <div className="make__conceptPay-way">
-                <p className="make__titleSection">Concepto de pago</p>
+                <p className={`make__titleSection ${
+            !active && "ui__disabledEffectInfo-title "
+          }`}>Concepto de pago</p>
                 <div className="btn-payContainer">
                     <ConceptPayButton text="Inscripción" icon={false} setData={paySetConcept} isSelected={concept === "Inscripción"} />
                     <ConceptPayButton text="Materia" setData={paySetConcept} isSelected={concept === "Materia"} />

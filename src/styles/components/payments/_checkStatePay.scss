@@ -8,7 +8,8 @@
 
     &__form {
         display: flex;
-        height: 1.8rem;
+        height: 2.3rem;
+        position: relative;
 
         &__timesCircle {
             position: absolute;
@@ -20,14 +21,14 @@
             padding: 0.3em 0.5em !important;
         }
         form {
-            width: 55%;
+            width: 61%;
             div {
                 display: flex;
                 position: relative;
                 height: 100%;
 
                 input {
-                    padding: 10px;
+                    padding: 10px 35px;
                     width: 100%;
                     box-shadow: 0px 3px 6px $shadow-search;
                     border: 1px solid $filterPaid-back;
@@ -37,7 +38,7 @@
                 span {
                     position: absolute;
                     top: 0;
-                    right: 0;
+                    left: 10px;
                     height: 100%;
                     color: $gray-logout;
                     display: flex;
@@ -48,7 +49,7 @@
                     i {
                         margin-right: 0.4rem;
                         padding: 6px 0 6px 6px;
-                        background-color: $white;
+                        background-color: transparent;
                     }
                 }
             }
@@ -62,22 +63,47 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 0.8rem;
-            padding: 0.6rem 0.8rem;
+            margin-left: 3.5rem;
+            width: 3rem;
+
+            @include transition;
+
+            &:hover {
+                background-color: darken($color: $blue-icon, $amount: 7);
+                @include transition;
+            }
+
+            & i {
+                font-size: 0.9rem;
+            }
         }
 
         &__filterList {
-            background-color: red;
-            margin-left: 2rem;
-            height: 13rem;
-            width: 30%;
+            background: hsl(210.35% 100% 89.33% / 0.4);
+            backdrop-filter: blur(3rem);
+            width: 29%;
             z-index: 7;
             border: 1px solid $filterPaid-back;
             opacity: 1;
             border-radius: 10px;
-            backdrop-filter: blur(43px);
-            -webkit-backdrop-filter: blur(43px);
-            padding: 10px;
+            padding: 1.2rem 1rem;
+            position: absolute;
+            right: -2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            &:after {
+                content: "";
+                position: absolute;
+                border: 12px solid transparent;
+                border-right: 12px solid rgb(230,240,251);
+                left: -12px;
+                top: 0;
+                transform: rotate(136deg);
+
+
+            }
         }
     }
     &__list {
@@ -160,7 +186,25 @@
                 }
             }
         }
-        .school-list {
+        // .school-list {
+        // }
+    }
+
+    &__info-student {
+        margin-top: 2rem;
+        height: 13rem;
+        background-color: $blue-sky3;
+        border-radius: 10px;
+        padding: 0 3rem;
+        display: flex;
+        gap: 1rem;
+        & p {
+            margin-top: 0.6rem;
+
+            & strong {
+                font-weight: 700;
+                // color: red;
+            }
         }
     }
 }
@@ -173,7 +217,7 @@
     background-color: $blue-sky3;
     border-radius: 10px;
     margin: 1em 0;
-    padding: 3% 0 2%;
+    padding: 2% 0 2%;
 
     &-headers {
         @include gridTable(1, 19% 38% 14% 13% 8% 8%);
@@ -197,14 +241,12 @@
     &-footer {
         display: flex;
         justify-content: flex-end;
-        
-       
 
-        & button{
+        & button {
             font-weight: bold;
             text-transform: uppercase;
             background-color: transparent;
-            color: #0E61B2;
+            color: #0e61b2;
             margin-top: 2%;
         }
     }
