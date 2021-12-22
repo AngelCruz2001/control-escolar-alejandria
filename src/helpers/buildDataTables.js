@@ -43,13 +43,13 @@ export const buildDataExpenses = (
     expenses_type,
     date,
 ) => {
-    console.log(expenses_type)
 
     return [
-        [<SpanTable text={expenses_type} />, 1],
-        [<SpanTable text={date} />, 1],
-        [<ButtonTable type={0} title="Ver" id={id} />, 1],
-        [<ButtonTable type={1} title="Editar" id={id} />, 1],
-        [<ButtonTable type={2} title="Borrar" id={id} />, 1]
+        { element: <SpanTable text={expenses_type} />, searched: false },
+        { element: <SpanTable text={date} />, searched: false },
+        { element: <ButtonTable type={0} title="Ver" id={id} />, searched: false },
+        { element: <ButtonTable type={1} title="Editar" id={id} />, searched: false },
+        { element: <ButtonTable type={2} title="Borrar" id={id} />, searched: false },
+
     ];
 }
