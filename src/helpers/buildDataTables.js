@@ -9,17 +9,35 @@ export const buildData = (
     creation_date,
     document_name,
     typeButton,
-    handelClick
+    handelClick,
+    coincidence
 ) => {
+    console.log(coincidence);
     return [
-        <SpanTable text={student_name} />,
-        <SpanTable text={matricula} />,
-        <SpanTable text={creation_date} />,
-        <SpanTable text={document_name} />,
-        <ButtonTable type={typeButton} onClick={handelClick} id={id} />
+        { element: <SpanTable text={student_name} />, searched: coincidence[0] },
+        { element: <SpanTable text={matricula} />, searched: coincidence[1] },
+        { element: <SpanTable text={creation_date} />, searched: coincidence[3] },
+        { element: <SpanTable text={document_name} />, searched: coincidence[2] },
+        { element: <ButtonTable type={typeButton} onClick={handelClick} id={id} />, searched: false },
     ];
 }
-
+export const buildDataGrades = (
+    id,
+    student_name,
+    matricula,
+    group_name,
+    major_name,
+    handelClick,
+    coincidence
+) => {
+    return [
+        { element: <SpanTable text={student_name} />, searched: coincidence[0] },
+        { element: <SpanTable text={matricula} />, searched: coincidence[1] },
+        { element: <SpanTable text={group_name} />, searched: coincidence[2] },
+        { element: <SpanTable text={major_name} />, searched: coincidence[3] },
+        { element: <ButtonTable type={0} onClick={handelClick} id={id} />, searched: false },
+    ];
+}
 export const buildDataExpenses = (
     id,
     expenses_type,
@@ -28,10 +46,10 @@ export const buildDataExpenses = (
     console.log(expenses_type)
 
     return [
-        <SpanTable text={expenses_type} />,
-        <SpanTable text={date} />,
-        <ButtonTable type={0} title="Ver" id={id} />,
-        <ButtonTable type={1} title="Editar" id={id} />,
-        <ButtonTable type={2} title="Borrar" id={id} />,
+        [<SpanTable text={expenses_type} />, 1],
+        [<SpanTable text={date} />, 1],
+        [<ButtonTable type={0} title="Ver" id={id} />, 1],
+        [<ButtonTable type={1} title="Editar" id={id} />, 1],
+        [<ButtonTable type={2} title="Borrar" id={id} />, 1]
     ];
 }

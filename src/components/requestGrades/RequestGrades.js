@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { gradesStartGetGrades } from '../../actions/grades';
+import { buildDataGrades } from '../../helpers/buildDataTables';
+import { isACoincidenceSearch } from '../../helpers/isACoincidence';
 import { Searchbar } from '../ui/Searchbar';
 import { Table } from '../ui/Table';
-import { ButtonTable } from '../ui/table/ButtonTable';
 import { SkeletonTable } from '../ui/table/SkeletonTable';
-import { SpanTable } from '../ui/table/SpanTable';
 
 export const RequestGrades = () => {
     const headers = [{
@@ -34,20 +34,35 @@ export const RequestGrades = () => {
     const dispatch = useDispatch();
     // const [isStudentSeeing, setIsStudentSeeing] = useState(false);
     const { grades, ui } = useSelector(state => state)
-    console.log(grades)
+    const [valueSearchFilter, setValueSearchFilter] = useState({ searchWord: '' })
+    const [dataShow, setDataShow] = useState([])
     const { loading } = ui;
-    const dataShow = grades.data.map(({ student_name, matricula, group_name, major_name }) => (
-        [
-            <SpanTable text={student_name} />,
-            <SpanTable text={matricula} />,
-            <SpanTable text={group_name} />,
-            <SpanTable text={major_name} />,
-            <ButtonTable type={0} onClick={console.log("Hola")} />
-        ]
-    ));
+
+    const handleClickSetActiveStudent = (idStudent) => {
+        dispatch(gradesStartGetGrades(idStudent))
+    }
+
+    const generateData = () => {
+        const dataToShow = [];
+        const { searchWord } = valueSearchFilter;
+        grades.data.forEach(({ id_student, student_name, matricula, group_name, major_name }) => {
+            const coincidence = isACoincidenceSearch([student_name, matricula, group_name, major_name], searchWord)
+            const dataBuilded = buildDataGrades(id_student, student_name, matricula, group_name, major_name, handleClickSetActiveStudent, coincidence)
+            if (searchWord === '') {
+                dataToShow.push(dataBuilded)
+            } else if (coincidence.includes(true)) {
+                dataToShow.push(dataBuilded)
+            }
+        });
+        setDataShow(dataToShow)
+    }
+
+    useEffect(() => {
+        generateData()
+    }, [loading, valueSearchFilter])
     return (
         <div className="gra__container">
-            <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" />
+            <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
             <h4>Todos los alumnos</h4>
             {loading ?
                 <SkeletonTable

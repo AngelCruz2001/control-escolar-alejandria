@@ -18,6 +18,27 @@ const documentsName = [
     "Acta de examen",
     "Constancia de titulo en progreso",
 ];
+
+const headers = [{
+    title: "Nombre del alumno",
+    textAlign: 'left'
+},
+{
+    title: "Matricula",
+    textAlign: 'center'
+},
+{
+    title: "Fecha de solicitud",
+    textAlign: 'center'
+},
+{
+    title: "Documento solicitado",
+    textAlign: 'center'
+},
+{
+    title: "",
+    textAlign: 'center'
+}];
 export const HistoryReqDocument = ({
     setShowHistory,
     requests,
@@ -30,38 +51,16 @@ export const HistoryReqDocument = ({
     }, [])
 
 
-    const headers = [{
-        title: "Nombre del alumno",
-        textAlign: 'left'
-    },
-    {
-        title: "Matricula",
-        textAlign: 'center'
-    },
-    {
-        title: "Fecha de solicitud",
-        textAlign: 'center'
-    },
-    {
-        title: "Documento solicitado",
-        textAlign: 'center'
-    },
-    {
-        title: "",
-        textAlign: 'center'
-    }];
-
     const handleCancelClick = (id) => {
         dispatch(requestStartDeleteRequests(id));
     }
 
     const [valueSearchFilter, setValueSearchFilter] = useState({ searchWord: '', dateSearch: {} });
     const [dataToShow, generateDataToShow] = useBuildDataWithFiltersRequest(requests, handleCancelClick, valueSearchFilter);
-
     useEffect(() => {
         generateDataToShow();
+        console.log(valueSearchFilter);
     }, [loading, valueSearchFilter, requests])
-
 
     return (
         <>
@@ -69,7 +68,7 @@ export const HistoryReqDocument = ({
                 <button className="btn btn__back" onClick={() => setShowHistory(false)}>
                     <i className="fas fa-arrow-left"></i>
                 </button>
-                <Searchbar setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
+                <Searchbar setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter.searchWord} />
                 <Filters setValueSearchFilter={setValueSearchFilter} />
             </div>
             <h4>Historial de solicitud de documentos</h4>

@@ -7,7 +7,6 @@ export const useBuildDataWithFiltersRequest = (
     handleCancelClick,
     valueSearchFilter
 ) => {
-    console.log(requests)
     const [dataToShow, setDataToShow] = useState([])
 
     const { searchWord, dateSearch } = valueSearchFilter;
@@ -28,11 +27,12 @@ export const useBuildDataWithFiltersRequest = (
                 document_name,
             } = request;
 
-            const coincidenceInDate = isACoincidenceDate(creation_date.split(','), dateSearch)
-            const dataBuilded = buildData(id_request, student_name, matricula, creation_date, document_name, 3, handleCancelClick);
-
+            const coincidenceInDate = isACoincidenceDate(creation_date.split(','), dateSearch);
+            const coincidenceInSearch = isACoincidenceSearch([student_name, matricula, document_name], searchWord);
+            const dataBuilded = buildData(id_request, student_name, matricula, creation_date, document_name, 3, handleCancelClick, [...coincidenceInSearch, coincidenceInDate]);
             if (!hasSearchWordValue && !hasDateSearchValue) return dataToShow.push(dataBuilded);
-            if (hasSearchWordValue && isACoincidenceSearch([student_name, matricula, document_name], searchWord)
+
+            if (hasSearchWordValue && (coincidenceInSearch.includes(true))
                 && (coincidenceInDate || !hasDateSearchValue)) return dataToShow.push(dataBuilded);
             if (coincidenceInDate && !hasSearchWordValue) return dataToShow.push(dataBuilded);
         });

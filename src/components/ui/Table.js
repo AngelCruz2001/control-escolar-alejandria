@@ -31,8 +31,8 @@ export const Table = ({
                                     <div className="table__body__row" key={index}>
                                         {
                                             item.map((cell, andex) => (
-                                                <div className="table__body__row__cell animation__fadeIn" style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
-                                                    {cell}
+                                                <div className={`table__body__row__cell animation__fadeIn ${cell.searched && 'searched'}`} key={andex} style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
+                                                    {cell.element}
                                                 </div>
                                             ))
                                         }

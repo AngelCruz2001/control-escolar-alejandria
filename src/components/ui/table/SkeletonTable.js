@@ -16,7 +16,7 @@ export const SkeletonTable = ({ headers, sizesColumns }) => {
                         <div className="table__body__row noselect skeleton__row" key={index}>
                             {
                                 headers.map((header, index) => (
-                                    <div className="table__body__row__cell skeleton__cell" style={{ color: 'transparent', width: `${sizesColumns[index]}%`, justifyContent: `${headers[index].textAlign}`, textAlign: `${headers[index].textAlign}` }} key={index}>
+                                    <div className="table__body__row__cell skeleton__cell" key={index} style={{ color: 'transparent', width: `${sizesColumns[index]}%`, justifyContent: `${headers[index].textAlign}`, textAlign: `${headers[index].textAlign}` }} key={index}>
                                         .
                                     </div>
                                 ))
