@@ -56,6 +56,7 @@ export const RequestDocument = () => {
                                 loading={loading}
                                 student={student}
                             />
+
                         </div>
                         <RadioButtonList
                             activeClassName={activeDisabled(2, current)}
@@ -64,6 +65,7 @@ export const RequestDocument = () => {
                             items={typesDocuments}
                             text="Documento a solicitar"
                         />
+                        
                     </div>
                     <div className="req__footer">
                         <button className="btn req__footer__checkHistory" onClick={() => setShowHistory(true)}><i className="fas fa-history"></i><span>Ver Historial</span></button>

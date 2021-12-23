@@ -3,6 +3,7 @@
 
 /*Components*/
 @import "./components/auth";
+@import "./components/payments";
 
 /*Payments*/
 @import "./components/payments/changeRouterPay";
@@ -22,6 +23,7 @@
 
 @import "./components/ui/matricula";
 @import "./components/ui/date";
+@import "./components/ui/disabled";
 
 @import "./components/ui/animations";
 

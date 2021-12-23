@@ -10,6 +10,13 @@ export const uiSetCorrect = () => ({
     type: types.uiSetCorrect,
 })
 
+export const uiStartLoadingCards = () => ({
+    type: types.uiStartLoadingCards,
+});
+export const uiFinishLoadingCards = () => ({
+    type: types.uiFinishLoadingCards,
+});
+
 export const uiSetCurrent = (current) => ({
     type: types.uiSetCurrent,
     payload: current

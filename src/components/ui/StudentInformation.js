@@ -6,6 +6,7 @@ export const StudentInformation = ({
     activeClassName,
     loading,
     student,
+    payment
 }) => {
     const dispatch = useDispatch()
     const {
@@ -21,10 +22,10 @@ export const StudentInformation = ({
         }
     }, [loading, dispatch])
     return (
-        <div className={`stuInfo son ${activeClassName}`}>
+        <div style={{height: payment && "38.5%"}} className={`stuInfo son ${activeClassName}`}>
             <p className="general__titleSection">Información del alumno</p>
 
-            <div className="stuInfo__container son">
+            <div  className="stuInfo__container son">
 
                 {loading ?
                     <p>Cargando</p>
@@ -34,7 +35,7 @@ export const StudentInformation = ({
 
                         <div className="stuInfo__container__containerTwo__row">
                             <div className="stuInfo__container__containerTwo__row__header">
-                                <p className="stuInfo__name">Alumno:</p>
+                                <p className="stuInfo__name">{(!payment ? "Alumno:" :"Nombre:")}</p>
                             </div>
                             <div className="stuInfo__container__containerTwo__row__info">
                                 {student_fullname}
@@ -59,14 +60,15 @@ export const StudentInformation = ({
                             </div>
                         </div>
 
-                        <div className="stuInfo__container__containerTwo__row">
+                        { !payment &&
+                            <div className="stuInfo__container__containerTwo__row">
                             <div className="stuInfo__container__containerTwo__row__header">
                                 <p className="stuInfo__name">Carrera:</p>
                             </div>
                             <div className="stuInfo__container__containerTwo__row__info">
                                 {major_name}
                             </div>
-                        </div>
+                        </div>}
 
                     </div>
 

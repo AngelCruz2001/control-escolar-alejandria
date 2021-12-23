@@ -6,6 +6,7 @@ import { RequestGrades } from '../requestGrades/RequestGrades'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
 import { useSelector } from 'react-redux'
+import { MakePay } from '../makePayment/MakePay'
 
 
 
@@ -49,6 +50,8 @@ export const Main = () => {
                             <Route path="/solicitud_de_documento" component={RequestDocument} />
                             <Route path="/consulta_de_calificaciones" component={RequestGrades} />
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
+                            <Route path="/realizar_pago" component={MakePay} />
+
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>
                         {/* <div className="general__overtexture__modalEdit">

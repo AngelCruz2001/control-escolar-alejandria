@@ -40,6 +40,17 @@ export const uiReducer = (state = initialState, action) => {
                 loading: false,
             }
 
+        case types.uiStartLoadingCards:
+            return {
+                ...state,
+                loadingCards: true,
+            }
+        case types.uiFinishLoadingCards:
+            return {
+                ...state,
+                loadingCards: false,
+            }
+
         case types.uiSetCurrent:
             return {
                 ...state,
