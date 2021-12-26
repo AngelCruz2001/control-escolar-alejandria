@@ -5,7 +5,7 @@ import { buildDataGrades } from '../../helpers/buildDataTables';
 import { isACoincidenceSearch } from '../../helpers/isACoincidence';
 import { Searchbar } from '../ui/Searchbar';
 import { Table } from '../ui/Table';
-import { SkeletonTable } from '../ui/table/SkeletonTable';
+import { GradesDetails } from './GradesDetails';
 
 export const RequestGrades = () => {
     const headers = [{
@@ -32,22 +32,25 @@ export const RequestGrades = () => {
         dispatch(gradesStartGetGrades())
     }, [])
     const dispatch = useDispatch();
-    // const [isStudentSeeing, setIsStudentSeeing] = useState(false);
-    const { grades, ui } = useSelector(state => state)
+    const { grades, ui, student } = useSelector(state => state)
     const [valueSearchFilter, setValueSearchFilter] = useState({ searchWord: '' })
+    const [isAStudentActive, setIsAStudentActive] = useState(false);
+    const [dataStudent, setDataStudent] = useState({});
     const [dataShow, setDataShow] = useState([])
     const { loading } = ui;
 
-    const handleClickSetActiveStudent = (idStudent) => {
-        dispatch(gradesStartGetGrades(idStudent))
+    const handleClickSetActiveStudent = (data) => {
+        setIsAStudentActive(true);
+        setDataStudent(data);
+        // dispatch(gradesStartGetGrades)
     }
 
     const generateData = () => {
         const dataToShow = [];
         const { searchWord } = valueSearchFilter;
-        grades.data.forEach(({ id_student, student_name, matricula, group_name, major_name }) => {
+        grades.data.forEach(({ id_student, student_name, matricula, group_name, major_name, campus_name }) => {
             const coincidence = isACoincidenceSearch([student_name, matricula, group_name, major_name], searchWord)
-            const dataBuilded = buildDataGrades(id_student, student_name, matricula, group_name, major_name, handleClickSetActiveStudent, coincidence)
+            const dataBuilded = buildDataGrades(id_student, student_name, matricula, group_name, major_name, campus_name, handleClickSetActiveStudent, coincidence)
             if (searchWord === '') {
                 dataToShow.push(dataBuilded)
             } else if (coincidence.includes(true)) {
@@ -61,47 +64,26 @@ export const RequestGrades = () => {
         generateData()
     }, [loading, valueSearchFilter])
     return (
-        <div className="gra__container">
-            <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
-            <h4>Todos los alumnos</h4>
-            {loading ?
-                <SkeletonTable
-                    headers={headers}
-                    sizesColumns={[29, 15, 15, 35, 7]}
-                />
-                :
-                false ?
-                    <>
-                        {/* <div className="gra__container__header">
-                            <button className="btn btn__back" onClick={() => setIsStudentSeeing(false)}>
-                                <i className="fas fa-arrow-left"></i>
-                            </button>
-                            <Searchbar setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
-                            <Filters setValueSearchFilter={setValueSearchFilter} />
-                        </div>
-                        <h4>Historial de solicitud de documentos</h4>
+        <>
 
-                        <Table
-                            headers={headers}
-                            data={dataShow}
-                            sizesColumns={[30, 15, 15, 30, 10]}
-                            loading={true}
+            {
+                isAStudentActive ?
 
-                        /> */}
-                    </>
+                    <GradesDetails
+                        setIsAStudentActive={setIsAStudentActive}
+                        dataStudent={dataStudent}
+                    />
                     :
-                    <>
-
+                    < div className="gra__container" >
+                        <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
+                        <h4>Todos los alumnos</h4>
                         <Table
                             headers={headers}
                             data={dataShow}
                             sizesColumns={[29, 15, 15, 35, 7]}
                         />
-                    </>
+                    </div >
             }
-
-
-
-        </div >
+        </>
     )
 }

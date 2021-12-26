@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { uiSetModalOpen } from '../../actions/ui';
 import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
 
@@ -6,7 +8,7 @@ export const HistoryExpenses = ({
     setShowHistory,
     expenses = [],
 }) => {
-
+    const dispatch = useDispatch()
     const headers = [{
         title: "    Tipo de gasto",
         textAlign: 'left'
@@ -27,7 +29,18 @@ export const HistoryExpenses = ({
         title: "",
         textAlign: 'center'
     }];
-    const dataTable = expenses.map(({ id_expense, expenses_type, date }, index) => (buildDataExpenses(id_expense, expenses_type, date)));
+    const handleClickSee = (id) => {
+        dispatch(uiSetModalOpen(true))
+    }
+    const handleClickEdit = () => {
+
+    }
+    const handleClickDelete = () => {
+
+    }
+    const dataTable = expenses.map(({ id_expense, expenses_type, date }, index) => (
+        buildDataExpenses(id_expense, expenses_type, date, handleClickSee, handleClickEdit, handleClickDelete)
+    ));
     return (
         <>
             <div className="history__container">
@@ -42,35 +55,6 @@ export const HistoryExpenses = ({
                     data={dataTable}
                     sizesColumns={[35, 35, 10, 10, 10]}
                 />
-
-                {/* <div className="history__container__modal">
-
-                    <div className="history__container__modal__left">
-
-                        <InformationModal title="Fecha" text="08 de julio de 2021" />
-                        <InformationModal title="Tipo de gasto" text="Pago de transporte" />
-                        <InformationModal title="Cantidad" text="$75.50 (Setenta y cinto pesos y cincuenta centavos)" />
-                        <InformationModal title="Descripción" text="Se pagó a Lupita Contreras transporte para llegar al Instituto. Taxi : $75.50" />
-                    </div>
-                    <div className="history__container__modal__right">
-                        <div
-                            className='history__container__modal__right-back'
-                        >
-                            <button className="btn btn__back" onClick={() => setShowHistory(false)}>
-                                <i className="fas fa-arrow-left"></i>
-                            </button>
-                        </div>
-                        <div
-                            className='history__container__modal__right-buttons'
-                        >
-
-                            <ButtonTable type={1} title="Editar" />
-                            <ButtonTable type={2} title="Borrar" />
-                        </div>
-                    </div>
-                </div>
-
-             */}
             </div>
         </>
     )

@@ -4,7 +4,7 @@
         border: 1px solid #fefefe;
         width: 70%;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: flex-start;
         padding: 8px;
         border-radius: 10px;
@@ -16,9 +16,8 @@
         }
         & input {
             width: 100%;
-            margin-left: .3rem;
-            font-size: 1rem;
-            font-size: .9rem;
+            margin-left: 0.3rem;
+            font-size: 0.9rem;
         }
     }
 }

@@ -49,7 +49,7 @@ const monthsDates = [
     "Diciembre",
 ];
 const yearsDates = [2021, 2020, 2044];
-export const Filters = ({ setValueSearchFilter }) => {
+export const Filters = ({ setValueSearchFilter, returnDay = true, returnMonth = true, returnYear = true }) => {
 
     const [maxDays, setMaxDays] = useState(daysDates);
     const [date, setDate] = useState({ day: '', month: '', year: '' });
@@ -72,45 +72,51 @@ export const Filters = ({ setValueSearchFilter }) => {
     }, [date])
     return (
 
-        <div className="req__container__header__filters">
+        <div className="filters__container">
 
             <p> Filtrar por: </p>
-            {/* <DatePicker locale="es" selected={startDate} onChange={(date) => setStartDate(date)} /> */}
-            <div className="reqHistory__dates">
-                <select value={day} onChange={handleInputChange} className="scroll" name="day">
-                    <option hidden defaultValue>
-                        Día
-                    </option>
-                    <option>Ninguno</option>
-                    {maxDays.map((day) => (
-                        <option value={day} key={day}>
-                            {day}
+            <div className="filters__container__dates">
+                {returnDay && <div className="day">
+                    <select value={day} onChange={handleInputChange} className="scroll" name="day">
+                        <option hidden defaultValue>
+                            Día
                         </option>
-                    ))}
-                </select>
-                <select value={month} onChange={handleInputChange} className="scroll" name="month" required>
-                    <option className="select__default" hidden defaultValue>
-                        Mes
-                    </option>
-                    {monthsDates.map((month, index) => (
-                        <option value={index} key={month}>
-                            {monthsDates[index]}
-                        </option>
-                    ))}
-                </select>
+                        <option>Ninguno</option>
+                        {maxDays.map((day) => (
+                            <option value={day} key={day}>
+                                {day}
+                            </option>
+                        ))}
+                    </select>
+                </div>}
 
-                <select value={year} onChange={handleInputChange} className="scroll" name="year" required>
-                    <option hidden defaultValue>
-                        Año
-                    </option>
-
-                    <option>Ninguno</option>
-                    {yearsDates.map((year) => (
-                        <option value={year} key={year}>
-                            {year}
+                <div className="month">
+                    <select value={month} onChange={handleInputChange} className="scroll" name="month" required>
+                        <option className="select__default" hidden defaultValue>
+                            Mes
                         </option>
-                    ))}
-                </select>
+                        {monthsDates.map((month, index) => (
+                            <option value={index} key={month}>
+                                {monthsDates[index]}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="year">
+                    <select value={year} onChange={handleInputChange} className="scroll" name="year" required>
+                        <option hidden defaultValue>
+                            Año
+                        </option>
+
+                        <option>Ninguno</option>
+                        {yearsDates.map((year) => (
+                            <option value={year} key={year}>
+                                {year}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
         </div>
     );

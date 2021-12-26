@@ -1,12 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
+import { FertilizerPay } from '../fertilizerPay/FertilizerPay.js'
 import { RequestDocument } from '../requestDocument/RequestDocument'
 import { RequestGrades } from '../requestGrades/RequestGrades'
+import { Modal } from '../ui/Modal'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
-import { useSelector } from 'react-redux'
-
 
 
 const itemsMenu = [
@@ -20,18 +21,20 @@ const itemsMenu = [
 ]
 export const Main = () => {
 
-    
-    const {  expenses } = useSelector(state => state.expenses);
+
+    const state = useSelector(state => state);
+    // const { expenses } = state.expenses;
+    const { isModalOpen } = state.ui;
     //Borrar de aqui
     // const {active} = useSelector(state => state.document)
 
 
     return (
-        <div className="">
+        <div className={`${isModalOpen ? 'filterModal' : ''}`} >
 
             {/* <div className={`${ expenses && 'blackFilter'}`}></div> */}
 
-            <Texture />
+            < Texture />
             <Navbar />
             <section>
                 <div className="general">
@@ -49,25 +52,13 @@ export const Main = () => {
                             <Route path="/solicitud_de_documento" component={RequestDocument} />
                             <Route path="/consulta_de_calificaciones" component={RequestGrades} />
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
+                            <Route path="/abonos" component={FertilizerPay} />
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>
-                        {/* <div className="general__overtexture__modalEdit">
-                            <div className="general__overtexture__modalEdit__content">
-                                <div className="general__overtexture__modalEdit__content__title">
-                                    <h1>Editar</h1>
-                                    <i className="fas fa-times"></i>
-                                </div>
-                                <div className="general__overtexture__modalEdit__content__body">
-                                    <div className="general__overtexture__modalEdit__content__body__item">
-                                        <p>Nombre</p>
-                                    </div>
-                                    <img src={logoAleNoText} alt="Logo alejandría, marca de agua" />
-                                </div>
-                            </div>
-                        </div> */}
+                        {isModalOpen && <Modal />}
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     )
 }

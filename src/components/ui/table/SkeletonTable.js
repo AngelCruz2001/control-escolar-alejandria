@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SkeletonTable = ({ headers, sizesColumns }) => {
+export const SkeletonTable = ({ headers, sizesColumns, isEmpty = false }) => {
     return (
         <>
             <div className="table__headers">
@@ -10,13 +10,13 @@ export const SkeletonTable = ({ headers, sizesColumns }) => {
                     ))
                 }
             </div>
-            <div className="table__body scroll">
+            <div className={`table__body scroll ${isEmpty && 'empty'}`}>
                 {
                     new Array(7).fill(0).map(({ }, index) => (
-                        <div className="table__body__row noselect skeleton__row" key={index}>
+                        <div className={`table__body__row noselect ${!isEmpty && 'skeleton__row'}`} key={index}>
                             {
                                 headers.map((header, index) => (
-                                    <div className="table__body__row__cell skeleton__cell" key={index} style={{ color: 'transparent', width: `${sizesColumns[index]}%`, justifyContent: `${headers[index].textAlign}`, textAlign: `${headers[index].textAlign}` }} key={index}>
+                                    <div className={`table__body__row__cell ${!isEmpty && 'skeleton__cell'}`} key={index} style={{ color: 'transparent', width: `${sizesColumns[index]}%`, justifyContent: `${headers[index].textAlign}`, textAlign: `${headers[index].textAlign}` }} key={index}>
                                         .
                                     </div>
                                 ))

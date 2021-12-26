@@ -8,7 +8,7 @@ export const Table = ({
     sizesColumns = [], // array of numbers
 }) => {
     const { loading } = useSelector(state => state.ui);
-    // console.log(data)
+    console.log(data)
     return (
         <div className="table ">
             {loading ?
@@ -17,29 +17,38 @@ export const Table = ({
                 </>
                 :
                 <>
-                    <div className="table__headers">
-                        {
-                            headers.map(({ title, textAlign }, index) => (
-                                <div className="table__headers__cell" style={{ width: `${sizesColumns[index]}%`, textAlign: `${textAlign}` }} key={index}>{title}</div>
-                            ))
-                        }
-                    </div>
-                    <div className="table__body scroll">
-                        {data.map((item, index) => (
+
+                    {
+                        data.length > 0 ?
                             <>
-                                {item.length > 0 &&
-                                    <div className="table__body__row" key={index}>
-                                        {
-                                            item.map((cell, andex) => (
-                                                <div className={`table__body__row__cell animation__fadeIn ${cell.searched && 'searched'}`} key={andex} style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
-                                                    {cell.element}
-                                                </div>
-                                            ))
-                                        }
-                                    </div>}
+                                <div className="table__headers">
+                                    {
+                                        headers.map(({ title, textAlign }, index) => (
+                                            <div className="table__headers__cell" style={{ width: `${sizesColumns[index]}%`, textAlign: `${textAlign}` }} key={index}>{title}</div>
+                                        ))
+                                    }
+                                </div>
+                                <div className="table__body scroll">
+                                    {data.map((item, index) => (
+                                        <>
+                                            {item.length > 0 &&
+                                                <div className="table__body__row" key={index}>
+                                                    {
+                                                        item.map((cell, andex) => (
+                                                            <div className={`table__body__row__cell animation__fadeIn ${cell.searched && 'searched'}`} key={andex} style={{ width: `${sizesColumns[andex]}%`, justifyContent: `${headers[andex].textAlign}`, textAlign: `${headers[andex].textAlign}` }} key={andex}>
+                                                                {cell.element}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>}
+                                        </>
+                                    ))}
+                                </div>
                             </>
-                        ))}
-                    </div>
+                            :
+                            <SkeletonTable headers={headers} sizesColumns={sizesColumns} isEmpty={true} />
+                    }
+
                 </>
             }
         </div>

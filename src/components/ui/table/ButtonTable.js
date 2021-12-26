@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 /**
     * @description ButtonTable component
     * @param {int} type - type of button
@@ -23,7 +24,7 @@ export const ButtonTable = ({
         switch (type) {
             case 0:
                 return (
-                    <button className="btn btnTable btnBlue" onClick={() => onClick(id)}> <span>{title}</span> <i className="fas fa-eye"> </i> </button>
+                    <button className="btn btnTable btnBlue" onClick={(data) => onClick(data)}> <span>{title}</span> <i className="fas fa-eye"> </i> </button>
                 )
             case 1:
                 return (
@@ -40,6 +41,13 @@ export const ButtonTable = ({
             case 4:
                 return (
                     <button className="btn btnTable btnGreen" onClick={() => onClick(id)}> <span className="btnGreen">Efectuado</span> <i className="fas fa-check-circle"></i> </button>
+                )
+            case 5:
+                return (
+                    <NavLink className="btn btnTable" to={`/realizar_pago/${id}`}>
+                        <p>LIQUIDAR O ABONAR</p>
+                        <i className={`fas fa-chevron-circle-right`}></i>
+                    </NavLink>
                 )
             default:
                 return (

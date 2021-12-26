@@ -3,18 +3,14 @@ import { useDispatch } from 'react-redux';
 import { uiSetCurrent } from '../../actions/ui';
 
 export const StudentInformation = ({
-    activeClassName,
-    loading,
-    student,
+    activeClassName = '',
+    loading = false,
+    studentInformation = { headers: [], data: [] },
+    isStudentShowed = true,
 }) => {
     const dispatch = useDispatch()
-    const {
-        student_fullname,
-        name_group,
-        campus_name,
-        major_name,
-    } = student;
-
+    const { headers, data } = studentInformation;
+    console.log(studentInformation)
     useEffect(() => {
         if (!loading && activeClassName === 'activeGuide') {
             dispatch(uiSetCurrent(2));
@@ -22,7 +18,7 @@ export const StudentInformation = ({
     }, [loading, dispatch])
     return (
         <div className={`stuInfo son ${activeClassName}`}>
-            <p className="general__titleSection">Información del alumno</p>
+            {isStudentShowed && <p className="general__titleSection">Información del alumno</p>}
 
             <div className="stuInfo__container son">
 
@@ -31,43 +27,18 @@ export const StudentInformation = ({
                     :
                     (activeClassName === '') &&
                     <div className="stuInfo__container__containerTwo">
-
-                        <div className="stuInfo__container__containerTwo__row">
-                            <div className="stuInfo__container__containerTwo__row__header">
-                                <p className="stuInfo__name">Alumno:</p>
-                            </div>
-                            <div className="stuInfo__container__containerTwo__row__info">
-                                {student_fullname}
-                            </div>
-                        </div>
-
-                        <div className="stuInfo__container__containerTwo__row">
-                            <div className="stuInfo__container__containerTwo__row__header">
-                                <p className="stuInfo__name">Grupo:</p>
-                            </div>
-                            <div className="stuInfo__container__containerTwo__row__info">
-                                {name_group}
-                            </div>
-                        </div>
-
-                        <div className="stuInfo__container__containerTwo__row">
-                            <div className="stuInfo__container__containerTwo__row__header">
-                                <p className="stuInfo__name">Campus:</p>
-                            </div>
-                            <div className="stuInfo__container__containerTwo__row__info">
-                                {campus_name}
-                            </div>
-                        </div>
-
-                        <div className="stuInfo__container__containerTwo__row">
-                            <div className="stuInfo__container__containerTwo__row__header">
-                                <p className="stuInfo__name">Carrera:</p>
-                            </div>
-                            <div className="stuInfo__container__containerTwo__row__info">
-                                {major_name}
-                            </div>
-                        </div>
-
+                        {
+                            headers.map((header, index) => (
+                                <div className="stuInfo__container__containerTwo__row" key={index}>
+                                    <div className="stuInfo__container__containerTwo__row__header">
+                                        <p className="stuInfo__name">{header}:</p>
+                                    </div>
+                                    <div className="stuInfo__container__containerTwo__row__info">
+                                        {data[index]}
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
 
                 }

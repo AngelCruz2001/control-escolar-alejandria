@@ -5,6 +5,7 @@ const initialState = {
     msgError: null,
     correct: null,
     current: 0,
+    isModalOpen: false,
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -45,6 +46,12 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 current: action.payload,
             }
+        case types.uiIsModalOpen:
+            return {
+                ...state,
+                isModalOpen: action.payload,
+            }
+
 
         default:
             return state;

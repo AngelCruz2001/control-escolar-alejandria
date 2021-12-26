@@ -4,10 +4,10 @@ export const isACoincidenceDate = (creationDateSplit, { day, month, year }) => {
     return isInTheArray.length === searchDate.length && searchDate.length > 0 && true;
 }
 
-export const isACoincidenceSearch = (data, wordToSearch) => {
+export const isACoincidenceSearch = (data = [], wordToSearch) => {
     const coincidence = [];
     for (let i = 0; i < data.length; i++) {
-        if (data[i].match(RegExp(wordToSearch, 'gi')) && wordToSearch !== '') coincidence.push(true)
+        if ((data[i]).toString().match(RegExp(wordToSearch, 'gi')) && wordToSearch !== '') coincidence.push(true)
         else coincidence.push(false)
     }
     return coincidence;

@@ -1,4 +1,4 @@
-import { types } from '../types/types'
+import { types } from '../types/types';
 
 export const uiStartLoading = () => ({
     type: types.uiStartLoading,
@@ -13,4 +13,9 @@ export const uiSetCorrect = () => ({
 export const uiSetCurrent = (current) => ({
     type: types.uiSetCurrent,
     payload: current
+})
+
+export const uiSetModalOpen = (isModalOpen) => ({
+    type: types.uiIsModalOpen,
+    payload: isModalOpen
 })

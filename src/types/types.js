@@ -14,6 +14,7 @@ export const types = {
     uiStartLoading: '[UI] Start loading',
     uiFinishLoading: '[UI] Finish loading',
     uiSetCurrent: '[UI] Set current component',
+    uiIsModalOpen: '[UI]Change modal open',
 
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',
@@ -22,6 +23,7 @@ export const types = {
     requestDeleteRequest: '[request] Delete request',
 
     gradesSetGrades: '[grades] Set grades',
+    gradesSetSpecificGrades: '[grades] Set specific grades',
 
     documentSetDocument: '[document] Set Document',
     documentClearActive: '[document] Clear Active',

@@ -9,74 +9,12 @@
 
         .history {
             &__container {
-            
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 position: relative;
                 background-color: white;
                 border-radius: 5px;
-                
-                &__modal {
-                    position: relative;
-                    display: flex;
-                    flex-direction: row;
-                    height: 100%;
-                    width: 100%;
-                    z-index: 99;
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        width: 50%;
-                        height: 100%;
-                        background-size: cover;
-                        background-image: url(https://i.ibb.co/fdXrxqp/logo-Ale-No-Text.png);
-                        opacity: 0.3;
-                        background-repeat: round;
-                        margin-left: 25%;
-                        background-position: center;
-                    }
-
-                    &__left {
-                        width: 50%;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1.6rem;
-                        z-index: 3;
-                        // justify-content: space-between;
-
-                        .title {
-                            font-size: calc(0.6rem + 1vw);
-                            font-weight: bold;
-                        }
-                        .notitle {
-                            font-size: calc(0.5rem + 0.8vw);
-                        }
-                    }
-                    &__right {
-                        width: 50%;
-                        z-index: 1;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        gap: 0.5rem;
-                        align-items: flex-end;
-
-                        &-back {
-                        }
-                        &-buttons {
-                            display: flex;
-                            gap: 1rem;
-
-                            & button span,
-                            & button i {
-                                font-size: calc(0.5rem + 0.8vw);
-                            }
-                        }
-                    }
-                }
 
                 &__header {
                     display: grid;

@@ -66,6 +66,14 @@
             }
         }
     }
+
+    .empty {
+        .table__body__row {
+            div:nth-child(even) {
+                background-color: #f4fafe;
+            }
+        }
+    }
 }
 
 .skeleton {

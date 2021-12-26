@@ -59,7 +59,6 @@ export const HistoryReqDocument = ({
     const [dataToShow, generateDataToShow] = useBuildDataWithFiltersRequest(requests, handleCancelClick, valueSearchFilter);
     useEffect(() => {
         generateDataToShow();
-        console.log(valueSearchFilter);
     }, [loading, valueSearchFilter, requests])
 
     return (

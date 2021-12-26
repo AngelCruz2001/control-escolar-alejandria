@@ -22,12 +22,13 @@ export const buildData = (
     ];
 }
 export const buildDataGrades = (
-    id,
+    id_student,
     student_name,
     matricula,
     group_name,
     major_name,
-    handelClick,
+    campus_name,
+    handleClick,
     coincidence
 ) => {
     return [
@@ -35,21 +36,45 @@ export const buildDataGrades = (
         { element: <SpanTable text={matricula} />, searched: coincidence[1] },
         { element: <SpanTable text={group_name} />, searched: coincidence[2] },
         { element: <SpanTable text={major_name} />, searched: coincidence[3] },
-        { element: <ButtonTable type={0} onClick={handelClick} id={id} />, searched: false },
+        {
+            element: <ButtonTable type={0} onClick={() => handleClick({ id_student, student_name, matricula, group_name, campus_name, major_name })} id={id_student} />, searched: false
+        },
     ];
 }
 export const buildDataExpenses = (
     id,
     expenses_type,
     date,
+    handleClickSee,
+    handleClickEdit,
+    handleClickDelete,
 ) => {
 
     return [
         { element: <SpanTable text={expenses_type} />, searched: false },
         { element: <SpanTable text={date} />, searched: false },
-        { element: <ButtonTable type={0} title="Ver" id={id} />, searched: false },
-        { element: <ButtonTable type={1} title="Editar" id={id} />, searched: false },
-        { element: <ButtonTable type={2} title="Borrar" id={id} />, searched: false },
+        { element: <ButtonTable onClick={handleClickSee} type={0} title="Ver" id={id} />, searched: false },
+        { element: <ButtonTable onClick={handleClickEdit} type={1} title="Editar" id={id} />, searched: false },
+        { element: <ButtonTable onClick={handleClickDelete} type={2} title="Borrar" id={id} />, searched: false },
+
+    ];
+}
+export const buildDataGradesDetail = (course, teacher, date, credits, coincidence) => {
+    return [
+        { element: <SpanTable text={course} />, searched: coincidence[0] },
+        { element: <SpanTable text={teacher} />, searched: coincidence[1] },
+        { element: <SpanTable text={date} />, searched: coincidence[3] },
+        { element: <SpanTable text={credits} />, searched: coincidence[2] },
+    ];
+}
+export const buildDataFertilizer = (id, date, concept, cost, anticipo, restante) => {
+    return [
+        { element: <SpanTable text={date} />, searched: false },
+        { element: <SpanTable text={concept} />, searched: false },
+        { element: <SpanTable text={cost} />, searched: false },
+        { element: <SpanTable text={anticipo} />, searched: false },
+        { element: <SpanTable text={restante} />, searched: false },
+        { element: <ButtonTable type={5} id={id} />, searched: false },
 
     ];
 }
