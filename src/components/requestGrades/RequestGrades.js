@@ -60,6 +60,7 @@ export const RequestGrades = () => {
     useEffect(() => {
         generateData()
     }, [loading, valueSearchFilter])
+    console.log(dataShow)
     return (
         <div className="gra__container">
             <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />

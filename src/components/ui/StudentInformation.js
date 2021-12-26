@@ -10,7 +10,7 @@ export const StudentInformation = ({
 }) => {
     const dispatch = useDispatch()
     const {
-        student_fullname,
+        student_name,
         name_group,
         campus_name,
         major_name,
@@ -38,7 +38,7 @@ export const StudentInformation = ({
                                 <p className="stuInfo__name">{(!payment ? "Alumno:" :"Nombre:")}</p>
                             </div>
                             <div className="stuInfo__container__containerTwo__row__info">
-                                {student_fullname}
+                                {student_name}
                             </div>
                         </div>
 

@@ -3,23 +3,24 @@ import { useSelector } from 'react-redux';
 import { Separator } from '../../ui/Separator';
 import { ConceptPayButton } from '../ButtonsPay';
 import { paySetConcept } from '../../../actions/pay';
+import { activeDisabled } from '../../../helpers/activeDisabled';
 
 export const ConceptPay = () => {
     const { concept, thingToPay} = useSelector(state => state.pay);
-    const { matricula }  = useSelector(state=> state.student)
+    const { student, ui }  = useSelector(state=> state)
   
     const payText = (!concept) ? 'Concepto a pagar' : (concept == "Inscripción") ? 'Inscripción a pagar' : (concept == "Materia") ? 'Materia a pagar' : 'Documento a pagar';
 
     return (
-        <div className={`make__conceptPay ${!matricula && 'ui__disabledEffect'}`}>
+        <div className={`make__conceptPay ${!student.matricula && 'ui__disabledEffect'}`}>
             <div className="make__conceptPay-way">
                 <p  className={`make__titleSection ${
-            !matricula && "ui__disabledEffectInfo-title "
+            !student.matricula && "ui__disabledEffectInfo-title "
           }`}>Concepto de pago</p>
                 <div className="btn-payContainer">
-                    <ConceptPayButton text="Inscripción" icon={false} setData={paySetConcept} isSelected={concept === "Inscripción"} />
-                    <ConceptPayButton text="Materia" setData={paySetConcept} isSelected={concept === "Materia"} />
-                    <ConceptPayButton text="Documento" setData={paySetConcept} isSelected={concept === "Documento"} />
+                    <ConceptPayButton activeClassName={activeDisabled(2,ui.current)} text="Inscripción" icon={false} setData={paySetConcept} isSelected={concept === "Inscripción"} />
+                    <ConceptPayButton activeClassName={activeDisabled(2,ui.current)} text="Materia" setData={paySetConcept} isSelected={concept === "Materia"} />
+                    <ConceptPayButton activeClassName={activeDisabled(2,ui.current)} text="Documento" setData={paySetConcept} isSelected={concept === "Documento"} />
                 </div>
             </div>
             {/* <Separator /> */}

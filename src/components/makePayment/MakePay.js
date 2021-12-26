@@ -20,7 +20,7 @@ export const MakePay = () => {
     //     const { concept, method, thingToPay, idPayment } = useSelector(state => state.pay)
 
     // }, [])
-    const { ui, student, document, requests } = useSelector(state => state)
+    const { ui, student} = useSelector(state => state)
     const { current, loading } = ui;
     return (
         <div className="make__ ">
@@ -52,7 +52,9 @@ export const MakePay = () => {
 
         
 
-                    <TotalPay />
+                    <TotalPay
+                        activeClassName={activeDisabled(4, current)} 
+                    />
 
                  
 
