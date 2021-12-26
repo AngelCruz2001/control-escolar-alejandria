@@ -22,7 +22,7 @@ main {
     justify-content: center;
     align-items: center;
 }
-.btn {
+.btn, button {
     cursor: pointer;
     &:focus {
         outline: none;
@@ -104,4 +104,9 @@ select:focus {
     &::-webkit-scrollbar-track {
         background: transparent;
     }
+}
+
+p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }

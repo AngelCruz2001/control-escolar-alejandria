@@ -6,7 +6,8 @@ import { typesRegex } from '../../types/typesValidators';
 
 export const Matricula = ({
     activeClassName,
-    matricula
+    matricula,
+    payment
 }) => {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -25,11 +26,11 @@ export const Matricula = ({
     }
 
     return (
-        // <form action="" onSubmit={() => console.log("Este debería ser un 'SubmitMatricula', pero no sé realmente si jala. ")}>
-        <div className="matri__container">
+   
+        <div  style={{marginTop: payment && "1rem"}} className="matri__container">
             <label className="general__titleSection matri__label" htmlFor="matricula">Matrícula</label>
             <input className={activeClassName} value={componentMatricula} onChange={handleMatriculaChange} placeholder="0000000000000" maxLength="13" id="matricula" name="matricula" />
         </div>
-        // </form>}
+       
     )
 }

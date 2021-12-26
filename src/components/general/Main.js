@@ -8,6 +8,13 @@ import { RequestGrades } from '../requestGrades/RequestGrades'
 import { Modal } from '../ui/Modal'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
+<<<<<<< HEAD
+=======
+import { useSelector } from 'react-redux'
+import { MakePay } from '../makePayment/MakePay'
+import { FertilizerPay } from '../fertilizerPay/FertilizerPay'
+
+>>>>>>> origin/paymentsV2
 
 
 const itemsMenu = [
@@ -52,6 +59,7 @@ export const Main = () => {
                             <Route path="/solicitud_de_documento" component={RequestDocument} />
                             <Route path="/consulta_de_calificaciones" component={RequestGrades} />
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
+                            <Route path="/realizar_pago" component={MakePay} />
                             <Route path="/abonos" component={FertilizerPay} />
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>

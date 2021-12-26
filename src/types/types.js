@@ -15,6 +15,8 @@ export const types = {
     uiFinishLoading: '[UI] Finish loading',
     uiSetCurrent: '[UI] Set current component',
     uiIsModalOpen: '[UI]Change modal open',
+    uiStartLoadingCards: '[UI] Start loading cards',
+    uiFinishLoadingCards: '[UI] Finish loading cards',
 
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',
@@ -34,6 +36,22 @@ export const types = {
     expensesSetExpenses: '[expense] Set expenses',
     expensesSetDataInputs: '[expense] Set data inputs',
     expensesClearData: '[expense] Clear data',
+
+
+
+    paySetActive: '[pay] Set Active',
+    paySetCards: '[pay] Set Cards',
+    paySetPrice: '[pay] Set Price',
+    payClearActive: '[pay] Clear Active',
+    payConceptPay: '[pay] Concept pay',
+    payMethodPay: '[pay] Method pay',
+    payThingToPay: '[pay] Material to pay',
+    payClearModalData: "[pay] Clear modal data",
+    payAmountToPay: "[pay] Set amount paying",
+    paySetActiveAccount: "[pay] Set Active Acount",
+    paySetFertilizers: "[pay] Set fertilizers",
+    paySetIdPayment: "[pay] Set id payment",
+    paySetPayments: '[pay] Set payments',
 }
 
 export const typesExpenses = [
