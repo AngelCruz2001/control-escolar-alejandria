@@ -3,18 +3,13 @@ import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
 import { FertilizerPay } from '../fertilizerPay/FertilizerPay.js'
+import { MakePay } from '../makePayment/MakePay'
 import { RequestDocument } from '../requestDocument/RequestDocument'
 import { RequestGrades } from '../requestGrades/RequestGrades'
 import { Modal } from '../ui/Modal'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
-<<<<<<< HEAD
-=======
-import { useSelector } from 'react-redux'
-import { MakePay } from '../makePayment/MakePay'
-import { FertilizerPay } from '../fertilizerPay/FertilizerPay'
 
->>>>>>> origin/paymentsV2
 
 
 const itemsMenu = [
