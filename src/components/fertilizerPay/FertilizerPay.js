@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { payClearModalData, paySetConcept, paySetIdPayment, paySetPrice, paySetThingToPay, payStartGetFertilizerPay } from '../../actions/pay';
+import { payClearModalData, paySetConcept, paySetIdPayment, paySetPrice, 
+        paySetThingToPay, payStartGetFertilizerPay } 
+        from '../../actions/pay';
 import { studentClearData } from '../../actions/student';
 import { activeDisabled } from '../../helpers/activeDisabled';
 import { buildDataFertilizer } from '../../helpers/buildDataTables';
