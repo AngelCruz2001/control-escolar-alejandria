@@ -52,6 +52,8 @@ export const types = {
     paySetFertilizers: "[pay] Set fertilizers",
     paySetIdPayment: "[pay] Set id payment",
     paySetPayments: '[pay] Set payments',
+    paySetStudents: '[pay] Set students',
+    payClearStudents: '[pay] ClearStudents',
 }
 
 export const typesExpenses = [

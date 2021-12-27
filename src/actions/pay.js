@@ -216,11 +216,39 @@ export const payStartGetFertilizerPay = (matricula) => {
     }
 }
 
+export const payStartGetStudentsByGroup = (id_group) => {
+    return async (dispatch) => {
+      try {
+        dispatch(uiStartLoading());
+        const res = await fetchConToken(`payments/groups/${id_group}`, "GET");
+        const body = await res.json();
+        if (body.ok) {
+          console.log(body);
+          dispatch(paySetStudents(body.payments));
+        } else {
+          console.log(body);
+          Swal.fire({
+            title: "¡Oops!",
+            text: body.msg,
+            icon: "question",
+          });
+        }
+        dispatch(uiFinishLoading())
+
+        // dispatch(uiFinishLoadingStudents());
+      } catch (error) {
+        console.log(error);
+        Swal.fire("Error", "Hablar con el administrador", "error");
+      }
+    };
+  };
+
 const paySetActivePay = (data) => ({ type: types.paySetActive, payload: data })
 const payClearActivePay = () => ({ type: types.payClearActive })
 const paySetCards = (cards) => ({ type: types.paySetCards, payload: cards })
 const paySetFertilizers = (fertilizers) => ({ type: types.paySetFertilizers, payload: fertilizers })
 const paySetPayments = (payments) => ({ type: types.paySetPayments, payload: payments })
+const paySetStudents = (students) => ({type: types.paySetStudents, payload: students});
 
 export const paySetPrice = (price) => ({ type: types.paySetPrice, payload: price })
 export const paySetAmountToPay = (amount) => ({ type: types.payAmountToPay, payload: amount })
@@ -229,4 +257,5 @@ export const paySetMethod = (data) => ({ type: types.payMethodPay, payload: data
 export const paySetThingToPay = (data) => ({ type: types.payThingToPay, payload: data })
 export const paySetActiveAccount = (account) => ({ type: types.paySetActiveAccount, payload: account })
 export const payClearModalData = () => ({ type: types.payClearModalData })
+export const payClearStudents = () => ({ type: types.payClearStudents })
 export const paySetIdPayment = (id) => ({ type: types.paySetIdPayment, payload: id })
