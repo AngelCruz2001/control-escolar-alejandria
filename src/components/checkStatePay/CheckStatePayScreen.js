@@ -103,7 +103,7 @@ export const CheckStatePayScreen = () => {
               setValueSearchFilter={setValueSearchFilter}
               valueSearchFilter={valueSearchFilter}
             />
-            <FilterMajor />
+            <FilterMajor checkState={true}/>
           </div>
 
           <Table
