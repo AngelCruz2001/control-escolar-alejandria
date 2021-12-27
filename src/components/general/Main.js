@@ -54,7 +54,7 @@ export const Main = () => {
                             <Route path="/solicitud_de_documento" component={RequestDocument} />
                             <Route path="/consulta_de_calificaciones" component={RequestGrades} />
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
-                            <Route path="/realizar_pago" component={MakePay} />
+                            <Route path="/realizar_pago/:id?" component={MakePay} />
                             <Route path="/abonos" component={FertilizerPay} />
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>

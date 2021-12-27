@@ -5,14 +5,14 @@ import { payStartFertilizer, payStartMakePay } from '../../actions/pay'
 export const SubmitPay = () => {
 
     const dispatch = useDispatch();
-    const { amountToPay, idPayment, totalPayMoney } = useSelector(state => state.pay);
+    const { amountToPay, idPayment, method } = useSelector(state => state.pay);
     const handleSubmitMakePay = () => {
         idPayment ? dispatch(payStartFertilizer()) : dispatch(payStartMakePay())
     }
 
     return (
         <div className={`make__submit `} >
-            <button className={`make__submit-button btn-blue submitPay ${!totalPayMoney && 'ui__disabledEffect totalPay' }`} onClick={handleSubmitMakePay}>Pagar</button>
+            <button className={`make__submit-button btn-blue submitPay ${!method && 'ui__disabledEffect totalPay' }`} onClick={handleSubmitMakePay}>Pagar</button>
         </div>
     )
 }

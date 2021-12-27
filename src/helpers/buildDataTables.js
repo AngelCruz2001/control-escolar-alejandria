@@ -67,14 +67,21 @@ export const buildDataGradesDetail = (course, teacher, date, credits, coincidenc
         { element: <SpanTable text={credits} />, searched: coincidence[2] },
     ];
 }
-export const buildDataFertilizer = (id, date, concept, cost, anticipo, restante) => {
+export const buildDataFertilizer = (id, date, concept, cost, anticipo, restante, payment_type, handleClick) => {
     return [
         { element: <SpanTable text={date} />, searched: false },
         { element: <SpanTable text={concept} />, searched: false },
         { element: <SpanTable text={cost} />, searched: false },
         { element: <SpanTable text={anticipo} />, searched: false },
         { element: <SpanTable text={restante} />, searched: false },
-        { element: <ButtonTable type={5} id={id} />, searched: false },
+        { element: <ButtonTable type={5} id={id} onClick={()=> handleClick({
+            id_payment:id,
+            payment_type,
+            name:concept,
+            expected:cost,
+            current:anticipo,
+            missing:restante
+        })} />, searched: false },
 
     ];
 }

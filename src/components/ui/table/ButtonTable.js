@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 /**
     * @description ButtonTable component
     * @param {int} type - type of button
@@ -44,10 +44,10 @@ export const ButtonTable = ({
                 )
             case 5:
                 return (
-                    <NavLink className="btn btnTable" to={`/realizar_pago/${id}`}>
-                        <p>LIQUIDAR O ABONAR</p>
-                        <i className={`fas fa-chevron-circle-right`}></i>
-                    </NavLink>
+                    <Link className="btn btnTable" to={`/realizar_pago/${id}`}>
+                        <p onClick={() => onClick(id)} >LIQUIDAR O ABONAR</p>
+                        <i onClick={() => onClick(id)} className={`fas fa-chevron-circle-right`}></i>
+                    </Link>
                 )
             default:
                 return (

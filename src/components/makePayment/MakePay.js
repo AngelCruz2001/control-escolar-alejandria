@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Date } from '../ui/Date'
-import { Separator } from '../ui/Separator'
 import { OverConceptPay } from './OverConceptPay'
 import { PayCard, PayDeposit } from './PayMethods'
 import { ReceiveMoney } from './ReceiveMoney'
@@ -12,21 +11,46 @@ import { MethodPay } from './methodPay/MethodPay'
 import { Matricula } from '../ui/Matricula'
 import { StudentInformation } from '../ui/StudentInformation'
 import { activeDisabled } from '../../helpers/activeDisabled'
+import { useParams } from 'react-router-dom'
+import { uiSetCurrent } from '../../actions/ui'
+import { useHistory } from "react-router-dom";
+
 
 export const MakePay = () => {
+    const { id } = useParams();
+
 
     const { concept, method, thingToPay, idPayment } = useSelector(state => state.pay)
-    // useEffect(() => {
-    //     const { concept, method, thingToPay, idPayment } = useSelector(state => state.pay)
-
-    // }, [])
-    const { ui, student} = useSelector(state => state)
+    const  dispatch = useDispatch();
+    const [studentInformation, setStudentInformation] = useState({ headers: [], data: [] });
+    const { ui, student } = useSelector(state => state)
     const { current, loading } = ui;
+    let history = useHistory();
+    const handleArrow = () => {
+        history.push("/abonos");
+    }
+    
+    
+    useEffect(() => {
+        setStudentInformation({
+            headers: ["Nombre", "Grupo", "Campus"],
+            data: [student.student_name, student.name_group, student.campus_name],
+        });
+        
+    }, [student])
+    useEffect(() => {
+
+       
+        id &&  dispatch(uiSetCurrent(4));
+    }, [id])
     return (
         <div className="make__ ">
             <div className="make__date">
                 <Date />
             </div>
+            {(id) && (
+                <button onClick={handleArrow}></button>)
+            }
 
             <div className="make__container">
                 <div className={`make__subContainerLeft ${idPayment ? "ui__noTouch" : ""}`}>
@@ -38,8 +62,7 @@ export const MakePay = () => {
                     <StudentInformation
                         activeClassName={activeDisabled(1, current)}
                         loading={loading}
-                        student={student}
-                        payment={true}
+                        studentInformation={studentInformation}
                     />
 
                     <ConceptPay />
@@ -50,13 +73,13 @@ export const MakePay = () => {
 
                     <MethodPay />
 
-        
+
 
                     <TotalPay
-                        activeClassName={activeDisabled(4, current)} 
+                        activeClassName={activeDisabled(4, current)}
                     />
 
-                 
+
 
                     {
                         !thingToPay.name && (concept !== "Inscripción") && concept && <OverConceptPay />
@@ -68,7 +91,7 @@ export const MakePay = () => {
 
                     <ReceiveMoney />
 
-                 
+
 
                     <SubmitPay />
 

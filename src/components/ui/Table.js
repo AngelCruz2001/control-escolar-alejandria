@@ -8,7 +8,7 @@ export const Table = ({
     sizesColumns = [], // array of numbers
 }) => {
     const { loading } = useSelector(state => state.ui);
-    console.log(data)
+    
     return (
         <div className="table ">
             {loading ?

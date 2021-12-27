@@ -63,7 +63,7 @@ export const RequestGrades = () => {
     useEffect(() => {
         generateData()
     }, [loading, valueSearchFilter])
-    console.log(dataShow)
+
     return (
         <>
 

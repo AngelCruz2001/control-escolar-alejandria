@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { payClearModalData, paySetConcept, paySetIdPayment, paySetPrice, paySetThingToPay, payStartGetFertilizerPay } from '../../actions/pay';
+import { studentClearData } from '../../actions/student';
+import { activeDisabled } from '../../helpers/activeDisabled';
 import { buildDataFertilizer } from '../../helpers/buildDataTables';
+import { getDate } from '../../helpers/getDate';
 import { Date } from '../ui/Date';
 import { Matricula } from '../ui/Matricula';
 import { StudentInformation } from '../ui/StudentInformation';
@@ -15,57 +19,67 @@ const headers = [
 
 ]
 
-const pay = {
-    fertilizers: [{
-        id: 1,
-        date: '15 - junio - 2021',
-        concept: 'Fertilizante',
-        cost: '$100',
-        anticipo: '$100',
-        restante: '$100',
-    }]
-}
+
 export const FertilizerPay = () => {
     const dispatch = useDispatch()
-    useEffect(() => {
-        // dispatch(payStart)
-    }, [])
-    const { student, ui } = useSelector(state => state);
+    const { student, ui, pay } = useSelector(state => state);
     const { loading, } = ui;
     const [dataToShow, setDataToShow] = useState([]);
     const [studentInformation, setStudentInformation] = useState({headers: [], data: []});
+
     useEffect(() => {
         setStudentInformation({
             headers: ["Nombre", "Grupo", "Campus", "Carrera"],
             data: [student.student_name, student.name_group, student.campus_name, student.major_name],
         });
+      
+        student.matricula && dispatch(payStartGetFertilizerPay(student.matricula));
     }, [student])
+
+
+    const handleClickPayFertilizer = ({missing, payment_type, name, id_payment}) => {
+      
+        dispatch(paySetPrice(missing));
+        dispatch(paySetConcept(payment_type));
+        dispatch(paySetThingToPay({ name, id: "" }));
+        dispatch(paySetIdPayment(id_payment))
+    }
+    
+    const handleArrow = () => {
+        dispatch(payClearModalData());
+        dispatch(studentClearData());
+        setDataToShow([])
+
+    }
+
     const generateData = () => {
         const dataShow = [];
         pay.fertilizers.forEach(({
-            id, date, concept, cost, anticipo, restante
+            id_payment, payment_date, name, expected, current, missing, payment_type
         }) => {
-            const builData = buildDataFertilizer(id, date, concept, cost, anticipo, restante);
+            const date = getDate(payment_date)
+            const builData = buildDataFertilizer(id_payment, date, name, expected, current, missing, payment_type, handleClickPayFertilizer);
             dataShow.push(builData);
 
         });
-
         setDataToShow(dataShow);
     }
 
     useEffect(() => {
         student.matricula && generateData()
-    }, [loading, student])
+    }, [loading, pay, student])
+    
 
-    console.log(studentInformation)
+
     return (
         <div className='fert'>
             <div className='fert__up'>
                 <Date />
+                        <button className='' onClick={handleArrow}/>
                 <div className='fert__up__headers'>
                     <div className='fert__up__headers__matricula'>
                         <Matricula
-                            // activeClassName={activeDisabled(0, ui.current)}
+                            activeClassName={activeDisabled(0, ui.current)}
                             matricula={student.matricula}
                         />
                     </div>
