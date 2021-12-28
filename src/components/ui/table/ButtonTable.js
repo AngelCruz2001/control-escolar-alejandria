@@ -64,7 +64,7 @@ export const ButtonTable = ({ type, onClick, title = "", id }) => {
 
       case 6:
         return (
-          <Link className="btn btnTable btnBlue" to={`/detalles`}>
+          <Link className="btn btnTable btnBlue" to={`/consultar_estado_de_pago/detalles`}>
             <span onClick={() => onClick(id)}></span>
             <i onClick={() => onClick(id)} className="fas fa-eye">
 

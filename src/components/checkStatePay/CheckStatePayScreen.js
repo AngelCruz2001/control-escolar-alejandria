@@ -45,6 +45,8 @@ export const CheckStatePayScreen = () => {
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
+  
+  // (pay.students) && setIsAGrouptActive(true);
   const [dataGroup, setDataGroup] = useState({});
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
