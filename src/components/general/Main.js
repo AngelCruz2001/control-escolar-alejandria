@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
+import { CheckStateDetails } from '../checkStatePay/CheckStateDetails'
 import { CheckStatePayScreen } from '../checkStatePay/CheckStatePayScreen'
 import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
 import { FertilizerPay } from '../fertilizerPay/FertilizerPay.js'
@@ -58,7 +59,8 @@ export const Main = () => {
                             <Route path="/realizar_pago/:id?" component={MakePay} />
                             <Route path="/abonos" component={FertilizerPay} />
                             <Route path="/consultar_estado_de_pago" component={CheckStatePayScreen} />
-                            <Route path="/consultar_estado_de_pago/grupo" component={CheckStatePayScreen} />
+                            <Route  path="/detalles" component={CheckStateDetails} />
+                            {/* <Route path="/consultar_estado_de_pago/grupo" component={CheckStatePayScreen} /> */}
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>
                         {isModalOpen && <Modal />}

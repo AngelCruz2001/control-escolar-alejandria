@@ -10,7 +10,7 @@ import {
 } from "../../actions/pay";
 import { studentClearData } from "../../actions/student";
 import { activeDisabled } from "../../helpers/activeDisabled";
-import { buildDataFertilizer } from "../../helpers/buildDataTables";
+import { buildDataFertilizer, buildDataFertilizerDetails } from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Date } from "../ui/Date";
 import { Matricula } from "../ui/Matricula";
@@ -80,7 +80,7 @@ export const FertilizerPay = () => {
         payment_type,
       }) => {
         const date = getDate(payment_date);
-        const builData = buildDataFertilizer(
+        const builData = buildDataFertilizerDetails(
           id_payment,
           date,
           name,
