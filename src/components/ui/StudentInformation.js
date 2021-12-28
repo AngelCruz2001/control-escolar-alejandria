@@ -7,6 +7,7 @@ export const StudentInformation = ({
     loading = false,
     studentInformation = { headers: [], data: [] },
     isStudentShowed = true,
+    fertiScreen
 }) => {
     const dispatch = useDispatch()
     const { headers, data } = studentInformation;
@@ -17,16 +18,16 @@ export const StudentInformation = ({
         }
     }, [loading, dispatch])
     return (
-        <div className={`stuInfo son ${activeClassName}`}>
+        <div className={`stuInfo son ${activeClassName}`} style={{marginTop: fertiScreen && '0'}}>
             {isStudentShowed && <p className="general__titleSection">Información del alumno</p>}
 
-            <div  className="stuInfo__container son">
+            <div  className="stuInfo__container son" style={{padding: fertiScreen && '.5rem 0'}}>
 
                 {loading ?
                     <p>Cargando</p>
                     :
                     (activeClassName === '') &&
-                    <div className="stuInfo__container__containerTwo">
+                    <div className="stuInfo__container__containerTwo" style={{gap: fertiScreen && '.5rem'}}>
                         {
                             headers.map((header, index) => (
                                 <div className="stuInfo__container__containerTwo__row" key={index}>

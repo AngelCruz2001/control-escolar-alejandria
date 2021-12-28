@@ -49,6 +49,7 @@ export const ButtonTable = ({
                         <i onClick={() => onClick(id)} className={`fas fa-chevron-circle-right`}></i>
                     </Link>
                 )
+
             default:
                 return (
                     <></>
