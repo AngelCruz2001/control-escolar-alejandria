@@ -10,6 +10,9 @@ const initialValue = {
     major_name: '',
     ins_date: '',
     course_name: '',
+    student_name:'',
+    educational_level:''
+
 }
 
 export const studentReducer = (state = initialValue, action) => {

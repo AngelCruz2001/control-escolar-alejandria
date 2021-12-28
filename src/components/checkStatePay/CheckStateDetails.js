@@ -9,6 +9,7 @@ import { getDate } from "../../helpers/getDate";
 import { Searchbar } from "../ui/Searchbar";
 import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
+import { useHistory } from "react-router-dom";
 
 const headers = [
   { title: "MES", textAlign: "left" },
@@ -23,7 +24,7 @@ export const CheckStateDetails = () => {
   const dispatch = useDispatch();
 
   const { student, ui, pay } = useSelector((state) => state);
-
+  let history = useHistory();
   const { loading } = ui;
 
   const [dataToShow, setDataToShow] = useState([]);
@@ -54,13 +55,14 @@ export const CheckStateDetails = () => {
   const handleArrow = () => {
     dispatch(studentClearData());
     setDataToShow([]);
+    history.goBack()
   };
 
   const generateData = () => {
     const dataShow = [];
 
     const { searchWord } = valueSearchFilter;
-
+    
     pay.fertilizers.forEach(
       ({
         payment_date,
@@ -136,7 +138,4 @@ export const CheckStateDetails = () => {
   );
 };
 
-/*
-890   3% padding to Table //1% left
 
-*/
