@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export const CheckFilteredData = ({ filterTitles, toggleTitleActive }) => {
+export const CheckFilteredData = ({ filterTitles, toggleTitleActive, titleActive}) => {
 
   return (
     <>
@@ -12,7 +12,7 @@ export const CheckFilteredData = ({ filterTitles, toggleTitleActive }) => {
             onClick={() => {
               toggleTitleActive(title.name);
             }}
-            className="checkState__headers-filteredList-item"
+            className={`checkState__headers-filteredList-item ${titleActive === title.name && 'active'}`}
           >
             <p>{title.name}</p>
           </li>

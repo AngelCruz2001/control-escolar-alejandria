@@ -57,11 +57,12 @@ export const MakePay = () => {
         <div
           className={`make__subContainerLeft ${idPayment ? "ui__noTouch" : ""}`}
         >
-          <Matricula
-            activeClassName={activeDisabled(0, current)}
-            matricula={student.matricula}
-            payment={true}
-          />
+          <div className="make__subContainerLeft-matricula" >
+            <Matricula
+              activeClassName={activeDisabled(0, current)}
+              matricula={student.matricula}
+            />
+          </div>
           <StudentInformation
             activeClassName={activeDisabled(1, current)}
             loading={loading}

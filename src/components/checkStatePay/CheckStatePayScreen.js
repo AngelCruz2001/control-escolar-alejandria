@@ -110,7 +110,6 @@ export const CheckStatePayScreen = () => {
             headers={headers}
             sizesColumns={[49, 15, 15, 15, 5]}
             data={dataShow}
-            checkState={true}
           />
         </>
       )}

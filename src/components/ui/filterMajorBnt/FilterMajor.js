@@ -33,13 +33,13 @@ export const FilterMajor = ({checkState}) => {
   return (
     <>
       <button onClick={handleFilter} className="checkState__headers-filter btn">
-        <i classNameta="fas fa-filter"></i>
+        <i className="fas fa-filter"></i>
       </button>
       { checkState &&
         <p className="checkState__headers-fiterText">{titleActive}</p>
       }
 
-      {filter && <CheckFilteredData filterTitles={filterTitles} toggleTitleActive={toggleTitleActive}/>}
+      {filter && <CheckFilteredData titleActive={titleActive} filterTitles={filterTitles} toggleTitleActive={toggleTitleActive}/>}
     </>
   );
 };

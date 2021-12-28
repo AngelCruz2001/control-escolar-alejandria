@@ -30,6 +30,11 @@
     &subContainerLeft {
         width: 50%;
         justify-content: space-between;
+
+        &-matricula{
+            width: 60%;
+            margin: 1rem 0;
+        }
     }
 
     &subContainerRight {
