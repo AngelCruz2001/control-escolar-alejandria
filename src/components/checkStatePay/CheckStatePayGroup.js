@@ -63,7 +63,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
 
   const handleBackCleanData = () => {
     setIsAGrouptActive(false);
-    // dispatch(payClearStudents())
+    dispatch(payClearStudents())
   };
 
   const generateData = () => {

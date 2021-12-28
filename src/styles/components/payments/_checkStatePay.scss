@@ -100,7 +100,7 @@
 
                 &__cell {
                     &:nth-child(n) {
-                        background-color: transparent;
+                        background-color: transparent!important;
                     }
                     &:nth-child(-n +3){
                         font-weight: 500;
@@ -110,7 +110,7 @@
         }
     }
 
-    & .table__body__row__cell:nth-child(4) {
+    &  .table__body__row__cell:nth-child(4) {
         background-color: $red-table;
         margin-left: 0.5%;
     }
