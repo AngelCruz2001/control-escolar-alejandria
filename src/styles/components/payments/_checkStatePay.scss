@@ -56,7 +56,11 @@
             }
 
             &-item{
-                color: red;
+                list-style: none;
+
+               &.active{
+                   color: $mustard;
+               }
             }
         }
 
