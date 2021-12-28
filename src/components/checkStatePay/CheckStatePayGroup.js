@@ -2,8 +2,10 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   payClearStudents,
+  payStartGetFertilizerPay,
   payStartGetStudentsByGroup,
 } from "../../actions/pay";
+import { studentStartGetStudentByMatricula } from "../../actions/student";
 import { buildDataStateGroupByStudent } from "../../helpers/buildDataTables";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
@@ -42,7 +44,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     dispatch(payStartGetStudentsByGroup(dataGroup.id_group));
   }, []);
 
-  const { ui, pay } = useSelector((state) => state);
+  const { ui, pay, student} = useSelector((state) => state);
 
   const { students } = pay;
 
@@ -54,9 +56,10 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
 
-  const handleClickSetActiveGroupByStudent = (data) => {
-    setIsAStudenttActive(true);
-    setDataStudent(data);
+  const handleClickSetActiveGroupByStudent = ({matricula}) => {
+      dispatch(payStartGetFertilizerPay(matricula));
+      dispatch(studentStartGetStudentByMatricula(matricula));
+   
   };
 
   const handleBackCleanData = () => {
@@ -68,7 +71,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
     students.forEach(
-      ({ id_student, student_name,  money_exp, money, missing }) => {
+      ({ id_student, student_name,  money_exp, money, missing, matricula }) => {
         const coincidence = isACoincidenceSearch([
           id_student,
           student_name,
@@ -78,7 +81,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
         ],searchWord);
 
         const dataBuilded = buildDataStateGroupByStudent(
-          id_student,
+          matricula,
           student_name,
           money_exp,
           money,
@@ -125,6 +128,16 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
         sizesColumns={[49, 15, 15, 15, 5]}
         data={dataShow}
       />
+      {
+        student.matricula && (
+
+          <Table
+           headers={headers}
+           sizesColumns={[49, 15, 15, 15, 5]}
+           data={dataShow}
+         />
+        )
+      }
     </>
   );
 };

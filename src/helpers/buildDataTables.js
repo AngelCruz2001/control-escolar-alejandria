@@ -90,7 +90,7 @@ export const buildDataStateGroup = (
   ];
 };
 export const buildDataStateGroupByStudent = (
-  id_student,
+  matricula,
   student_name,
   money_exp,
   money,
@@ -103,15 +103,9 @@ export const buildDataStateGroupByStudent = (
     { element: <SpanTable text={money_exp} />, searched: coincidence[2] },
     { element: <SpanTable text={money} />, searched: coincidence[3] },
     { element: <SpanTable text={missing} />, searched: coincidence[4] },
-    {
-      element: (
-        <ButtonTable
-          type={6}
-          onClick={handleClick}
-        />
-      ),
-      searched: false,
-    },
+    { element: <ButtonTable type={6} onClick={()=> handleClick({
+      matricula
+    })} id={matricula} />, searched: false },
   ];
 };
 
