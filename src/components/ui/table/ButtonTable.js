@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink,Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 /**
  * @description ButtonTable component
  * @param {int} type - type of button
@@ -50,6 +50,16 @@ export const ButtonTable = ({
                     </Link>
                 )
 
+            case 6:
+                return (
+                    <Link
+                        className="btn btnTable btnBlue"
+                        to={`/detalles`}
+                    >
+                        <span onClick={() => onClick(id)} >Ver</span>  <i onClick={() => onClick(id)}  className="fas fa-sort-down"> </i>
+                    </Link>
+                );
+
             default:
                 return (
                     <></>
@@ -57,5 +67,5 @@ export const ButtonTable = ({
         }
     }
 
-  return buttonGenerator();
+    return buttonGenerator();
 };
