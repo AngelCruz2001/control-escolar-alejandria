@@ -1,17 +1,17 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 /**
-    * @description ButtonTable component
-    * @param {int} type - type of button
-    * @param {function} onClick - function to be called on click
-    * @param {string} title - title of button
-    * @returns {object} ButtonTable component
-    * 
-    * @type: 
-    * 0 : See. 
-    * 1 : Edit.
-    * 2 : Delete. 
-    * 
+ * @description ButtonTable component
+ * @param {int} type - type of button
+ * @param {function} onClick - function to be called on click
+ * @param {string} title - title of button
+ * @returns {object} ButtonTable component
+ *
+ * @type:
+ * 0 : See.
+ * 1 : Edit.
+ * 2 : Delete.
+ *
  */
 export const ButtonTable = ({
     type,
@@ -55,5 +55,6 @@ export const ButtonTable = ({
                 )
         }
     }
-    return (buttonGenerator())
-}
+
+  return buttonGenerator();
+};

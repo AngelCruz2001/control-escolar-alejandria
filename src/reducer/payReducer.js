@@ -88,6 +88,13 @@ export const payReducer = (state = initialState, action) => {
                 ...state,
                 students: action.payload
             }
+
+        case types.payClearStudents:
+            return{
+                ...state,
+                students: [],
+            }
+
         case types.payClearModalData:
             return {
                 ...state,
