@@ -27,7 +27,7 @@
         }
 
         &-filteredList {
-            background: hsl(210.35% 100% 89.33% / .4) ;
+            background: hsl(210.35% 100% 89.33% / 0.4);
             backdrop-filter: blur(1rem);
             z-index: 7;
             border: 1px solid $filterPaid-back;
@@ -100,22 +100,47 @@
 
                 &__cell {
                     &:nth-child(n) {
-                        background-color: transparent!important;
+                        background-color: transparent !important;
                     }
-                    &:nth-child(-n +3){
+                    &:nth-child(-n + 3) {
                         font-weight: 500;
                     }
+                }
+            }
+            & .skeleton {
+                &__row {
+                    cursor: progress;
+                    background: linear-gradient(0.25turn, transparent, #aad4ff, transparent) 0% 0% / 100% 100% no-repeat;
+                    background-position: -400px 0;
+                    background-size: 400px auto;
+                    animation: loading 2s infinite;
+                }
+                &__cell {
+                    opacity: 0.8;
                 }
             }
         }
     }
 
-    &  .table__body__row__cell:nth-child(4) {
+    & .table__body__row__cell:nth-child(4) {
         background-color: $red-table;
         margin-left: 0.5%;
     }
 
     &-info .table__body__row__cell {
         background-color: red;
+    }
+
+    & .skeleton {
+        &__row {
+            cursor: progress;
+            background: linear-gradient(0.25turn, transparent, #8f8f8f, transparent) 0% 0% / 100% 100% no-repeat;
+            background-position: -400px 0;
+            background-size: 400px auto;
+            animation: loading 2s infinite;
+        }
+        &__cell {
+            opacity: 0.8;
+        }
     }
 }

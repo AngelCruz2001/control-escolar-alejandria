@@ -110,7 +110,7 @@ export const buildDataFertilizerDetails = (
  
 ) => {
   return [
-    { element: <SpanTable text={date} />, searched: false },
+    { element: <SpanTable text={date} />, searched: coincidence[0] },
     { element: <SpanTable text={concept} />, searched: coincidence[1] },
     { element: <SpanTable text={payment_type} />, searched: false },
     { element: <SpanTable text=
