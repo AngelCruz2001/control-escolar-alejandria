@@ -52,7 +52,6 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
-  const [dataStudent, setDataStudent] = useState({});
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
 

@@ -48,7 +48,7 @@ export const MakePay = () => {
         <Date />
       </div>
       {id && (
-        <button className="btn btn__back fert__back-fert" onClick={handleArrow}>
+        <button className="btn btn__back fert__back-fert-pay" onClick={handleArrow}>
           <i className="fas fa-arrow-left"></i>
         </button>
       )}

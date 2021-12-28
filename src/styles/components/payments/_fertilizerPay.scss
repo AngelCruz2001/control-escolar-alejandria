@@ -18,6 +18,7 @@
             width: 92%;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1.7rem;
             &__matricula {
                 width: 30%;
             }
@@ -42,6 +43,11 @@
             right: 0;
             top: 12%;
         }
+        &-pay{
+            position: absolute;
+            right: 0;
+        }
+
     }
 
     &__down {
