@@ -128,16 +128,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
         sizesColumns={[49, 15, 15, 15, 5]}
         data={dataShow}
       />
-      {
-        student.matricula && (
-
-          <Table
-           headers={headers}
-           sizesColumns={[49, 15, 15, 15, 5]}
-           data={dataShow}
-         />
-        )
-      }
+    
     </>
   );
 };
