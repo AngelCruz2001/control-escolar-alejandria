@@ -8,15 +8,15 @@ import { buildDataFertilizerDetails } from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Searchbar } from "../ui/Searchbar";
 import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
-
+import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 
 const headers = [
-  { title: "FECHA", textAlign: "center" },
-  { title: "CONCEPTO", textAlign: "center" },
+  { title: "MES", textAlign: "left" },
+  { title: "CONCEPTO", textAlign: "left" },
+  { title: "ESTADO", textAlign: "center" },
   { title: "COSTO", textAlign: "center" },
-  { title: "ANTICIPO", textAlign: "center" },
-  { title: "RESTANTE", textAlign: "center" },
-  { title: "", textAlign: "center" },
+  { title: "PAGADO", textAlign: "center" },
+  { title: "DEBE", textAlign: "center" },
 ];
 
 export const CheckStateDetails = () => {
@@ -27,6 +27,10 @@ export const CheckStateDetails = () => {
   const { loading } = ui;
 
   const [dataToShow, setDataToShow] = useState([]);
+
+  const [valueSearchFilter, setValueSearchFilter] = useState({
+    searchWord: "",
+  });
 
   const [studentInformation, setStudentInformation] = useState({
     headers: [],
@@ -54,27 +58,39 @@ export const CheckStateDetails = () => {
 
   const generateData = () => {
     const dataShow = [];
+
+    const { searchWord } = valueSearchFilter;
+
     pay.fertilizers.forEach(
       ({
-        id_payment,
         payment_date,
-        name,
+        payment_type,
+        status_payment,
         expected,
         current,
         missing,
-        payment_type,
       }) => {
         const date = getDate(payment_date);
+
+        const coincidence = isACoincidenceSearch(
+          [payment_type, status_payment, expected, current, missing],
+          searchWord
+        );
+
         const builData = buildDataFertilizerDetails(
-          id_payment,
           date,
-          name,
+          payment_type,
+          status_payment,
           expected,
           current,
           missing,
-          payment_type
+          coincidence
         );
-        dataShow.push(builData);
+        if (searchWord === "") {
+          dataShow.push(builData);
+        } else if (coincidence.includes(true)) {
+          dataShow.push(builData);
+        }
       }
     );
     setDataToShow(dataShow);
@@ -83,14 +99,15 @@ export const CheckStateDetails = () => {
   useEffect(() => {
     student.matricula && generateData();
   }, [loading, pay, student]);
+
   return (
-    <div className="gra__container">
+    <div className="gra__container checkState__detail">
       <div className="checkState__headers">
         <Searchbar
-        checkState={true}
-          placeholder="Buscar alumno"
-        //   setValueSearchFilter={setValueSearchFilter}
-        //   valueSearchFilter={valueSearchFilter}
+          checkState={true}
+          placeholder="Buscar"
+          setValueSearchFilter={setValueSearchFilter}
+          valueSearchFilter={valueSearchFilter}
         />
         <FilterMajor />
         <button
@@ -100,17 +117,26 @@ export const CheckStateDetails = () => {
           <i className="fas fa-arrow-left"></i>
         </button>
       </div>
-      <StudentInformation
-        studentInformation={studentInformation}
-        isStudentShowed={false}
-        fertiScreen={true}
-      />
+      <div className="checkState__detail-student">
+        <StudentInformation
+          studentInformation={studentInformation}
+          isStudentShowed={false}
+          fertiScreen={true}
+        />
+      </div>
 
-      <Table
-        data={dataToShow}
-        headers={headers}
-        sizesColumns={[15, 35, 10, 10, 10, 20]}
-      />
+      <div className="checkState__detail-details">
+        <Table
+          data={dataToShow}
+          headers={headers}
+          sizesColumns={[20, 37, 12, 12, 10, 8]}
+        />
+      </div>
     </div>
   );
 };
+
+/*
+890   3% padding to Table //1% left
+
+*/

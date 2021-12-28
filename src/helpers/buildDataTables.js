@@ -61,39 +61,64 @@ export const buildDataGrades = (
   ];
 };
 
-export const buildDataFertilizer = (id, date, concept, cost, anticipo, restante, payment_type, handleClick) => {
-    return [
-        { element: <SpanTable text={date} />, searched: false },
-        { element: <SpanTable text={concept} />, searched: false },
-        { element: <SpanTable text={cost} />, searched: false },
-        { element: <SpanTable text={anticipo} />, searched: false },
-        { element: <SpanTable text={restante} />, searched: false },
-        { element: <ButtonTable type={5} id={id} onClick={()=> handleClick({
-            id_payment:id,
-            payment_type,
-            name:concept,
-            expected:cost,
-            current:anticipo,
-            missing:restante
-        })} />, searched: false },
-        
-    ];
-  }
+export const buildDataFertilizer = (
+  id,
+  date,
+  concept,
+  cost,
+  anticipo,
+  restante,
+  payment_type,
+  handleClick
+) => {
+  return [
+    { element: <SpanTable text={date} />, searched: false },
+    { element: <SpanTable text={concept} />, searched: false },
+    { element: <SpanTable text={cost} />, searched: false },
+    { element: <SpanTable text={anticipo} />, searched: false },
+    { element: <SpanTable text={restante} />, searched: false },
+    {
+      element: (
+        <ButtonTable
+          type={5}
+          id={id}
+          onClick={() =>
+            handleClick({
+              id_payment: id,
+              payment_type,
+              name: concept,
+              expected: cost,
+              current: anticipo,
+              missing: restante,
+            })
+          }
+        />
+      ),
+      searched: false,
+    },
+  ];
+};
 
-  export const buildDataFertilizerDetails = (id, date, concept, cost, anticipo, restante, payment_type, handleClick) => {
-    return [
-        { element: <SpanTable text={date} />, searched: false },
-        { element: <SpanTable text={concept} />, searched: false },
-        { element: <SpanTable text={cost} />, searched: false },
-        { element: <SpanTable text={anticipo} />, searched: false },
-        { element: <SpanTable text={restante} />, searched: false },
-      
-        
-    ];
-  }
-
-
-
+export const buildDataFertilizerDetails = (
+  date,
+  concept,
+  payment_type,
+  cost,
+  anticipo,
+  restante,
+  coincidence
+ 
+) => {
+  return [
+    { element: <SpanTable text={date} />, searched: false },
+    { element: <SpanTable text={concept} />, searched: coincidence[1] },
+    { element: <SpanTable text={payment_type} />, searched: false },
+    { element: <SpanTable text=
+      {cost} />, searched: false },
+    { element: <SpanTable text={anticipo} />, searched: false },
+    { element: <SpanTable text={restante} />, searched: false },
+  ];
+};
 
 export const buildDataStateGroup = (
   id_group,
@@ -113,9 +138,7 @@ export const buildDataStateGroup = (
       element: (
         <ButtonTable
           type={0}
-          onClick={() =>
-            handleClick({ id_group, name_group,})
-          }
+          onClick={() => handleClick({ id_group, name_group })}
           id={id_group}
         />
       ),
@@ -137,10 +160,21 @@ export const buildDataStateGroupByStudent = (
     { element: <SpanTable text={money_exp} />, searched: coincidence[2] },
     { element: <SpanTable text={money} />, searched: coincidence[3] },
     { element: <SpanTable text={missing} />, searched: coincidence[4] },
-    { element: <ButtonTable type={6} id = {matricula} onClick={()=> handleClick({
-      matricula
-    })} id={matricula} />, searched: false },
-
+    {
+      element: (
+        <ButtonTable
+          type={6}
+          id={matricula}
+          onClick={() =>
+            handleClick({
+              matricula,
+            })
+          }
+          id={matricula}
+        />
+      ),
+      searched: false,
+    },
   ];
 };
 
@@ -199,4 +233,3 @@ export const buildDataGradesDetail = (
     { element: <SpanTable text={credits} />, searched: coincidence[2] },
   ];
 };
-

@@ -1,10 +1,8 @@
-
-.checkState__{
-    &headers{
+.checkState__ {
+    &headers {
         display: flex;
         align-items: center;
         align-items: center;
-        // position: relative;
 
         &-filter {
             background-color: $blue-icon !important;
@@ -17,54 +15,53 @@
             justify-content: center;
             margin-left: 3.5rem;
             margin-bottom: 1.5rem;
-            padding: .6rem ;
-    
-    
+            padding: 0.6rem;
+
             &:hover {
                 background-color: darken($color: $blue-icon, $amount: 7) !important;
-                
             }
-    
+
             & i {
                 font-size: 0.9rem;
             }
         }
 
         &-filteredList {
-            background: hsl(210.35% 100% 89.33% / 0.4) ;
-            backdrop-filter: blur(3rem);
+            background: hsl(210.35% 100% 89.33% / .4) ;
+            backdrop-filter: blur(1rem);
             z-index: 7;
             border: 1px solid $filterPaid-back;
             opacity: 1;
             border-radius: 10px;
             padding: 1.2rem 2rem;
             position: absolute;
-            right: 7%;
+            right: 8%;
             top: 7%;
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
+            width: 19%;
 
             &:after {
                 content: "";
                 position: absolute;
                 border: 12px solid transparent;
-                border-right: 12px solid rgb(230,240,251);
+                border-right: 12px solid rgb(230, 240, 251);
                 left: -12px;
                 top: 0;
                 transform: rotate(136deg);
             }
 
-            &-item{
+            &-item {
                 list-style: none;
 
-               &.active{
-                   color: $mustard;
-               }
+                &.active {
+                    color: $mustard;
+                }
             }
         }
 
-        &-fiterText{
+        &-fiterText {
             margin-left: 2%;
             margin-bottom: 1.5rem;
         }
@@ -75,6 +72,50 @@
         }
     }
 
-   
-}
+    &detail {
+        &-student {
+            height: 41%;
+            & .stuInfo__container__containerTwo {
+                align-items: flex-start;
+                padding: 0.8% 0;
+                &__row {
+                    width: 40%;
+                }
+            }
+        }
+        &-details {
+            height: 100%;
+            padding: 1.5%;
+            background-color: $blue-sky3;
+            border-radius: 10px;
+            margin-top: 0.5%;
 
+            & .table__headers__cell {
+                font-weight: bold;
+            }
+
+            & .table__body__row {
+                box-shadow: none;
+                border-radius: 0;
+
+                &__cell {
+                    &:nth-child(n) {
+                        background-color: transparent;
+                    }
+                    &:nth-child(-n +3){
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    & .table__body__row__cell:nth-child(4) {
+        background-color: $red-table;
+        margin-left: 0.5%;
+    }
+
+    &-info .table__body__row__cell {
+        background-color: red;
+    }
+}

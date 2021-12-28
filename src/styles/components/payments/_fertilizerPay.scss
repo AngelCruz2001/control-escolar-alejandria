@@ -53,5 +53,16 @@
     &__down {
         width: 100%;
         height: 65%;
+
+        & .table__body__row__cell{
+            &:nth-child(-n + 2) {
+                font-weight: 600;
+            }
+            & a:nth-last-child(1){
+                color: $blue-solid;
+                font-weight: 600;
+                gap: .7rem;
+            }
+        }
     }
 }

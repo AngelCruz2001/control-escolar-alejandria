@@ -80,7 +80,7 @@ export const FertilizerPay = () => {
         payment_type,
       }) => {
         const date = getDate(payment_date);
-        const builData = buildDataFertilizerDetails(
+        const builData = buildDataFertilizer(
           id_payment,
           date,
           name,

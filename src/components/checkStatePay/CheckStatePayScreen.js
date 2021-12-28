@@ -88,7 +88,7 @@ export const CheckStatePayScreen = () => {
   }, [loading, valueSearchFilter]);
 
   return (
-    <div className="gra__container">
+    <div className="gra__container checkState__">
       {isAGrouptActive ? (
         <CheckStatePayGroup
           dataGroup={dataGroup}
