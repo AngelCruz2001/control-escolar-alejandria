@@ -1,13 +1,26 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { uiSetModalOpen } from '../../actions/ui'
+import { useDispatch, useSelector } from 'react-redux'
+import { expensesSetActiveExpense, expensesStartDeleteExpense } from '../../actions/expenses'
+import { uiSetModalOpen, uiSetShowHistory } from '../../actions/ui'
+import { numberToText } from '../../helpers/numberToText'
 import { InformationModal } from '../expenseRecord/InformationModal'
 import { ButtonTable } from './table/ButtonTable'
 
 export const Modal = () => {
     const dispatch = useDispatch();
+    const { activeExpense } = useSelector(state => state.expenses)
+    const { id_expense, date, amount, observation, expenses_type } = activeExpense;
     const handleCloseModal = () => {
         dispatch(uiSetModalOpen(false));
+    }
+    const handleClickDelete = (id) => {
+        dispatch(expensesStartDeleteExpense(id))
+        dispatch(uiSetModalOpen(false));
+    }
+    const handleClickEdit = (id) => {
+        dispatch(uiSetModalOpen(false));
+        dispatch(expensesSetActiveExpense(id))
+        dispatch(uiSetShowHistory(false))
     }
 
     return (
@@ -19,14 +32,14 @@ export const Modal = () => {
                     </button>
                 </div>
                 <div className="general__overtexture__modalEdit__content__body">
-                    <InformationModal title="Fecha" text="08 de julio de 2021" />
-                    <InformationModal title="Tipo de gasto" text="Pago de transporte" />
-                    <InformationModal title="Cantidad" text="$75.50 (Setenta y cinto pesos y cincuenta centavos)" />
-                    <InformationModal title="Descripción" text="Se pagó a Lupita Contreras transporte para llegar al Instituto. Taxi : $75.50" />
+                    <InformationModal title="Fecha" text={date} />
+                    <InformationModal title="Tipo de gasto" text={expenses_type} />
+                    <InformationModal title="Cantidad" text={`$${amount}.00 (${amount === '1' ? 'un peso' : `${numberToText(amount)} pesos`})`} />
+                    <InformationModal title="Descripción" text={observation} />
                 </div>
                 <div className="general__overtexture__modalEdit__content__footer">
-                    <ButtonTable type={1} title="Editar" />
-                    <ButtonTable type={2} title="Borrar" />
+                    <ButtonTable type={1} title="Editar" onClick={() => handleClickEdit(id_expense)} />
+                    <ButtonTable type={2} title="Borrar" onClick={() => handleClickDelete(id_expense)} />
                 </div>
 
 

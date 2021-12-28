@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { uiSetModalOpen } from '../../actions/ui';
+import { expensesSetActiveExpense, expensesStartDeleteExpense, expensesStartGetExpenses } from '../../actions/expenses';
+import { uiSetModalOpen, uiSetShowHistory } from '../../actions/ui';
 import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
 
@@ -9,6 +10,7 @@ export const HistoryExpenses = ({
     expenses = [],
 }) => {
     const dispatch = useDispatch()
+    const [dataShow, setDataShow] = useState([]);
     const headers = [{
         title: "    Tipo de gasto",
         textAlign: 'left'
@@ -29,30 +31,48 @@ export const HistoryExpenses = ({
         title: "",
         textAlign: 'center'
     }];
+
+    useEffect(() => {
+        dispatch(expensesStartGetExpenses());
+    }, [])
     const handleClickSee = (id) => {
         dispatch(uiSetModalOpen(true))
-    }
-    const handleClickEdit = () => {
+        dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
 
     }
-    const handleClickDelete = () => {
 
+    const handleCloseShowHistory = () => {
+        dispatch(uiSetShowHistory(false))
     }
-    const dataTable = expenses.map(({ id_expense, expenses_type, date }, index) => (
-        buildDataExpenses(id_expense, expenses_type, date, handleClickSee, handleClickEdit, handleClickDelete)
-    ));
+    const handleClickEdit = (id) => {
+        dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
+        console.log(expenses.filter(expense => expense.id_expense === id)[0])
+        handleCloseShowHistory();
+    }
+    const handleClickDelete = (id) => {
+        dispatch(expensesStartDeleteExpense(id))
+    }
+    const generateData = () => {
+        const data = []
+        expenses.map(({ id_expense, expenses_type, date }, index) => (data.push(buildDataExpenses(id_expense, expenses_type, date, handleClickSee, handleClickEdit, handleClickDelete))));
+        return data;
+    }
+    useEffect(() => {
+        setDataShow(generateData())
+    }, [expenses])
+
     return (
         <>
             <div className="history__container">
                 <div className="history__container__header">
-                    <button className="btn btn__back" onClick={() => setShowHistory(false)}>
+                    <button className="btn btn__back" onClick={handleCloseShowHistory}>
                         <i className="fas fa-arrow-left"></i>
                     </button>
                     <h4>Historial de registro de gastos</h4>
                 </div>
                 <Table
                     headers={headers}
-                    data={dataTable}
+                    data={dataShow}
                     sizesColumns={[35, 35, 10, 10, 10]}
                 />
             </div>

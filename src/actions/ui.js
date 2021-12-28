@@ -26,3 +26,7 @@ export const uiSetModalOpen = (isModalOpen) => ({
     type: types.uiIsModalOpen,
     payload: isModalOpen
 })
+export const uiSetShowHistory = (isShowHistoryOpen) => ({
+    type: types.uiIsShowHistoryOpen,
+    payload: isShowHistoryOpen
+})

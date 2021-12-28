@@ -53,9 +53,9 @@ export const buildDataExpenses = (
     return [
         { element: <SpanTable text={expenses_type} />, searched: false },
         { element: <SpanTable text={date} />, searched: false },
-        { element: <ButtonTable onClick={handleClickSee} type={0} title="Ver" id={id} />, searched: false },
-        { element: <ButtonTable onClick={handleClickEdit} type={1} title="Editar" id={id} />, searched: false },
-        { element: <ButtonTable onClick={handleClickDelete} type={2} title="Borrar" id={id} />, searched: false },
+        { element: <ButtonTable onClick={() => handleClickSee(id)} type={0} title="Ver" id={id} />, searched: false },
+        { element: <ButtonTable onClick={() => handleClickEdit(id)} type={1} title="Editar" id={id} />, searched: false },
+        { element: <ButtonTable onClick={() => handleClickDelete(id)} type={2} title="Borrar" id={id} />, searched: false },
 
     ];
 }

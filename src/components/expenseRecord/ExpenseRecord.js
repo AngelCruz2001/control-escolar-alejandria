@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { expenseSetTypeExpense, expensesSetDataInputs, expensesStartGetExpenses, expenseStartCreateRequest } from '../../actions/expenses'
+import { expenseSetTypeExpense, expensesStartGetExpenses, expenseStartCreateRequest, expenseStartUpdateexpense } from '../../actions/expenses'
+import { uiSetShowHistory } from '../../actions/ui'
 import { typesExpenses } from '../../types/types'
 import { Date } from '../ui/Date'
 import { Quantity } from '../ui/Quantity'
@@ -8,39 +9,46 @@ import { RadioButtonList } from '../ui/RadioButtonList'
 import { HistoryExpenses } from './HistoryExpenses'
 
 export const ExpenseRecord = () => {
-    const { idExpenseType, expenses, dataInputs } = useSelector(state => state.expenses);
-    const [showHistory, setShowHistory] = useState(false);
+    const { idExpenseType, expenses, dataInputs, activeExpense } = useSelector(state => state.expenses);
+    const { isShowHistoryOpen } = useSelector(state => state.ui)
     const dispatch = useDispatch();
     const [dataForm, setDataForm] = useState(dataInputs);
+    // const isAnActiveExpense = activeExpense !== {};
 
+    useEffect(() => {
+        setDataForm(dataInputs);
+    }, [dataInputs])
     const onChangeValueDocument = ({ target }) => {
         dispatch(expenseSetTypeExpense(parseInt(target.id)));
     }
 
     const handleQuantityChange = (amount) => {
-        dispatch(expensesSetDataInputs({ ...dataForm, amount }));
+        setDataForm({ ...dataForm, amount: amount });
+
     }
 
     const handleInputChangeTextArea = ({ target }) => {
         setDataForm({ ...dataForm, observation: target.value });
-        dispatch(expensesSetDataInputs({ ...dataForm, observation: target.value }));
+        // dispatch(expensesSetDataInputs({ ...dataForm, observation: target.value }));
     }
 
     const handleSubmitSave = () => {
-        dispatch(expenseStartCreateRequest());
+        activeExpense.id_expense ? dispatch(expenseStartUpdateexpense(activeExpense.id_expense, dataForm)) : dispatch(expenseStartCreateRequest(dataForm));
+        setDataForm(dataInputs);
     }
-    const getExpenses = (filter) => {
-        dispatch(expensesStartGetExpenses(filter))
+
+    const handleOpenShowHistory = () => {
+        dispatch(uiSetShowHistory(true))
     }
+
     useEffect(() => {
-        getExpenses();
+        dispatch(expensesStartGetExpenses());
     }, [])
     return (
         <div className="exp__container">
             {
-                showHistory ?
+                isShowHistoryOpen ?
                     <HistoryExpenses
-                        setShowHistory={setShowHistory}
                         expenses={expenses}
                     />
                     :
@@ -59,14 +67,13 @@ export const ExpenseRecord = () => {
                             <div className="exp__body__quantity">
                                 <Quantity
                                     handleQuantityChange={handleQuantityChange}
-                                    startQuantity={dataForm.amountToPay}
+                                    startQuantity={dataForm.amount}
                                 />
                                 <p className="general__titleSection description">Descripción</p>
                                 <textarea
                                     className="styledInput"
                                     name="description"
-
-                                    value={dataForm.description}
+                                    value={dataForm.observation}
                                     placeholder="Escriba una breve descripción. Ej:&#10;Pago de transporte a la secretaria María Valenzuela."
                                     onChange={handleInputChangeTextArea}
                                     rows={5}
@@ -76,7 +83,7 @@ export const ExpenseRecord = () => {
                             </div>
                         </div>
                         <div className="exp__footer">
-                            <button className="btn req__footer__checkHistory active" onClick={() => setShowHistory(true)}><i className="fas fa-history"></i><span>Ver Historial</span></button>
+                            <button className="btn req__footer__checkHistory active" onClick={handleOpenShowHistory}><i className="fas fa-history"></i><span>Ver Historial</span></button>
                             <button className="btn btn-primary active" onClick={handleSubmitSave}>Guardar</button>
                         </div>
                     </>
