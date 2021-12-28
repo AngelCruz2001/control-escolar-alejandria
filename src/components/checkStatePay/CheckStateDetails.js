@@ -75,7 +75,7 @@ export const CheckStateDetails = () => {
         const date = getDate(payment_date);
 
         const coincidence = isACoincidenceSearch(
-          [payment_type, status_payment, expected, current, missing],
+          [date,payment_type, status_payment, expected, current, missing],
           searchWord
         );
 
@@ -99,8 +99,9 @@ export const CheckStateDetails = () => {
   };
 
   useEffect(() => {
-    student.matricula && generateData();
-  }, [loading, pay, student]);
+    // student.matricula && generateData();
+    if (student.length !== 0) generateData();
+  }, [loading, valueSearchFilter]);
 
   return (
     <div className="gra__container checkState__detail">

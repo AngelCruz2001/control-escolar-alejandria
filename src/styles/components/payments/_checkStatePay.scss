@@ -99,11 +99,15 @@
                 border-radius: 0;
 
                 &__cell {
-                    &:nth-child(n) {
-                        background-color: transparent !important;
+                    &:nth-child(even) {
+                        background-color: transparent!important;
                     }
                     &:nth-child(-n + 3) {
                         font-weight: 500;
+                    }
+
+                    &.searched{
+                        background-color: $searched-table!important;
                     }
                 }
             }
@@ -122,13 +126,13 @@
         }
     }
 
-    & .table__body__row__cell:nth-child(4) {
-        background-color: $red-table;
-        margin-left: 0.5%;
-    }
+    & .table__body__row__cell {
 
-    &-info .table__body__row__cell {
-        background-color: red;
+
+        &:nth-child(4) {
+            background-color: $red-table;
+            margin-left: 0.5%;
+        }
     }
 
     & .skeleton {

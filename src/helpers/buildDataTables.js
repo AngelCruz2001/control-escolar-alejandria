@@ -101,8 +101,8 @@ export const buildDataFertilizer = (
 
 export const buildDataFertilizerDetails = (
   date,
-  concept,
   payment_type,
+  status_payment,
   cost,
   anticipo,
   restante,
@@ -111,12 +111,12 @@ export const buildDataFertilizerDetails = (
 ) => {
   return [
     { element: <SpanTable text={date} />, searched: coincidence[0] },
-    { element: <SpanTable text={concept} />, searched: coincidence[1] },
-    { element: <SpanTable text={payment_type} />, searched: false },
+    { element: <SpanTable text={payment_type} />, searched: coincidence[1] },
+    { element: <SpanTable text={status_payment} />, searched: coincidence[2] },
     { element: <SpanTable text=
-      {cost} />, searched: false },
-    { element: <SpanTable text={anticipo} />, searched: false },
-    { element: <SpanTable text={restante} />, searched: false },
+      {cost} />, searched: coincidence[3] },
+    { element: <SpanTable text={anticipo} />, searched: coincidence[4] },
+    { element: <SpanTable text={restante} />, searched: coincidence[5] },
   ];
 };
 
