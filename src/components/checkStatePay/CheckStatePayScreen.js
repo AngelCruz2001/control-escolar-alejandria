@@ -46,7 +46,6 @@ export const CheckStatePayScreen = () => {
     searchWord: "",
   });
   
-  // (pay.students) && setIsAGrouptActive(true);
   const [dataGroup, setDataGroup] = useState({});
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
@@ -88,6 +87,12 @@ export const CheckStatePayScreen = () => {
   useEffect(() => {
     generateData();
   }, [loading, valueSearchFilter]);
+
+  useEffect(() => {
+    
+    (pay.students.length>=1) && setIsAGrouptActive(true);
+    
+  }, [pay])
 
   return (
     <div className="gra__container checkState__">

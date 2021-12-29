@@ -163,7 +163,7 @@ export const buildDataStateGroupByStudent = (
     {
       element: (
         <ButtonTable
-          type={6}
+          type={0}
           id={matricula}
           onClick={() =>
             handleClick({
