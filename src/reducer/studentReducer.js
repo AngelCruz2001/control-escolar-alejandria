@@ -5,7 +5,7 @@ const initialValue = {
     matricula: '',
     student_fullname: '',
     name_group: '',
-    id_group: 5,
+    id_group: null,
     campus_name: '',
     major_name: '',
     ins_date: '',
@@ -20,10 +20,7 @@ export const studentReducer = (state = initialValue, action) => {
                 ...action.payload
             }
         case types.studentClearData:
-            return {
-                ...state,
-                ...initialValue
-            }
+            return initialValue
 
         default:
             return state;

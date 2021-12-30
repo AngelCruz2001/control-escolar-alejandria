@@ -45,8 +45,7 @@ export const Table = ({
                                 </div>
                             </>
                             :
-                            // <SkeletonTable headers={headers} sizesColumns={sizesColumns} isEmpty={true} />
-                            <p>Nada</p>
+                            <SkeletonTable headers={headers} sizesColumns={sizesColumns} isEmpty={true} />
                     }
 
                 </>

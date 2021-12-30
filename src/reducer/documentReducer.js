@@ -1,7 +1,8 @@
 import { types } from '../types/types';
 
 const initialState = {
-    idDocument: null
+    idDocument: null,
+    documentsAvailable: [],
 }
 
 export const documentReducer = (state = initialState, action) => {
@@ -11,12 +12,13 @@ export const documentReducer = (state = initialState, action) => {
                 ...state,
                 idDocument: action.payload,
             }
-
-        case types.documentClearData:
+        case types.documentSetDocumentsAvailable:
             return {
-                ...initialState
+                ...state,
+                documentsAvailable: action.payload,
             }
-
+        case types.documentClearData:
+            return initialState;
         default:
             return state;
     }

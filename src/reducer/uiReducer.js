@@ -2,6 +2,7 @@ import { types } from '../types/types';
 
 const initialState = {
     loading: false,
+    loadingDocument: false,
     msgError: null,
     correct: null,
     current: 0,
@@ -69,6 +70,17 @@ export const uiReducer = (state = initialState, action) => {
                 isShowHistoryOpen: action.payload,
             }
 
+        case types.uiStartLoadingDocument:
+            return {
+                ...state,
+                loadingDocument: true,
+            }
+
+        case types.uiFinishLoadingDocument:
+            return {
+                ...state,
+                loadingDocument: false,
+            }
         default:
             return state;
     }

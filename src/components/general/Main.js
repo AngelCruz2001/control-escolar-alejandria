@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
 import { FertilizerPay } from '../fertilizerPay/FertilizerPay.js'
+import { Documents } from '../generateDocument/Documents'
 import { MakePay } from '../makePayment/MakePay'
 import { RequestDocument } from '../requestDocument/RequestDocument'
 import { RequestGrades } from '../requestGrades/RequestGrades'
@@ -19,6 +20,9 @@ const itemsMenu = [
     { name: "Realizar pago", icon: "fas fa-money-bill", css: {} },
     { name: "Abonos", icon: "fas fa-coins", css: {} },
     { name: "Consultar estado de pago", icon: "fas fa-money-check-alt", css: {} },
+
+
+    { name: "Generar documento", icon: "fas fa-file", css: { transform: "rotate(90deg) scaleX(-1)" } },
 
 ]
 export const Main = () => {
@@ -56,6 +60,7 @@ export const Main = () => {
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
                             <Route path="/realizar_pago" component={MakePay} />
                             <Route path="/abonos" component={FertilizerPay} />
+                            <Route path="/generar_documento" component={Documents} />
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>
                         {isModalOpen && <Modal />}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { documentSetDocument } from '../../actions/document'
 import { requestStartRequestDocument } from '../../actions/requests'
@@ -13,9 +13,14 @@ import { HistoryReqDocument } from './HistoryReqDocument'
 
 export const RequestDocument = () => {
     const dispatch = useDispatch()
-
+    const [studentInfo, setStudentInfo] = useState({ headers: [], data: [] })
     const { ui, student, document, requests } = useSelector(state => state)
-
+    useEffect(() => {
+        setStudentInfo({
+            headers: ["Alumno", "Grupo", "Campus", "Carrera"],
+            data: [student.student_name, student.name_group, student.campus_name, student.major_name]
+        })
+    }, [student])
     const [showHistory, setShowHistory] = useState(false)
 
     const { current, loading } = ui;
@@ -46,15 +51,17 @@ export const RequestDocument = () => {
                     </div>
                     <div className="req__body">
                         <div className="req__body__student">
-                            <Matricula
-                                activeClassName={activeDisabled(0, current)}
-                                matricula={student.matricula}
-                            />
+                            <div className='req__body__student__matricula'>
+                                <Matricula
+                                    activeClassName={activeDisabled(0, current)}
+                                    matricula={student.matricula}
+                                />
+                            </div>
 
                             <StudentInformation
                                 activeClassName={activeDisabled(1, current)}
                                 loading={loading}
-                                student={student}
+                                studentInformation={studentInfo}
                             />
 
                         </div>
@@ -65,7 +72,7 @@ export const RequestDocument = () => {
                             items={typesDocuments}
                             text="Documento a solicitar"
                         />
-                        
+
                     </div>
                     <div className="req__footer">
                         <button className="btn req__footer__checkHistory" onClick={() => setShowHistory(true)}><i className="fas fa-history"></i><span>Ver Historial</span></button>

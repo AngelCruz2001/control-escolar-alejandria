@@ -24,10 +24,7 @@
                 width: 20%;
                 font-size: calc(0.5rem + 0.5vw);
             }
-
         }
-
-       
     }
 
     &header {
@@ -53,15 +50,13 @@
         justify-content: space-between;
         width: 100%;
         height: 15%;
-        align-items: flex-end;
+        align-items: center;
         &__checkHistory {
             background-color: transparent;
             color: $blue-btn-text;
             border: none;
-            display: flex;
-            justify-content: space-between;
             font-size: calc(0.8rem + 0.3vw);
-            align-items: center;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             span {
                 margin-left: 0.5rem;
             }

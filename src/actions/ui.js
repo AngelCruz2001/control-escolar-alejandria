@@ -6,6 +6,12 @@ export const uiStartLoading = () => ({
 export const uiFinishLoading = () => ({
     type: types.uiFinishLoading,
 })
+export const uiStartLoadingDocument = () => ({
+    type: types.uiStartLoadingDocument,
+});
+export const uiFinishLoadingDocument = () => ({
+    type: types.uiFinishLoadingDocument,
+})
 export const uiSetCorrect = () => ({
     type: types.uiSetCorrect,
 })
@@ -30,3 +36,5 @@ export const uiSetShowHistory = (isShowHistoryOpen) => ({
     type: types.uiIsShowHistoryOpen,
     payload: isShowHistoryOpen
 })
+
+

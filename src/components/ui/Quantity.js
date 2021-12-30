@@ -6,7 +6,7 @@ export const Quantity = ({ handleQuantityChange, startQuantity }) => {
     useLayoutEffect(() => {
         handleQuantityChange(amountToPay)
     }, [amountToPay])
-    console.log(startQuantity)
+    // console.log(startQuantity)
 
     return (
         <div className="quan__container ">

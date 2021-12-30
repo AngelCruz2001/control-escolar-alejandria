@@ -68,9 +68,16 @@
     }
 
     .empty {
-        .table__body__row {
-            div:nth-child(even) {
-                background-color: #f4fafe;
+        &__headers {
+            opacity: .5;
+        }
+        &__body {
+            opacity: .6;
+
+            .table__body__row {
+                div:nth-child(even) {
+                    background-color: #f4fafe;
+                }
             }
         }
     }

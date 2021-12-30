@@ -16,7 +16,8 @@ export const authStartLogin = (id, password) => {
             if (body.ok) {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
-                dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
+                console.log(body)
+                dispatch(authLogin(body.roles, body.user_type, body.id_user, body.email))
             } else {
                 Swal.fire({
                     title: '¡Oops!',
@@ -36,6 +37,7 @@ export const authStartLogin = (id, password) => {
 export const authStartChecking = () => {
     return async (dispatch) => {
         if (localStorage.getItem('token')) {
+            console.log(localStorage.getItem('token'))
             dispatch(authCheckingStart())
             const res = await fetchConToken('auth/renew')
             const body = await res.json()
@@ -48,9 +50,10 @@ export const authStartChecking = () => {
                 dispatch(authCheckingFinish())
                 Swal.fire({
                     title: '¡Oops!',
-                    text: body.msg,
+                    text: "Parece que tu sesión ha expirado",
                     icon: 'question',
                 })
+                dispatch(authLogout())
             }
         }
     }
@@ -66,9 +69,9 @@ export const authStartLogout = () => {
 }
 
 
-const authLogin = (id_role, userType, id_user, email) => ({
+const authLogin = (roles, userType, id_user, email) => ({
     type: types.authLogin,
-    payload: { id_role, userType, id_user, email }
+    payload: { roles, userType, id_user, email }
 })
 
 

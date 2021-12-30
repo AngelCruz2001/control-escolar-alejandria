@@ -18,6 +18,8 @@ export const types = {
     uiStartLoadingCards: '[UI] Start loading cards',
     uiFinishLoadingCards: '[UI] Finish loading cards',
     uiIsShowHistoryOpen: '[UI] Change show history open',
+    uiStartLoadingDocument: '[UI] Start loading document',
+    uiFinishLoadingDocument: '[UI] Finish loading document',
 
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',
@@ -32,6 +34,7 @@ export const types = {
     documentClearActive: '[document] Clear Active',
     documentClearData: '[document] Clear document data',
     documentSetHistory: '[document] Set History',
+    documentSetDocumentsAvailable: '[UI] Set documents available',
 
     expenseSetTypeExpenses: '[expense] Set type expenses',
     expensesSetExpenses: '[expense] Set expenses',

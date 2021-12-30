@@ -1,4 +1,4 @@
-import { types } from "../types/types";
+import { types, typesExpenses } from "../types/types";
 
 const initialState = {
     idExpenseType: null,
@@ -35,6 +35,7 @@ export const expensesReducer = (state = initialState, action) => {
             return initialState;
 
         case types.expensesSetActive:
+            console.log(action.payload.expenses_type)
             return {
                 ...state,
                 activeExpense: action.payload,
@@ -42,7 +43,7 @@ export const expensesReducer = (state = initialState, action) => {
                     observation: action.payload.observation,
                     amount: action.payload.amount,
                 },
-                idExpenseType: action.payload.id_expense,
+                idExpenseType: typesExpenses.indexOf(action.payload.expenses_type),
             };
 
         case types.expensesDeleteExpense:

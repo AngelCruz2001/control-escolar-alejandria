@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { numberToText } from '../helpers/numberToText';
 /*
     Notas: escoger el nombre
@@ -11,9 +11,6 @@ import { numberToText } from '../helpers/numberToText';
 export const useInputAmount = (startQuantity) => {
     const [amountToPay, setAmountToPay] = useState(startQuantity)
     const [showInput, setShowInput] = useState('$0.00')
-    useEffect(() => { 
-        setAmountToPay(startQuantity)
-    }, [startQuantity])
     const handleInputChange = (e) => {
         if (parseInt(e.key) >= 0) {
             let newNumber = String(amountToPay).concat(e.key);

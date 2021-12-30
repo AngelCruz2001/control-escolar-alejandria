@@ -10,7 +10,6 @@ export const StudentInformation = ({
 }) => {
     const dispatch = useDispatch()
     const { headers, data } = studentInformation;
-    console.log(studentInformation)
     useEffect(() => {
         if (!loading && activeClassName === 'activeGuide') {
             dispatch(uiSetCurrent(2));
@@ -20,7 +19,7 @@ export const StudentInformation = ({
         <div className={`stuInfo son ${activeClassName}`}>
             {isStudentShowed && <p className="general__titleSection">Información del alumno</p>}
 
-            <div  className="stuInfo__container son">
+            <div className="stuInfo__container son">
 
                 {loading ?
                     <p>Cargando</p>
