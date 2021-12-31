@@ -58,8 +58,8 @@ export const Main = () => {
                             <Route path="/registro_de_gastos" component={ExpenseRecord} />
                             <Route path="/realizar_pago/:id?" component={MakePay} />
                             <Route path="/abonos" component={FertilizerPay} />
-                            <Route exact path="/consultar_estado_de_pago" component={CheckStatePayScreen} />
-                            <Route  path="/consultar_estado_de_pago/detalles" component={CheckStateDetails} />
+                            <Route path="/consultar_estado_de_pago" component={CheckStatePayScreen} />
+                           
                             {/* <Route path="/consultar_estado_de_pago/grupo" component={CheckStatePayScreen} /> */}
                             {/* <Redirect to="/solicitud_de_documento" /> */}
                         </Switch>

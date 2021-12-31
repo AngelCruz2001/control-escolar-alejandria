@@ -20,7 +20,7 @@ const headers = [
   { title: "DEBE", textAlign: "center" },
 ];
 
-export const CheckStateDetails = () => {
+export const CheckStateDetails = ({setIsAStudenttActive}) => {
   const dispatch = useDispatch();
 
   const { student, ui, pay } = useSelector((state) => state);
@@ -54,8 +54,7 @@ export const CheckStateDetails = () => {
 
   const handleArrow = () => {
     dispatch(studentClearData());
-    setDataToShow([]);
-    history.goBack();
+    setIsAStudenttActive(false)
   };
 
   const generateData = () => {

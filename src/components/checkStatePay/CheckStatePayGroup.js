@@ -11,6 +11,7 @@ import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
 import { Searchbar } from "../ui/Searchbar";
 import { Table } from "../ui/Table";
+import { CheckStateDetails } from "./CheckStateDetails";
 
 export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
   const { name_group } = dataGroup;
@@ -26,14 +27,14 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     },
     {
       title: "Total",
-      titleDown: 'pagado',
-      icon: 'fas fa-sort-amount-down-alt',
+      titleDown: "pagado",
+      icon: "fas fa-sort-amount-down-alt",
       textAlign: "center",
     },
     {
       title: "Total",
-      titleDown: 'adeudo',
-      icon: 'fas fa-sort-amount-down-alt',
+      titleDown: "adeudo",
+      icon: "fas fa-sort-amount-down-alt",
       textAlign: "center",
     },
     {
@@ -48,7 +49,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     dispatch(payStartGetStudentsByGroup(dataGroup.id_group));
   }, []);
 
-  const { ui, pay} = useSelector((state) => state);
+  const { ui, pay } = useSelector((state) => state);
 
   const { students } = pay;
 
@@ -60,29 +61,26 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
 
   const { loading } = ui;
 
-  const handleClickSetActiveGroupByStudent = ({matricula}) => {
-      dispatch(payStartGetFertilizerPay(matricula));
-      dispatch(studentStartGetStudentByMatricula(matricula));
-   
+  const handleClickSetActiveGroupByStudent = ({ matricula }) => {
+    dispatch(payStartGetFertilizerPay(matricula));
+    dispatch(studentStartGetStudentByMatricula(matricula));
+    setIsAStudenttActive(true);
   };
 
   const handleBackCleanData = () => {
     setIsAGrouptActive(false);
-    dispatch(payClearStudents())
+    dispatch(payClearStudents());
   };
 
   const generateData = () => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
     students.forEach(
-      ({ id_student, student_name,  money_exp, money, missing, matricula }) => {
-        const coincidence = isACoincidenceSearch([
-          id_student,
-          student_name,
-          money_exp,
-          money,
-          missing,
-        ],searchWord);
+      ({ id_student, student_name, money_exp, money, missing, matricula }) => {
+        const coincidence = isACoincidenceSearch(
+          [id_student, student_name, money_exp, money, missing],
+          searchWord
+        );
 
         const dataBuilded = buildDataStateGroupByStudent(
           matricula,
@@ -94,10 +92,10 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
           coincidence
         );
         if (searchWord === "") {
-            dataToShow.push(dataBuilded);
-          } else if (coincidence.includes(true)) {
-            dataToShow.push(dataBuilded);
-          }
+          dataToShow.push(dataBuilded);
+        } else if (coincidence.includes(true)) {
+          dataToShow.push(dataBuilded);
+        }
       }
     );
     setDataShow(dataToShow);
@@ -107,33 +105,37 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     if (students.length !== 0) generateData();
   }, [loading, valueSearchFilter]);
 
-
   return (
     <>
-      <div className="checkState__headers">
+      {isAStudenttActive ? (
+        <CheckStateDetails setIsAStudenttActive={setIsAStudenttActive} />
+      ) : (
+        <>
+          <div className="checkState__headers">
+            <div className="checkState__headers-search">
+              <Searchbar
+                placeholder="Buscar alumno"
+                setValueSearchFilter={setValueSearchFilter}
+                valueSearchFilter={valueSearchFilter}
+              />
+            </div>
+            <FilterMajor />
+            <button
+              className="btn btn__back checkState__headers-back"
+              onClick={() => handleBackCleanData()}
+            >
+              <i className="fas fa-arrow-left"></i>
+            </button>
+          </div>
 
-        <div  className="checkState__headers-search">
-          <Searchbar
-            placeholder="Buscar alumno"
-            setValueSearchFilter={setValueSearchFilter}
-            valueSearchFilter={valueSearchFilter}
+          <Table
+            headers={headers}
+            sizesColumns={[49, 15, 15, 15, 5]}
+            data={dataShow}
           />
-        </div>
-        <FilterMajor />
-        <button
-          className="btn btn__back checkState__headers-back"
-          onClick={() => handleBackCleanData()}
-        >
-          <i className="fas fa-arrow-left"></i>
-        </button>
-      </div>
-
-      <Table
-        headers={headers}
-        sizesColumns={[49, 15, 15, 15, 5]}
-        data={dataShow}
-      />
-    
+        </>
+      )}
     </>
   );
 };
+

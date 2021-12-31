@@ -85,8 +85,8 @@ export const payStartGetPrice = () => {
 export const payStartMakePay = () => {
     return async (dispatch, getState) => {
         try {
-            const { concept, thingToPay,  method, amountToPay, activeAccount } = getState().pay;
-            const {matricula} = getState().student;
+            const { concept, thingToPay, method, amountToPay, activeAccount } = getState().pay;
+            const { matricula } = getState().student;
             const { user: { id_user } } = getState().auth;
             console.log(getState().pay)
             console.log(method === 'Efectivo' ? null : activeAccount)
@@ -165,12 +165,20 @@ export const payStartFertilizer = () => {
         }
     }
 }
-export const payStartGetAllPayments = () => {
+export const payStartGetAllPayments = (title) => {
     return async (dispatch, getState) => {
         try {
+            let res
             dispatch(uiStartLoading())
-
-            const res = await fetchConToken(`payments`, 'GET')
+            if (title) {
+                if (title === 'Todos los grupos') {
+                    res = await fetchConToken(`payments`, 'GET')
+                }
+                else  {
+                    if(['Maestrías','Licenciaturas'].includes(title)) title=title.slice(0, -1)
+                    res = await fetchConToken(`payments?major_name=${title}`, 'GET')
+                }
+            } else res = await fetchConToken(`payments`, 'GET')
             const body = await res.json();
             if (body.ok) {
                 console.log(body)
@@ -218,37 +226,37 @@ export const payStartGetFertilizerPay = (matricula) => {
 
 export const payStartGetStudentsByGroup = (id_group) => {
     return async (dispatch) => {
-      try {
-        dispatch(uiStartLoading());
-        const res = await fetchConToken(`payments/groups/${id_group}`, "GET");
-        const body = await res.json();
-        if (body.ok) {
-          console.log(body);
-          dispatch(paySetStudents(body.payments));
-        } else {
-          console.log(body);
-          Swal.fire({
-            title: "¡Oops!",
-            text: body.msg,
-            icon: "question",
-          });
-        }
-        dispatch(uiFinishLoading())
+        try {
+            dispatch(uiStartLoading());
+            const res = await fetchConToken(`payments/groups/${id_group}`, "GET");
+            const body = await res.json();
+            if (body.ok) {
+                console.log(body);
+                dispatch(paySetStudents(body.payments));
+            } else {
+                console.log(body);
+                Swal.fire({
+                    title: "¡Oops!",
+                    text: body.msg,
+                    icon: "question",
+                });
+            }
+            dispatch(uiFinishLoading())
 
-        // dispatch(uiFinishLoadingStudents());
-      } catch (error) {
-        console.log(error);
-        Swal.fire("Error", "Hablar con el administrador", "error");
-      }
+            // dispatch(uiFinishLoadingStudents());
+        } catch (error) {
+            console.log(error);
+            Swal.fire("Error", "Hablar con el administrador", "error");
+        }
     };
-  };
+};
 
 const paySetActivePay = (data) => ({ type: types.paySetActive, payload: data })
 const payClearActivePay = () => ({ type: types.payClearActive })
 const paySetCards = (cards) => ({ type: types.paySetCards, payload: cards })
 const paySetFertilizers = (fertilizers) => ({ type: types.paySetFertilizers, payload: fertilizers })
 const paySetPayments = (payments) => ({ type: types.paySetPayments, payload: payments })
-const paySetStudents = (students) => ({type: types.paySetStudents, payload: students});
+const paySetStudents = (students) => ({ type: types.paySetStudents, payload: students });
 
 export const paySetPrice = (price) => ({ type: types.paySetPrice, payload: price })
 export const paySetAmountToPay = (amount) => ({ type: types.payAmountToPay, payload: amount })

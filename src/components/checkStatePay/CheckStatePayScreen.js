@@ -37,20 +37,22 @@ export const CheckStatePayScreen = () => {
       textAlign: "center",
     },
   ];
+
+  
+
+  
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(payStartGetAllPayments());
-  }, []);
+  
 
   const { ui, pay } = useSelector((state) => state);
-
+ 
+  
   const [isAGrouptActive, setIsAGrouptActive] = useState(false);
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
   
-  // (pay.students) && setIsAGrouptActive(true);
   const [dataGroup, setDataGroup] = useState({});
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
@@ -59,6 +61,10 @@ export const CheckStatePayScreen = () => {
     setIsAGrouptActive(true);
     setDataGroup(data);
   };
+
+  useEffect(() => {
+    dispatch(payStartGetAllPayments());
+  }, []);
 
   const generateData = () => {
     const dataToShow = [];
@@ -93,12 +99,23 @@ export const CheckStatePayScreen = () => {
     generateData();
   }, [loading, valueSearchFilter]);
 
-  const [sortData, setSortData] = useState(false);
+  useEffect(() => {
+    
+    (pay.students.length>=1) && setIsAGrouptActive(true);
+    
+  }, [pay])
 
-  const sortDataInfo = () => {
-    setSortData(!sortData)
-    console.log(sortData)
+  const [titleActive, setTitleActive] = useState('Todos los grupos')
+  const [filter, setFilter] = useState(false);
+
+  const toggleTitleActive = (title)=>{
+    if(title===titleActive) return
+    setTitleActive(title)
+    setFilter(!filter)
+    dispatch(payStartGetAllPayments(title))
   }
+
+//console.log(titleActive)
 
   return (
     <div className="gra__container checkState__">
@@ -110,23 +127,29 @@ export const CheckStatePayScreen = () => {
       ) : (
         <>
           <div className="checkState__headers">
-
             <div className="checkState__headers-search">
               <Searchbar
+              
                 placeholder="Buscar por grupo"
                 setValueSearchFilter={setValueSearchFilter}
                 valueSearchFilter={valueSearchFilter}
               />
             </div>
-            <FilterMajor checkState={true}/>
+            <FilterMajor 
+      
+              setFilter={setFilter} 
+              filter={filter}
+              titleActive={titleActive}
+              setTitleActive={setTitleActive}
+              toggleTitleActive={toggleTitleActive}
+
+            />
           </div>
 
           <Table
             headers={headers}
             sizesColumns={[49, 15, 15, 15, 5]}
             data={dataShow}
-            sortDataInfo={sortDataInfo}
-            sortData
           />
         </>
       )}
