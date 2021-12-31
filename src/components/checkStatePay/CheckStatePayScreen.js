@@ -21,11 +21,15 @@ export const CheckStatePayScreen = () => {
       textAlign: "center",
     },
     {
-      title: "Total pagado",
+      title: "Total",
+      titleDown: 'pagado',
+      icon: 'fas fa-sort-amount-down-alt',
       textAlign: "center",
     },
     {
-      title: "Total adeudo",
+      title: "Total",
+      titleDown: 'adeudo',
+      icon: 'fas fa-sort-amount-down-alt',
       textAlign: "center",
     },
     {
@@ -89,6 +93,13 @@ export const CheckStatePayScreen = () => {
     generateData();
   }, [loading, valueSearchFilter]);
 
+  const [sortData, setSortData] = useState(false);
+
+  const sortDataInfo = () => {
+    setSortData(!sortData)
+    console.log(sortData)
+  }
+
   return (
     <div className="gra__container checkState__">
       {isAGrouptActive ? (
@@ -99,12 +110,14 @@ export const CheckStatePayScreen = () => {
       ) : (
         <>
           <div className="checkState__headers">
-            <Searchbar
-              checkState={true}
-              placeholder="Buscar por grupo"
-              setValueSearchFilter={setValueSearchFilter}
-              valueSearchFilter={valueSearchFilter}
-            />
+
+            <div className="checkState__headers-search">
+              <Searchbar
+                placeholder="Buscar por grupo"
+                setValueSearchFilter={setValueSearchFilter}
+                valueSearchFilter={valueSearchFilter}
+              />
+            </div>
             <FilterMajor checkState={true}/>
           </div>
 
@@ -112,6 +125,8 @@ export const CheckStatePayScreen = () => {
             headers={headers}
             sizesColumns={[49, 15, 15, 15, 5]}
             data={dataShow}
+            sortDataInfo={sortDataInfo}
+            sortData
           />
         </>
       )}

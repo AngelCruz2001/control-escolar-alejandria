@@ -19,12 +19,12 @@ export const OverConceptPay = () => {
                 <div className="check-state-pay__form make__containerListConcepts__show__form">
                     <form onSubmit={(e) => e.preventDefault()} >
                         <div className="check-state-pay__form__inIcon">
-                            <input type="text" name="materia" placeholder="Buscar" maxLength="30" onChange={(e) => setFindValue(e.target.value)} />
+                            <input autoComplete='off' type="text" name="materia" placeholder="Buscar" maxLength="30" onChange={(e) => setFindValue(e.target.value)} />
                             <span><i className="fas fa-search"></i></span>
                         </div>
                     </form>
                 </div>
-                <div className="make__containerListConcepts__show__data">
+                <div className="make__containerListConcepts__show__data scroll">
                     {
                         (concept === "Materia" ? months : documents).filter(
                             data => data.match(regex)).map((data, i) =>

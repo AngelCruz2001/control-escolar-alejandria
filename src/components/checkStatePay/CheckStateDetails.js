@@ -55,14 +55,14 @@ export const CheckStateDetails = () => {
   const handleArrow = () => {
     dispatch(studentClearData());
     setDataToShow([]);
-    history.goBack()
+    history.goBack();
   };
 
   const generateData = () => {
     const dataShow = [];
 
     const { searchWord } = valueSearchFilter;
-    
+
     pay.fertilizers.forEach(
       ({
         payment_date,
@@ -75,7 +75,7 @@ export const CheckStateDetails = () => {
         const date = getDate(payment_date);
 
         const coincidence = isACoincidenceSearch(
-          [date,payment_type, status_payment, expected, current, missing],
+          [date, payment_type, status_payment, expected, current, missing],
           searchWord
         );
 
@@ -106,12 +106,13 @@ export const CheckStateDetails = () => {
   return (
     <div className="gra__container checkState__detail">
       <div className="checkState__headers">
-        <Searchbar
-          checkState={true}
-          placeholder="Buscar"
-          setValueSearchFilter={setValueSearchFilter}
-          valueSearchFilter={valueSearchFilter}
-        />
+        <div className="checkState__headers-search">
+          <Searchbar
+            placeholder="Buscar"
+            setValueSearchFilter={setValueSearchFilter}
+            valueSearchFilter={valueSearchFilter}
+          />
+        </div>
         <FilterMajor />
         <button
           className="btn btn__back checkState__headers-back"
@@ -129,14 +130,18 @@ export const CheckStateDetails = () => {
       </div>
 
       <div className="checkState__detail-details">
-        <Table
-          data={dataToShow}
-          headers={headers}
-          sizesColumns={[20, 37, 12, 12, 10, 8]}
-        />
+        {!!pay.fertilizers.length ==!0 ? (
+          <Table
+            data={dataToShow}
+            headers={headers}
+            sizesColumns={[20, 37, 12, 12, 10, 8]}
+          />
+        ) : (
+          <p style={{ display: "grid", placeItems: "center" }}>
+            <strong>No hay información para mostrar</strong>
+          </p>
+        )}
       </div>
     </div>
   );
 };
-
-

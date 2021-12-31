@@ -18,6 +18,28 @@
             font-size: calc(0.4rem + 0.5vw);
             padding-bottom: 0;
             font-weight: 500;
+
+            &-flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                &-items {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    margin-bottom: 1rem;
+                    
+                }
+
+                & i {
+                    width: 2rem;
+                    font-size: 1.4rem;
+                    margin-bottom: .8rem;
+                    color: $gray-bars;
+                }
+            }
         }
     }
 

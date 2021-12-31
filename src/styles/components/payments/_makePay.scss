@@ -31,7 +31,7 @@
         width: 50%;
         justify-content: space-between;
 
-        &-matricula{
+        &-matricula {
             width: 60%;
             margin: 1rem 0;
         }
@@ -41,7 +41,6 @@
         width: 42.5%;
         justify-content: space-between;
         position: relative;
-
     }
 
     &containerInput {
@@ -58,7 +57,7 @@
             height: 41.5%;
             padding: 8.9px 5px;
             width: 60%;
-            margin-top: .2em;
+            margin-top: 0.2em;
             font-size: calc(6.7px + 0.5vw);
         }
     }
@@ -69,14 +68,12 @@
         margin-bottom: 0.3rem;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         margin-left: 1%;
-
     }
     &subTitleSection {
         font-size: calc(5px + 0.5vw);
         font-weight: 600;
         // height: 7.5%;
     }
-
 
     &conceptPay {
         display: flex;
@@ -120,7 +117,6 @@
         justify-content: space-around;
         flex-direction: column;
         height: 14%;
-       
 
         // &container {
         //     padding-top: 0.5em;
@@ -132,7 +128,6 @@
 
     //Right Part
     &card {
-        
         h5 {
             font-size: calc(7.7px + 0.5vw);
             font-weight: 600;
@@ -147,7 +142,6 @@
         position: relative;
         display: flex;
         height: 7.5%;
-        
 
         select {
             -moz-appearance: none; /* Firefox */
@@ -199,8 +193,29 @@
 
             &__form {
                 height: 12% !important;
-                form {
+
+                & form {
+                    height: 100%;
                     width: 100% !important;
+
+                    & .check-state-pay__form__inIcon {
+                        height: 94%;
+                        position: relative;
+
+                        & input {
+                            padding: 0 4%;
+                            width: 92%;
+                            height: 100%;
+                            border-radius: 8px;
+                        }
+
+                        & span {
+                            position: absolute;
+                            top: 29%;
+                            right: 4%;
+                            color: $gray-logout;
+                        }
+                    }
                 }
             }
             &__data {
@@ -211,28 +226,6 @@
                 border-radius: 5px;
                 padding: 0.3rem;
                 overflow: auto;
-
-                &::-webkit-scrollbar {
-                    width: 4px;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background: #ccc;
-                    border-radius: 2px;
-                }
-
-                &::-webkit-scrollbar-thumb:active {
-                    background-color: #999999;
-                }
-
-                &::-webkit-scrollbar-thumb:hover {
-                    background: #b3b3b3;
-                }
-
-                /* Estilos track de scroll */
-                &::-webkit-scrollbar-track {
-                    background: transparent;
-                }
 
                 p {
                     padding: 2px;
@@ -252,7 +245,6 @@
     &total {
         display: flex;
         height: 7.6%;
-        
 
         &-pay {
             font-size: calc(7.7px + 0.5vw);
@@ -283,7 +275,6 @@
             &:after {
                 border-right: 8px solid #fff;
                 left: -15px;
-             
             }
         }
     }

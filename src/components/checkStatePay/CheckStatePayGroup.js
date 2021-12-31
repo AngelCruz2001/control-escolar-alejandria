@@ -25,11 +25,15 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
       textAlign: "center",
     },
     {
-      title: "Total pagado",
+      title: "Total",
+      titleDown: 'pagado',
+      icon: 'fas fa-sort-amount-down-alt',
       textAlign: "center",
     },
     {
-      title: "Total adeudo",
+      title: "Total",
+      titleDown: 'adeudo',
+      icon: 'fas fa-sort-amount-down-alt',
       textAlign: "center",
     },
     {
@@ -44,7 +48,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     dispatch(payStartGetStudentsByGroup(dataGroup.id_group));
   }, []);
 
-  const { ui, pay, student} = useSelector((state) => state);
+  const { ui, pay} = useSelector((state) => state);
 
   const { students } = pay;
 
@@ -53,6 +57,7 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
     searchWord: "",
   });
   const [dataShow, setDataShow] = useState([]);
+
   const { loading } = ui;
 
   const handleClickSetActiveGroupByStudent = ({matricula}) => {
@@ -106,12 +111,14 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
   return (
     <>
       <div className="checkState__headers">
-        <Searchbar
-          checkState={true}
-          placeholder="Buscar alumno"
-          setValueSearchFilter={setValueSearchFilter}
-          valueSearchFilter={valueSearchFilter}
-        />
+
+        <div  className="checkState__headers-search">
+          <Searchbar
+            placeholder="Buscar alumno"
+            setValueSearchFilter={setValueSearchFilter}
+            valueSearchFilter={valueSearchFilter}
+          />
+        </div>
         <FilterMajor />
         <button
           className="btn btn__back checkState__headers-back"
@@ -122,7 +129,6 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
       </div>
 
       <Table
-        checkState={true}
         headers={headers}
         sizesColumns={[49, 15, 15, 15, 5]}
         data={dataShow}
