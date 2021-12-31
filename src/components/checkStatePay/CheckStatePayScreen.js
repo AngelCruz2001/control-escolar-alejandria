@@ -33,14 +33,17 @@ export const CheckStatePayScreen = () => {
       textAlign: "center",
     },
   ];
+
+  
+
+  
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(payStartGetAllPayments());
-  }, []);
+  
 
   const { ui, pay } = useSelector((state) => state);
-
+ 
+  
   const [isAGrouptActive, setIsAGrouptActive] = useState(false);
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
@@ -54,6 +57,10 @@ export const CheckStatePayScreen = () => {
     setIsAGrouptActive(true);
     setDataGroup(data);
   };
+
+  useEffect(() => {
+    dispatch(payStartGetAllPayments());
+  }, []);
 
   const generateData = () => {
     const dataToShow = [];
@@ -94,6 +101,18 @@ export const CheckStatePayScreen = () => {
     
   }, [pay])
 
+  const [titleActive, setTitleActive] = useState('Todos los grupos')
+  const [filter, setFilter] = useState(false);
+
+  const toggleTitleActive = (title)=>{
+    if(title===titleActive) return
+    setTitleActive(title)
+    setFilter(!filter)
+    dispatch(payStartGetAllPayments(title))
+  }
+
+//console.log(titleActive)
+
   return (
     <div className="gra__container checkState__">
       {isAGrouptActive ? (
@@ -110,7 +129,15 @@ export const CheckStatePayScreen = () => {
               setValueSearchFilter={setValueSearchFilter}
               valueSearchFilter={valueSearchFilter}
             />
-            <FilterMajor checkState={true}/>
+            <FilterMajor 
+              checkState={true} 
+              setFilter={setFilter} 
+              filter={filter}
+              titleActive={titleActive}
+              setTitleActive={setTitleActive}
+              toggleTitleActive={toggleTitleActive}
+
+            />
           </div>
 
           <Table

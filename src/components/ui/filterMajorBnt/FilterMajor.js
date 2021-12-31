@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CheckFilteredData } from "./CheckFilteredData";
 
-export const FilterMajor = ({checkState}) => {
+export const FilterMajor = ({checkState, filter, setFilter, titleActive, setTitleActive,toggleTitleActive}) => {
 
   const filterTitles = [
     { name: "Todos los grupos" },
@@ -14,19 +14,14 @@ export const FilterMajor = ({checkState}) => {
     { name: "Maestría en seguridad publica" },
     { name: "Estudiantes" },
   ];
-
-  const [filter, setFilter] = useState(false);
+  
 
   const handleFilter = () => {
+   
     setFilter(!filter);
   };
-
-  const [titleActive, setTitleActive] = useState('Todos los grupos')
-
-  const toggleTitleActive = (title) => {
-    setTitleActive(title)
-    setFilter(!filter)
-  }
+ 
+  
 
   
 
