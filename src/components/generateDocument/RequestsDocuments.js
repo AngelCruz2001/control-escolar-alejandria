@@ -13,7 +13,6 @@ const headers = [
 
 export const RequestsDocuments = () => {
     const dispatch = useDispatch()
-    
     useEffect(() => {
         dispatch(requestStartGetRequests())
     }, [])
@@ -22,7 +21,7 @@ export const RequestsDocuments = () => {
     return (
         <>
             <div className="gen__body__request__title requests">
-                <h2>Nuevas solicitudes</h2>
+                <p>Nuevas solicitudes</p>
             </div>
             <div className="gen__body__request__content">
                 <Table

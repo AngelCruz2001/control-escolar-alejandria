@@ -146,4 +146,4 @@ export const expenseSetTypeExpense = (idExpense) => ({ type: types.expenseSetTyp
 export const expensesSetExpenses = (expenses) => ({ type: types.expensesSetExpenses, payload: expenses })
 export const expensesSetActiveExpense = (expenses) => ({ type: types.expensesSetActive, payload: expenses })
 const expensesDeleteExpense = (id_expense) => ({ type: types.expensesDeleteExpense, payload: id_expense })
-const expensesClearData = () => ({ type: types.expensesClearData })
+export const expensesClearData = () => ({ type: types.expensesClearData })

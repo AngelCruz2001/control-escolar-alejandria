@@ -17,7 +17,7 @@ export const authStartLogin = (id, password) => {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
                 console.log(body)
-                dispatch(authLogin(body.roles, body.user_type, body.id_user, body.email))
+                dispatch(authLogin(body))
             } else {
                 Swal.fire({
                     title: '¡Oops!',
@@ -44,7 +44,7 @@ export const authStartChecking = () => {
             if (body.ok) {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
-                dispatch(authLogin(body.id_role, body.user_type, body.id_user, body.email))
+                dispatch(authLogin(body))
                 dispatch(authCheckingFinish())
             } else {
                 dispatch(authCheckingFinish())
@@ -69,9 +69,9 @@ export const authStartLogout = () => {
 }
 
 
-const authLogin = (roles, userType, id_user, email) => ({
+const authLogin = (userData) => ({
     type: types.authLogin,
-    payload: { roles, userType, id_user, email }
+    payload: userData,
 })
 
 

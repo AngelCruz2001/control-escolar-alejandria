@@ -24,7 +24,6 @@ export const ExpenseRecord = () => {
 
     const handleQuantityChange = (amount) => {
         setDataForm({ ...dataForm, amount: amount });
-
     }
 
     const handleInputChangeTextArea = ({ target }) => {

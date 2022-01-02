@@ -7,7 +7,6 @@ export const Documents = () => {
         <>
             {/* <div className="animation__loadIcon"></div> */}
             <div className='gen'>
-d
                 <div className="gen__header">
                     <div className='gen__header__checkHistory'>
                         <button className="btn  req__footer__checkHistory" onClick={() => console.log(true)}><i className="fas fa-history"></i><span>Ver Historial</span></button>

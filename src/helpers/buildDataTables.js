@@ -1,5 +1,6 @@
 import React from 'react';
 import { ButtonTable } from '../components/ui/table/ButtonTable';
+import { InputTable } from '../components/ui/table/InputTable';
 import { SpanTable } from '../components/ui/table/SpanTable';
 
 export const buildData = (
@@ -59,14 +60,27 @@ export const buildDataExpenses = (
 
     ];
 }
-export const buildDataGradesDetail = (course, teacher, date, credits, coincidence) => {
+export const buildDataGradesDetail = (course, teacher, date, credits, coincidence, adminUser = false) => {
+    if (adminUser) {
+        return [
+            { element: <SpanTable text={course} />, searched: coincidence[0] },
+            { element: <SpanTable text={teacher} />, searched: coincidence[1] },
+            { element: <SpanTable text={date} />, searched: coincidence[2] },
+            { element: <SpanTable text={credits} />, searched: coincidence[3] },
+            { element: <ButtonTable text={credits} />, searched: coincidence[3] },
+        ];
+    }
     return [
-        { element: <SpanTable text={course} />, searched: coincidence[0] },
-        { element: <SpanTable text={teacher} />, searched: coincidence[1] },
-        { element: <SpanTable text={date} />, searched: coincidence[3] },
-        { element: <SpanTable text={credits} />, searched: coincidence[2] },
+        { element: <SpanTable text={course} />, searched: false },
+        { element: <SpanTable text={teacher} />, searched: false },
+        { element: <SpanTable text={date} />, searched: false },
+        { element: <InputTable value={credits} />, searched: false },
+        { element: <ButtonTable value={credits} />, searched: false },
+
     ];
 }
+
+
 export const buildDataFertilizer = (id, date, concept, cost, anticipo, restante) => {
     return [
         { element: <SpanTable text={date} />, searched: false },

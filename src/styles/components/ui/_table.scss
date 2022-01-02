@@ -43,6 +43,10 @@
                 padding: 0.5rem;
                 font-size: calc(0.4rem + 0.5vw);
                 align-items: center;
+
+                input {
+                    background-color: red;
+                }
             }
 
             div:nth-child(odd) {
@@ -69,10 +73,10 @@
 
     .empty {
         &__headers {
-            opacity: .5;
+            opacity: 0.5;
         }
         &__body {
-            opacity: .6;
+            opacity: 0.6;
 
             .table__body__row {
                 div:nth-child(even) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { expensesSetActiveExpense, expensesStartDeleteExpense, expensesStartGetExpenses } from '../../actions/expenses';
+import { expensesClearData, expensesSetActiveExpense, expensesStartDeleteExpense, expensesStartGetExpenses } from '../../actions/expenses';
 import { uiSetModalOpen, uiSetShowHistory } from '../../actions/ui';
 import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
@@ -33,6 +33,7 @@ export const HistoryExpenses = ({
     }];
 
     useEffect(() => {
+        dispatch(expensesClearData())
         dispatch(expensesStartGetExpenses());
     }, [])
     const handleClickSee = (id) => {

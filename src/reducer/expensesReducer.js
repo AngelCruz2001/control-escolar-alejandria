@@ -5,7 +5,7 @@ const initialState = {
     expenses: [],
     dataInputs: {
         observation: '',
-        amount: '',
+        amount: 0,
     },
     activeExpense: {},
 };
@@ -35,7 +35,6 @@ export const expensesReducer = (state = initialState, action) => {
             return initialState;
 
         case types.expensesSetActive:
-            console.log(action.payload.expenses_type)
             return {
                 ...state,
                 activeExpense: action.payload,

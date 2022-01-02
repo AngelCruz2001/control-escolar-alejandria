@@ -1,0 +1,44 @@
+{
+    "alumnos": {
+        "nameSection": "alumnos",
+        "dataEndpointName": "students",
+        "endpoint": "students",
+        "placeholder": "Buscar por nombre o matricula del alumno",
+        "sizesColumn": [
+            30,
+            15,
+            15,
+            30,
+            10
+        ],
+        "headers": [
+            {
+                "title": "Nombre del alumno",
+                "textAlign": "left"
+            },
+            {
+                "title": "Matricula",
+                "textAlign": "center"
+            },
+            {
+                "title": "Grupo",
+                "textAlign": "center"
+            },
+            {
+                "title": "Carrera",
+                "textAlign": "left"
+            },
+            {
+                "title": "",
+                "textAlign": "center"
+            }
+        ],
+        "orderTable": [
+            "text",
+            "text",
+            "text",
+            "text",
+            "button"
+        ]
+    }
+}

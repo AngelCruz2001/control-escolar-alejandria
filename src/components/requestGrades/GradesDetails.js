@@ -55,7 +55,7 @@ export const GradesDetails = ({ dataStudent, setIsAStudentActive }) => {
         activeStudentGrade.forEach(({ course, credits, teacher, date }) => {
             const coincidenceInDate = isACoincidenceDate(date.split(','), dateSearch);
             const coincidenceInSearch = isACoincidenceSearch([course, teacher, credits], searchWord)
-            const dataBuilded = buildDataGradesDetail(course, teacher, date, credits, [...coincidenceInSearch, coincidenceInDate]);
+            const dataBuilded = buildDataGradesDetail(course, teacher, date, credits, [...coincidenceInSearch, coincidenceInDate], true);
             const hasDateSearchValue = (month === '' && year === '') ? false : true;
             const hasSearchWordValue = searchWord === '' ? false : true;
             if (!hasSearchWordValue && !hasDateSearchValue) return dataToShow.push(dataBuilded);
@@ -79,7 +79,7 @@ export const GradesDetails = ({ dataStudent, setIsAStudentActive }) => {
                         <button className="btn btn__back" onClick={() => setIsAStudentActive(false)}>
                             <i className="fas fa-arrow-left"></i>
                         </button>
-                        <Searchbar placeholder="Buscar por nombre, matrícula o grupo del estudiante" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
+                        <Searchbar placeholder="Buscar por nombre de materia" setValueSearchFilter={setValueSearchFilter} valueSearchFilter={valueSearchFilter} />
                     </div>
                     <Filters setValueSearchFilter={setValueSearchFilter} returnDay={false} />
                 </div>

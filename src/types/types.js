@@ -57,6 +57,8 @@ export const types = {
     paySetFertilizers: "[pay] Set fertilizers",
     paySetIdPayment: "[pay] Set id payment",
     paySetPayments: '[pay] Set payments',
+
+    feedGetData: '[feed] Get data',
 }
 
 export const typesExpenses = [
@@ -84,3 +86,4 @@ export const typesDocuments = [
     "Acta de examen",
     "Constancia de titulo en progreso",
 ]
+

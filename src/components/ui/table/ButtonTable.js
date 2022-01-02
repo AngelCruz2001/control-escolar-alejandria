@@ -49,6 +49,14 @@ export const ButtonTable = ({
                         <i className={`fas fa-chevron-circle-right`}></i>
                     </NavLink>
                 )
+            case 6:
+                return (
+                    <div className='btnTable__container__acceptDecline'>
+                        <button className='btn btnTable accept' onClick={() => onClick(id)} > <i className="fas fa-check-circle"></i> </button>
+                        <button className='btn btnTable cancel' onClick={() => onClick(id)} > <i className="fas fa-times-circle"></i> </button>
+                    </div>
+                )
+
             default:
                 return (
                     <></>

@@ -32,7 +32,7 @@ export const GenerateDocument = () => {
                             activeClassName={activeDisabled(0, current)}
                         />
 
-                    </div> 
+                    </div>
                     <StudentInformation
                         activeClassName={activeDisabled(1, current)}
                         loading={loading}

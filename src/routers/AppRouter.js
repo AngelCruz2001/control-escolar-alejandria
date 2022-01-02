@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    BrowserRouter as Router,
-    Redirect,
-    Switch
+    BrowserRouter as Router, Switch
 } from 'react-router-dom';
 import { authStartChecking } from '../actions/auth';
 import { AuthRouter } from './AuthRouter';
@@ -35,8 +33,11 @@ export const AppRouter = ({ history }) => {
                         isAuthenticated={logged}
                         component={DashBoardRoutes}
                     />
+
                 </Switch>
             </main>
         </Router>
     )
 }
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { gradesStartGetGrades } from '../../actions/grades';
 import { buildDataGrades } from '../../helpers/buildDataTables';
@@ -7,7 +7,7 @@ import { Searchbar } from '../ui/Searchbar';
 import { Table } from '../ui/Table';
 import { GradesDetails } from './GradesDetails';
 
-export const RequestGrades = () => {
+export const RequestGradesAdmin = () => {
     const headers = [{
         title: "Nombre del alumno",
         textAlign: 'left'
@@ -65,7 +65,6 @@ export const RequestGrades = () => {
     }, [loading, valueSearchFilter])
     return (
         <>
-
             {
                 isAStudentActive ?
 

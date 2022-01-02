@@ -1,72 +1,66 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
-import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
-import { FertilizerPay } from '../fertilizerPay/FertilizerPay.js'
-import { Documents } from '../generateDocument/Documents'
-import { MakePay } from '../makePayment/MakePay'
-import { RequestDocument } from '../requestDocument/RequestDocument'
-import { RequestGrades } from '../requestGrades/RequestGrades'
+import { useAccess } from '../../hooks/useAccess'
 import { Modal } from '../ui/Modal'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
 
-
-
-const itemsMenu = [
-    { name: "Solicitud de documento", icon: "fas fa-file", css: { transform: "rotate(90deg) scaleX(-1)" } },
-    { name: "Consulta de calificaciones", icon: "fas fa-folder-open", css: {} },
-    { name: "Registro de gastos", icon: "fas fa-ticket-alt", css: {} },
-    { name: "Realizar pago", icon: "fas fa-money-bill", css: {} },
-    { name: "Abonos", icon: "fas fa-coins", css: {} },
-    { name: "Consultar estado de pago", icon: "fas fa-money-check-alt", css: {} },
-
-
-    { name: "Generar documento", icon: "fas fa-file", css: { transform: "rotate(90deg) scaleX(-1)" } },
-
-]
 export const Main = () => {
 
-
-    const state = useSelector(state => state);
-    // const { expenses } = state.expenses;
-    const { isModalOpen } = state.ui;
-    //Borrar de aqui
-    // const {active} = useSelector(state => state.document)
-
+    const { isModalOpen } = useSelector(state => state.ui);
+    const [roles, componentsAccess] = useAccess();
 
     return (
-        <div className={`${isModalOpen ? 'filterModal' : ''}`} >
 
-            {/* <div className={`${ expenses && 'blackFilter'}`}></div> */}
+        <p>
+            {
+                roles[0] === 8 ?
+                    <p>Alumnos</p>
+                    :
+                    <div className={`${isModalOpen ? 'filterModal' : ''}`} >
+                        <Texture />
+                        <Navbar />
+                        <section>
+                            <div className="general">
+                                <div className="general__menu">
 
-            < Texture />
-            <Navbar />
-            <section>
-                <div className="general">
-                    <div className="general__menu">
-                        {itemsMenu.map((item, index) => (
-                            <NavLink className="general__menu__item" activeClassName="active" to={`/${item.name.replaceAll(' ', '_').toLowerCase()}`} key={index}>
-                                <i className={`${item.icon}`} style={item.css}></i>
-                                <p>{item.name}</p>
-                            </NavLink>
-                        ))}
+                                    {
+                                        componentsAccess.map((component, index) => (
+                                            <>
+                                                <NavLink className="general__menu__item" activeClassName="active" to={component.path} key={index}>
+                                                    <i className={`${component.icon}`} style={component.css}></i>
+                                                    <p>{component.name}</p>
+                                                </NavLink>
+                                                {
+                                                    component.subMenu.map((subItem, index) => (
+                                                        <NavLink key={index} className="general__menu__item__subMenu" activeClassName="general__menu__item__subMenu__active" to={subItem.path}>
+                                                            <i className={`${subItem.icon}`} style={subItem.css}></i>
+                                                            <p>{subItem.name}</p>
+                                                        </NavLink>
+                                                    ))
+                                                }
+                                            </>
+                                        ))
+                                    }
+                                </div>
+                                <div className="general__overtexture">
+                                    <Switch>
+                                        {/* <Redirect from="/captura_de_datos/" to="/captura_de_datos/alumnos" /> */}
+                                        {
+                                            componentsAccess.map((componentData, index) => (
+                                                <Route path={`${componentData.path}/:name?`} component={componentData.component} key={index} />
+                                            ))
+                                        }
 
+                                    </Switch>
+                                    {isModalOpen && <Modal />}
+                                </div>
+                            </div>
+                        </section >
                     </div>
-                    <div className="general__overtexture">
-                        <Switch>
-                            <Route path="/solicitud_de_documento" component={RequestDocument} />
-                            <Route path="/consulta_de_calificaciones" component={RequestGrades} />
-                            <Route path="/registro_de_gastos" component={ExpenseRecord} />
-                            <Route path="/realizar_pago" component={MakePay} />
-                            <Route path="/abonos" component={FertilizerPay} />
-                            <Route path="/generar_documento" component={Documents} />
-                            {/* <Redirect to="/solicitud_de_documento" /> */}
-                        </Switch>
-                        {isModalOpen && <Modal />}
-                    </div>
-                </div>
-            </section >
-        </div >
+            }
+        </p>
+
     )
 }

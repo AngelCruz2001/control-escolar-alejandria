@@ -36,10 +36,38 @@
                 color: darken($color: $mustard, $amount: 8);
                 transition: color 0.4s;
             }
+
+            &__subMenu {
+                font-size: calc(23px - 0.5vh);
+                align-items: center;
+                height: 40px;
+                padding-left: 3rem;
+                color: $blue-btn-text;
+                // display: none;
+                display: flex;
+                i {
+                    align-self: center;
+                    margin-right: 1rem;
+                    width: 5%;
+                }
+                &__active {
+                    color: $blue-active-text !important;
+                    background-color: $blue-sky3;
+                    transition: color 0.4s;
+                }
+                &:hover {
+                    color: lighten($color: $blue-btn-text, $amount: 8);
+                    transition: color 0.4s;
+                }
+            }
         }
 
         .active {
             color: $mustard;
+
+            .general__menu__item__subMenu {
+                // display: flex;
+            }
         }
     }
     &__overtexture {
