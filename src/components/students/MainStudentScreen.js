@@ -106,7 +106,7 @@ export const MainStudentScreen = () => {
                     <Table
                         headers={headers}
                         data={dataShow}
-                        sizesColumns={[20, 10, 15, 35, 7, 3, 10]}
+                        sizesColumns={[19, 10, 15, 35, 7, 3, 9]}
                     />
                 </div>
             </main>
