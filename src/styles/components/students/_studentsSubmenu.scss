@@ -1,0 +1,26 @@
+.studentsSubmenu{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: $white;
+    position: sticky;
+   
+
+    &__item {
+        color: $color-blue-nav;
+        text-align: center;
+        border-bottom: 2.5px solid transparent;
+        // @include transition;
+
+        & h2{
+            font-weight: 700;
+            font-size: 1rem;
+            padding: .6rem 0;
+        }
+    }
+}
+
+.activeLink,
+.studentsSubmenu__item-hover{
+    border-color: $mustard;
+}

@@ -1,50 +1,69 @@
-.navStudent{
-    height: $navbar-height;
+.navStudent {
+    height: calc($navbar-height - 5%);
     display: flex;
     justify-content: space-between;
-   background-color: antiquewhite;
-   position: sticky;
-   width: 96%;
-   align-items: center;
-   padding: 0 2%;
-    &__logo{
+    background-color: $color-blue-nav;
+    position: sticky;
+    width: 96%;
+    align-items: center;
+    padding: 1% 2%;
+    &__logo {
         display: flex;
         align-items: center;
         height: 100%;
-        gap: 1rem;
+        gap: .5rem;
 
-        & img{
-            // max-width: 100%;
-            width: 5rem;
-            height: 5rem;
+        & img {
+            width: 3.5rem;
+            height: 3.5rem;
         }
 
-        & h1{
-
+        & h1 {
+            font-size: 1rem;
+            color: $white;
+            font-weight: 500;
         }
     }
 
-    &__info{
+    &__info {
         display: flex;
         align-items: center;
-        gap: 2rem;
-        &-password{
-            background-color: $mustard;
-            padding: .8rem 1.5rem;
-            border-radius: 15px;
-
-            &:hover{
-                // @include transition;
-                background-color: $blue;
-            }
-        }
-        &-img{
-            width: 5rem;
-            height: 5rem;
-            & img{
+        gap: 1rem;
+        
+        // &-password {
+            //     background-color: $mustard;
+            //     padding: 0.8rem 1.5rem;
+            //     border-radius: 15px;
+            
+            //     &:hover {
+                //         // @include transition;
+                //         // background-color: $blue;
+                //     }
+                // }
+                &-img {
+                    width: 3rem;
+                    height: 3rem;
+                    cursor: pointer;
+                    // transform: translateX(-180%);
+            & img {
                 width: 3rem;
                 height: 3rem;
             }
         }
+
+        &-exit{
+            border-radius: 10px;
+            background-color: $color-yellow-btn!important;
+            color: $white;
+            padding: .6rem .8rem;
+            margin-right: 1rem;
+        }
     }
+}
+
+.navStudentPosition{
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
 }

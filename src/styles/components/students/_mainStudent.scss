@@ -1,3 +1,63 @@
-.mainStudent__tableContainer {
-    height: 100%;
+.mainStudent {
+    background-color: $color-backgroung;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    
+
+    &__infoStu {
+        margin: 0 auto;
+        width: 96%;
+
+        & .stuInfo {
+            margin-top: 0;
+            &__container {
+                border: 1px solid $gray-border;
+                background-color: $white;
+
+                &__containerTwo__row {
+                    align-items: center;
+                    flex-direction: column;
+                    text-align: center;
+                    margin: 1rem 0;
+
+                    &__info{
+                        margin-top: .5rem;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+        & .general__titleSection {
+            display: none;
+        }
+    }
+
+    &__search{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: .8rem;
+        &__title{
+            font-size: 1rem;
+            color: $dark-grey;
+            text-transform: uppercase;
+        }
+
+        & .sea__container{
+            background-color: $white;
+            box-shadow: none;
+            width: 84%;
+            border: 1px solid $gray-border;
+        }
+    }
+
+    &__tableContainer {
+        height: 100%;
+
+        & .table__body{
+            flex-basis: content;
+        }
+    }
 }
