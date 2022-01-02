@@ -116,7 +116,7 @@ export const MainStudentScreen = () => {
 
       <main>
         <div className="mainStudent">
-          <div className="mainStudent__infoStu">
+          {/* <div className="mainStudent__infoStu">
             <StudentInformation studentInformation={dataInformation} />
           </div>
 
@@ -134,18 +134,19 @@ export const MainStudentScreen = () => {
               sizesColumns={[19, 10, 15, 35, 7, 3, 9]}
             />
           </div>
-          <StudetsFooter />
+          <StudetsFooter /> */}
 
-          {/* <div>
-            <h3>Selecciona el documento que deseas solicitar</h3>
-            <div>
+
+          <div className="studentReqDoc">
+            <h3 className="studentReqDoc__title">Selecciona el documento <br /> que deseas solicitar</h3>
+            <div className="studentReqDoc__documents">
               {documentType.map((doc, i) => (
-                <div key={i}>
+                <div key={i} className="studentReqDoc__documents-doc">
                   <p>{doc.title}</p>
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
         </div>
       </main>
     </>

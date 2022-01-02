@@ -1,5 +1,6 @@
 @import "./base/base";
 @import "./base/settings";
+@import "./abstracs/mixins";
 
 /*Components*/
 @import "./components/auth";
@@ -16,6 +17,7 @@
 @import "./components/students/studentsSubmenu";
 @import "./components/students/mainStudent";
 @import "./components/students/studentsFooter";
+@import "./components/students/studentReqDoc";
 
 /*General*/
 @import "./components/general/general";

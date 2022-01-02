@@ -1,7 +1,7 @@
 .mainStudent {
     background-color: $color-backgroung;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    
+    padding-bottom: 1rem;
 
     &__infoStu {
         margin: 0 auto;
@@ -19,8 +19,8 @@
                     text-align: center;
                     margin: 1rem 0;
 
-                    &__info{
-                        margin-top: .5rem;
+                    &__info {
+                        margin-top: 0.5rem;
                         padding-left: 0;
                     }
                 }
@@ -32,20 +32,20 @@
         }
     }
 
-    &__search{
-        margin-top: 1rem;
+    &__search {
+        margin-top: 1.5rem;
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: center;
-        gap: .8rem;
-        &__title{
+        gap: 0.8rem;
+        &__title {
             font-size: 1rem;
             color: $dark-grey;
             text-transform: uppercase;
         }
 
-        & .sea__container{
+        & .sea__container {
             background-color: $white;
             box-shadow: none;
             width: 84%;
@@ -54,10 +54,112 @@
     }
 
     &__tableContainer {
+        margin-top: 1.5rem !important;
         height: 100%;
+        width: 90%;
+        margin: 0 auto;
 
-        & .table__body{
+        & .table {
+            border: 1px solid red;
+            flex-direction: row;
+            border-radius: 10px;
+
+            &__headers {
+                background-color: $color-blue-nav;
+                height: 100%;
+                width: fit-content;
+                flex-direction: column;
+                border-radius: 10px 0 0 10px;
+
+                &__cell {
+                    color: $white;
+                    width: auto !important;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    padding: 0.5rem;
+
+                    &:nth-child(1) {
+                        height: 2rem;
+                    }
+                    &:nth-child(2) {
+                        height: 4rem;
+                    }
+                    &:nth-child(3) {
+                        height: 4rem;
+                    }
+                    &:nth-child(4) {
+                        height: 2rem;
+                    }
+                    &:nth-child(5) {
+                        height: 2rem;
+                    }
+                    &:nth-child(6) {
+                        height: 2rem;
+                    }
+                    &:nth-child(7) {
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+
+        & .table__body {
             flex-basis: content;
+
+            &__row {
+                margin: 0;
+                // border: 1px solid red;
+                box-shadow: none;
+                flex-direction: column;
+                height: 100%;
+                width: fit-content;
+                border-radius: 0;
+
+                &__cell {
+                    padding: 0.5rem;
+                    width: auto !important;
+                    // padding: 0.4rem;
+                    background-color: #fff !important;
+                    // display: flex;
+                    // justify-content: center;
+                    // align-items: center;
+
+                    &:nth-child(1) {
+                        height: 2rem;
+                        border-radius: 0;
+
+                    }
+                    &:nth-child(2) {
+                        height: 4rem;
+                    }
+                    &:nth-child(3) {
+                        height: 4rem;
+                    }
+                    &:nth-child(4) {
+                        height: 2rem;
+                    }
+                    &:nth-child(5) {
+                        height: 2rem;
+                    }
+                    &:nth-child(6) {
+                        height: 2rem;
+                    }
+                    &:nth-child(7) {
+                        height: 2rem;
+                        border-radius: 0;
+                    }
+                }
+            }
         }
     }
+}
+
+@include respond(from-tab-land){ //900px
+    // .mainStudent__infoStu{
+    //     display: none;
+    // }
 }
