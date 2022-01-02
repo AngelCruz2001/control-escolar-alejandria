@@ -13,7 +13,16 @@ import { Searchbar } from "../ui/Searchbar";
 import { Table } from "../ui/Table";
 import { CheckStateDetails } from "./CheckStateDetails";
 
-export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
+export const CheckStatePayGroup = ({
+  dataGroup,
+  setIsAGrouptActive,
+  handleClick,
+  sortBy,
+  setSortBy,
+  sortBy2,
+  setSortBy2,
+  handleValueSortBy,
+}) => {
   const { name_group } = dataGroup;
 
   const headers = [
@@ -132,10 +141,15 @@ export const CheckStatePayGroup = ({ dataGroup, setIsAGrouptActive }) => {
             headers={headers}
             sizesColumns={[49, 15, 15, 15, 5]}
             data={dataShow}
+            handleClick={handleClick}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            sortBy2={sortBy2}
+            setSortBy2={setSortBy2}
+            handleValueSortBy={handleValueSortBy}
           />
         </>
       )}
     </>
   );
 };
-

@@ -7,12 +7,16 @@ export const Table = ({
   headers = [], // array of objects with {title, textAlign}
   data = [], // array of objects with keys matching headers
   sizesColumns = [], // array of numbers
-
-  sortDataInfo,
-  sortData,
+  handleClick,
+  sortBy,
+  sortBy2,
+  handleValueSortBy,
+  details,
 }) => {
   const { loading } = useSelector((state) => state.ui);
-  console.log(data);
+  const { fertilizers } = useSelector((state) => state.pay);
+  const { status_payment } = fertilizers;
+
   return (
     <div className="table ">
       {loading ? (
@@ -24,30 +28,58 @@ export const Table = ({
           {data.length > 0 ? (
             <>
               <div className="table__headers">
-                {headers.map(({ title, textAlign, titleDown, icon }, index) => (
-                  <div
-                    style={{
-                      width: `${sizesColumns[index]}%`,
-                      textAlign: `${textAlign}`,
-                    }}
-                    className={`table__headers__cell ${
-                      icon && "table__headers__cell-flex"
-                    }`}
-                    key={index}
-                  >
+                {headers.map(({ title, textAlign, titleDown, icon }, index) =>
+                  titleDown && icon ? (
                     <div
-                      className={`table__headers__cell-flex-items ${
-                        titleDown & icon && "pointer"
+                      style={{
+                        width: `${sizesColumns[index]}%`,
+                        textAlign: `${textAlign}`,
+                      }}
+                      className={`table__headers__cell ${
+                        icon && "table__headers__cell-flex"
                       }`}
-                      onClick={() => sortDataInfo(false)}
+                      key={index}
+                      onClick={() => handleClick(index)}
                     >
-                      <p>{title}</p>
-                      {titleDown && <p>{titleDown}</p>}
+                      <div
+                        className={`table__headers__cell-flex-items ${
+                          titleDown & icon && "pointer"
+                        }`}
+                      >
+                        <p>{title}</p>
+                        {titleDown && <p>{titleDown}</p>}
+                      </div>
+                      {icon && <i className={icon}></i>}
+                      {sortBy && index === 2 && (
+                        <FilterSortBy
+                          index={index}
+                          handleValueSortBy={handleValueSortBy}
+                        />
+                      )}
+                      {sortBy2 && index === 3 && (
+                        <FilterSortBy
+                          index={index}
+                          handleValueSortBy={handleValueSortBy}
+                        />
+                      )}
                     </div>
-                    {icon && <i class={icon}></i>}
-                  </div>
-                ))}
-                {/* { sortData && <FilterSortBy />} */}
+                  ) : (
+                    <div
+                      style={{
+                        width: `${sizesColumns[index]}%`,
+                        textAlign: `${textAlign}`,
+                      }}
+                      className={`table__headers__cell ${
+                        icon && "table__headers__cell-flex"
+                      }`}
+                      key={index}
+                    >
+                      <div className={`table__headers__cell-flex-items`}>
+                        <p>{title}</p>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
               <div className="table__body scroll">
                 {data.map((item, index) => (
@@ -64,6 +96,16 @@ export const Table = ({
                               width: `${sizesColumns[andex]}%`,
                               justifyContent: `${headers[andex].textAlign}`,
                               textAlign: `${headers[andex].textAlign}`,
+
+                              // color: fertilizers.length > 0 && '#8B9199'
+
+
+                                // color:
+                                //    status_payment === 0
+                                //     ? "#AD282C"
+                                //     : status_payment === 1
+                                //     ? " #8B9199"
+                                //     : "#B9B756",
                             }}
                             key={andex}
                           >

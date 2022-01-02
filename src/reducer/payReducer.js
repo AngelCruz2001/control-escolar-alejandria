@@ -95,6 +95,12 @@ export const payReducer = (state = initialState, action) => {
                 students: [],
             }
 
+        case types.payClearFertilizers:
+            return {
+                ...state,
+                fertilizers: []
+            }
+
         case types.payClearModalData:
             return {
                 ...state,

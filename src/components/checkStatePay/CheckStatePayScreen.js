@@ -22,14 +22,14 @@ export const CheckStatePayScreen = () => {
     },
     {
       title: "Total",
-      titleDown: 'pagado',
-      icon: 'fas fa-sort-amount-down-alt',
+      titleDown: "pagado",
+      icon: "fas fa-sort-amount-down-alt",
       textAlign: "center",
     },
     {
       title: "Total",
-      titleDown: 'adeudo',
-      icon: 'fas fa-sort-amount-down-alt',
+      titleDown: "adeudo",
+      icon: "fas fa-sort-amount-down-alt",
       textAlign: "center",
     },
     {
@@ -38,21 +38,15 @@ export const CheckStatePayScreen = () => {
     },
   ];
 
-  
-
-  
   const dispatch = useDispatch();
 
-  
-
   const { ui, pay } = useSelector((state) => state);
- 
-  
+
   const [isAGrouptActive, setIsAGrouptActive] = useState(false);
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
-  
+
   const [dataGroup, setDataGroup] = useState({});
   const [dataShow, setDataShow] = useState([]);
   const { loading } = ui;
@@ -99,23 +93,48 @@ export const CheckStatePayScreen = () => {
     generateData();
   }, [loading, valueSearchFilter]);
 
+  const [sortBy, setSortBy] = useState(false);
+  const [sortBy2, setSortBy2] = useState(false);
+
+  const handleClick = (index) => {
+    if (index === 2) {
+      setSortBy(!sortBy);
+      setSortBy2(false);
+    } else {
+      setSortBy2(!sortBy2);
+      setSortBy(false);
+    }
+  };
+
   useEffect(() => {
-    
-    (pay.students.length>=1) && setIsAGrouptActive(true);
-    
-  }, [pay])
+    pay.students.length >= 1 && setIsAGrouptActive(true);
+  }, [pay]);
 
-  const [titleActive, setTitleActive] = useState('Todos los grupos')
+  const [titleActive, setTitleActive] = useState("Todos los grupos");
   const [filter, setFilter] = useState(false);
+  console.log(titleActive);
 
-  const toggleTitleActive = (title)=>{
-    if(title===titleActive) return
-    setTitleActive(title)
-    setFilter(!filter)
-    dispatch(payStartGetAllPayments(title))
-  }
+  const toggleTitleActive = (title) => {
+    if (title === titleActive) return;
+    setTitleActive(title);
+    setFilter(!filter);
+    dispatch(
+      payStartGetAllPayments({
+        title,
+      })
+    );
+  };
 
-//console.log(titleActive)
+  const handleValueSortBy = (id, param) => {
+    console.log(id, param);
+    dispatch(
+      payStartGetAllPayments({
+        title: titleActive,
+        id,
+        param,
+      })
+    );
+  };
 
   return (
     <div className="gra__container checkState__">
@@ -123,26 +142,29 @@ export const CheckStatePayScreen = () => {
         <CheckStatePayGroup
           dataGroup={dataGroup}
           setIsAGrouptActive={setIsAGrouptActive}
+          handleClick={handleClick}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          sortBy2={sortBy2}
+          setSortBy2={setSortBy2}
+          handleValueSortBy={handleValueSortBy}
         />
       ) : (
         <>
           <div className="checkState__headers">
             <div className="checkState__headers-search">
               <Searchbar
-              
                 placeholder="Buscar por grupo"
                 setValueSearchFilter={setValueSearchFilter}
                 valueSearchFilter={valueSearchFilter}
               />
             </div>
-            <FilterMajor 
-      
-              setFilter={setFilter} 
+            <FilterMajor
+              setFilter={setFilter}
               filter={filter}
               titleActive={titleActive}
               setTitleActive={setTitleActive}
               toggleTitleActive={toggleTitleActive}
-
             />
           </div>
 
@@ -150,6 +172,12 @@ export const CheckStatePayScreen = () => {
             headers={headers}
             sizesColumns={[49, 15, 15, 15, 5]}
             data={dataShow}
+            handleClick={handleClick}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            sortBy2={sortBy2}
+            setSortBy2={setSortBy2}
+            handleValueSortBy={handleValueSortBy}
           />
         </>
       )}

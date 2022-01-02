@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { StudentInformation } from "../ui/StudentInformation";
 import { Table } from "../ui/Table";
 import { useDispatch, useSelector } from "react-redux";
-import { payStartGetFertilizerPay } from "../../actions/pay";
+import { payClearFertilizers, payStartGetFertilizerPay } from "../../actions/pay";
 import { studentClearData } from "../../actions/student";
 import { buildDataFertilizerDetails } from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Searchbar } from "../ui/Searchbar";
 import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
-import { useHistory } from "react-router-dom";
 
 const headers = [
   { title: "MES", textAlign: "left" },
@@ -20,11 +19,11 @@ const headers = [
   { title: "DEBE", textAlign: "center" },
 ];
 
-export const CheckStateDetails = ({setIsAStudenttActive}) => {
+export const CheckStateDetails = ({ setIsAStudenttActive }) => {
   const dispatch = useDispatch();
 
   const { student, ui, pay } = useSelector((state) => state);
-  let history = useHistory();
+
   const { loading } = ui;
 
   const [dataToShow, setDataToShow] = useState([]);
@@ -37,6 +36,8 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
     headers: [],
     data: [],
   });
+
+  //  if( )
 
   useEffect(() => {
     setStudentInformation({
@@ -53,9 +54,12 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
   }, [student]);
 
   const handleArrow = () => {
+    // dispatch(payClearFertilizers());
     dispatch(studentClearData());
-    setIsAStudenttActive(false)
+    setIsAStudenttActive(false);
   };
+
+
 
   const generateData = () => {
     const dataShow = [];
@@ -72,6 +76,11 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
         missing,
       }) => {
         const date = getDate(payment_date);
+
+        if (status_payment === 0)  status_payment ="ANTICIPADO"
+        if (status_payment === 1)  status_payment ="PAGADO"
+        if (status_payment === 2)  status_payment ="NO PAGADO"
+       
 
         const coincidence = isACoincidenceSearch(
           [date, payment_type, status_payment, expected, current, missing],
@@ -103,7 +112,7 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
   }, [loading, valueSearchFilter]);
 
   return (
-    <div className="gra__container checkState__detail">
+    <>
       <div className="checkState__headers">
         <div className="checkState__headers-search">
           <Searchbar
@@ -115,7 +124,7 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
         <FilterMajor />
         <button
           className="btn btn__back checkState__headers-back"
-          onClick={() => handleArrow()}
+          onClick={() => {handleArrow()}}
         >
           <i className="fas fa-arrow-left"></i>
         </button>
@@ -129,18 +138,20 @@ export const CheckStateDetails = ({setIsAStudenttActive}) => {
       </div>
 
       <div className="checkState__detail-details">
-        {!!pay.fertilizers.length ==!0 ? (
+        {!!pay.fertilizers.length == !0 ? (
           <Table
             data={dataToShow}
             headers={headers}
-            sizesColumns={[20, 37, 12, 12, 10, 8]}
+            sizesColumns={[20, 38, 12, 12, 10, 8]}
+            // details={false}
           />
+          
         ) : (
           <p style={{ display: "grid", placeItems: "center" }}>
             <strong>No hay información para mostrar</strong>
           </p>
         )}
       </div>
-    </div>
+    </>
   );
 };
