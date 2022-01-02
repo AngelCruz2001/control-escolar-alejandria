@@ -60,6 +60,20 @@ export const buildDataExpenses = (
 
     ];
 }
+
+export const buildDataGradesStudent = (key, course, teacher, grade, date, status, type, coincidence) => {
+    console.log(key, course, teacher, grade, date, status, type)    
+    return [
+        { element: <SpanTable text={key} />, searched: coincidence[0] },
+        { element: <SpanTable text={course} />, searched: coincidence[1] },
+        { element: <SpanTable text={teacher} />, searched: coincidence[2] },
+        { element: <SpanTable text={grade} />, searched: coincidence[3] },
+        { element: <SpanTable text={date} />, searched: coincidence[4] },
+        { element: <SpanTable text={status} />, searched: coincidence[5] },
+        { element: <SpanTable text={type} />, searched: coincidence[6] },
+    ];
+}
+
 export const buildDataGradesDetail = (course, teacher, date, credits, coincidence, adminUser = false) => {
     if (adminUser) {
         return [

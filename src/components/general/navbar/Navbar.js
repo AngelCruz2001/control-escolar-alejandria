@@ -14,6 +14,8 @@ export const Navbar = () => {
         dispatch(authStartLogout())
     }
 
+    const num = 8;
+
     return (
         <div className="navbar" >
             <div className="navbar__logo">
@@ -26,6 +28,9 @@ export const Navbar = () => {
             <div className="navbar__logout " onClick={handleClickLogout}>
                 <i className="fas fa-user-circle btn"></i>
             </div>
+               
+               
+            
         </div>
     )
 }

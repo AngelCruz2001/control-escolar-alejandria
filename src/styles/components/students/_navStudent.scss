@@ -1,0 +1,50 @@
+.navStudent{
+    height: $navbar-height;
+    display: flex;
+    justify-content: space-between;
+   background-color: antiquewhite;
+   position: sticky;
+   width: 96%;
+   align-items: center;
+   padding: 0 2%;
+    &__logo{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 1rem;
+
+        & img{
+            // max-width: 100%;
+            width: 5rem;
+            height: 5rem;
+        }
+
+        & h1{
+
+        }
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        &-password{
+            background-color: $mustard;
+            padding: .8rem 1.5rem;
+            border-radius: 15px;
+
+            &:hover{
+                // @include transition;
+                background-color: $blue;
+            }
+        }
+        &-img{
+            width: 5rem;
+            height: 5rem;
+            & img{
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { useAccess } from '../../hooks/useAccess'
+import { MainStudentScreen } from '../students/MainStudentScreen'
 import { Modal } from '../ui/Modal'
 import { Navbar } from './navbar/Navbar'
 import { Texture } from './texture/Texture'
@@ -13,10 +14,12 @@ export const Main = () => {
 
     return (
 
-        <p>
+        <>
             {
                 roles[0] === 8 ?
-                    <p>Alumnos</p>
+
+                  <MainStudentScreen/>
+                    
                     :
                     <div className={`${isModalOpen ? 'filterModal' : ''}`} >
                         <Texture />
@@ -60,7 +63,7 @@ export const Main = () => {
                         </section >
                     </div>
             }
-        </p>
+        </>
 
     )
 }

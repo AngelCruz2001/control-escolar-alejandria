@@ -19,7 +19,7 @@ export const AppRouter = ({ history }) => {
     }, [dispatch])
     return (
         <Router>
-            <main>
+            <div>
                 <Switch>
                     <PublicRoute
                         exact
@@ -35,7 +35,7 @@ export const AppRouter = ({ history }) => {
                     />
 
                 </Switch>
-            </main>
+            </div>
         </Router>
     )
 }
