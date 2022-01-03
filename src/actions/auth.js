@@ -34,6 +34,36 @@ export const authStartLogin = (id, password) => {
     }
 }
 
+export const authStartResetPassword = () => {
+    return async (dispatch, getState) => {
+        try {
+            const { token, id_user } = getState();
+            const res = await fetchConToken(`resetPassword/${id_user}/${token}`);
+            const body = await res.json()
+
+            if (body.ok) {
+                console.log(body)
+                Swal.fire({
+                    title: "Restablecer Contraseña",
+                    text: body.msg,
+                    icon: 'success',
+                })
+            } else {
+                console.log(body)
+                Swal.fire({
+                    title: '¡Oops!',
+                    text: body.msg,
+                    icon: 'question',
+                })
+            }
+
+        } catch (error) {
+            console.log(error)
+            Swal.fire('Error', 'Hablar con el administrador', 'error')
+        }
+    }
+}
+
 export const authStartChecking = () => {
     return async (dispatch) => {
         if (localStorage.getItem('token')) {

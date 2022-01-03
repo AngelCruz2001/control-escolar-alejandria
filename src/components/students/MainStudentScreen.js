@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { documentSetDocument } from "../../actions/document";
 import { gradesStartGetGradesByMatricula } from "../../actions/grades";
+import { requestStartRequestDocument } from "../../actions/requests";
 import { studentStartGetStudentByMatricula } from "../../actions/student";
 import { buildDataGradesStudent } from "../../helpers/buildDataTables";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
@@ -8,6 +10,8 @@ import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
 import { Searchbar } from "../ui/Searchbar";
 import { StudentInformation } from "../ui/StudentInformation";
 import { Table } from "../ui/Table";
+import { StudentModal } from "./StudentModal";
+import { StudentSelect } from "./StudentSelect";
 import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
 
@@ -71,12 +75,19 @@ export const MainStudentScreen = () => {
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
+  const [documentSelected, setDocumentSelected] = useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(studentStartGetStudentByMatricula("qwerry2"));
     dispatch(gradesStartGetGradesByMatricula("qwerry2"));
   }, []);
+
+  const handleRequestDocument = (id) => {
+    dispatch(documentSetDocument(id));
+    dispatch(requestStartRequestDocument())
+    setDocumentSelected('')
+  }
 
   const generateData = () => {
     const dataToShow = [];
@@ -119,7 +130,15 @@ export const MainStudentScreen = () => {
           <div className="mainStudent__infoStu">
             <StudentInformation studentInformation={dataInformation} />
           </div>
+          <div>
 
+            <StudentSelect
+              handleRequestDocument={handleRequestDocument}
+              documentSelected={documentSelected}
+              setDocumentSelected={setDocumentSelected}
+
+            />
+          </div>
           <div className="mainStudent__search">
             <h3 className="mainStudent__search__title">
               Historial de calificaciones
@@ -135,6 +154,10 @@ export const MainStudentScreen = () => {
             />
           </div>
           <StudetsFooter />
+         
+
+          <StudentModal/>
+         
 
           {/* <div>
             <h3>Selecciona el documento que deseas solicitar</h3>
