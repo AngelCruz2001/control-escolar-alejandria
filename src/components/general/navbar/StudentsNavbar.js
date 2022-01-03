@@ -4,7 +4,7 @@ import React from "react";
 import logoAleNoText from "../../../helpers/resources/images/logoAleNoText.png";
 import { StudentsSubmenu } from "../../students/StudentsSubmenu";
 
-export const StudentsNavbar = () => {
+export const StudentsNavbar = ({setActiveScreen, activeScreen}) => {
   return (
     <div className="navStudentPosition">
       <nav className="navStudent">
@@ -30,7 +30,7 @@ export const StudentsNavbar = () => {
           <button className={`navStudent__info-exit btn`}>SALIR</button>
         </div>
       </nav>
-      <StudentsSubmenu />
+      <StudentsSubmenu activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>
     </div>
   );
 };
