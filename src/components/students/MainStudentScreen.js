@@ -8,6 +8,7 @@ import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
 import { Searchbar } from "../ui/Searchbar";
 import { StudentInformation } from "../ui/StudentInformation";
 import { Table } from "../ui/Table";
+import { StudentReqDoc } from "./StudentReqDoc";
 import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
 
@@ -42,15 +43,7 @@ const headers = [
   },
 ];
 
-const documentType = [
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-];
+
 
 export const MainStudentScreen = () => {
   const { auth, student, grades, ui } = useSelector((state) => state);
@@ -110,6 +103,13 @@ export const MainStudentScreen = () => {
     generateData();
   }, [grades]);
 
+  const [activeDoc, setActiveDoc] = useState("");
+
+  const toggleActiveDoc = (title) => {
+    setActiveDoc(title);
+    console.log(activeDoc);
+  };
+
   return (
     <>
       <StudentsNavbar />
@@ -136,16 +136,8 @@ export const MainStudentScreen = () => {
           </div>
           <StudetsFooter /> */}
 
-
           <div className="studentReqDoc">
-            <h3 className="studentReqDoc__title">Selecciona el documento <br /> que deseas solicitar</h3>
-            <div className="studentReqDoc__documents">
-              {documentType.map((doc, i) => (
-                <div key={i} className="studentReqDoc__documents-doc">
-                  <p>{doc.title}</p>
-                </div>
-              ))}
-            </div>
+            <StudentReqDoc activeDoc={activeDoc} toggleActiveDoc={toggleActiveDoc} setActiveDoc={setActiveDoc}/>
           </div>
         </div>
       </main>
