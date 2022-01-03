@@ -170,9 +170,7 @@
     }
 }
 
-.color__input {
-    background-color: red;
-}
+
 @include respond(phone) {
     .mainStudent {
         // height: 78vh;
