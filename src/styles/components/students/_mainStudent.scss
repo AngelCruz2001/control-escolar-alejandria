@@ -1,14 +1,14 @@
+
+
 .mainStudent {
     background-color: $color-backgroung;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding-bottom: 1rem;
     height: 100%;
 
-    
-
     &__infoStu {
         margin: 0 auto;
-        width: 96%;
+        width: 90%;
 
         & .stuInfo {
             margin-top: 0;
@@ -58,14 +58,16 @@
 
     &__tableContainer {
         margin-top: 1.5rem !important;
-        height: 100%;
+        height: auto;
         width: 90%;
         margin: 0 auto;
 
         & .table {
-            border: 1px solid red;
             flex-direction: row;
             border-radius: 10px;
+            height: auto;
+            // border: 1px solid $gray-navbar;
+            // border-bottom: none;
 
             &__headers {
                 background-color: $color-blue-nav;
@@ -73,6 +75,7 @@
                 width: fit-content;
                 flex-direction: column;
                 border-radius: 10px 0 0 10px;
+                // padding: 1rem;
 
                 &__cell {
                     color: $white;
@@ -80,10 +83,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0;
+                    // padding: 0 1rem!important;
                     font-size: 0.8rem;
                     font-weight: 400;
-                    padding: 0.5rem;
+                    padding: 0.5rem 1.5rem;
+                    border-bottom: .5px solid $black;
+                    border-right: 1px solid $black;
 
                     &:nth-child(1) {
                         height: 2rem;
@@ -105,6 +110,7 @@
                     }
                     &:nth-child(7) {
                         height: 2rem;
+                        border-bottom: none;
                     }
                 }
             }
@@ -112,24 +118,27 @@
 
         & .table__body {
             flex-basis: content;
+            flex-direction: row;
 
             &__row {
                 margin: 0;
-                // border: 1px solid red;
                 box-shadow: none;
                 flex-direction: column;
                 height: 100%;
                 width: fit-content;
                 border-radius: 0;
 
+                &:nth-child(odd){
+                    // background-color: red!important;
+                }
+
                 &__cell {
                     padding: 0.5rem;
                     width: auto !important;
-                    // padding: 0.4rem;
                     background-color: #fff !important;
-                    // display: flex;
-                    // justify-content: center;
-                    // align-items: center;
+                    border-bottom: 1px solid $gray-navbar;
+                    border-right: 1px solid $gray-navbar;
+                    font-size: 0.8rem;
 
                     &:nth-child(1) {
                         height: 2rem;
@@ -153,6 +162,7 @@
                     &:nth-child(7) {
                         height: 2rem;
                         border-radius: 0;
+                        border-bottom: none;
                     }
                 }
             }
@@ -163,9 +173,9 @@
 .color__input {
     background-color: red;
 }
-@include respond(phone){
-    .mainStudent{
-        height: 78vh;
+@include respond(phone) {
+    .mainStudent {
+        // height: 78vh;
     }
 }
 

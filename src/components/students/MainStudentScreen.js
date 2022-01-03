@@ -47,8 +47,6 @@ const headers = [
   },
 ];
 
-
-
 export const MainStudentScreen = () => {
   const { auth, student, grades, ui } = useSelector((state) => state);
   // TODO: sacar la matricula del selector y ponerla en los dispatch y sacar el promedio del usuario
@@ -68,7 +66,7 @@ export const MainStudentScreen = () => {
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
-  const [documentSelected, setDocumentSelected] = useState('');
+  const [documentSelected, setDocumentSelected] = useState("");
 
 
 
@@ -76,22 +74,22 @@ export const MainStudentScreen = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(studentStartGetStudentByMatricula("qwerry2"));
-    dispatch(gradesStartGetGradesByMatricula("qwerry2"));
+    dispatch(studentStartGetStudentByMatricula("CODG202111001 "));
+    dispatch(gradesStartGetGradesByMatricula("CODG202111001 "));
   }, []);
 
   const handleRequestDocument = (id) => {
     console.log('hecho')
     dispatch(documentSetDocument(id));
-    dispatch(requestStartRequestDocument())
-    setDocumentSelected('')
-  }
+    dispatch(requestStartRequestDocument());
+    setDocumentSelected("");
+  };
 
   const generateData = () => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
     grades.activeStudentGrade.forEach(
-      ({ key, course, teacher, grade, date, status = "Aprobado", type }) => {
+      ({ key, course, teacher, grade, date, status = (grade >= 7) ? "Aprobado" : "Reprobad", type }) => {
         const coincidence = isACoincidenceSearch(
           [key, course, teacher, grade, date, status, type],
           searchWord
@@ -119,51 +117,67 @@ export const MainStudentScreen = () => {
     generateData();
   }, [grades]);
 
+  //Funciones para hacer Toggle entre pestanias
+  const [activeScreen, setActiveScreen] = useState(0);
+
+  console.log(activeScreen);
+
+  //funciones para Solicitar Documentos
 
 
   return (
     <>
-      <StudentsNavbar />
+      <StudentsNavbar
+        setActiveScreen={setActiveScreen}
+        activeScreen={activeScreen}
+      />
 
       <main>
         <div className="mainStudent">
-          <div className="mainStudent__infoStu">
-            <StudentInformation studentInformation={dataInformation} />
-          </div>
-          <div>
+          {activeScreen === 0 && (
+            <>
+              <div className="mainStudent__infoStu">
+                <StudentInformation studentInformation={dataInformation} />
+              </div>
 
-            <StudentSelect
+              {/* <StudentSelect
               handleRequestDocument={handleRequestDocument}
               documentSelected={documentSelected}
               setDocumentSelected={setDocumentSelected}
+            /> */}
 
-            />
-          </div>
-          <div className="mainStudent__search">
-            <h3 className="mainStudent__search__title">
-              Historial de calificaciones
-            </h3>
-            <Searchbar />
-          </div>
+             
 
-          <div className="mainStudent__tableContainer">
-            <Table
-              headers={headers}
-              data={dataShow}
-              sizesColumns={[19, 10, 15, 35, 7, 3, 9]}
-            />
-          </div>
-          <StudetsFooter />
+              <div className="mainStudent__search">
+                <h3 className="mainStudent__search__title">
+                  Historial de calificaciones
+                </h3>
+                <Searchbar />
+              </div>
 
+              <div className="mainStudent__tableContainer">
+                <Table
+                  headers={headers}
+                  data={dataShow}
+                  sizesColumns={[19, 10, 15, 35, 7, 3, 9]}
+                />
+              </div>
 
-          <StudentModal />
+              <StudetsFooter />
+            </>
+          )}
 
+          {activeScreen === 1 && (
+            <div className="studentReqDoc">
+              <div className="studentReqDoc">
+                <StudentReqDoc
+                  documentSelected={documentSelected} setDocumentSelected={setDocumentSelected} handleRequestDocument={handleRequestDocument}
+                />
+              </div>
+            </div>
+          )}
 
-          <div className="studentReqDoc">
-            <StudentReqDoc
-              documentSelected={documentSelected} setDocumentSelected={setDocumentSelected} handleRequestDocument={handleRequestDocument}
-            />
-          </div>
+          {activeScreen === 2 && <StudentModal />}
         </div>
       </main>
     </>
