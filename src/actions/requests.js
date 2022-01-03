@@ -29,7 +29,7 @@ export const requestStartRequestDocument = () => {
                     icon: 'question',
                 })
             }
-            dispatch(studentClearData())
+           
             dispatch(documentClearData())
             dispatch(uiSetCurrent(0))
 

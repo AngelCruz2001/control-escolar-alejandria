@@ -34,12 +34,12 @@ export const authStartLogin = (id, password) => {
     }
 }
 
-export const authStartResetPassword = () => {
+export const authStartResetPassword = (oldPass, newPass) => {
     return async (dispatch, getState) => {
         try {
-            const { token, id_user } = getState();
-            const res = await fetchConToken(`resetPassword/${id_user}/${token}`);
-            const body = await res.json()
+            const { token, id_user } = getState().auth.user;
+            const res = await fetchConToken(`auth/resetPassword/${id_user}/${token}?knownPassword=1`, {oldPassword:oldPass, newPassword:newPass}, 'POST');
+            const body = await res.json();
 
             if (body.ok) {
                 console.log(body)
@@ -49,12 +49,19 @@ export const authStartResetPassword = () => {
                     icon: 'success',
                 })
             } else {
-                console.log(body)
-                Swal.fire({
-                    title: '¡Oops!',
-                    text: body.msg,
-                    icon: 'question',
-                })
+                if(!body.msg.includes('contraseña')){
+
+                    Swal.fire({
+                        title: '¡Oops!',
+                        text: body.msg,
+                        icon: 'question',
+                    })
+                    console.log(body)
+                }
+                else{
+                    dispatch(authSetError(body.msg))
+                }
+
             }
 
         } catch (error) {
@@ -109,6 +116,9 @@ const authLogout = () => ({
     type: types.authLogout
 })
 
-
+const authSetError = (error) => ({
+    type: types.authSetError,
+    payload: error 
+}) 
 const authCheckingStart = () => ({ type: types.authCheckingStart })
 const authCheckingFinish = () => ({ type: types.authCheckingFinish })

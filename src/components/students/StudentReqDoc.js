@@ -1,17 +1,47 @@
 import React from "react";
 
-export const StudentReqDoc = ({ activeDoc, toggleActiveDoc, setActiveDoc }) => {
+export const StudentReqDoc = ({ documentSelected, handleRequestDocument, setDocumentSelected }) => {
 
-    const documentType = [
-        { title: "Nombre del documento" },
-        { title: "documento" },
-        { title: "constancia" },
-        { title: "folio" },
-        { title: "kardex" },
-        { title: "Estaferta" },
-        { title: "Licenciatura en Johan" },
-        { title: "Una cancion bonita" },
-      ];
+  const documentType = [
+    {
+      id: 1,
+      document: 'Constancia de estudios con calificaciones'
+    },
+    {
+      id: 0,
+      document: 'Constancia de estudios sin calificaciones'
+    },
+    {
+      id: 10,
+      document: 'Kardex'
+    },
+    {
+      id: 3,
+      document: 'Solicitud de servicio'
+    },
+    {
+      id: 2,
+      document: 'Solicitud de prácticas'
+    },
+    {
+      id: 13,
+      document: 'Liberación de servicio'
+    },
+    {
+      id: 14,
+      document: 'Liberación de prácticas'
+    },
+    {
+      id: 11,
+      document: 'Acta de examen'
+    }
+  ];
+
+  const toggleActiveDoc = (id) => {
+    setDocumentSelected(id);
+  };
+
+
 
   return (
     <>
@@ -20,31 +50,29 @@ export const StudentReqDoc = ({ activeDoc, toggleActiveDoc, setActiveDoc }) => {
       </h3>
 
       <div className="studentReqDoc__documents">
-        {documentType.map((doc, i) => (
+        {documentType.map(({ document, id }) => (
           <div
-            onClick={() => toggleActiveDoc(doc.title)}
-            key={i}
-            className={`studentReqDoc__documents-doc ${
-              doc.title === activeDoc && "active"
-            } `}
+            onClick={() => toggleActiveDoc(id)}
+            key={id}
+            className={`studentReqDoc__documents-doc ${id === documentSelected && "active"
+              } `}
           >
-            <p>{doc.title}</p>
+            <p>{document}</p>
           </div>
         ))}
       </div>
       <div className="studentReqDoc__submit">
         <button
-          className={`studentReqDoc__submit-btn btn ${
-            activeDoc === "" ? "ui__disabledEffect" : "activeCancel"
-          }  `}
-          onClick={()=> setActiveDoc('')}
+          className={`studentReqDoc__submit-btn btn ${documentSelected === "" ? "ui__disabledEffect" : "activeCancel"
+            }  `}
+          onClick={() => setDocumentSelected('')}
         >
           Cancelar
         </button>
         <button
-          className={`studentReqDoc__submit-btn btn ${
-            activeDoc === "" ? "ui__disabledEffect" : 'activeSubmit'
-          }`}
+          onClick={()=>handleRequestDocument(documentSelected)}
+          className={`studentReqDoc__submit-btn btn ${documentSelected === "" ? "ui__disabledEffect" : 'activeSubmit'
+            }`}
         >
           Aceptar
         </button>

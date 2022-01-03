@@ -70,6 +70,10 @@ export const MainStudentScreen = () => {
   });
   const [documentSelected, setDocumentSelected] = useState('');
 
+
+
+  console.log(documentSelected)
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(studentStartGetStudentByMatricula("qwerry2"));
@@ -77,6 +81,7 @@ export const MainStudentScreen = () => {
   }, []);
 
   const handleRequestDocument = (id) => {
+    console.log('hecho')
     dispatch(documentSetDocument(id));
     dispatch(requestStartRequestDocument())
     setDocumentSelected('')
@@ -114,12 +119,7 @@ export const MainStudentScreen = () => {
     generateData();
   }, [grades]);
 
-  const [activeDoc, setActiveDoc] = useState("");
 
-  const toggleActiveDoc = (title) => {
-    setActiveDoc(title);
-    console.log(activeDoc);
-  };
 
   return (
     <>
@@ -127,7 +127,7 @@ export const MainStudentScreen = () => {
 
       <main>
         <div className="mainStudent">
-           <div className="mainStudent__infoStu">
+          <div className="mainStudent__infoStu">
             <StudentInformation studentInformation={dataInformation} />
           </div>
           <div>
@@ -154,13 +154,15 @@ export const MainStudentScreen = () => {
             />
           </div>
           <StudetsFooter />
-         
 
-          <StudentModal/>
-         
+
+          <StudentModal />
+
 
           <div className="studentReqDoc">
-            <StudentReqDoc activeDoc={activeDoc} toggleActiveDoc={toggleActiveDoc} setActiveDoc={setActiveDoc}/>
+            <StudentReqDoc
+              documentSelected={documentSelected} setDocumentSelected={setDocumentSelected} handleRequestDocument={handleRequestDocument}
+            />
           </div>
         </div>
       </main>

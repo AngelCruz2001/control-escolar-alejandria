@@ -6,6 +6,7 @@ const initialState = JSON.parse(localStorage.getItem('user')) || {
     },
     logged: false,
     checking: false,
+    error: ''
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ export const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 checking: true
+            }
+        case types.authSetError:
+            return {
+                ...state,
+                error: action.payload
             }
         case types.authCheckingFinish:
             return {

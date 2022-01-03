@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import IconButton from "@material-ui/core/IconButton";
@@ -7,12 +7,21 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 import { useDispatch, useSelector } from 'react-redux';
+import { authStartResetPassword } from '../../actions/auth';
 
 export const StudentModal = () => {
 
+    //TODO: ARREGLAR BUG DE ERROR DE LA CONTRASEÑA ANTERIOR ESTA MAL REINICIIAR CUANDO ES TOUCHED
+
 
     const dispatch = useDispatch();
-    const state = useSelector(state => state)
+
+    const {error} = useSelector(state => state.auth)
+
+    useEffect(() => {
+        
+    }, [error])
+   
     const { handleSubmit, errors, touched, getFieldProps, handleReset, values, setValues } = useFormik({
         initialValues: {
             oldPass: '',
@@ -24,7 +33,7 @@ export const StudentModal = () => {
         },
 
         onSubmit: (values) => {
-            console.log(values);
+            dispatch(authStartResetPassword(values.oldPass, values.newPass))
         },
         validationSchema: Yup.object({
             oldPass: Yup.string()
@@ -41,6 +50,8 @@ export const StudentModal = () => {
         const names = ['showPassword', 'showPassword2', 'showPassword3'];
         setValues({ ...values, [names[number]]: !values[names[number]] });
     };
+
+    
 
 
     return (
@@ -67,7 +78,8 @@ export const StudentModal = () => {
                             </InputAdornment>
                         }
                     />
-                    {touched.oldPass && errors.oldPass && <span>{errors.oldPass}</span>}
+                    {!touched.oldPass && error && <span>{error}</span>}
+                    {touched.oldPass && errors.oldPass && <span>{errors.oldPass }</span>}
                 </div>
 
                 <div>
