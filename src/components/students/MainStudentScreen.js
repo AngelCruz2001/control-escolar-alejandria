@@ -12,6 +12,7 @@ import { StudentInformation } from "../ui/StudentInformation";
 import { Table } from "../ui/Table";
 import { StudentModal } from "./StudentModal";
 import { StudentSelect } from "./StudentSelect";
+import { StudentReqDoc } from "./StudentReqDoc";
 import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
 
@@ -46,15 +47,7 @@ const headers = [
   },
 ];
 
-const documentType = [
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-  { title: "Nombre del documento" },
-];
+
 
 export const MainStudentScreen = () => {
   const { auth, student, grades, ui } = useSelector((state) => state);
@@ -121,13 +114,20 @@ export const MainStudentScreen = () => {
     generateData();
   }, [grades]);
 
+  const [activeDoc, setActiveDoc] = useState("");
+
+  const toggleActiveDoc = (title) => {
+    setActiveDoc(title);
+    console.log(activeDoc);
+  };
+
   return (
     <>
       <StudentsNavbar />
 
       <main>
         <div className="mainStudent">
-          <div className="mainStudent__infoStu">
+           <div className="mainStudent__infoStu">
             <StudentInformation studentInformation={dataInformation} />
           </div>
           <div>
@@ -159,16 +159,9 @@ export const MainStudentScreen = () => {
           <StudentModal/>
          
 
-          {/* <div>
-            <h3>Selecciona el documento que deseas solicitar</h3>
-            <div>
-              {documentType.map((doc, i) => (
-                <div key={i}>
-                  <p>{doc.title}</p>
-                </div>
-              ))}
-            </div>
-          </div> */}
+          <div className="studentReqDoc">
+            <StudentReqDoc activeDoc={activeDoc} toggleActiveDoc={toggleActiveDoc} setActiveDoc={setActiveDoc}/>
+          </div>
         </div>
       </main>
     </>

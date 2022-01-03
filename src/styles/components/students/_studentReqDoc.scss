@@ -1,0 +1,62 @@
+
+
+.studentReqDoc{
+    margin: 0 auto;
+    width: 90%;
+    background-color: $white;
+    border-radius: 10px;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    &__title{
+        margin-top: 1.5rem;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    &__documents{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
+        grid-gap: 1rem;
+        width: 90%;
+        padding: 1rem;
+
+        &-doc{
+            display: flex;
+            justify-content: center;
+            color: $color-blue-nav;      
+            padding: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px #00000029;
+        }
+
+        .active{
+            color: $white;
+            background-color: $color-yellow-btn;
+        }
+    }
+
+    &__submit{
+        gap: 1.5rem;
+        display: flex;
+        &-btn{
+            padding: .7rem 1.5rem;
+            border: 1px solid $gray-border!important;
+            border-radius: 10px;
+
+        }
+        & .activeCancel{
+            background-color: red;
+            color: $white;
+        }
+
+        & .activeSubmit{
+            background-color: $color-yellow-btn;
+            color: $white;
+        }
+    }
+
+}
