@@ -77,8 +77,10 @@ export const StudentModal = () => {
               </InputAdornment>
             }
           />
-          {!touched.oldPass && error && <span>{error}</span>}
-          {touched.oldPass && errors.oldPass && <span>{errors.oldPass}</span>}
+          {!touched.oldPass && error && <span  className="form__error">{error}</span>}
+          {touched.oldPass && errors.oldPass && (
+            <span className="form__error">{errors.oldPass}</span>
+          )}
         </div>
 
         <div className="studentsPswd__form__row">
@@ -94,7 +96,9 @@ export const StudentModal = () => {
               </InputAdornment>
             }
           />
-          {touched.newPass && errors.newPass && <span>{errors.newPass}</span>}
+          {touched.newPass && errors.newPass && (
+            <span className="form__error">{errors.newPass}</span>
+          )}
         </div>
 
         <div className="studentsPswd__form__row">
@@ -111,18 +115,23 @@ export const StudentModal = () => {
             }
           />
           {touched.confirmPass && errors.confirmPass && (
-            <span>{errors.confirmPass}</span>
+            <span className="form__error">{errors.confirmPass}</span>
           )}
         </div>
         <div className="studentsPswd__submit studentReqDoc__submit">
           <button
-            className={`studentReqDoc__submit-btn btn activeCancel `}
+            // className={`studentReqDoc__submit-btn btn activeCancel `}
+            className={`studentReqDoc__submit-btn btn ${
+              !touched.newPass ? "ui__disabledEffect" : "activeSubmit"
+            }`}
             type="submit"
           >
             Submit
           </button>
           <button
-            className={`studentReqDoc__submit-btn btn activeSubmit`}
+            className={`studentReqDoc__submit-btn btn ${
+              !touched.oldPass ? "ui__disabledEffect" : "activeCancel"
+            }`}
             type="button"
             onClick={handleReset}
           >

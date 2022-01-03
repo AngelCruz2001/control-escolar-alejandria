@@ -1,4 +1,6 @@
-
+body {
+    background-color: $color-backgroung;
+}
 
 .mainStudent {
     background-color: $color-backgroung;
@@ -87,7 +89,7 @@
                     font-size: 0.8rem;
                     font-weight: 400;
                     padding: 0.5rem 1.5rem;
-                    border-bottom: .5px solid $black;
+                    border-bottom: 0.5px solid $black;
                     border-right: 1px solid $black;
 
                     &:nth-child(1) {
@@ -128,9 +130,9 @@
                 width: fit-content;
                 border-radius: 0;
 
-                &:nth-child(odd){
-                    // background-color: red!important;
-                }
+                // &:nth-child(odd){
+                //     // background-color: red!important;
+                // }
 
                 &__cell {
                     padding: 0.5rem;
@@ -170,10 +172,9 @@
     }
 }
 
-
 @include respond(phone) {
     .mainStudent {
-        // height: 78vh;
+        height: 78vh;
     }
 }
 

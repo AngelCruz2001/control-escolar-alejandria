@@ -10,7 +10,7 @@ export const LoginScreen = () => {
     const dispatch = useDispatch()
     const [formValues, handleInputChange,] = useForm({
         username: "admin",
-        password: "sud0_c34_r00t"
+        password: "jopi"
     })
     const { username, password } = formValues;
     const handleClickLogin = (e) => {

@@ -169,11 +169,11 @@ export const MainStudentScreen = () => {
 
           {activeScreen === 1 && (
             <div className="studentReqDoc">
-              <div className="studentReqDoc">
+              
                 <StudentReqDoc
                   documentSelected={documentSelected} setDocumentSelected={setDocumentSelected} handleRequestDocument={handleRequestDocument}
                 />
-              </div>
+              
             </div>
           )}
 
