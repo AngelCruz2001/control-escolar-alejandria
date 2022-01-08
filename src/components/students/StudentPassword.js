@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authStartResetPassword } from "../../actions/auth";
 import logoAleNoText from "../../resources/images/logoAleNoText.png";
 
-export const StudentModal = () => {
+export const StudentPassword = () => {
   //TODO: ARREGLAR BUG DE ERROR DE LA CONTRASEÑA ANTERIOR ESTA MAL REINICIIAR CUANDO ES TOUCHED
 
   const dispatch = useDispatch();

@@ -1,6 +1,4 @@
-
-
-.studentReqDoc{
+.studentReqDoc {
     margin: 0 auto;
     width: 90%;
     background-color: $white;
@@ -10,63 +8,147 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    height: fit-content;
     border: 1px solid $gray-border;
+    justify-content: space-around;
+    height: max(75vh, 100%);
 
-
-    &__title{
-        margin-top: 1.5rem;
-        text-align: center;
-        font-weight: 500;
+    &__historyBtn {
+        margin: 2rem auto 0 2rem;
+        padding: 0.7rem 1.5rem;
+        background-color: $color-yellow-btn !important;
+        color: white;
+        border-radius: 10px;
+        font-size: 0.9rem;
     }
 
-    &__documents{
+    &__title {
+        text-align: center;
+        font-weight: 500;
+        height: 10%;
+    }
+
+    &__documents {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
         grid-gap: 1rem;
         width: 90%;
         padding: 1rem;
+        height: 55%;
 
-        &-doc{
+        &-doc {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: $color-blue-nav;      
-            padding: .8rem 1rem;
+            color: $color-blue-nav;
+            padding: 0.8rem 1rem;
             border-radius: 10px;
             box-shadow: 0px 3px 6px #00000029;
             cursor: pointer;
 
-            p{
+            p {
                 text-align: center;
             }
         }
 
-        .active{
+        .active {
             color: $white;
             background-color: $color-yellow-btn;
         }
     }
 
-    &__submit{
+    &__submit {
         gap: 1.5rem;
         display: flex;
-        &-btn{
-            padding: .7rem 1.5rem;
-            border: 1px solid $gray-border!important;
+        &-btn {
+            padding: 0.7rem 1.5rem;
+            border: 1px solid $gray-border !important;
             border-radius: 10px;
-
         }
-        & .activeCancel{
+        & .activeCancel {
             background-color: red;
             color: $white;
         }
 
-        & .activeSubmit{
-            background-color: $color-yellow-btn;
-            color: $white;
+        & .activeSubmit {
+            background-color: $color-yellow-btn !important;
+            color: $white !important;
         }
     }
 
+    &__history {
+        // height: minmax(77vh, 100%);
+        // height: 77vh;
+        // max-height: 100%;
+        width: 100%;
 
+        & .btn-back {
+            margin-top: 5%;
+            margin-left: 7%;
+        }
+
+        &__title {
+            text-align: center;
+            margin-bottom: 5%;
+            font-weight: 500;
+        }
+
+        &__data {
+            display: grid;
+            // grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+            grid-gap: 1rem;
+            margin-right: .5rem;
+            padding: 0 0.8rem 0 2rem;
+
+            &-item {
+
+                border-radius: 10px;
+                position: relative;
+
+                & p {
+                    text-align: center;
+                    padding: 1rem;
+                }
+
+                & .owe {
+                    border-bottom: 2px solid $color-yellow-btn;
+                }
+
+                & .paid {
+                    border-bottom: 2px solid $color-blue-nav;
+                }
+
+                & .oweDecorarion,
+                .paidDecoration {
+                    position: absolute;
+                    right: -1%;
+                    top: -1.5%;
+                    bottom: -1.5%;
+                    width: 40px;
+                    border-bottom-right-radius: 10px;
+                    border-top-right-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                & .oweDecorarion {
+                    background-color: $color-yellow-btn;
+                }
+
+                & .paidDecoration {
+                    background-color: $color-blue-nav;
+                }
+
+                & span .isAproved {
+                    color: $white;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        &__noData {
+            display: grid;
+            text-align: center;
+            place-items: center;
+        }
+    }
 }

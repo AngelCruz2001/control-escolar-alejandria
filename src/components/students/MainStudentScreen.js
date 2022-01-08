@@ -10,11 +10,14 @@ import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
 import { Searchbar } from "../ui/Searchbar";
 import { StudentInformation } from "../ui/StudentInformation";
 import { Table } from "../ui/Table";
-import { StudentModal } from "./StudentModal";
+import { StudentPassword } from "./StudentPassword";
 import { StudentSelect } from "./StudentSelect";
 import { StudentReqDoc } from "./StudentReqDoc";
 import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
+import { StudentHistoryScreen } from "./StudentHistoryScreen";
+import { useWindowResize } from "../../hooks/useWindowResize";
+import { StudentDesktopModal } from "./StudentDesktopModal";
 
 const headers = [
   {
@@ -63,14 +66,13 @@ export const MainStudentScreen = () => {
   };
 
   const [dataShow, setDataShow] = useState([]);
+  
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
   const [documentSelected, setDocumentSelected] = useState("");
 
-
-
-  console.log(documentSelected)
+  console.log(documentSelected);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -79,7 +81,7 @@ export const MainStudentScreen = () => {
   }, []);
 
   const handleRequestDocument = (id) => {
-    console.log('hecho')
+    console.log("hecho");
     dispatch(documentSetDocument(id));
     dispatch(requestStartRequestDocument());
     setDocumentSelected("");
@@ -89,7 +91,15 @@ export const MainStudentScreen = () => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
     grades.activeStudentGrade.forEach(
-      ({ key, course, teacher, grade, date, status = (grade >= 7) ? "Aprobado" : "Reprobad", type }) => {
+      ({
+        key,
+        course,
+        teacher,
+        grade,
+        date,
+        status = grade >= 7 ? "Aprobado" : "Reprobado",
+        type,
+      }) => {
         const coincidence = isACoincidenceSearch(
           [key, course, teacher, grade, date, status, type],
           searchWord
@@ -117,36 +127,54 @@ export const MainStudentScreen = () => {
     generateData();
   }, [grades]);
 
-  //Funciones para hacer Toggle entre pestanias
+  //Funciones para hacer Toggle entre pestanias mobile
   const [activeScreen, setActiveScreen] = useState(0);
+  const [historyDocScreen, setHistoryDocScreen] = useState(false);
 
-  console.log(activeScreen);
+  //Funciones para hacer Toggle del modal desktop
+  const [activeModal, setActiveModal] = useState({
+    showModal: true,
+    idModal: ''
+  });
 
-  //funciones para Solicitar Documentos
+  const {showModal, idModal} = activeModal;
 
+
+  //funcion para saber el width
+  const [widthSize] = useWindowResize();
+
+
+  console.log(dataShow);
 
   return (
     <>
       <StudentsNavbar
+        widthSize={widthSize}
         setActiveScreen={setActiveScreen}
         activeScreen={activeScreen}
+        setActiveModal={setActiveModal}
       />
 
       <main>
         <div className="mainStudent">
-          {activeScreen === 0 && (
+          {((activeScreen === 0 && widthSize < 768) || widthSize >= 768) && (
             <>
-              <div className="mainStudent__infoStu">
-                <StudentInformation studentInformation={dataInformation} />
+              <div className="mainStudent__topContent">
+                <div className="mainStudent__infoStu">
+                  <StudentInformation studentInformation={dataInformation} />
+                </div>
+
+                {widthSize > 768 && (
+                  <div className="mainStudent__selectDocument">
+                    <StudentSelect
+                      handleRequestDocument={handleRequestDocument}
+                      documentSelected={documentSelected}
+                      setDocumentSelected={setDocumentSelected}
+                      setActiveModal={setActiveModal}
+                    />
+                  </div>
+                )}
               </div>
-
-              {/* <StudentSelect
-              handleRequestDocument={handleRequestDocument}
-              documentSelected={documentSelected}
-              setDocumentSelected={setDocumentSelected}
-            /> */}
-
-             
 
               <div className="mainStudent__search">
                 <h3 className="mainStudent__search__title">
@@ -163,21 +191,33 @@ export const MainStudentScreen = () => {
                 />
               </div>
 
-              <StudetsFooter />
+              {widthSize < 768 && <StudetsFooter />}
+
+              {!showModal && (
+                <StudentDesktopModal  idModal={idModal} setActiveModal={setActiveModal} />
+              )}
             </>
           )}
 
-          {activeScreen === 1 && (
+          {activeScreen === 1 && widthSize <= 768 && (
             <div className="studentReqDoc">
-              
+              {!historyDocScreen ? (
                 <StudentReqDoc
-                  documentSelected={documentSelected} setDocumentSelected={setDocumentSelected} handleRequestDocument={handleRequestDocument}
+                  documentSelected={documentSelected}
+                  setDocumentSelected={setDocumentSelected}
+                  handleRequestDocument={handleRequestDocument}
+                  setHistoryDocScreen={setHistoryDocScreen}
+                  historyDocScreen={historyDocScreen}
                 />
-              
+              ) : (
+                <StudentHistoryScreen
+                  setHistoryDocScreen={setHistoryDocScreen}
+                />
+              )}
             </div>
           )}
 
-          {activeScreen === 2 && <StudentModal />}
+          {activeScreen === 2 && widthSize <= 768 && <StudentPassword />}
         </div>
       </main>
     </>

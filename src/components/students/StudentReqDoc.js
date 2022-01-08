@@ -1,6 +1,6 @@
-import React from "react";
-
-export const StudentReqDoc = ({ documentSelected, handleRequestDocument, setDocumentSelected }) => {
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { requestStartGetRequests } from "../../actions/requests";
 
   const documentType = [
     {
@@ -37,14 +37,26 @@ export const StudentReqDoc = ({ documentSelected, handleRequestDocument, setDocu
     }
   ];
 
+export const StudentReqDoc = ({ documentSelected, handleRequestDocument, setDocumentSelected, setHistoryDocScreen, historyDocScreen }) => {
+
+  const dispatch = useDispatch();
+
   const toggleActiveDoc = (id) => {
     setDocumentSelected(id);
   };
 
 
+   const handleRequestDocumentHistory = () => {
+    dispatch(requestStartGetRequests ()) 
+    setHistoryDocScreen(!historyDocScreen)
+   }
+
+
+
 
   return (
     <>
+      <button className="btn studentReqDoc__historyBtn" onClick={handleRequestDocumentHistory}>Historial</button>
       <h3 className="studentReqDoc__title">
         Selecciona el documento <br /> que deseas solicitar:
       </h3>

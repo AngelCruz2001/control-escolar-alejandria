@@ -1,17 +1,17 @@
 .navStudent {
     height: calc($navbar-height - 5%);
     display: flex;
-    justify-content: space-between;
     background-color: $color-blue-nav;
     position: sticky;
-    width: 96%;
     align-items: center;
-    padding: 1% 2%;
+    padding: 1% 5% 1% 2%;
+
     &__logo {
         display: flex;
         align-items: center;
         height: 100%;
-        gap: .5rem;
+        gap: 0.5rem;
+        margin-right: auto;
 
         & img {
             width: 3.5rem;
@@ -29,42 +29,76 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        
-        // &-password {
-            //     background-color: $mustard;
-            //     padding: 0.8rem 1.5rem;
-            //     border-radius: 15px;
-            
-            //     &:hover {
-                //         // @include transition;
-                //         // background-color: $blue;
-                //     }
-                // }
-                &-img {
-                    width: 3rem;
-                    height: 3rem;
-                    cursor: pointer;
-                    // transform: translateX(-180%);
+
+        &-password {
+            background-color: $color-yellow-btn;
+            border-radius: 10px;
+            padding: 0.5em 1em;
+
+            & button {
+                color: $white;
+            }
+
+            &:hover {
+                background-color: darken($color: $color-yellow-btn, $amount: 5);
+            }
+        }
+
+        &-matricula {
+            color: $white;
+        }
+
+        &-img {
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            // transform: translateX(-180%);
             & img {
                 width: 3rem;
                 height: 3rem;
             }
         }
 
-        &-exit{
+        &-exit {
             border-radius: 10px;
-            background-color: $color-yellow-btn!important;
+            background-color: $color-yellow-btn !important;
             color: $white;
-            padding: .6rem .8rem;
+            padding: 0.6rem 0.8rem;
             margin-right: 1rem;
         }
     }
 }
 
-.navStudentPosition{
+.navStudentPosition {
     position: sticky;
     top: 0;
     right: 0;
     left: 0;
     z-index: 99;
+}
+
+@include respond(tab-port) {
+    .navStudent {
+        padding: 1% 3% 1% 2%;
+
+        &__logo {
+            & img {
+                width: 4rem;
+                height: 4rem;
+            }
+            & h1 {
+                font-size: 1.2rem;
+            }
+        }
+        &__info {
+            &-img {
+                width: 3.5rem;
+                height: 3.5rem;
+                & img {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                }
+            }
+        }
+    }
 }

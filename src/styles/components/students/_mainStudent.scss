@@ -7,6 +7,7 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding-bottom: 1rem;
     height: 100%;
+    height: max(80vh, 100%);
 
     &__infoStu {
         margin: 0 auto;
@@ -68,8 +69,6 @@ body {
             flex-direction: row;
             border-radius: 10px;
             height: auto;
-            // border: 1px solid $gray-navbar;
-            // border-bottom: none;
 
             &__headers {
                 background-color: $color-blue-nav;
@@ -77,7 +76,6 @@ body {
                 width: fit-content;
                 flex-direction: column;
                 border-radius: 10px 0 0 10px;
-                // padding: 1rem;
 
                 &__cell {
                     color: $white;
@@ -130,10 +128,6 @@ body {
                 width: fit-content;
                 border-radius: 0;
 
-                // &:nth-child(odd){
-                //     // background-color: red!important;
-                // }
-
                 &__cell {
                     padding: 0.5rem;
                     width: auto !important;
@@ -172,15 +166,257 @@ body {
     }
 }
 
-@include respond(phone) {
-    .mainStudent {
-        height: 78vh;
+@include respond(tab-port) {
+    body {
+        background-color: #fff;
     }
-}
 
-@include respond(from-tab-land) {
-    //900px
-    // .mainStudent__infoStu{
-    //     display: none;
-    // }
+    .mainStudent {
+        background-color: #fff;
+        width: 90%;
+        margin: 0 auto;
+
+        &__topContent {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5%;
+            margin-bottom: 6%;
+        }
+
+        &__infoStu {
+            margin: 0;
+            width: auto;
+            width: 50%;
+
+            & .stuInfo {
+                margin-top: 0;
+                &__container {
+                    border: none;
+                    background-color: transparent;
+
+                    &__containerTwo {
+                        height: 100%;
+                        justify-content: flex-start;
+                        gap: 1rem;
+                        &__row {
+                            flex-direction: row;
+                            text-align: left;
+                            width: 100%;
+                            margin: 0;
+
+                            &__info {
+                                margin-top: 0;
+                                width: auto;
+                                margin-left: 1.5em;
+                            }
+                        }
+                    }
+                }
+            }
+
+            & .general__titleSection {
+                display: none;
+            }
+        }
+
+        &__selectDocument {
+            width: 35%;
+            border: 1px solid $color-gray-border;
+            padding: 2%;
+            border-radius: 10px;
+
+            &__component {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+
+                &-title {
+                    font-weight: 400;
+                }
+
+                &-select {
+                    border-radius: 10px;
+                    padding: 0.5em;
+                }
+
+                &-buttons {
+                    display: flex;
+                    gap: 1rem;
+                    margin-top: 0.4rem;
+
+                    & .btn-history {
+                        background-color: $color-yellow-btn;
+                        margin-right: auto;
+                    }
+
+                    & .btn-cancel {
+                        background-color: $color-red-btn;
+                        &:hover {
+                            background-color: darken($color: $color-red-btn, $amount: 5);
+                        }
+                    }
+
+                    & .btn-request {
+                        background-color: $color-yellow-btn;
+                    }
+
+                    .btn-history,
+                    .btn-request {
+                        &:hover {
+                            background-color: darken($color: $color-yellow-btn, $amount: 5);
+                        }
+                    }
+
+                    .btn-history,
+                    .btn-cancel,
+                    .btn-request {
+                        color: $white;
+                        border-radius: 10px;
+                        padding: 0.5em 1em;
+                    }
+                }
+            }
+        }
+
+        &__search {
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            width: 95%;
+            margin-bottom: 1.5%;
+            &__title {
+                font-weight: 600;
+                width: 35%;
+                text-align: center;
+            }
+
+            & .sea__container {
+                width: 95%;
+            }
+        }
+
+        &__tableContainer {
+            margin-top: 1.5rem !important;
+            height: auto;
+            width: 100%;
+            margin: 0 auto;
+
+            & .table {
+                flex-direction: column;
+                border-radius: 10px;
+                height: auto;
+                border: 1px solid $gray-navbar;
+                border-top: none;
+                height: 25rem;
+
+                &__headers {
+                    width: 100%;
+                    flex-direction: row;
+                    border-radius: 10px 10px 0 0;
+                    text-align: center;
+                    width: 100%;
+                    max-height: 3rem;
+
+                    &__cell {
+                        padding: 0;
+                        padding: 1rem 0;
+                        color: $white;
+                        font-size: calc(0.4rem + 0.5vw);
+                        font-weight: 500;
+                        border-bottom: none;
+                        border-right: 1px solid $black;
+
+                        &:nth-child(n) {
+                            height: auto;
+                        }
+                        &:nth-child(1) {
+                            width: 7.5% !important;
+                        }
+                        &:nth-child(2) {
+                            width: 24% !important;
+                        }
+                        &:nth-child(3) {
+                            width: 28.5% !important;
+                        }
+                        &:nth-child(4) {
+                            width: 10% !important;
+                        }
+                        &:nth-child(5) {
+                            width: 12% !important;
+                        }
+                        &:nth-child(6) {
+                            width: 8.7% !important;
+                        }
+                        &:nth-child(7) {
+                            width: 9.3% !important;
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+
+            & .table__body {
+                flex-basis: content;
+                flex-direction: column;
+
+                &__row {
+                    flex-direction: row;
+                    height: 100%;
+                    width: 100%;
+                    max-height: 2.5rem;
+
+                    &__cell {
+                        padding: 0.5rem 0;
+
+                        &:nth-child(n) {
+                            height: auto;
+                        }
+                        &:nth-child(1) {
+                            width: 7.5% !important;
+                        }
+                        &:nth-child(2) {
+                            width: 24% !important;
+                            justify-content: left !important;
+                            text-align: inherit !important;
+
+                            & span {
+                                padding-left: 4%;
+                            }
+                        }
+                        &:nth-child(3) {
+                            width: 28.5% !important;
+                            justify-content: left !important;
+                            text-align: inherit !important;
+
+                            & span {
+                                padding-left: 4%;
+                            }
+                        }
+                        &:nth-child(4) {
+                            width: 10% !important;
+                        }
+                        &:nth-child(5) {
+                            width: 12% !important;
+                        }
+                        &:nth-child(6) {
+                            width: 8.7% !important;
+                        }
+                        &:nth-child(7) {
+                            width: 9.3% !important;
+                            border-bottom: 1px solid $gray-navbar;
+                            border-right: none;
+                        }
+                    }
+
+                    div:nth-child(even) {
+                        background-color: $white;
+                    }
+                    &:nth-child(odd) {
+                        background-color: $color-grey-rows !important;
+                    }
+                }
+            }
+        }
+    }
 }

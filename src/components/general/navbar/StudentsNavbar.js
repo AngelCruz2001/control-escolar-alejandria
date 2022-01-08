@@ -4,7 +4,12 @@ import React from "react";
 import logoAleNoText from "../../../helpers/resources/images/logoAleNoText.png";
 import { StudentsSubmenu } from "../../students/StudentsSubmenu";
 
-export const StudentsNavbar = ({setActiveScreen, activeScreen}) => {
+export const StudentsNavbar = ({
+  setActiveScreen,
+  activeScreen,
+  widthSize,
+  setActiveModal
+}) => {
   return (
     <div className="navStudentPosition">
       <nav className="navStudent">
@@ -18,8 +23,14 @@ export const StudentsNavbar = ({setActiveScreen, activeScreen}) => {
           </h1>
         </div>
         <div className="navStudent__info">
-          {/* <div className="navStudent__info-password"><button className='btn'> Cambiar contraseña </button></div>
-                <p>DEG012323C872</p> */}
+          {widthSize > 768 && (
+            <>
+              <div className="navStudent__info-password">
+                <button onClick={()=>setActiveModal({showModal: false, idModal: 'password'})} className="btn"> Cambiar contraseña </button>
+              </div>
+              <p className="navStudent__info-matricula">DEG012323C872</p>
+            </>
+          )}
 
           <img
             className="navStudent__info-img"
@@ -27,10 +38,15 @@ export const StudentsNavbar = ({setActiveScreen, activeScreen}) => {
             alt="Logotipo del Instituto de Educación y Cultura Alejandría."
           />
 
-          <button className={`navStudent__info-exit btn`}>SALIR</button>
+          {/* <button className={`navStudent__info-exit btn`}>SALIR</button> */}
         </div>
       </nav>
-      <StudentsSubmenu activeScreen={activeScreen} setActiveScreen={setActiveScreen}/>
+      {widthSize < 768 && (
+        <StudentsSubmenu
+          activeScreen={activeScreen}
+          setActiveScreen={setActiveScreen}
+        />
+      )}
     </div>
   );
 };
