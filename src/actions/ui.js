@@ -37,4 +37,9 @@ export const uiSetShowHistory = (isShowHistoryOpen) => ({
     payload: isShowHistoryOpen
 })
 
+export const uiIsSubMenuOpen = (name) => ({
+    type: types.uiIsSubMenuOpen,
+    payload: name
+})
+
 

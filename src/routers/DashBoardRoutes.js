@@ -8,9 +8,9 @@ export const DashBoardRoutes = ({ history }) => {
     return (
         <>
             <Switch>
-                <Route exact path='/navbar' component={Navbar}/>
-                <Route path='/' component={Main}/>
-                <Redirect to='/'/>
+                <Route exact path='/navbar' component={Navbar} />
+                <Route path='/' component={Main} />
+                <Redirect to='/' />
 
             </Switch>
         </>

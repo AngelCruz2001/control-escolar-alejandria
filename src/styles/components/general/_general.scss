@@ -5,6 +5,7 @@
     margin: 1rem auto 3rem auto;
     justify-content: space-between;
     position: relative;
+
     &__menu {
         height: 100%;
         width: 23%;
@@ -12,64 +13,77 @@
         flex-direction: column;
 
         &__item {
-            margin: 1rem 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            color: $gray-bars;
-            display: flex;
-            font-size: calc(23px - 0.5vh);
-            align-items: center;
+            width: 100%;
 
-            &:first-child {
-                margin-top: 0;
+            &.active {
+                button {
+                    color: $mustard;
+                }
             }
 
-            i {
-                align-self: center;
-                margin-right: 1.5rem;
-                width: 5%;
-            }
-
-            &:first {
-                margin: 0;
-            }
-            &:hover {
-                color: darken($color: $mustard, $amount: 8);
-                transition: color 0.4s;
-            }
-
-            &__subMenu {
-                font-size: calc(23px - 0.5vh);
-                align-items: center;
-                height: 40px;
-                padding-left: 3rem;
-                color: $blue-btn-text;
-                // display: none;
+            button {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                color: $gray-bars;
                 display: flex;
+                font-size: calc(1.5rem - 0.5vh);
+                align-items: center;
+                flex-direction: column;
+            }
+
+            &__content {
+                margin: 1rem 0;
+                display: flex;
+                width: 100%;
+
                 i {
                     align-self: center;
-                    margin-right: 1rem;
+                    margin-right: 1.5rem;
                     width: 5%;
                 }
-                &__active {
-                    color: $blue-active-text !important;
-                    background-color: $blue-sky3;
-                    transition: color 0.4s;
-                }
+
                 &:hover {
-                    color: lighten($color: $blue-btn-text, $amount: 8);
+                    color: darken($color: $mustard, $amount: 8);
                     transition: color 0.4s;
+                }
+            }
+
+            &__sub {
+                width: 100%;
+
+                &__item {
+                    font-size: calc(23px - 0.5vh);
+                    align-items: center;
+                    height: 40px;
+                    padding-left: 3rem;
+                    display: flex;
+                    color: $blue-btn-text;
+
+                    i {
+                        align-self: center;
+                        margin-right: 1rem;
+                        width: 5%;
+                    }
+
+                    &__active {
+                        color: $blue-active-text !important;
+                        background-color: $blue-sky3;
+                        transition: color 0.4s;
+                        display: flex;
+
+
+                    }
+
+                    &:hover {
+                        color: lighten($color: $blue-btn-text, $amount: 8);
+                        transition: color 0.4s;
+                    }
                 }
             }
         }
 
-        .active {
-            color: $mustard;
 
-            .general__menu__item__subMenu {
-                // display: flex;
-            }
-        }
     }
+
     &__overtexture {
         background-color: rgb(255, 255, 255);
         height: 100%;
@@ -151,6 +165,7 @@
                         font-size: calc(0.3rem + 1vw);
                     }
                 }
+
                 //Here is going to be the footer
                 &__footer {
                     width: 95%;
@@ -159,9 +174,11 @@
                     flex-direction: row;
                     justify-content: flex-end;
                     align-items: flex-end;
+
                     button span {
                         font-size: calc(0.25rem + 1vw) !important;
                     }
+
                     button i {
                         font-size: calc(0.7rem + 1vw) !important;
                     }
@@ -194,10 +211,12 @@
         background: rgba(0, 0, 0, 0.5);
     }
 }
+
 .activeGuide {
     border: 1px solid $activeBorder !important;
     box-shadow: 0px 3px 6px #00000017;
 }
+
 .disabledGuide {
     opacity: 0.7;
     transition: all 0.3s;
@@ -207,6 +226,7 @@
 .son.activeGuide {
     border: initial !important;
     box-shadow: initial;
+
     .son {
         border: 1px solid $activeBorder;
         box-shadow: 0px 3px 6px #00000017;
@@ -224,11 +244,17 @@
 }
 
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }

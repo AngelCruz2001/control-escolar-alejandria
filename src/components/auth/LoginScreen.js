@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authStartChecking, authStartLogin } from '../../actions/auth';
-import { useForm } from '../../hooks/useForm';
+import { authStartLogin } from '../../actions/auth';
 // Images imports 
-import logoAleNoText from '../../helpers/resources/images/logoAleNoText.png'
+import logoAleNoText from '../../helpers/resources/images/logoAleNoText.png';
+import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
     const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [formValues, handleInputChange,] = useForm({
         username: "admin",
-        password: "sud0_c34_r00t"
+        password: "jopi"
     })
     const { username, password } = formValues;
     const handleClickLogin = (e) => {

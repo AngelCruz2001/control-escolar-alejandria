@@ -20,6 +20,7 @@ export const types = {
     uiIsShowHistoryOpen: '[UI] Change show history open',
     uiStartLoadingDocument: '[UI] Start loading document',
     uiFinishLoadingDocument: '[UI] Finish loading document',
+    uiIsSubMenuOpen: '[UI] Change show sub menu',
 
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',

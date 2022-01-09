@@ -14,25 +14,28 @@ export const itemsMenu = [
             14,
             1
         ],
-        name: "Solicitud de documento",
+        text: "Solicitud de documento",
         icon: "fas fa-file",
         css: {
             "transform": "rotate(90deg) scaleX(-1)"
         },
         path: "/solicitud_de_documento",
         component: RequestDocument,
-        subMenu: []
+        subMenu: [],
+        name: "requestDocument"
     },
     {
-        "permissions": [
+        permissions: [
             11,
         ],
-        name: "Consulta de calificaciones",
+        text: "Consulta de calificaciones",
         icon: "fas fa-folder-open",
         css: {},
         path: "/consulta_de_calificaciones",
         component: RequestGrades,
-        subMenu: []
+        subMenu: [],
+        name: "requestGrades"
+
     },
     { //ADMINISTRATIVO
         permissions: [
@@ -41,30 +44,32 @@ export const itemsMenu = [
             4,
             1
         ],
-        name: "Consulta de calificaciones",
+        text: "Consulta de calificaciones",
         icon: "fas fa-folder-open",
         css: {},
         path: "/consulta_de_calificaciones",
         component: RequestGradesAdmin,
-        subMenu: []
+        subMenu: [],
+        name: "admistration"
     },
     {
         permissions: [
             1
         ],
-        name: "Registro de gastos",
+        text: "Registro de gastos",
         icon: "fas fa-ticket-alt",
         css: {},
         path: "/registro_de_gastos",
         component: ExpenseRecord,
-        subMenu: []
+        subMenu: [], 
+        name: "expenseRecord"
     },
     {
         permissions: [
             1,
             2,
         ],
-        name: "Realizar pago",
+        text: "Realizar pago",
         icon: "fas fa-money-bill",
         css: {},
         path: "/realizar_pago",
@@ -76,7 +81,7 @@ export const itemsMenu = [
             1,
             2,
         ],
-        name: "Abonos",
+        text: "Abonos",
         icon: "fas fa-coins",
         css: {},
         path: "/abonos",
@@ -88,7 +93,7 @@ export const itemsMenu = [
             1,
             2,
         ],
-        name: "Generar documento",
+        text: "Generar documento",
         icon: "fas fa-file",
         css: {
             transform: "rotate(90deg) scaleX(-1)"
@@ -102,7 +107,8 @@ export const itemsMenu = [
             1,
             2,
         ],
-        name: "Captura de datos",
+        name: "feed",
+        text: "Captura de datos",
         icon: "fas fa-database",
         css: {
         },
@@ -110,25 +116,25 @@ export const itemsMenu = [
         component: Feed,
         subMenu: [
             {
-                name: "Alumnos",
+                text: "Alumnos",
                 icon: "fas fa-user-graduate",
                 css: {},
                 path: "/captura_de_datos/alumnos",
             },
             {
-                name: "Grupos",
+                text: "Grupos",
                 icon: "fas fa-id-badge",
                 css: {},
                 path: "/captura_de_datos/grupos",
             },
             {
-                name: "Materias",
+                text: "Materias",
                 icon: "fas fa-book-open",
                 css: {},
                 path: "/captura_de_datos/materias",
             },
             {
-                name: "Carreras",
+                text: "Carreras",
                 icon: "fas fa-graduation-cap",
                 css: {},
                 path: "/captura_de_datos/carreras",

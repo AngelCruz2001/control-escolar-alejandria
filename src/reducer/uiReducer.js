@@ -7,6 +7,7 @@ const initialState = {
     correct: null,
     current: 0,
     isModalOpen: false,
+    isShowMenuOpen: { feed: false },
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -80,6 +81,15 @@ export const uiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loadingDocument: false,
+            }
+        case types.uiIsSubMenuOpen:
+            console.log(action.payload)
+            return {
+                ...state,
+                isShowMenuOpen: {
+                    ...initialState.isShowMenuOpen,
+                    [action.payload]: true,
+                }
             }
         default:
             return state;

@@ -1,12 +1,13 @@
 import { combineReducers } from "redux"
 import { authReducer } from "./authReducer"
 import { documentReducer } from "./documentReducer"
-import { payReducer } from "./payReducer"
-import { uiReducer } from "./uiReducer"
-import { studentReducer } from "./studentReducer"
-import { requestsReducer } from "./requestsReducer"
-import { gradesReducer } from "./gradesReducer"
 import { expensesReducer } from "./expensesReducer"
+import { feedReducer } from "./feedReducer"
+import { gradesReducer } from "./gradesReducer"
+import { payReducer } from "./payReducer"
+import { requestsReducer } from "./requestsReducer"
+import { studentReducer } from "./studentReducer"
+import { uiReducer } from "./uiReducer"
 
 export const rootReducer = combineReducers({
     auth: authReducer,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
     pay: payReducer,
     document: documentReducer,
     requests: requestsReducer,
-    grades: gradesReducer, 
-    expenses: expensesReducer
+    grades: gradesReducer,
+    expenses: expensesReducer,
+    feed: feedReducer
 })
