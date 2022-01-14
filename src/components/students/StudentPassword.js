@@ -9,7 +9,7 @@ import Input from "@material-ui/core/Input";
 import { useDispatch, useSelector } from "react-redux";
 
 import { authStartResetPassword } from "../../actions/auth";
-import logoAleNoText from "../../resources/images/logoAleNoText.png";
+import whiteTigerNoText from "../../resources/images/whiteTigerNoText.png";
 
 export const StudentPassword = () => {
   //TODO: ARREGLAR BUG DE ERROR DE LA CONTRASEÑA ANTERIOR ESTA MAL REINICIIAR CUANDO ES TOUCHED
@@ -17,6 +17,7 @@ export const StudentPassword = () => {
   const dispatch = useDispatch();
 
   const { error } = useSelector((state) => state.auth);
+  const { matricula } = useSelector((state) => state.student);
 
   useEffect(() => {}, [error]);
 
@@ -58,9 +59,8 @@ export const StudentPassword = () => {
   return (
     <div className="studentsPswd">
       <div className="studentsPswd__header">
-        <img src={logoAleNoText} alt="logo" width="150px" height="150px" />
-        <p> DSADFJHASFASF </p>
-        <h3 className="studentsPswd__header-title">Cambio de contraseña</h3>
+        <img src={whiteTigerNoText} alt="logo" width="150px" height="150px" />
+        <p> {matricula} </p>
       </div>
 
       <form onSubmit={handleSubmit} noValidate className="studentsPswd__form">
@@ -119,15 +119,7 @@ export const StudentPassword = () => {
           )}
         </div>
         <div className="studentsPswd__submit studentReqDoc__submit">
-          <button
-            // className={`studentReqDoc__submit-btn btn activeCancel `}
-            className={`studentReqDoc__submit-btn btn ${
-              !touched.newPass ? "ui__disabledEffect" : "activeSubmit"
-            }`}
-            type="submit"
-          >
-            Submit
-          </button>
+          
           <button
             className={`studentReqDoc__submit-btn btn ${
               !touched.oldPass ? "ui__disabledEffect" : "activeCancel"
@@ -136,6 +128,16 @@ export const StudentPassword = () => {
             onClick={handleReset}
           >
             Cancelar
+          </button>
+
+          <button
+            // className={`studentReqDoc__submit-btn btn activeCancel `}
+            className={`studentReqDoc__submit-btn btn ${
+              !touched.newPass ? "ui__disabledEffect" : "activeSubmit"
+            }`}
+            type="submit"
+          >
+            Aceptar
           </button>
         </div>
       </form>

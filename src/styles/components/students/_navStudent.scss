@@ -19,7 +19,7 @@
         }
 
         & h1 {
-            font-size: 1rem;
+            font-size: calc(12px + 1.5vw);
             color: $white;
             font-weight: 500;
         }
@@ -34,13 +34,15 @@
             background-color: $color-yellow-btn;
             border-radius: 10px;
             padding: 0.5em 1em;
+            cursor: pointer;
+            @include transition;
 
             & button {
                 color: $white;
             }
 
             &:hover {
-                background-color: darken($color: $color-yellow-btn, $amount: 5);
+                background-color: $color-hover-btn;
             }
         }
 
@@ -83,14 +85,19 @@
 
         &__logo {
             & img {
-                width: 4rem;
-                height: 4rem;
+                width: 4.4rem;
+                height: 4.4rem;
             }
             & h1 {
-                font-size: 1.2rem;
+                  text-align: center;
+                  font-size: calc(8px + 1vw);
             }
         }
         &__info {
+
+            &  * {
+                font-size: calc(6.7px + .8vw);
+            } 
             &-img {
                 width: 3.5rem;
                 height: 3.5rem;
@@ -99,6 +106,19 @@
                     height: 3.5rem;
                 }
             }
+
+            &-exit{
+                display: flex;
+                align-items: flex-end;
+                gap: 8%;
+
+                & i {
+                    font-size: calc(6.7px + 1vw);
+                }
+            }
+
         }
+
+        
     }
 }

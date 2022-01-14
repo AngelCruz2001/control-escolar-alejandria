@@ -41,13 +41,14 @@ export const StudentSelect = ({
   handleRequestDocument,
   documentSelected,
   setDocumentSelected,
-  setActiveModal
+  setActiveModal,
 }) => {
   const [documents, setDocuments] = useState(documentsStudent);
 
   const handleInputChange = ({ target }) => {
     const { value } = target;
     setDocumentSelected(value);
+    
   };
   const handleCancel = () => {
     setDocumentSelected("");
@@ -56,14 +57,14 @@ export const StudentSelect = ({
   const dispatch = useDispatch();
 
   const handleRequestDocumentHistory = () => {
-    dispatch(requestStartGetRequests ()) 
-    setActiveModal({showModal: false, idModal: 'history'})
-   }
+    dispatch(requestStartGetRequests());
+    setActiveModal({ showModal: false, idModal: "history" });
+  };
 
   return (
     <div className="mainStudent__selectDocument__component">
       <h3 className="mainStudent__selectDocument__component-title">
-        Solicitar documento
+        Solicitar documento:
       </h3>
 
       <select
@@ -83,7 +84,12 @@ export const StudentSelect = ({
       </select>
 
       <div className="mainStudent__selectDocument__component-buttons">
-        <button onClick={()=> handleRequestDocumentHistory()} className="btn btn-history">Historial</button>
+        <button
+          onClick={() => handleRequestDocumentHistory()}
+          className="btn btn-history"
+        >
+          Historial
+        </button>
 
         {documentSelected && (
           <button className="btn btn-cancel" onClick={handleCancel}>
@@ -91,7 +97,9 @@ export const StudentSelect = ({
           </button>
         )}
         <button
-          className={`btn btn-request ${!documentSelected && "ui__disabledEffect"}`}
+          className={`btn btn-request ${
+            !documentSelected ? "ui__disabledEffect " : "btn-request-color"
+          }`}
           onClick={() => handleRequestDocument(documentSelected)}
         >
           Solicitar

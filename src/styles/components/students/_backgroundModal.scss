@@ -1,7 +1,7 @@
 .backgroundModal {
     position: absolute;
     inset: 0;
-    bottom: -36%;
+    bottom: -43%;
     background: rgb(234 234 234 / 0.5);
     backdrop-filter: blur(1rem);
 
@@ -10,14 +10,16 @@
         position: absolute;
         background-color: $white;
         inset: 10% 20% 40% 20%;
-        // padding: 2rem;
-        // inset:15% 15% 40% 15%;
+
         &__content {
         }
         &-exit {
             display: flex;
-            // justify-content: right;
             flex-direction: column;
+            border: 1px solid $color-gray-border;
+            border-radius: 10px 10px 0 0;
+            border-bottom: none;
+
             & i {
                 color: $white;
                 cursor: pointer;
@@ -29,40 +31,156 @@
         }
 
         &__password {
+            border: 1px solid $color-gray-border;
+            border-radius: 0 0 10px 10px;
+            border-top: none;
+
+            & > h3 {
+                font-size: calc(6.7px + 0.9vw);
+                font-weight: 500;
+                text-align: center;
+            }
+
             & .studentsPswd {
                 height: auto;
                 width: auto;
                 border: none;
                 padding-bottom: 4vh;
+
+                &__header {
+                    & img {
+                        width: 20%;
+                        height: 20%;
+                    }
+
+                    & p {
+                        font-weight: 400;
+                        font-style: italic;
+                        font-size: calc(6.7px + 1vw);
+                        color: $color-blue-nav;
+                    }
+                }
+
+                &__form__row {
+                    & label {
+                        font-size: calc(6.7px + 0.8vw);
+                    }
+                }
+
+                &__submit button {
+                    font-size: calc(6.7px + 0.6vw);
+                }
+
+                & .form__error {
+                    font-size: calc(6.7px + 0.5vw);
+                }
             }
         }
 
         &__tableHistory {
             margin: 0 auto !important;
-            height: 100%;
+            height: 94.5%;
+            border: 1px solid $color-gray-border;
+            border-radius: 0 0 10px 10px;
+            border-top: none;
 
-            & h3 {
+            &-title {
                 text-align: center;
                 margin-bottom: 1.5%;
+                font-weight: 400;
+                font-size: calc(6.7px + 1vw);
             }
 
             &-content {
-                width: 80%;
+                width: 92%;
                 height: 100%;
                 position: relative;
                 margin: 0 auto;
+
                 & .table {
                     width: 100%;
                     height: 80%;
-                    position: absolute;
+                    border-radius: 10px;
 
                     &__headers {
                         background-color: $color-blue-nav;
                         border-radius: 10px 10px 0 0;
+                        height: fit-content;
+                        align-items: center;
+
+                        &__cell {
+                            color: $white;
+                            padding: 1.6% 0;
+                            font-size: calc(6.7px + 0.8vw);
+                            border-right: 1px solid $color-darkblue-line;
+
+                            &:nth-child(3) {
+                                border-right: none;
+                            }
+                        }
                     }
 
                     &__body {
                         flex-basis: auto;
+                        border-radius: 0 0 10px 10px;
+                        border: 1px solid $gray-navbar;
+
+                        &__row {
+                            margin: 0;
+                            box-shadow: none;
+                            border-radius: 0;
+                            height: fit-content;
+
+                            &__cell {
+                                background-color: transparent !important;
+                                padding: 0.6% 0;
+                                border-right: 1px solid $gray-navbar;
+                                font-size: calc(6.7px + 0.8vw);
+                                justify-content: left !important;
+
+                                &:nth-child(1) {
+                                    border-radius: 0;
+                                    & span {
+                                        padding-left: 9%;
+                                    }
+                                }
+                                &:nth-child(2) {
+                                    & span {
+                                        padding-left: 20%;
+                                    }
+                                }
+                                &:nth-child(3) {
+                                    justify-content: center !important;
+                                    border-radius: 0;
+                                    border-right: none;
+
+                                    & .btnStudentRequest {
+                                        gap: 9%;
+                                    }
+
+                                    & span {
+                                        padding-left: 0em;
+                                        font-size: calc(6.7px + 0.8vw);
+                                    }
+                                }
+                            }
+
+                            &:nth-child(even) {
+                                background-color: $color-grey-rows;
+                            }
+                            &:nth-child(odd) {
+                                background-color: $white;
+                            }
+                            &:last-child {
+                                border-radius: 0 0 10px 10px;
+                            }
+                        }
+                    }
+                }
+
+                & .studentReqDoc__history__noData {
+                    & img {
+                        width: 25em;
                     }
                 }
             }

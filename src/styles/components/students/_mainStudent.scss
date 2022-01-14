@@ -24,8 +24,14 @@ body {
                     flex-direction: column;
                     text-align: center;
                     margin: 1rem 0;
+                    font-size: calc(11px + 1.5vw);
 
+                    &__header{
+                        font-weight: 600;
+                    }
+                    
                     &__info {
+                        font-weight: 400;
                         margin-top: 0.5rem;
                         padding-left: 0;
                     }
@@ -46,16 +52,22 @@ body {
         align-items: center;
         gap: 0.8rem;
         &__title {
-            font-size: 1rem;
+            font-size: calc(11px + 1.5vw);
+            font-weight: 600;
             color: $dark-grey;
             text-transform: uppercase;
         }
 
         & .sea__container {
+            align-items: center;
             background-color: $white;
+            border: 1px solid $gray-border;
             box-shadow: none;
             width: 84%;
-            border: 1px solid $gray-border;
+            
+            & i {
+                color: $color-black-search;
+            }
         }
     }
 
@@ -83,11 +95,10 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    // padding: 0 1rem!important;
-                    font-size: 0.8rem;
+                    font-size: calc(12px + 1.5vw);
                     font-weight: 400;
                     padding: 0.5rem 1.5rem;
-                    border-bottom: 0.5px solid $black;
+                    border-bottom: 0.5px solid $color-darkblue-line;
                     border-right: 1px solid $black;
 
                     &:nth-child(1) {
@@ -119,6 +130,7 @@ body {
         & .table__body {
             flex-basis: content;
             flex-direction: row;
+            background-color: $white;
 
             &__row {
                 margin: 0;
@@ -131,10 +143,11 @@ body {
                 &__cell {
                     padding: 0.5rem;
                     width: auto !important;
-                    background-color: #fff !important;
+                    // background-color: $white ;
                     border-bottom: 1px solid $gray-navbar;
                     border-right: 1px solid $gray-navbar;
-                    font-size: 0.8rem;
+                    font-size: calc(8px + 1.5vw);
+                    background-color: transparent !important;
 
                     &:nth-child(1) {
                         height: 2rem;
@@ -160,7 +173,23 @@ body {
                         border-radius: 0;
                         border-bottom: none;
                     }
+
+                    &.searched {
+                        background-color: $color-value-searched !important;
+                    }
                 }
+
+                &:nth-child(even) {
+                    background-color: $color-grey-rows;
+                }
+                &:nth-child(odd) {
+                    background-color: $white;
+                    
+                }
+            }
+
+            & .noselect {
+                width: 100% !important;
             }
         }
     }
@@ -197,17 +226,24 @@ body {
                     &__containerTwo {
                         height: 100%;
                         justify-content: flex-start;
-                        gap: 1rem;
+                        gap: 0.8em;
                         &__row {
                             flex-direction: row;
                             text-align: left;
                             width: 100%;
                             margin: 0;
 
+                            &__header {
+                                font-weight: 600;
+                                font-size: calc(6.7px + 1vw);
+                            }
+
                             &__info {
+                                font-weight: 400;
                                 margin-top: 0;
                                 width: auto;
                                 margin-left: 1.5em;
+                                font-size: calc(6.7px + 1vw);
                             }
                         }
                     }
@@ -222,7 +258,7 @@ body {
         &__selectDocument {
             width: 35%;
             border: 1px solid $color-gray-border;
-            padding: 2%;
+            padding: 1.5%;
             border-radius: 10px;
 
             &__component {
@@ -233,11 +269,14 @@ body {
 
                 &-title {
                     font-weight: 400;
+                    font-size: calc(6.7px + 1vw);
+                    margin-bottom: 0.5em;
                 }
 
                 &-select {
                     border-radius: 10px;
                     padding: 0.5em;
+                    font-size: calc(6.7px + 0.8vw);
                 }
 
                 &-buttons {
@@ -246,36 +285,54 @@ body {
                     margin-top: 0.4rem;
 
                     & .btn-history {
+                        color: $white;
                         background-color: $color-yellow-btn;
                         margin-right: auto;
                     }
 
                     & .btn-cancel {
+                        color: $white;
                         background-color: $color-red-btn;
+
                         &:hover {
-                            background-color: darken($color: $color-red-btn, $amount: 5);
+                            background-color: darken($color: $color-red-btn, $amount: 7);
                         }
                     }
 
                     & .btn-request {
-                        background-color: $color-yellow-btn;
+                        // color: aqua;
+                        border: 1px solid $color-border-gray2;
+
+                        &-color {
+                            background-color: $color-yellow-btn;
+                            border: none;
+                            color: $white;
+                        }
                     }
 
                     .btn-history,
                     .btn-request {
                         &:hover {
-                            background-color: darken($color: $color-yellow-btn, $amount: 5);
+                            background-color: $color-hover-btn;
                         }
                     }
 
                     .btn-history,
                     .btn-cancel,
                     .btn-request {
-                        color: $white;
+                        @include transition;
                         border-radius: 10px;
                         padding: 0.5em 1em;
+                        font-size: calc(6.7px + 0.8vw);
                     }
                 }
+            }
+
+            & select {
+                color: $color-blue-text;
+            }
+            & select option {
+                color: black;
             }
         }
 
@@ -283,16 +340,26 @@ body {
             display: flex;
             flex-direction: row;
             margin: 0 auto;
-            width: 95%;
+            width: 94%;
             margin-bottom: 1.5%;
             &__title {
-                font-weight: 600;
-                width: 35%;
-                text-align: center;
+                font-weight: 500;
+                font-size: calc(6.7px + 1vw);
+                line-height: 1;
+                margin-left: 2.6%;
             }
 
             & .sea__container {
-                width: 95%;
+                // align-items: center;
+                flex: 1;
+                
+                // & i {
+                //     color: $color-black-search;
+                // }
+
+                & > * {
+                    font-size: calc(6.7px + 0.8vw);
+                }
             }
         }
 
@@ -308,7 +375,7 @@ body {
                 height: auto;
                 border: 1px solid $gray-navbar;
                 border-top: none;
-                height: 25rem;
+                height: 70vh;
 
                 &__headers {
                     width: 100%;
@@ -316,16 +383,16 @@ body {
                     border-radius: 10px 10px 0 0;
                     text-align: center;
                     width: 100%;
-                    max-height: 3rem;
+                    height: fit-content;
 
                     &__cell {
                         padding: 0;
-                        padding: 1rem 0;
+                        padding: 0.1em 0;
                         color: $white;
-                        font-size: calc(0.4rem + 0.5vw);
+                        font-size: calc(6.7px + 0.8vw);
                         font-weight: 500;
                         border-bottom: none;
-                        border-right: 1px solid $black;
+                        border-right: 1px solid $color-darkblue-line;
 
                         &:nth-child(n) {
                             height: auto;
@@ -359,42 +426,51 @@ body {
             & .table__body {
                 flex-basis: content;
                 flex-direction: column;
+                border-radius: 10px;
 
                 &__row {
                     flex-direction: row;
                     height: 100%;
                     width: 100%;
-                    max-height: 2.5rem;
+                    height: fit-content;
 
                     &__cell {
+                        font-size: calc(6.7px + 0.6vw);
                         padding: 0.5rem 0;
+                        background-color: transparent !important;
+                        justify-content: left!important;
+                        border-bottom: none;
+
+                        & span {
+                            padding-left: 1em;
+                        }
 
                         &:nth-child(n) {
                             height: auto;
                         }
                         &:nth-child(1) {
                             width: 7.5% !important;
+                            justify-content: center !important;
+                            & span {
+                                padding-left: 0%;
+                            }
                         }
                         &:nth-child(2) {
                             width: 24% !important;
-                            justify-content: left !important;
                             text-align: inherit !important;
 
-                            & span {
-                                padding-left: 4%;
-                            }
                         }
                         &:nth-child(3) {
                             width: 28.5% !important;
-                            justify-content: left !important;
                             text-align: inherit !important;
-
-                            & span {
-                                padding-left: 4%;
-                            }
+                            
                         }
                         &:nth-child(4) {
+                            justify-content: center !important;
                             width: 10% !important;
+                            & span {
+                                padding-left: 0%;
+                            }
                         }
                         &:nth-child(5) {
                             width: 12% !important;
@@ -404,16 +480,16 @@ body {
                         }
                         &:nth-child(7) {
                             width: 9.3% !important;
-                            border-bottom: 1px solid $gray-navbar;
                             border-right: none;
+                            text-transform: capitalize;
                         }
                     }
 
-                    div:nth-child(even) {
-                        background-color: $white;
+                    &:nth-child(even) {
+                        background-color: $color-grey-rows;
                     }
                     &:nth-child(odd) {
-                        background-color: $color-grey-rows !important;
+                        background-color: $white;
                     }
                 }
             }

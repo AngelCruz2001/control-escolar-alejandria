@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { requestClearResquests, requestStartDeleteRequests } from "../../actions/requests";
 import { buildDataStudentsHistory } from "../../helpers/buildDataTables";
+import { StudentsNoData } from "../ui/StudentsNoData";
 import { Table } from "../ui/Table";
 import { StudentPassword } from "./StudentPassword";
 
@@ -21,10 +24,16 @@ const headers = [
 ];
 
 export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
-  const { requests } = useSelector((state) => state);
-  //   console.log(requests.data);
 
+  const dispatch = useDispatch();
+
+  const { requests } = useSelector((state) => state);
+ 
   const [dataShow, setDataShow] = useState([]);
+
+  const handleClickCancelRequest = ( id ) => {
+    dispatch(requestStartDeleteRequests(id))
+  }
 
   const generateData = () => {
     const dataToShow = [];
@@ -35,13 +44,22 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
           id_request,
           document_name,
           creation_date,
-          status_request
+          status_request  === 0 ?'Cancelar' : 'Pagado',
+          handleClickCancelRequest
         );
         dataToShow.push(dataBuilded);
       }
     );
     setDataShow(dataToShow);
   };
+
+
+  const handleHideHistoryData = () => {
+    dispatch( requestClearResquests() )
+    setActiveModal({ showModal: true })
+  }
+
+  
 
   useEffect(() => {
     generateData();
@@ -52,32 +70,37 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
       <div
         className="backgroundModal__container"
         style={{
-          inset: idModal === "password" ? "10% 20% 40% 20%" : "15% 15% 40% 15%",
+          inset: idModal === "password" ? "12% 34% 40% 34%" : "14% 11.5% 31% 11.5%",
         }}
       >
         <div className="backgroundModal__container-exit">
           <i
             className="fas fa-times"
-            onClick={() => setActiveModal({ showModal: true })}
+            onClick={() =>handleHideHistoryData()}
           ></i>
         </div>
 
         {idModal === "password" && (
           <div className="backgroundModal__container__password">
+            <h3>Cambio de contraseña  </h3>
             <StudentPassword />
           </div>
         )}
 
         {idModal === "history" && requests.data && (
           <div className="backgroundModal__container__tableHistory">
-            <h3>Historial de documentos solicitados</h3>
+
+            <h3 className="backgroundModal__container__tableHistory-title">Historial de documentos solicitados</h3>
 
             <div className="backgroundModal__container__tableHistory-content">
-              <Table
+              { !requests.data.length <= 0 ?
+               <Table
                 headers={headers}
-                sizesColumns={[40, 35, 25]}
+                sizesColumns={[48, 31.5, 20.5]}
                 data={dataShow}
-              />
+              />:
+               <StudentsNoData />
+              }
             </div>
           </div>
         )}

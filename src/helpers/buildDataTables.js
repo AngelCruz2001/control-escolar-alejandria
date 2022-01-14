@@ -118,7 +118,7 @@ export const buildDataGradesStudent = (
   type,
   coincidence
 ) => {
-  console.log(key, course, teacher, grade, date, status, type);
+  // console.log(key, course, teacher, grade, date, status, type);
   return [
     { element: <SpanTable text={key} />, searched: coincidence[0] },
     { element: <SpanTable text={course} />, searched: coincidence[1] },
@@ -178,12 +178,23 @@ export const buildDataStudentsHistory = (
   id_request,
   document_name,
   creation_date,
-  status_request
+  status_request,
+  handleClickCancelRequest
 ) => {
   return [
     { element: <SpanTable text={document_name} />, searched: false },
     { element: <SpanTable text={creation_date} />, searched: false },
     // { element: <SpanTable text={status_request} />, searched: false },
-    { element: <ButtonTable type={2} id={id_request} />, searched: false },
+    {
+      element: (
+        <ButtonTable
+          title={status_request}
+          type={status_request === "Cancelar" ? 7 : 8}
+          id={id_request}
+          onClick={ () => handleClickCancelRequest(id_request)}
+        />
+      ),
+      searched: false,
+    },
   ];
 };

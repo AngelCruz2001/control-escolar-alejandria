@@ -18,13 +18,14 @@
         background-color: $color-yellow-btn !important;
         color: white;
         border-radius: 10px;
-        font-size: 0.9rem;
+        font-size: calc(11px + 1.5vw);
     }
 
     &__title {
         text-align: center;
         font-weight: 500;
         height: 10%;
+        font-size: calc(11px + 1.7vw);
     }
 
     &__documents {
@@ -36,6 +37,7 @@
         height: 55%;
 
         &-doc {
+            border: 1px solid $color-grey-rows;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,6 +46,7 @@
             border-radius: 10px;
             box-shadow: 0px 3px 6px #00000029;
             cursor: pointer;
+            font-size: calc(11px + 1.5vw);
 
             p {
                 text-align: center;
@@ -52,7 +55,8 @@
 
         .active {
             color: $white;
-            background-color: $color-yellow-btn;
+            background-color: $color-hover-btn;
+            @include transition;
         }
     }
 
@@ -60,18 +64,25 @@
         gap: 1.5rem;
         display: flex;
         &-btn {
-            padding: 0.7rem 1.5rem;
+            padding: 0.7em 1.5em;
             border: 1px solid $gray-border !important;
             border-radius: 10px;
+            font-size: calc(11px + 1.5vw);
+
+            @include transition;
         }
         & .activeCancel {
-            background-color: red;
-            color: $white;
+            background-color: $color-red-btn;
         }
 
         & .activeSubmit {
-            background-color: $color-yellow-btn !important;
-            color: $white !important;
+            background-color: $color-yellow-btn;
+        }
+
+        & .activeSubmit,
+        .activeCancel {
+            color: $white;
+            border: none !important;
         }
     }
 
@@ -84,25 +95,28 @@
         & .btn-back {
             margin-top: 5%;
             margin-left: 7%;
+            cursor: pointer;
+            font-size: calc(14px + 1.5vw);
         }
 
         &__title {
             text-align: center;
             margin-bottom: 5%;
             font-weight: 500;
+            font-size: calc(11px + 1.7vw);
         }
 
         &__data {
             display: grid;
             // grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
             grid-gap: 1rem;
-            margin-right: .5rem;
+            margin-right: 0.5rem;
             padding: 0 0.8rem 0 2rem;
 
             &-item {
-
                 border-radius: 10px;
                 position: relative;
+                font-size: calc(11px + 1.5vw);
 
                 & p {
                     text-align: center;
@@ -123,7 +137,7 @@
                     right: -1%;
                     top: -1.5%;
                     bottom: -1.5%;
-                    width: 40px;
+                    width: 13%;
                     border-bottom-right-radius: 10px;
                     border-top-right-radius: 10px;
                     display: flex;
@@ -141,6 +155,10 @@
                 & span .isAproved {
                     color: $white;
                     font-size: 1.2rem;
+
+                    &-pointer {
+                        cursor: pointer;
+                    }
                 }
             }
         }

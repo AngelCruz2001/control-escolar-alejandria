@@ -10,12 +10,11 @@
         color: $color-blue-nav;
         text-align: center;
         border-bottom: 2.5px solid transparent;
-        // @include transition;
         cursor: pointer;
-
+        
         & h2{
             font-weight: 700;
-            font-size: 1rem;
+            font-size: calc(11px + 1.5vw);
             padding: .6rem 0;
         }
     }
@@ -23,5 +22,6 @@
 
 .activeLink,
 .studentsSubmenu__item-hover:hover{
-    border-color: $mustard;
+    @include transition;
+    border-color: $color-blue-borderBottom;
 }

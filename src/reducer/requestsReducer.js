@@ -14,6 +14,12 @@ export const requestsReducer = (state = initialState, action) => {
                 data: action.payload,
             };
 
+        case types.requestClearResquests:
+            return {
+                ...state,
+                data: [],
+            };
+
         case types.requestDeleteRequest:
             return {
                 ...state,

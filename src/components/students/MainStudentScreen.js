@@ -55,24 +55,24 @@ export const MainStudentScreen = () => {
   // TODO: sacar la matricula del selector y ponerla en los dispatch y sacar el promedio del usuario
   // TODO: preguntarle a retana que onda con el status de la grade
   const dataInformation = {
-    headers: ["matricula", "alumno", "carrera", "campus", "promedio"],
+    headers: ["matrícula", "nombre", "carrera", "estatus", "promedio"],
     data: [
       student.matricula,
       student.student_name,
       student.major_name,
-      student.status,
-      "9.8",
+      // student.status ,
+      student.status  === 1 ? 'inscrito' : student.status === 2 ? 'baja temporal' : 'baja definitiva',
+      student.general_avg,
+      
     ],
   };
 
   const [dataShow, setDataShow] = useState([]);
-  
+
   const [valueSearchFilter, setValueSearchFilter] = useState({
     searchWord: "",
   });
   const [documentSelected, setDocumentSelected] = useState("");
-
-  console.log(documentSelected);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -90,6 +90,7 @@ export const MainStudentScreen = () => {
   const generateData = () => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
+
     grades.activeStudentGrade.forEach(
       ({
         key,
@@ -98,12 +99,13 @@ export const MainStudentScreen = () => {
         grade,
         date,
         status = grade >= 7 ? "Aprobado" : "Reprobado",
-        type,
+        type = type === 'regular' ?  'Regular': 'Extracurricular',
       }) => {
         const coincidence = isACoincidenceSearch(
           [key, course, teacher, grade, date, status, type],
           searchWord
         );
+
         const dataBuilded = buildDataGradesStudent(
           key,
           course,
@@ -125,7 +127,7 @@ export const MainStudentScreen = () => {
   };
   useEffect(() => {
     generateData();
-  }, [grades]);
+  }, [grades, valueSearchFilter]);
 
   //Funciones para hacer Toggle entre pestanias mobile
   const [activeScreen, setActiveScreen] = useState(0);
@@ -134,17 +136,13 @@ export const MainStudentScreen = () => {
   //Funciones para hacer Toggle del modal desktop
   const [activeModal, setActiveModal] = useState({
     showModal: true,
-    idModal: ''
+    idModal: "",
   });
 
-  const {showModal, idModal} = activeModal;
-
+  const { showModal, idModal } = activeModal;
 
   //funcion para saber el width
   const [widthSize] = useWindowResize();
-
-
-  console.log(dataShow);
 
   return (
     <>
@@ -164,7 +162,7 @@ export const MainStudentScreen = () => {
                   <StudentInformation studentInformation={dataInformation} />
                 </div>
 
-                {widthSize > 768 && (
+                {widthSize >= 768 && (
                   <div className="mainStudent__selectDocument">
                     <StudentSelect
                       handleRequestDocument={handleRequestDocument}
@@ -180,7 +178,11 @@ export const MainStudentScreen = () => {
                 <h3 className="mainStudent__search__title">
                   Historial de calificaciones
                 </h3>
-                <Searchbar />
+                <Searchbar
+                  placeholder={"Buscar"}
+                  valueSearchFilter={valueSearchFilter}
+                  setValueSearchFilter={setValueSearchFilter}
+                />
               </div>
 
               <div className="mainStudent__tableContainer">
@@ -193,8 +195,11 @@ export const MainStudentScreen = () => {
 
               {widthSize < 768 && <StudetsFooter />}
 
-              {!showModal && (
-                <StudentDesktopModal  idModal={idModal} setActiveModal={setActiveModal} />
+              {!showModal && widthSize >= 768 && (
+                <StudentDesktopModal
+                  idModal={idModal}
+                  setActiveModal={setActiveModal}
+                />
               )}
             </>
           )}

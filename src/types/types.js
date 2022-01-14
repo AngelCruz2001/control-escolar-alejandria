@@ -26,6 +26,7 @@ export const types = {
     studentClearData: '[student] Clear data',
 
     requestSetRequests: '[request] Set requests',
+    requestClearResquests: '[request] Clear requests',
     requestDeleteRequest: '[request] Delete request',
 
     gradesSetGrades: '[grades] Set grades',

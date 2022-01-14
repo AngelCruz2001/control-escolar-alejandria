@@ -18,13 +18,13 @@
 
             & p {
                 font-family: "Philosopher", sans-serif;
-                font-size: .9rem;
+                font-size: calc(11px + 1.5vw);
                 font-weight: 600;
                 letter-spacing: .05px;
             }
     
             & i {
-                font-size: 1.5rem;
+                font-size: calc(11px + 2vw);
             }
         }
 

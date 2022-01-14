@@ -57,6 +57,22 @@ export const ButtonTable = ({
                     </div>
                 )
 
+                case 7:
+                    return (
+                        <button className="btn btnTable btnStudentRequest btnYellow" onClick={() => onClick(id)}> 
+                            <i className="fas fa-times-circle"></i> 
+                            <span className="btnYellow">{title}</span>
+                         </button>
+                    )
+                    
+                case 8:
+                    return (
+                        <div className=" btn btnTable btnStudentRequest btnBlueStudent" > 
+                            <i className="fas  fa-check-circle"></i> 
+                            <span className="">{title}</span>
+                         </div>
+                    )
+
             default:
                 return (
                     <></>

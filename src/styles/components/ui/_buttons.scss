@@ -125,6 +125,14 @@
         font-size: 1.3em;
     }
 }
+.btnStudentRequest{
+    display: flex;
+    gap: 5%;
+
+    span{
+        letter-spacing: 2px;
+    }
+}
 
 .btnBlue {
     color: $blue-btn-text !important;
@@ -134,4 +142,12 @@
 }
 .btnGreen {
     color: $green-btn-text !important;
+}
+.btnYellow{
+    color:$color-yellow-btn!important;
+}
+.btnBlueStudent{
+    color: $color-blue-nav!important;
+    background-color: transparent!important;
+    cursor: auto;
 }
