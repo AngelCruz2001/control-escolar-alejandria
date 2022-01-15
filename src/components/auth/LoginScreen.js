@@ -19,6 +19,7 @@ export const LoginScreen = () => {
     }
     return (
         <div className="container auth__container">
+
             <div className="auth__login">
                 <form className={`${(checking) && "ui_blur "}`} onSubmit={handleClickLogin}>
                     <div className="auth__login-inputs">
