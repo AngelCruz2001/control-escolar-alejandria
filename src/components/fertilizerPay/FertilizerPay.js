@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  payClearFertilizers,
   payClearModalData,
   paySetConcept,
   paySetIdPayment,
@@ -10,7 +11,10 @@ import {
 } from "../../actions/pay";
 import { studentClearData } from "../../actions/student";
 import { activeDisabled } from "../../helpers/activeDisabled";
-import { buildDataFertilizer, buildDataFertilizerDetails } from "../../helpers/buildDataTables";
+import {
+  buildDataFertilizer,
+  buildDataFertilizerDetails,
+} from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Date } from "../ui/Date";
 import { Matricula } from "../ui/Matricula";
@@ -61,10 +65,18 @@ export const FertilizerPay = () => {
     dispatch(paySetIdPayment(id_payment));
   };
 
+  useEffect(() => {
+    dispatch(studentClearData());
+    // dispatch(payClearFertilizers());
+    dispatch(payClearModalData());
+    setDataToShow([]);
+    setStudentInformation({ headers: [], data: [] });
+  }, []);
+
   const handleArrow = () => {
     dispatch(payClearModalData());
     dispatch(studentClearData());
-    setDataToShow([]);
+    setDataToShow([]);    
   };
 
   const generateData = () => {
@@ -105,7 +117,10 @@ export const FertilizerPay = () => {
       <div className="fert__up">
         <Date />
         {student.matricula && (
-          <button className="btn btn__back fert__back-fert-abs fert__back" onClick={handleArrow}>
+          <button
+            className="btn btn__back fert__back-fert-abs fert__back"
+            onClick={handleArrow}
+          >
             <i className="fas fa-arrow-left"></i>
           </button>
         )}
