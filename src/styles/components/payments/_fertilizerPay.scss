@@ -25,6 +25,18 @@
             &__data {
                 width: 65%;
 
+                .stuInfo {
+                    margin-top: 0;
+
+                    &__container {
+                        padding: 0.5rem 0;
+
+                        &__containerTwo {
+                            gap: 0.5rem;
+                        }
+                    }
+                }
+
                 .noInformation {
                     color: $fertilizer-text;
                     font-family: "Noto Sans";
@@ -38,30 +50,29 @@
         padding: 0.7rem;
         width: 1rem;
         margin-left: auto;
-        &-abs{
+        &-abs {
             position: absolute;
             right: 0;
             top: 12%;
         }
-        &-pay{
+        &-pay {
             position: absolute;
             right: 0;
         }
-
     }
 
     &__down {
         width: 100%;
         height: 65%;
 
-        & .table__body__row__cell{
+        & .table__body__row__cell {
             &:nth-child(-n + 2) {
                 font-weight: 600;
             }
-            & a:nth-last-child(1){
+            & a:nth-last-child(1) {
                 color: $blue-solid;
                 font-weight: 600;
-                gap: .7rem;
+                gap: 0.7rem;
             }
         }
     }

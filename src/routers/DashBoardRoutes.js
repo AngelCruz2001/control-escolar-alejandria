@@ -4,7 +4,7 @@ import { Main } from '../components/general/Main'
 import { Navbar } from '../components/general/navbar/Navbar'
 
 export const DashBoardRoutes = ({ history }) => {
-    console.log("Main")
+    // console.log("Main")
     return (
         <>
             <Switch>

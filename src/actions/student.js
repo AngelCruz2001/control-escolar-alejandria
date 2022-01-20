@@ -8,7 +8,7 @@ export const studentStartGetStudentByMatricula = (matricula) => {
         dispatch(uiStartLoading())
         try {
             const res = await fetchConToken(`students/${matricula}`, 'GET')
-            console.log(res)
+            // console.log(res)
             const body = await res.json()
             if (body.ok) {
                 dispatch(studentSetActive(body.student));

@@ -14,11 +14,13 @@ import { activeDisabled } from "../../helpers/activeDisabled";
 import { useParams } from "react-router-dom";
 import { uiSetCurrent } from "../../actions/ui";
 import { useHistory } from "react-router-dom";
+import { studentClearData } from "../../actions/student";
+import { payClearFertilizers, payClearModalData } from "../../actions/pay";
 
 export const MakePay = () => {
   const { id } = useParams();
 
-  const { concept, method, thingToPay, idPayment } = useSelector(
+  const { concept, method, thingToPay, idPayment, fertilizers, cards } = useSelector(
     (state) => state.pay
   );
   const dispatch = useDispatch();
@@ -38,10 +40,13 @@ export const MakePay = () => {
       headers: ["Nombre", "Grupo", "Campus"],
       data: [student.student_name, student.name_group, student.campus_name],
     });
+
+   
   }, [student]);
   useEffect(() => {
     id && dispatch(uiSetCurrent(4));
   }, [id]);
+
   return (
     <div className="make__ ">
       <div className="make__date">

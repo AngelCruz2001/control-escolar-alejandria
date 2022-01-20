@@ -7,7 +7,6 @@ import { studentClearData } from "../../actions/student";
 import { buildDataFertilizerDetails } from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Searchbar } from "../ui/Searchbar";
-import { FilterMajor } from "../ui/filterMajorBnt/FilterMajor";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 
 const headers = [
@@ -77,7 +76,8 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
       }) => {
         const date = getDate(payment_date);
 
-        if (status_payment === 0)  status_payment ="ANTICIPADO"
+        // if (status_payment === 0)  status_payment.style.setAttribute("style","background-color:#6ab150;") 
+        if (status_payment === 0)  status_payment ="ANTICIPADO" 
         if (status_payment === 1)  status_payment ="PAGADO"
         if (status_payment === 2)  status_payment ="NO PAGADO"
        
@@ -121,7 +121,6 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
             valueSearchFilter={valueSearchFilter}
           />
         </div>
-        <FilterMajor />
         <button
           className="btn btn__back checkState__headers-back"
           onClick={() => {handleArrow()}}
@@ -137,8 +136,8 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
         />
       </div>
 
-      <div className="checkState__detail-details">
-        {!!pay.fertilizers.length == !0 ? (
+      <div className="checkState__detail-details" >
+        {!!pay.fertilizers?.length == !0 ? (
           <Table
             data={dataToShow}
             headers={headers}

@@ -1,6 +1,13 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
 import { NavLink, Route, Switch } from 'react-router-dom'
+import { payClearFertilizers, payClearModalData } from '../../actions/pay'
+import { studentClearData } from '../../actions/student'
+import { uiSetCurrent } from '../../actions/ui'
 import { CheckStateDetails } from '../checkStatePay/CheckStateDetails'
 import { CheckStatePayScreen } from '../checkStatePay/CheckStatePayScreen'
 import { ExpenseRecord } from '../expenseRecord/ExpenseRecord'
@@ -30,7 +37,30 @@ export const Main = () => {
     // const { expenses } = state.expenses;
     const { isModalOpen } = state.ui;
     //Borrar de aqui
-    // const {active} = useSelector(state => state.document)
+    const {fertilizers} = state.pay
+
+
+    const history = useHistory ();
+
+    const { location } = history;
+    const dispatch = useDispatch()
+
+    // console.log(location.pathname);
+ 
+
+    
+    useEffect(() => {
+        
+        if( location.pathname !== `/realizar_pago/${fertilizers[0]?.id_payment}` ){
+            console.log('no estoy en abono:id?');
+            dispatch( uiSetCurrent(0) )
+            dispatch( studentClearData() )
+            dispatch( payClearModalData() )
+            // dispatch( payClearFertilizers() )
+        }
+
+
+    }, [location.pathname])
 
 
     return (

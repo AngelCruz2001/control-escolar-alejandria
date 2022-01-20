@@ -112,7 +112,7 @@ export const CheckStatePayScreen = () => {
 
   const [titleActive, setTitleActive] = useState("Todos los grupos");
   const [filter, setFilter] = useState(false);
-  console.log(titleActive);
+  
 
   const toggleTitleActive = (title) => {
     if (title === titleActive) return;

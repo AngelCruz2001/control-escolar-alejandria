@@ -210,7 +210,7 @@ export const payStartGetAllPayments = (data) => {
           }
         } 
       } 
-      console.log(`payments?${requestParams}`);
+      // console.log(`payments?${requestParams}`);
       const res = await fetchConToken(`payments?${requestParams}`, "GET");
       const body = await res.json();
       if (body.ok) {
@@ -240,7 +240,7 @@ export const payStartGetFertilizerPay = (matricula) => {
       const body = await res.json();
 
       if (body.ok) {
-        console.log(body);
+        // console.log(body);
         dispatch(paySetFertilizers(body.student.payments));
       } else {
         console.log(body);

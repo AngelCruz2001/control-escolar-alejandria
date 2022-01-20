@@ -128,7 +128,7 @@ export const CheckStatePayGroup = ({
                 valueSearchFilter={valueSearchFilter}
               />
             </div>
-            <FilterMajor />
+            {/* <FilterMajor /> */}
             <button
               className="btn btn__back checkState__headers-back"
               onClick={() => handleBackCleanData()}

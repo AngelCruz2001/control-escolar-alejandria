@@ -10,6 +10,7 @@ import {
   payStartGetFertilizerPay,
 } from "../../actions/pay";
 import { studentClearData } from "../../actions/student";
+import { uiSetCurrent } from "../../actions/ui";
 import { activeDisabled } from "../../helpers/activeDisabled";
 import {
   buildDataFertilizer,
@@ -66,11 +67,15 @@ export const FertilizerPay = () => {
   };
 
   useEffect(() => {
-    dispatch(studentClearData());
-    // dispatch(payClearFertilizers());
-    dispatch(payClearModalData());
     setDataToShow([]);
     setStudentInformation({ headers: [], data: [] });
+    
+    if(pay.payments) {
+      // dispatch(payClearFertilizers());
+      // dispatch(studentClearData());
+      // dispatch(uiSetCurrent(0))
+      // dispatch(payClearModalData());
+    } 
   }, []);
 
   const handleArrow = () => {

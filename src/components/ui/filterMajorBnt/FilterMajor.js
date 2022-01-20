@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CheckFilteredData } from "./CheckFilteredData";
 
 export const FilterMajor = ({
-  checkState,
   filter,
   setFilter,
   titleActive,
@@ -23,7 +22,6 @@ export const FilterMajor = ({
   const handleFilter = () => {
     setFilter(!filter);
   };
-  console.log(titleActive,'ajjajaja')
 
   return (
     <>
