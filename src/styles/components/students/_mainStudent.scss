@@ -364,10 +364,11 @@ body {
         }
 
         &__tableContainer {
-            margin-top: 1.5rem !important;
             height: auto;
             width: 100%;
             margin: 0 auto;
+            margin-top: 1.5rem ;
+            margin-bottom: 1.5%;
 
             & .table {
                 flex-direction: column;

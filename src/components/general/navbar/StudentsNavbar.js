@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authStartLogout } from "../../../actions/auth";
 
 // Images imports
 import logoAleNoText from "../../../helpers/resources/images/logoAleNoText.png";
@@ -17,6 +18,12 @@ export const StudentsNavbar = ({
   const { matricula } = useSelector((state) => state.student);
 
   const [signOutBtn, setSignOutBtn] = useState(false);
+
+  const dispatch = useDispatch();
+  const handleClickLogout = () => {
+      
+      dispatch(authStartLogout())
+  }
 
   return (
     <div className="navStudentPosition">
@@ -57,11 +64,11 @@ export const StudentsNavbar = ({
               className="navStudent__info-img"
               src={whiteTigerNoText}
               alt="Logotipo del Instituto de Educación y Cultura Alejandría."
-              onClick={() => setSignOutBtn(!signOutBtn)}
+              onClick={() => setSignOutBtn(!signOutBtn) }
             />
 
             {signOutBtn && (
-              <button className={`navStudent__info-exit btn`}>
+              <button onClick={()=> handleClickLogout()} className={`navStudent__info-exit btn`}>
                 <p>SALIR</p>
 
                 {widthSize >= 768 && <i class="fas fa-sign-out-alt"></i>}

@@ -9,8 +9,8 @@ export const LoginScreen = () => {
     const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [formValues, handleInputChange,] = useForm({
-        username: "admin",
-        password: "jopi"
+        username: "CODG202111001",
+        password: "CODG202111001"
     })
     const { username, password } = formValues;
     const handleClickLogin = (e) => {

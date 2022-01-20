@@ -52,6 +52,8 @@ const headers = [
 
 export const MainStudentScreen = () => {
   const { auth, student, grades, ui } = useSelector((state) => state);
+  const {matricula} = auth.user.user;
+  // console.log( 'Esta es la matricula',matricula);
   // TODO: sacar la matricula del selector y ponerla en los dispatch y sacar el promedio del usuario
   // TODO: preguntarle a retana que onda con el status de la grade
   const dataInformation = {
@@ -76,12 +78,13 @@ export const MainStudentScreen = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(studentStartGetStudentByMatricula("CODG202111001 "));
-    dispatch(gradesStartGetGradesByMatricula("CODG202111001 "));
+    dispatch(studentStartGetStudentByMatricula(matricula));
+    dispatch(gradesStartGetGradesByMatricula(matricula));
+    // dispatch(studentStartGetStudentByMatricula( matricula ? matricula : 'CODG202111001'));
+    // dispatch(gradesStartGetGradesByMatricula(matricula ? matricula : 'CODG202111001'));
   }, []);
 
   const handleRequestDocument = (id) => {
-    console.log("hecho");
     dispatch(documentSetDocument(id));
     dispatch(requestStartRequestDocument());
     setDocumentSelected("");

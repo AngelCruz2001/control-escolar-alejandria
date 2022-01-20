@@ -70,7 +70,7 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
       <div
         className="backgroundModal__container"
         style={{
-          inset: idModal === "password" ? "12% 34% 40% 34%" : "14% 11.5% 31% 11.5%",
+          inset: idModal === "password" ? "12% 34% auto" : "12% 11.5% 33% 11.5%",
         }}
       >
         <div className="backgroundModal__container-exit">
