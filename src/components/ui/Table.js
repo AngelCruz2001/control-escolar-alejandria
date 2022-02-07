@@ -11,7 +11,6 @@ export const Table = ({
   sortBy,
   sortBy2,
   handleValueSortBy,
-  details,
 }) => {
   const { loading } = useSelector((state) => state.ui);
   const { fertilizers } = useSelector((state) => state.pay);

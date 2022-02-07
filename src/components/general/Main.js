@@ -50,9 +50,14 @@ export const Main = () => {
 
     
     useEffect(() => {
+
+  
+        //TODO: modificar para que el index de fertilizer sea variable
+        const idPayment = Number;
         
         if( location.pathname !== `/realizar_pago/${fertilizers[0]?.id_payment}` ){
-            console.log('no estoy en abono:id?');
+        // if( location.pathname !== `/realizar_pago/${!Number.}` ){
+            // console.log('no estoy en abono:id?');
             dispatch( uiSetCurrent(0) )
             dispatch( studentClearData() )
             dispatch( payClearModalData() )

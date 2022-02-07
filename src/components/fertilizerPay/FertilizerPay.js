@@ -10,12 +10,8 @@ import {
   payStartGetFertilizerPay,
 } from "../../actions/pay";
 import { studentClearData } from "../../actions/student";
-import { uiSetCurrent } from "../../actions/ui";
 import { activeDisabled } from "../../helpers/activeDisabled";
-import {
-  buildDataFertilizer,
-  buildDataFertilizerDetails,
-} from "../../helpers/buildDataTables";
+import { buildDataFertilizer} from "../../helpers/buildDataTables";
 import { getDate } from "../../helpers/getDate";
 import { Date } from "../ui/Date";
 import { Matricula } from "../ui/Matricula";
@@ -41,6 +37,18 @@ export const FertilizerPay = () => {
   });
 
   useEffect(() => {
+    setDataToShow([]);
+    setStudentInformation({ headers: [], data: [] });
+    
+    // if(pay.fertilizers) {
+      dispatch(studentClearData());
+      dispatch(payClearFertilizers());
+      // dispatch(uiSetCurrent(0))
+      dispatch(payClearModalData());
+    // } 
+  }, []);
+
+  useEffect(() => {
     setStudentInformation({
       headers: ["Nombre", "Grupo", "Campus", "Carrera"],
       data: [
@@ -51,8 +59,15 @@ export const FertilizerPay = () => {
       ],
     });
 
-    student.matricula && dispatch(payStartGetFertilizerPay(student.matricula));
-  }, [student]);
+    // console.log(student);
+    student?.matricula !== '' && dispatch(payStartGetFertilizerPay(student.matricula));
+
+  }, [student.matricula]);
+  
+  
+  useEffect(()=>{
+    
+  },[])
 
   const handleClickPayFertilizer = ({
     missing,
@@ -66,17 +81,7 @@ export const FertilizerPay = () => {
     dispatch(paySetIdPayment(id_payment));
   };
 
-  useEffect(() => {
-    setDataToShow([]);
-    setStudentInformation({ headers: [], data: [] });
-    
-    if(pay.payments) {
-      // dispatch(payClearFertilizers());
-      // dispatch(studentClearData());
-      // dispatch(uiSetCurrent(0))
-      // dispatch(payClearModalData());
-    } 
-  }, []);
+
 
   const handleArrow = () => {
     dispatch(payClearModalData());

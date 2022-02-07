@@ -104,16 +104,17 @@ export const payReducer = (state = initialState, action) => {
         case types.payClearModalData:
             return {
                 ...state,
-                concept: null,
-                thingToPay: { name: "", id: null },
-                totalPayMoney: "",
-                amountToPay: "",
-                activeAccount: null,
-                idPayment: "",
-                fertilizers: [],
-                payments: [],
-                students: [],
-                method: ""
+                ...initialState
+                // concept: null,
+                // thingToPay: { name: "", id: null },
+                // totalPayMoney: "",
+                // amountToPay: "",
+                // activeAccount: null,
+                // idPayment: "",
+                // fertilizers: [],
+                // payments: [],
+                // students: [],
+                // method: ""
             }
         default:
             return state;

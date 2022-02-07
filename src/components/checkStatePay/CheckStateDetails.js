@@ -36,7 +36,6 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
     data: [],
   });
 
-  //  if( )
 
   useEffect(() => {
     setStudentInformation({
@@ -49,7 +48,10 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
       ],
     });
 
-    student.matricula && dispatch(payStartGetFertilizerPay(student.matricula));
+    // student.matricula && dispatch(payStartGetFertilizerPay(student.matricula));
+
+    
+
   }, [student]);
 
   const handleArrow = () => {

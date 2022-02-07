@@ -47,6 +47,8 @@ export const MakePay = () => {
     id && dispatch(uiSetCurrent(4));
   }, [id]);
 
+  
+
   return (
     <div className="make__ ">
       <div className="make__date">
