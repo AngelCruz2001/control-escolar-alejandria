@@ -9,13 +9,13 @@ export const useBuildDataWithFiltersRequest = (
 ) => {
     const [dataToShow, setDataToShow] = useState([])
 
-    const { searchWord, dateSearch } = valueSearchFilter;
+    const { searchWord, dateSearch } = valueSearchFilter; //word: "asdf",. date: {day: "23", month: "", year: ""}
     const { day, month, year } = dateSearch;
 
     const generateDataToShow = () => {
         const dataToShow = [];
         const hasDateSearchValue = (day === '' && month === '' && year === '') ? false : true;
-        const hasSearchWordValue = searchWord === '' ? false : true;
+        const hasSearchWordValue = searchWord === '' ? false : true; 
 
         requests.data.forEach((request) => {
 

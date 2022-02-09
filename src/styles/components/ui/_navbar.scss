@@ -1,12 +1,12 @@
 .navbar {
-    margin: 0rem 1rem;
-    height: $navbar-height;
     width: calc(100vw - 2rem);
+    margin: 0rem 1rem;
+    height: calc(150px - 0rem);
     display: flex;
-    position: sticky;
+    // position: sticky;
     &__logo {
         display: flex;
-        width: 33.333%;
+        width: 35%;
         height: 100%;
         img {
             height: 100%;
@@ -16,8 +16,8 @@
             color: $black;
             text-align: center;
             align-self: center;
-            font-size: calc(1rem + 0.5rem / 5);
-            letter-spacing: 0.5px;
+            font-size: calc(1rem + .3vw);
+            letter-spacing: 0.8px;
         }
     }
 
@@ -30,7 +30,7 @@
         align-items: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-transform: uppercase;
-        font-size: calc(.8rem + 0.5rem / 5);
+        font-size: calc(.8rem + .25vw);
     }
 
     &__logout {
@@ -42,7 +42,7 @@
 
         i {
             margin-right: 3rem;
-            font-size: 37px;
+            font-size: calc(2rem + .25vw);
             color: $blue-heroLogin;
         }
     }

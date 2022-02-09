@@ -96,7 +96,6 @@ export const itemsMenu = [
         text: "Generar documento",
         icon: "fas fa-file",
         css: {
-            transform: "rotate(90deg) scaleX(-1)"
         },
         path: "/generar_documento",
         component: Documents,
