@@ -63,7 +63,7 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
 
   useEffect(() => {
     generateData();
-  }, [requests.data]);
+  }, [requests.data, generateData]);
 
   return (
     <div className="backgroundModal">

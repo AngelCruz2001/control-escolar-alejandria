@@ -13,7 +13,7 @@ import { Table } from "../ui/Table";
 import { StudentPassword } from "./StudentPassword";
 import { StudentSelect } from "./StudentSelect";
 import { StudentReqDoc } from "./StudentReqDoc";
-import { StudentsSubmenu } from "./StudentsSubmenu";
+// import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
 import { StudentHistoryScreen } from "./StudentHistoryScreen";
 import { useWindowResize } from "../../hooks/useWindowResize";
@@ -51,7 +51,7 @@ const headers = [
 ];
 
 export const MainStudentScreen = () => {
-  const { auth, student, grades, ui } = useSelector((state) => state);
+  const { auth, student, grades } = useSelector((state) => state);
   const {matricula} = auth.user.user;
   // console.log( 'Esta es la matricula',matricula);
   // TODO: sacar la matricula del selector y ponerla en los dispatch y sacar el promedio del usuario

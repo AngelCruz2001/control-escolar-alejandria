@@ -43,7 +43,7 @@ export const StudentSelect = ({
   setDocumentSelected,
   setActiveModal,
 }) => {
-  const [documents, setDocuments] = useState(documentsStudent);
+  const [documents, ] = useState(documentsStudent);
 
   const handleInputChange = ({ target }) => {
     const { value } = target;
