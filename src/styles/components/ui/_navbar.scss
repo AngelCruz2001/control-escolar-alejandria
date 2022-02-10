@@ -1,7 +1,7 @@
 .navbar {
     width: calc(100vw - 2rem);
     margin: 0rem 1rem;
-    height: calc(150px - 0rem);
+    height: calc(150px);
     display: flex;
     // position: sticky;
     &__logo {
@@ -42,7 +42,7 @@
 
         i {
             margin-right: 3rem;
-            font-size: calc(2rem + .25vw);
+            font-size: calc(2.5rem + .25vw);
             color: $blue-heroLogin;
         }
     }
