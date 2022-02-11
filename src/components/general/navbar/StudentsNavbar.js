@@ -16,6 +16,8 @@ export const StudentsNavbar = ({
 }) => {
   const { data } = useSelector((state) => state.requests);
   const { matricula } = useSelector((state) => state.student);
+  const { roles } = useSelector((state) => state.auth.user);
+  // console.log('IM THE ROLL NUMBER : ', roles[0])
 
   const [signOutBtn, setSignOutBtn] = useState(false);
 
@@ -31,6 +33,7 @@ export const StudentsNavbar = ({
         className="navStudent"
         style={{ justifyContent: data.length > 0 && widthSize >= 768 && "center" }}
       >
+        {/* RIGHT SIDE OF THE NAVBAR */}
         <div
           className="navStudent__logo"
           style={{ marginRight: data.length > 0 && widthSize >= 768 && "0" }}
@@ -77,7 +80,9 @@ export const StudentsNavbar = ({
           </div>
        
       </nav>
-      {widthSize < 768 && (
+
+     {/* CAMBIAR EL ROL DE TEACHER PARA QUE SE MUESTRE EL SUBMENU EN ESTUDIENATES       */}
+      {widthSize < 768 && !roles[0] && (
         <StudentsSubmenu
           activeScreen={activeScreen}
           setActiveScreen={setActiveScreen}

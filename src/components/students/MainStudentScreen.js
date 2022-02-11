@@ -82,7 +82,7 @@ export const MainStudentScreen = () => {
     dispatch(gradesStartGetGradesByMatricula(matricula));
     // dispatch(studentStartGetStudentByMatricula( matricula ? matricula : 'CODG202111001'));
     // dispatch(gradesStartGetGradesByMatricula(matricula ? matricula : 'CODG202111001'));
-  }, []);
+  }, [matricula]);
 
   const handleRequestDocument = (id) => {
     dispatch(documentSetDocument(id));

@@ -1,0 +1,64 @@
+body,
+.mainStudent {
+    background-color: transparent;
+}
+
+.teacherNav {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &__container {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid $color-gray-border;
+        border-radius: 10px;
+        text-align: center;
+        width: 84%;
+        padding: 0;
+        overflow: hidden;
+
+        &-item {
+            padding: 0.5em 0;
+            width: 50%;
+            cursor: pointer;
+            color: $color-text-submenu;
+
+            &:nth-child(1) {
+                border-right: 1px solid $color-gray-border;
+            }
+        }
+    }
+}
+
+@include respond(tab-port) {
+    .teacherNav {
+        margin: 5% 0;
+
+        &__container {
+            width: 40%;
+        }
+    }
+}
+
+@include respond(from-tab-land) {
+    .teacherNav {
+        margin: 3.5% 0;
+
+        &__container {
+            width: 25%;
+        }
+    }
+
+    .mainStudent__search.teacher {
+        width: 90%;
+        gap: 3%;
+    }
+}
+
+.teacherNav__container-item.active {
+    background-color: $mustard;
+    color: $white;
+}
