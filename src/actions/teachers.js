@@ -12,7 +12,7 @@ export const teacherStartGetCoursesById = (id) => {
 
             if(body.ok){
                 console.log(body);
-                
+                dispatch(teacherSetActiveCouses(body.courses))
             } else {
                 console.log(body)
                 Swal.fire({
@@ -29,3 +29,5 @@ export const teacherStartGetCoursesById = (id) => {
 
     }
 }
+
+const teacherSetActiveCouses = data => ({ type: types.teacherSetActiveCourses, payload: data })

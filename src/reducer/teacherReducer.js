@@ -11,12 +11,18 @@ const initialValue = {
     status: null,
     start_date: "",
     end_date: "",
-    type: ""
+    type: "",
+    courses:[]
 }
 
 export const teacherReducer = ( state = initialValue, action ) => {
     switch ( action.type ) {
         
+        case types.teacherSetActiveCourses:
+            return{
+                ...state,
+                courses: action.payload
+            }
 
         default:
             return state;
