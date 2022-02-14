@@ -1,0 +1,38 @@
+.mainStudent.teacher {
+    width: 84%;
+    margin: 0 auto;
+
+    .teacherNav__container {
+        width: 100%;
+    }
+
+    .mainStudent__search__title{
+        text-transform: initial;
+    }
+    .sea__container {
+        width: 96%;
+    }
+}
+
+@include respond(tab-port) {
+    .mainStudent.teacher {
+        width: 88%;
+        .teacherNav__container {
+            width: 40%;
+        }
+    }
+}
+
+@include respond(from-tab-land) {
+    .mainStudent.teacher {
+        width: 90%;
+
+        .teacherNav {
+            margin: 4% 0;
+
+            &__container {
+                width: 30%;
+            }
+        }
+    }
+}

@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { teacherStartGetCoursesById } from "../../actions/teachers";
 
-import { buildDataGradesStudent } from "../../helpers/buildDataTables";
+import {
+  buiidDataTeacherCouses,
+  buildDataGradesStudent,
+} from "../../helpers/buildDataTables";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
@@ -17,29 +20,29 @@ import { TeacherSearchbar } from "./TeacherSearchbar";
 const headers = [
   {
     title: "Tipo",
-    textAlign: "center",
+    // textAlign: "center",
   },
   {
     title: "Nombre",
-    textAlign: "center",
+    // textAlign: "center",
   },
   {
     title: "Estatus",
-    textAlign: "center",
+    // textAlign: "center",
   },
   {
     title: "Grupo",
-    textAlign: "center",
+    // textAlign: "center",
   },
   {
     title: "Periodo",
-    textAlign: "center",
+    // textAlign: "center",
   },
 ];
 
 export const MainTeacherScreen = () => {
-
-  
+  const { teacher } = useSelector((state) => state);
+  // console.log(teacher.courses);
 
   const [dataShow, setDataShow] = useState([]);
 
@@ -60,50 +63,51 @@ export const MainTeacherScreen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     //cambiar la el id del maestro por dinamica
-    dispatch(teacherStartGetCoursesById("ale134163"));
-  }, []);
+      dispatch(teacherStartGetCoursesById("ale134163", activeCourseScreen === 0 ?  1 : undefined));
+    // dispatch(teacherStartGetCoursesById("ale109188"));
+  }, [activeCourseScreen]);
 
-  // const generateData = () => {
-  //   const dataToShow = [];
-  //   const { searchWord } = valueSearchFilter;
+  const generateData = () => {
+    const dataToShow = [];
+    const { searchWord } = valueSearchFilter;
 
-  //   grades.activeStudentGrade.forEach(
-  //     ({
-  //       key,
-  //       course,
-  //       teacher,
-  //       grade,
-  //       date,
-  //       status = grade >= 7 ? "Aprobado" : "Reprobado",
-  //       type = type === "regular" ? "Regular" : "Extracurricular",
-  //     }) => {
-  //       const coincidence = isACoincidenceSearch(
-  //         [key, course, teacher, grade, date, status, type],
-  //         searchWord
-  //       );
+    teacher.courses.forEach(
+      ({
+        id_course,
+        course_name,
+        group_name,
+        status,
+        start_date,
+        end_date,
+        type,
+      }) => {
+        const coincidence = isACoincidenceSearch(
+          [course_name, group_name, status, start_date, end_date, type],
+          searchWord
+        );
 
-  //       const dataBuilded = buildDataGradesStudent(
-  //         key,
-  //         course,
-  //         teacher,
-  //         grade,
-  //         date,
-  //         status,
-  //         type,
-  //         coincidence
-  //       );
-  //       if (searchWord === "") {
-  //         dataToShow.push(dataBuilded);
-  //       } else if (coincidence.includes(true)) {
-  //         dataToShow.push(dataBuilded);
-  //       }
-  //     }
-  //   );
-  //   setDataShow(dataToShow);
-  // };
-  // useEffect(() => {
-  //   generateData();
-  // }, [grades, valueSearchFilter]);
+        const dataBuilded = buiidDataTeacherCouses(
+          id_course,
+          course_name,
+          group_name,
+          status,
+          start_date,
+          end_date,
+          type,
+          coincidence
+        );
+        if (searchWord === "") {
+          dataToShow.push(dataBuilded);
+        } else if (coincidence.includes(true)) {
+          dataToShow.push(dataBuilded);
+        }
+      }
+    );
+    setDataShow(dataToShow);
+  };
+  useEffect(() => {
+    generateData();
+  }, [teacher, valueSearchFilter]);
 
   const [widthSize] = useWindowResize();
 
@@ -112,7 +116,7 @@ export const MainTeacherScreen = () => {
       <StudentsNavbar widthSize={widthSize} setActiveModal={setActiveModal} />
 
       <main>
-        <div className="mainStudent">
+        <div className="mainStudent teacher">
           <TeacherNavigation
             activeCourseScreen={activeCourseScreen}
             setActiveCourseScreen={setActiveCourseScreen}
@@ -129,7 +133,7 @@ export const MainTeacherScreen = () => {
             <Table
               headers={headers}
               data={dataShow}
-              sizesColumns={[19, 10, 15, 35, 7]}
+              sizesColumns={[12, 35.5, 7, 24, 21.5]}
             />
           </div>
         </div>

@@ -6,11 +6,11 @@ export const Table = ({
   headers = [], // array of objects with {title, textAlign}
   data = [], // array of objects with keys matching headers
   sizesColumns = [], // array of numbers
-//   sizesRows = [], // array of numbers
+  //   sizesRows = [], // array of numbers
 }) => {
   const { loading } = useSelector((state) => state.ui);
   return (
-    <div className="table ">
+    <div className="table scroll">
       {loading ? (
         <>
           <SkeletonTable headers={headers} sizesColumns={sizesColumns} />
@@ -46,8 +46,8 @@ export const Table = ({
                             key={andex}
                             style={{
                               width: `${sizesColumns[andex]}%`,
-                              justifyContent: `${headers[andex].textAlign}`,
-                              textAlign: `${headers[andex].textAlign}`,
+                              // justifyContent: `${headers[andex].textAlign}`,
+                              // textAlign: `${headers[andex].textAlign}`,
                             }}
                           >
                             {cell.element}

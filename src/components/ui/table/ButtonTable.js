@@ -17,6 +17,7 @@ export const ButtonTable = ({
     type,
     onClick,
     title = '',
+    title2 = '',
     id
 }) => {
 
@@ -71,6 +72,16 @@ export const ButtonTable = ({
                             <i className="fas  fa-check-circle"></i> 
                             <span className="">{title}</span>
                          </div>
+                    )
+                
+                case 9:
+                    return (
+                        <span className='btnTableCourses' onClick={id}>{title}</span>
+                    )
+
+                case 10:
+                    return (
+                        <span className='btnTableCourses' onClick={id}>{title} / {title2}</span>
                     )
 
             default:

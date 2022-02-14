@@ -5,13 +5,13 @@ const initialValue = {
     // id_major: null,
     // id_group: null,
     // major_name: "",
-    id_course: null,
-    course_name: "",
-    group_name: "",
-    status: null,
-    start_date: "",
-    end_date: "",
-    type: "",
+    // id_course: null,
+    // course_name: "",
+    // group_name: "",
+    // status: null,
+    // start_date: "",
+    // end_date: "",
+    // type: "",
     courses:[]
 }
 

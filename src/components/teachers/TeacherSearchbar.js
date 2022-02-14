@@ -13,8 +13,8 @@ export const TeacherSearchbar = ({activeCourseScreen,widthSize, valueSearchFilte
       </h3>
       <Searchbar
         placeholder={"Buscar"}
-        //   valueSearchFilter={valueSearchFilter}
-        //   setValueSearchFilter={setValueSearchFilter}
+          valueSearchFilter={valueSearchFilter}
+          setValueSearchFilter={setValueSearchFilter}
       />
     </div>
   );

@@ -3,17 +3,16 @@ import { fetchConToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import { uiFinishLoading, uiStartLoading } from './ui';
 
-export const teacherStartGetCoursesById = (idTeacher, status = undefined) => {
+export const assistanceStartGetAssistance = () => {
     return async (dispatch) => {
         dispatch(uiStartLoading())
         try{
-            const res = await fetchConToken(`teachers/${idTeacher}/courses?${status !== undefined ?  `status=${status}` : ''}`,'GET')
-            console.log(`teachers/${idTeacher}/courses?${status !== undefined ?  `status=${status}` : '' }`)
+            const res = await fetchConToken(`assits`, 'GET')
             const body = await res.json()
 
             if(body.ok){
                 console.log(body);
-                dispatch(teacherSetActiveCouses(body.courses))
+                // dispatch(teacherSetActiveCouses(body.courses))
             } else {
                 console.log(body)
                 Swal.fire({
@@ -30,5 +29,3 @@ export const teacherStartGetCoursesById = (idTeacher, status = undefined) => {
 
     }
 }
-
-const teacherSetActiveCouses = data => ({ type: types.teacherSetActiveCourses, payload: data })

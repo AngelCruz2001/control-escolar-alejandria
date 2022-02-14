@@ -1,0 +1,120 @@
+.teacherTable {
+    &__activeCourses {
+        margin-top: 6% !important;
+        margin: 0 auto;
+
+        & .table {
+            height: 40vh;
+            border-radius: 10px;
+            border: 1px solid $color-blue-border-table;
+            border-radius: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            &__headers {
+                background-color: $color-blue-nav;
+                width: 184vw;
+                height: 3em;
+
+                &__cell {
+                    align-items: center;
+                    height: 100%;
+                    padding: 0;
+                    color: $white;
+                    display: flex;
+                    justify-content: center;
+                    font-size: calc(8px + 1.5vw);
+                    font-weight: 400;
+                    border-bottom: 0.5px solid $color-darkblue-line;
+                    border-right: 1px solid #061f4a;
+                }
+            }
+
+            &__body {
+                flex-basis: content;
+                width: 184vw;
+                background-color: $white;
+                &__row {
+                    margin: 0;
+                    box-shadow: none;
+                    border-radius: 0;
+
+                    &__cell {
+                        padding: 0;
+                        border-radius: 0 !important;
+                        border-bottom: 1px solid $gray-navbar;
+                        border-right: 1px solid $gray-navbar;
+                        font-size: calc(8px + 1.5vw);
+                        background-color: transparent !important;
+
+                        & span {
+                            padding-left: 1em;
+                        }
+
+                        &:nth-child(3) {
+                            
+                            & span {
+                                justify-content: center;
+                                padding: 0;
+                            }
+                        }
+
+                        &.searched {
+                            background-color: $color-value-searched !important;
+                        }
+                    }
+                    &:nth-child(even) {
+                        background-color: $color-grey-rows;
+                    }
+                    &:nth-child(odd) {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond(tab-port) {
+    .teacherTable {
+        &__activeCourses {
+            margin-top: 3% !important;
+
+            & .table {
+                height: 40vh;
+                overflow: auto;
+
+                &__headers {
+                    width: auto;
+                    height: 3.5em;
+
+                    &__cell {
+                        padding: 0;
+                        font-size: calc(6.7px + 0.8vw);
+                    }
+                }
+
+                &__body {
+                    width: auto;
+                    &__row {
+                        height: 3.1em;
+                        @include transition;
+
+                        &:nth-child(even):hover {
+                            background-color: darken($color: $color-grey-rows, $amount: 8);       
+                        }
+
+                        &:nth-child(odd):hover {
+                            background-color: darken($color: $white, $amount: 15);   
+                        }
+
+                        &__cell {
+                            padding: 0;
+                            font-size: calc(6.7px + 0.8vw);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
