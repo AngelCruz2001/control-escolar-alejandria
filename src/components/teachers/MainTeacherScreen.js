@@ -2,12 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { assistanceStartGetAssistanceByType } from "../../actions/assistance";
 import { teacherStartGetCoursesById } from "../../actions/teachers";
 
-import {
-  buiidDataTeacherCouses,
-  buildDataGradesStudent,
-} from "../../helpers/buildDataTables";
+import { buiidDataTeacherCouses } from "../../helpers/buildDataTables";
 import { isACoincidenceSearch } from "../../helpers/isACoincidence";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
@@ -40,8 +38,17 @@ const headers = [
   },
 ];
 
+const assistanceHeaders = [
+  {
+    title: "Matrícula",
+  },
+  {
+    title: "Nombre del alumno",
+  },
+];
+
 export const MainTeacherScreen = () => {
-  const { teacher } = useSelector((state) => state);
+  const { teacher, assistance } = useSelector((state) => state);
   // console.log(teacher.courses);
 
   const [dataShow, setDataShow] = useState([]);
@@ -63,17 +70,31 @@ export const MainTeacherScreen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     //cambiar la el id del maestro por dinamica
-      dispatch(teacherStartGetCoursesById("ale134163", activeCourseScreen === 0 ?  1 : undefined));
+    dispatch(
+      teacherStartGetCoursesById(
+        "ale134163",
+        activeCourseScreen === 0 ? 1 : undefined
+      )
+    );
     // dispatch(teacherStartGetCoursesById("ale109188"));
+    console.log(teacher.courses);
   }, [activeCourseScreen]);
 
+  const handleClickRequestAssistance = (type, id_type) => {
+    dispatch(assistanceStartGetAssistanceByType(type, id_type));
+    console.log("El tipo: ", type, "El id: ", id_type);
+  };
+
+  //Couses Functions
   const generateData = () => {
     const dataToShow = [];
     const { searchWord } = valueSearchFilter;
 
     teacher.courses.forEach(
       ({
-        id_course,
+        id_group,
+        id_ext_cou,
+        // id_graduation_course
         course_name,
         group_name,
         status,
@@ -86,15 +107,18 @@ export const MainTeacherScreen = () => {
           searchWord
         );
 
+        const id_type = id_group || id_ext_cou;
+
         const dataBuilded = buiidDataTeacherCouses(
-          id_course,
+          id_type,
           course_name,
-          group_name,
+          group_name === undefined ? "No aplica" : group_name,
           status,
           start_date,
           end_date,
           type,
-          coincidence
+          coincidence,
+          handleClickRequestAssistance
         );
         if (searchWord === "") {
           dataToShow.push(dataBuilded);
@@ -108,6 +132,20 @@ export const MainTeacherScreen = () => {
   useEffect(() => {
     generateData();
   }, [teacher, valueSearchFilter]);
+
+  //Asisstance Funcions
+
+  const [headerDatesState, setHeaderDatesState] = useState([{ name: "" }]);
+
+  // useEffect(() => {
+  // }, [assistance.assistanceDates])
+
+  const assistanceHeadersConcated = assistanceHeaders.concat({
+    // title: `${assistance.assistanceDates}`
+    title: assistance.assistanceDates,
+    // assistance.assistanceDates
+  });
+  console.log(assistanceHeadersConcated);
 
   const [widthSize] = useWindowResize();
 
@@ -130,11 +168,19 @@ export const MainTeacherScreen = () => {
           />
 
           <div className="teacherTable__activeCourses">
-            <Table
-              headers={headers}
-              data={dataShow}
-              sizesColumns={[12, 35.5, 7, 24, 21.5]}
-            />
+            {!assistance.assistanceDates.length >= 1 ? (
+              <Table
+                headers={headers}
+                data={dataShow}
+                sizesColumns={[12, 35.5, 7, 24, 21.5]}
+              />
+            ) : (
+              <Table
+                headers={assistanceHeadersConcated}
+                // sizesColumns={[, ,'-moz-available;']}
+                // data={dataShow}
+              />
+            )}
           </div>
         </div>
 

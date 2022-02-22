@@ -31,7 +31,8 @@
             }
 
             &__body {
-                flex-basis: content;
+                // flex-basis: content;
+                display: block;
                 width: 184vw;
                 background-color: $white;
                 &__row {
@@ -81,7 +82,7 @@
             margin-top: 3% !important;
 
             & .table {
-                height: 40vh;
+                height: 41.5vh;
                 overflow: auto;
 
                 &__headers {
@@ -96,6 +97,7 @@
 
                 &__body {
                     width: auto;
+
                     &__row {
                         height: 3.1em;
                         @include transition;

@@ -8,6 +8,7 @@ import { requestsReducer } from "./requestsReducer"
 import { gradesReducer } from "./gradesReducer"
 import { expensesReducer } from "./expensesReducer"
 import { teacherReducer } from "./teacherReducer"
+import { assistanceReducer } from "./assistanceReducer"
 
 export const rootReducer = combineReducers({
     auth: authReducer,
@@ -19,4 +20,5 @@ export const rootReducer = combineReducers({
     grades: gradesReducer, 
     expenses: expensesReducer,
     teacher: teacherReducer,
+    assistance: assistanceReducer
 })

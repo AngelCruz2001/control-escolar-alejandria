@@ -76,12 +76,12 @@ export const ButtonTable = ({
                 
                 case 9:
                     return (
-                        <span className='btnTableCourses' onClick={id}>{title}</span>
+                        <span className='btnTableCourses' onClick={() => onClick(id)}>{title}</span>
                     )
 
                 case 10:
                     return (
-                        <span className='btnTableCourses' onClick={id}>{title} / {title2}</span>
+                        <span className='btnTableCourses' onClick={() => onClick(id)}>{title} / {title2}</span>
                     )
 
             default:

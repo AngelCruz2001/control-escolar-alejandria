@@ -25,7 +25,10 @@ export const types = {
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',
 
-    teacherSetActiveCourses: '[teacher] Set Active Couse',
+    teacherSetCourses: '[teacher] Set Courses',
+    teacherSetActiveCourses: '[teacher] Set Active Course',
+
+    assistanceSetActive: '[assistance] Set active assistance',
 
     requestSetRequests: '[request] Set requests',
     requestClearResquests: '[request] Clear requests',

@@ -201,24 +201,36 @@ export const buildDataStudentsHistory = (
 
 
 
-export const buiidDataTeacherCouses = ( id_course,
+export const buiidDataTeacherCouses = ( 
+  id_type,
+  // id_group,
+  // id_ext_cou,
+  // id_graduation_course
   course_name,
   group_name,
   status,
   start_date,
   end_date,
   type,
-  coincidence
+  coincidence,
+  handleClickRequestAssistance
   ) => {
     return [
-      { element: <ButtonTable title={type} type={9} onClick={group_name} />, searched: coincidence[5] },
+      // console.log();
+      { element: <ButtonTable title={type} type={9}  onClick={()=> (handleClickRequestAssistance(type,id_type))}/>, searched: coincidence[5] },
 
-      { element: <ButtonTable title={course_name} type={9} onClick={group_name} />, searched: coincidence[0] },
+      { element: <ButtonTable title={course_name} type={9} />, searched: coincidence[0] },
 
-      { element: <ButtonTable title={status === true ? 'Activo' : 'Inactivo'} type={9} onClick={group_name} />, searched: coincidence[2] },
+      { element: <ButtonTable title={status === 1 ? 'Activo' : 'Inactivo'} type={9} />, searched: coincidence[2] },
 
-      { element: <ButtonTable  title={group_name} type={9} onClick={group_name} />, searched: coincidence[1] },
+      { element: <ButtonTable  title={group_name } type={9} />, searched: coincidence[1] },
 
-      { element: <ButtonTable  title={start_date} title2={end_date} type={10} onClick={group_name} />, searched: coincidence[4] },
+      { element: <ButtonTable  title={start_date} title2={end_date} type={10} />, searched: coincidence[4] },
     ]
   }
+
+  // export const buildCopurseAssistance = (
+
+
+
+  // )

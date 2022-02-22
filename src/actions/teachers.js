@@ -31,4 +31,4 @@ export const teacherStartGetCoursesById = (idTeacher, status = undefined) => {
     }
 }
 
-const teacherSetActiveCouses = data => ({ type: types.teacherSetActiveCourses, payload: data })
+const teacherSetActiveCouses = data => ({ type: types.teacherSetCourses, payload: data })

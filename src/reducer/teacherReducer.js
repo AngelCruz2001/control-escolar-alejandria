@@ -18,7 +18,7 @@ const initialValue = {
 export const teacherReducer = ( state = initialValue, action ) => {
     switch ( action.type ) {
         
-        case types.teacherSetActiveCourses:
+        case types.teacherSetCourses:
             return{
                 ...state,
                 courses: action.payload
