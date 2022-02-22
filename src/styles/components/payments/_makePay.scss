@@ -154,7 +154,7 @@
             height: 100%;
             margin: 0;
             font-weight: bold;
-            color: $black;
+            color: $color-black;
             font-family: "Segoe UI", sans-serif !important;
         }
         .iconContainer {
@@ -254,7 +254,7 @@
         }
 
         &-quantity {
-            border: 1px solid $black;
+            border: 1px solid $color-black;
             width: 30%;
             height: 90%;
             position: relative;

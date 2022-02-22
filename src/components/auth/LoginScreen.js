@@ -1,27 +1,41 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authStartLogin } from '../../actions/auth';
-// Images imports 
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import logoAleNoText from '../../helpers/resources/images/logoAleNoText.png';
-import { useForm } from '../../hooks/useForm';
+
 
 export const LoginScreen = () => {
     const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
-    const [formValues, handleInputChange,] = useForm({
-        username: "admin",
-        password: "jopi"
-    })
-    const { username, password } = formValues;
-    const handleClickLogin = (e) => {
-        e.preventDefault();
-        dispatch(authStartLogin(username, password))
-    }
+
+
+    const { handleSubmit, errors, touched, getFieldProps, resetForm } = useFormik({
+        initialValues: {
+            username: '',
+            password: '',
+        },
+        onSubmit: (values) => {
+            dispatch(authStartLogin(username, password))
+            resetForm()
+
+        },
+        validationSchema: Yup.object({
+
+            username: Yup.string()
+                .required('Requerido'),
+            password: Yup.string()
+                .required('Requerido'),
+        })
+    });
+    
+   
     return (
         <div className="container auth__container">
 
             <div className="auth__login">
-                <form className={`${(checking) && "ui_blur "}`} onSubmit={handleClickLogin}>
+                <form className={`${(checking) && "ui_blur "}`} onSubmit={handleSubmit}>
                     <div className="auth__login-inputs">
 
                         <input

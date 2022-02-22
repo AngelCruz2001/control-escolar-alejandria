@@ -21,8 +21,8 @@
         
         &.selected {
             border-bottom: 2.5px solid $gray-changePage;
-            border-color: $black;
-            color: $black;
+            border-color: $color-black;
+            color: $color-black;
             transition: 0.3s all ease-in-out;
         }
     }
