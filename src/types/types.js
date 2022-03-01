@@ -17,6 +17,7 @@ export const types = {
     uiIsModalOpen: '[UI]Change modal open',
     uiStartLoadingCards: '[UI] Start loading cards',
     uiFinishLoadingCards: '[UI] Finish loading cards',
+    uiIsShowHistoryOpen: '[UI] Change show history open',
 
     studentSetActive: '[student] Set active',
     studentClearData: '[student] Clear data',
@@ -36,6 +37,9 @@ export const types = {
     expensesSetExpenses: '[expense] Set expenses',
     expensesSetDataInputs: '[expense] Set data inputs',
     expensesClearData: '[expense] Clear data',
+    expensesSetActive: '[expense] Set active',
+    expensesDeleteExpense: '[expense] Delete expense',
+
 
 
 

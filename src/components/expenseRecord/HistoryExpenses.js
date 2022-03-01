@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { uiSetModalOpen } from '../../actions/ui';
+import { expensesSetActiveExpense, expensesStartDeleteExpense } from '../../actions/expenses';
+import { uiSetModalOpen, uiSetShowHistory } from '../../actions/ui';
 import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
 
@@ -9,6 +10,7 @@ export const HistoryExpenses = ({
     expenses = [],
 }) => {
     const dispatch = useDispatch()
+    const [dataShow, setDataShow] = useState([]);
     const headers = [{
         title: "    Tipo de gasto",
         textAlign: 'left'
@@ -31,16 +33,25 @@ export const HistoryExpenses = ({
     }];
     const handleClickSee = (id) => {
         dispatch(uiSetModalOpen(true))
+        dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
     }
-    const handleClickEdit = () => {
 
+    const handleClickEdit = (id) => {
+        dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
+        console.log(expenses.filter(expense => expense.id_expense === id)[0])
+        setShowHistory(false)
     }
-    const handleClickDelete = () => {
-
+    const handleClickDelete = (id) => {
+        dispatch(expensesStartDeleteExpense(id))
     }
-    const dataTable = expenses.map(({ id_expense, expenses_type, date }, index) => (
-        buildDataExpenses(id_expense, expenses_type, date, handleClickSee, handleClickEdit, handleClickDelete)
-    ));
+    const generateData = () => {
+        const data = []
+        expenses.map(({ id_expense, expenses_type, date }, index) => (data.push(buildDataExpenses(id_expense, expenses_type, date, handleClickSee, handleClickEdit, handleClickDelete))));
+        return data;
+    }
+    useEffect(() => {
+        setDataShow(generateData())
+    }, [expenses])
     return (
         <>
             <div className="history__container">
@@ -52,7 +63,7 @@ export const HistoryExpenses = ({
                 </div>
                 <Table
                     headers={headers}
-                    data={dataTable}
+                    data={dataShow}
                     sizesColumns={[35, 35, 10, 10, 10]}
                 />
             </div>

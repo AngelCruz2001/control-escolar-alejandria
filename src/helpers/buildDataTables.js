@@ -108,16 +108,29 @@ export const buildDataFertilizerDetails = (
   anticipo,
   restante,
   coincidence
- 
 ) => {
   return [
     { element: <SpanTable text={date} />, searched: coincidence[0] },
-    { element: <SpanColorTable text={payment_type} color={status_payment} />, searched: coincidence[1],  },
-    { element: <SpanColorTable text={status_payment} color={status_payment}/>, searched: coincidence[2] },
-    { element: <SpanColorTable text=
-      {`$${cost}`} color={status_payment}/>, searched: coincidence[3] },
-    { element: <SpanColorTable text={`$${anticipo}`} color={status_payment}/>, searched: coincidence[4] },
-    { element: <SpanColorTable text={`$${restante}`} color={status_payment}/>, searched: coincidence[5] },
+    {
+      element: <SpanColorTable text={payment_type} color={status_payment} />,
+      searched: coincidence[1],
+    },
+    {
+      element: <SpanColorTable text={status_payment} color={status_payment} />,
+      searched: coincidence[2],
+    },
+    {
+      element: <SpanColorTable text={`$${cost}`} color={status_payment} />,
+      searched: coincidence[3],
+    },
+    {
+      element: <SpanColorTable text={`$${anticipo}`} color={status_payment} />,
+      searched: coincidence[4],
+    },
+    {
+      element: <SpanColorTable text={`$${restante}`} color={status_payment} />,
+      searched: coincidence[5],
+    },
   ];
 };
 
@@ -189,34 +202,39 @@ export const buildDataExpenses = (
   return [
     { element: <SpanTable text={expenses_type} />, searched: false },
     { element: <SpanTable text={date} />, searched: false },
-    {
-      element: (
-        <ButtonTable onClick={handleClickSee} type={0} title="Ver" id={id} />
-      ),
-      searched: false,
-    },
-    {
-      element: (
-        <ButtonTable
-          onClick={handleClickEdit}
-          type={1}
-          title="Editar"
-          id={id}
-        />
-      ),
-      searched: false,
-    },
-    {
-      element: (
-        <ButtonTable
-          onClick={handleClickDelete}
-          type={2}
-          title="Borrar"
-          id={id}
-        />
-      ),
-      searched: false,
-    },
+    { element: <ButtonTable onClick={() => handleClickSee(id)} type={0} title="Ver" id={id} />, searched: false },
+    { element: <ButtonTable onClick={() => handleClickEdit(id)} type={1} title="Editar" id={id} />, searched: false },
+    { element: <ButtonTable onClick={() => handleClickDelete(id)} type={2} title="Borrar" id={id} />, searched: false },
+    // { element: <SpanTable text={expenses_type} />, searched: false },
+    // { element: <SpanTable text={date} />, searched: false },
+    // {
+    //   element: (
+    //     <ButtonTable onClick={handleClickSee} type={0} title="Ver" id={id} />
+    //   ),
+    //   searched: false,
+    // },
+    // {
+    //   element: (
+    //     <ButtonTable
+    //       onClick={handleClickEdit}
+    //       type={1}
+    //       title="Editar"
+    //       id={id}
+    //     />
+    //   ),
+    //   searched: false,
+    // },
+    // {
+    //   element: (
+    //     <ButtonTable
+    //       onClick={handleClickDelete}
+    //       type={2}
+    //       title="Borrar"
+    //       id={id}
+    //     />
+    //   ),
+    //   searched: false,
+    // },
   ];
 };
 export const buildDataGradesDetail = (

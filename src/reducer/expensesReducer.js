@@ -5,8 +5,9 @@ const initialState = {
     expenses: [],
     dataInputs: {
         observation: '',
-        amount: 0,
+        amount: '',
     },
+    activeExpense: {},
 };
 
 
@@ -33,10 +34,24 @@ export const expensesReducer = (state = initialState, action) => {
         case types.expensesClearData:
             return initialState;
 
+        case types.expensesSetActive:
+            return {
+                ...state,
+                activeExpense: action.payload,
+                dataInputs: {
+                    observation: action.payload.observation,
+                    amount: action.payload.amount,
+                },
+                idExpenseType: action.payload.id_expense,
+            };
 
+        case types.expensesDeleteExpense:
+            return {
+                ...state,
+                expenses: state.expenses.filter(expense => expense.id_expense !== action.payload)
+            };
 
         default:
             return state;
     }
 }
-

@@ -44,10 +44,12 @@ export const Main = () => {
 
   useEffect(() => {
     if (location.pathname !== `/realizar_pago/${idPayment}`) {
+
       dispatch(uiSetCurrent(0));
       dispatch(studentClearData());
       dispatch(payClearModalData());
-      dispatch(payClearFertilizers() )
+      dispatch(payClearFertilizers());
+
     } 
   }, [location.pathname, dispatch]);
 
