@@ -35,6 +35,7 @@ export const assistanceStartGetAssistanceByType = ( type, id_course ) => {
         type = type.toLowerCase();
 
         try{
+            
             const res = await fetchConToken(`assits/${type}/${id_course}/assistance_days`, 'GET')
             const body = await res.json()
 

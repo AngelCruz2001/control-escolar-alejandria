@@ -11,6 +11,7 @@ import { useWindowResize } from "../../hooks/useWindowResize";
 import { StudentsNavbar } from "../general/navbar/StudentsNavbar";
 import { StudentDesktopModal } from "../students/StudentDesktopModal";
 import { Table } from "../ui/Table";
+import { AssistanceTable } from "./AssistanceTable";
 import { TeacherFooter } from "./TeacherFooter";
 import { TeacherNavigation } from "./TeacherNavigation";
 import { TeacherSearchbar } from "./TeacherSearchbar";
@@ -134,7 +135,6 @@ export const MainTeacherScreen = () => {
   }, [teacher, valueSearchFilter]);
 
   //Asisstance Funcions
-
   const [headerDatesState, setHeaderDatesState] = useState([{ name: "" }]);
 
   // useEffect(() => {
@@ -175,10 +175,8 @@ export const MainTeacherScreen = () => {
                 sizesColumns={[12, 35.5, 7, 24, 21.5]}
               />
             ) : (
-              <Table
-                headers={assistanceHeadersConcated}
-                // sizesColumns={[, ,'-moz-available;']}
-                // data={dataShow}
+              <AssistanceTable
+                assistanceDates={assistance.assistanceDates}
               />
             )}
           </div>
