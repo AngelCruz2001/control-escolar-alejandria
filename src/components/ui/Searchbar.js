@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Searchbar = ({ placeholder, setValueSearchFilter, searchWord, checkState }) => {
+export const Searchbar = ({ placeholder, setValueSearchFilter, searchWord }) => {
     const handleInputChange = ({ target }) => {
         setValueSearchFilter(prev => ({ ...prev, searchWord: target.value }));
     }

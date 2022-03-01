@@ -21,12 +21,13 @@ export const MakePay = () => {
   const { concept, method, thingToPay, idPayment } = useSelector(
     (state) => state.pay
   );
+  const { ui, student } = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const [studentInformation, setStudentInformation] = useState({
     headers: [],
     data: [],
   });
-  const { ui, student } = useSelector((state) => state);
   const { current, loading } = ui;
   let history = useHistory();
   const handleArrow = () => {
@@ -71,7 +72,7 @@ export const MakePay = () => {
           <StudentInformation
             activeClassName={activeDisabled(1, current)}
             loading={loading}
-            studentInformation={studentInformation}
+            studentInformation={ studentInformation !== '' ? studentInformation : { headers: [], data: [] } }
           />
 
           <ConceptPay />

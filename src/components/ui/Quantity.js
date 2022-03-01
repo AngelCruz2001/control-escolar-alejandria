@@ -12,6 +12,7 @@ const pesosOrPeso = (quantity) => {
 export const Quantity = ({ handleQuantityChange, startQuantity }) => {
 
 
+
   const [amountToPay, showInput, handleInputChange] =
     useInputAmount(startQuantity);
 

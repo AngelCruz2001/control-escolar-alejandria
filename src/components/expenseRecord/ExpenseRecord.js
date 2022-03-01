@@ -7,7 +7,6 @@ import {
   expenseStartCreateRequest,
 } from "../../actions/expenses";
 import { typesExpenses } from "../../types/types";
-import { ReceiveMoney } from "../makePayment/ReceiveMoney";
 import { Date } from "../ui/Date";
 import { Quantity } from "../ui/Quantity";
 import { RadioButtonList } from "../ui/RadioButtonList";
@@ -43,6 +42,7 @@ export const ExpenseRecord = () => {
   useEffect(() => {
     getExpenses();
   }, []);
+
   return (
     <div className="exp__container">
       {showHistory ? (
