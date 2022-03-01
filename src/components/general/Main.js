@@ -31,6 +31,7 @@ const itemsMenu = [
   { name: "Abonos", icon: "fas fa-coins", css: {} },
   { name: "Consultar estado de pago", icon: "fas fa-money-check-alt", css: {} },
 ];
+
 export const Main = () => {
   const state = useSelector((state) => state);
   const { isModalOpen } = state.ui;

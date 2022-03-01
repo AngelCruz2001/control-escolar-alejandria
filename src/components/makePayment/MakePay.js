@@ -14,13 +14,11 @@ import { activeDisabled } from "../../helpers/activeDisabled";
 import { useParams } from "react-router-dom";
 import { uiSetCurrent } from "../../actions/ui";
 import { useHistory } from "react-router-dom";
-import { studentClearData } from "../../actions/student";
-import { payClearFertilizers, payClearModalData } from "../../actions/pay";
 
 export const MakePay = () => {
   const { id } = useParams();
 
-  const { concept, method, thingToPay, idPayment, fertilizers, cards } = useSelector(
+  const { concept, method, thingToPay, idPayment } = useSelector(
     (state) => state.pay
   );
   const dispatch = useDispatch();
