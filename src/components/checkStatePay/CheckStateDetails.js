@@ -39,7 +39,7 @@ export const CheckStateDetails = ({ setIsAStudenttActive }) => {
 
   useEffect(() => {
     setStudentInformation({
-      headers: ["Nombre", "Grupo", "Campus", "Carrera"],
+      headers: ["Alumno", "Grupo", "Campus", "Carrera"],
       data: [
         student.student_name,
         student.name_group,

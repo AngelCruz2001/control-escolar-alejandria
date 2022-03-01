@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonTable } from "../components/ui/table/ButtonTable";
+import { SpanColorTable } from "../components/ui/table/SpanColorTable";
 import { SpanTable } from "../components/ui/table/SpanTable";
 
 export const buildData = (
@@ -111,12 +112,12 @@ export const buildDataFertilizerDetails = (
 ) => {
   return [
     { element: <SpanTable text={date} />, searched: coincidence[0] },
-    { element: <SpanTable text={payment_type} />, searched: coincidence[1] },
-    { element: <SpanTable text={status_payment} />, searched: coincidence[2] },
-    { element: <SpanTable text=
-      {cost} />, searched: coincidence[3] },
-    { element: <SpanTable text={anticipo} />, searched: coincidence[4] },
-    { element: <SpanTable text={restante} />, searched: coincidence[5] },
+    { element: <SpanColorTable text={payment_type} color={status_payment} />, searched: coincidence[1],  },
+    { element: <SpanColorTable text={status_payment} color={status_payment}/>, searched: coincidence[2] },
+    { element: <SpanColorTable text=
+      {`$${cost}`} color={status_payment}/>, searched: coincidence[3] },
+    { element: <SpanColorTable text={`$${anticipo}`} color={status_payment}/>, searched: coincidence[4] },
+    { element: <SpanColorTable text={`$${restante}`} color={status_payment}/>, searched: coincidence[5] },
   ];
 };
 
@@ -170,7 +171,6 @@ export const buildDataStateGroupByStudent = (
               matricula,
             })
           }
-          id={matricula}
         />
       ),
       searched: false,

@@ -13,8 +13,6 @@ export const Table = ({
   handleValueSortBy,
 }) => {
   const { loading } = useSelector((state) => state.ui);
-  const { fertilizers } = useSelector((state) => state.pay);
-  const { status_payment } = fertilizers;
 
   return (
     <div className="table ">
