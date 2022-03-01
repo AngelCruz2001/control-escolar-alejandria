@@ -47,9 +47,9 @@ export const Main = () => {
       dispatch(uiSetCurrent(0));
       dispatch(studentClearData());
       dispatch(payClearModalData());
-      dispatch( payClearFertilizers() )
-    }
-  }, [location.pathname]);
+      dispatch(payClearFertilizers() )
+    } 
+  }, [location.pathname, dispatch]);
 
   return (
     <div className={`${isModalOpen ? "filterModal" : ""}`}>

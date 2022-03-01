@@ -7,7 +7,7 @@ import { uiSetCurrent } from '../../actions/ui';
 export const SubmitPay = () => {
 
     const dispatch = useDispatch();
-    const { amountToPay, idPayment, method } = useSelector(state => state.pay);
+    const { idPayment, method } = useSelector(state => state.pay);
     const handleSubmitMakePay = () => {
         idPayment ? dispatch(payStartFertilizer()) : dispatch(payStartMakePay())
         dispatch(studentClearData())
