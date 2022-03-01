@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { expensesSetActiveExpense, expensesStartDeleteExpense } from '../../actions/expenses';
+import { expensesSetActiveExpense, expensesStartDeleteExpense, expensesStartGetExpenses } from '../../actions/expenses';
 import { uiSetModalOpen, uiSetShowHistory } from '../../actions/ui';
 import { buildDataExpenses } from '../../helpers/buildDataTables';
 import { Table } from '../ui/Table';
@@ -31,15 +31,23 @@ export const HistoryExpenses = ({
         title: "",
         textAlign: 'center'
     }];
+
+    useEffect(() => {
+        dispatch(expensesStartGetExpenses());
+    }, [])
     const handleClickSee = (id) => {
         dispatch(uiSetModalOpen(true))
         dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
+
     }
 
+    const handleCloseShowHistory = () => {
+        dispatch(uiSetShowHistory(false))
+    }
     const handleClickEdit = (id) => {
         dispatch(expensesSetActiveExpense(expenses.filter(expense => expense.id_expense === id)[0]))
         console.log(expenses.filter(expense => expense.id_expense === id)[0])
-        setShowHistory(false)
+        handleCloseShowHistory();
     }
     const handleClickDelete = (id) => {
         dispatch(expensesStartDeleteExpense(id))
@@ -52,11 +60,12 @@ export const HistoryExpenses = ({
     useEffect(() => {
         setDataShow(generateData())
     }, [expenses])
+
     return (
         <>
             <div className="history__container">
                 <div className="history__container__header">
-                    <button className="btn btn__back" onClick={() => setShowHistory(false)}>
+                    <button className="btn btn__back" onClick={handleCloseShowHistory}>
                         <i className="fas fa-arrow-left"></i>
                     </button>
                     <h4>Historial de registro de gastos</h4>
