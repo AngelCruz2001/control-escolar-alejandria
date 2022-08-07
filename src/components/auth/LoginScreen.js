@@ -9,8 +9,8 @@ export const LoginScreen = () => {
     const { checking } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [formValues, handleInputChange,] = useForm({
-        username: "CODG202111001",
-        password: "CODG202111001"
+        username: "",
+        password: ""
     })
     const { username, password } = formValues;
     const handleClickLogin = (e) => {
@@ -47,7 +47,7 @@ export const LoginScreen = () => {
                         <i className="auth__login-inputs-icon fas fa-key"></i>
                     </div>
                     <button
-                        className="auth__login-submit btn"
+                        className="auth__login-submit"
                         type="submit"
                         onClick={handleClickLogin}
                     >

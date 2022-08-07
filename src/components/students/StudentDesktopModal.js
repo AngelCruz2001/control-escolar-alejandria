@@ -28,10 +28,10 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
   const dispatch = useDispatch();
 
   const { requests } = useSelector((state) => state);
- 
+
   const [dataShow, setDataShow] = useState([]);
 
-  const handleClickCancelRequest = ( id ) => {
+  const handleClickCancelRequest = (id) => {
     dispatch(requestStartDeleteRequests(id))
   }
 
@@ -40,11 +40,12 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
 
     requests.data.forEach(
       ({ id_request, document_name, creation_date, status_request }) => {
+        status_request = (status_request.includes("Adeudo") || status_request === 'No pagado') ? 'Cancelar' : 'Pagado'
         const dataBuilded = buildDataStudentsHistory(
           id_request,
           document_name,
           creation_date,
-          status_request  === 0 ?'Cancelar' : 'Pagado',
+          status_request,
           handleClickCancelRequest
         );
         dataToShow.push(dataBuilded);
@@ -55,15 +56,15 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
 
 
   const handleHideHistoryData = () => {
-    dispatch( requestClearResquests() )
+    dispatch(requestClearResquests())
     setActiveModal({ showModal: true })
   }
 
-  
+
 
   useEffect(() => {
     generateData();
-  }, [requests.data, generateData]);
+  }, [requests.data]);
 
   return (
     <div className="backgroundModal">
@@ -76,7 +77,7 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
         <div className="backgroundModal__container-exit">
           <i
             className="fas fa-times"
-            onClick={() =>handleHideHistoryData()}
+            onClick={() => handleHideHistoryData()}
           ></i>
         </div>
 
@@ -93,13 +94,13 @@ export const StudentDesktopModal = ({ setActiveModal, idModal }) => {
             <h3 className="backgroundModal__container__tableHistory-title">Historial de documentos solicitados</h3>
 
             <div className="backgroundModal__container__tableHistory-content">
-              { !requests.data.length <= 0 ?
-               <Table
-                headers={headers}
-                sizesColumns={[48, 31.5, 20.5]}
-                data={dataShow}
-              />:
-               <StudentsNoData />
+              {!requests.data.length <= 0 ?
+                <Table
+                  headers={headers}
+                  sizesColumns={[48, 31.5, 20.5]}
+                  data={dataShow}
+                /> :
+                <StudentsNoData />
               }
             </div>
           </div>

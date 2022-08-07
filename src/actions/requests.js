@@ -5,14 +5,17 @@ import { documentClearData } from "./document";
 import { studentClearData } from "./student";
 import { uiFinishLoading, uiSetCurrent, uiStartLoading } from "./ui";
 
-export const requestStartRequestDocument = () => {
+export const requestStartRequestDocument = (id) => {
   return async (dispatch, getState) => {
+
+    console.log(id)
+    console.log(getState().auth.user.user.matricula)
     try {
       const res = await fetchConToken(
         `requests`,
         {
-          matricula: getState().student.matricula,
-          document_type: getState().document.idDocument,
+          matricula: getState().auth.user.user.matricula,
+          document_type:+id,
         },
         "POST"
       );
@@ -43,68 +46,69 @@ export const requestStartRequestDocument = () => {
   };
 };
 
-export const requestStartGetRequests = () => {
-  return async (dispatch) => {
-    try {
-      dispatch(uiStartLoading());
-      const res = await fetchConToken(`requests/?date=all`);
-      const body = await res.json();
-      if (body.ok) {
-        dispatch(requestSetRequests(body.requests));
-      } else {
-        Swal.fire({
-          title: "¡Oops!",
-          text: body.msg,
-          icon: "question",
-        });
+
+  export const requestStartGetRequests = () => {
+    return async (dispatch) => {
+      try {
+        dispatch(uiStartLoading());
+        const res = await fetchConToken(`requests/?date=all`);
+        const body = await res.json();
+        if (body.ok) {
+          dispatch(requestSetRequests(body.requests));
+        } else {
+          Swal.fire({
+            title: "¡Oops!",
+            text: body.msg,
+            icon: "question",
+          });
+        }
+        console.log(body);
+      } catch (error) {
+        console.log(error);
+        Swal.fire("Error", "Hablar con el administrador", "error");
       }
-      console.log(body);
-    } catch (error) {
-      console.log(error);
-      Swal.fire("Error", "Hablar con el administrador", "error");
-    }
-    dispatch(uiFinishLoading());
+      dispatch(uiFinishLoading());
+    };
   };
-};
 
-export const requestStartDeleteRequests = (id) => {
-  return async (dispatch) => {
-    try {
-      console.log(id);
-      const res = await fetchConToken(`requests/${id}`, {}, "DELETE");
-      const body = await res.json();
-      if (body.ok) {
-        dispatch(requestDeleteRequest(id));
-        Swal.fire({
-          // title: '',
-          text: body.msg,
-          icon: "success",
-        });
-      } else {
-        Swal.fire({
-          title: "¡Oops!",
-          text: body.msg,
-          icon: "question",
-        });
+  export const requestStartDeleteRequests = (id) => {
+    return async (dispatch) => {
+      try {
+        console.log(id);
+        const res = await fetchConToken(`requests/${id}`, {}, "DELETE");
+        const body = await res.json();
+        if (body.ok) {
+          dispatch(requestDeleteRequest(id));
+          Swal.fire({
+            // title: '',
+            text: body.msg,
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "¡Oops!",
+            text: body.msg,
+            icon: "question",
+          });
+        }
+        console.log(body);
+      } catch (error) {
+        console.log(error);
+        Swal.fire("Error", "Hablar con el administrador", "error");
       }
-      console.log(body);
-    } catch (error) {
-      console.log(error);
-      Swal.fire("Error", "Hablar con el administrador", "error");
-    }
+    };
   };
-};
 
-const requestSetRequests = (requests) => ({
-  type: types.requestSetRequests,
-  payload: requests,
-});
+  const requestSetRequests = (requests) => ({
+    type: types.requestSetRequests,
+    payload: requests,
+  });
 
-const requestDeleteRequest = (id) => ({
-  type: types.requestDeleteRequest,
-  payload: id,
-});
+  const requestDeleteRequest = (id) => ({
+    type: types.requestDeleteRequest,
+    payload: id,
+  });
 
-export const requestClearResquests = () => ({
-  type: types.requestClearResquests,
-});
+  export const requestClearResquests = () => ({
+    type: types.requestClearResquests,
+  });

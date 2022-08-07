@@ -13,7 +13,6 @@ import { Table } from "../ui/Table";
 import { StudentPassword } from "./StudentPassword";
 import { StudentSelect } from "./StudentSelect";
 import { StudentReqDoc } from "./StudentReqDoc";
-// import { StudentsSubmenu } from "./StudentsSubmenu";
 import { StudetsFooter } from "./StudetsFooter";
 import { StudentHistoryScreen } from "./StudentHistoryScreen";
 import { useWindowResize } from "../../hooks/useWindowResize";
@@ -86,7 +85,7 @@ export const MainStudentScreen = () => {
 
   const handleRequestDocument = (id) => {
     dispatch(documentSetDocument(id));
-    dispatch(requestStartRequestDocument());
+    dispatch(requestStartRequestDocument(id));
     setDocumentSelected("");
   };
 

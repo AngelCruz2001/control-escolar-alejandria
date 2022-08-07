@@ -35,6 +35,7 @@
         &-input {
             margin-bottom: 3%;
             border: none;
+            font-size: 1.5rem;
             border-bottom: 2px solid $gray-inputBorder;
             transition: all 0.2s ease-in-out;
             &:focus {
@@ -66,8 +67,9 @@
         height: 4%;
         width: 45%;
         color: $white;
+        border: none;
         transition: background-color 0.3s;
-
+        font-size: 1.5rem;
         &:hover {
             background-color: darken($color: $mustard, $amount: 3);
             transition: background-color 0.3s;

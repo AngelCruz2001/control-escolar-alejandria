@@ -4,36 +4,33 @@ import { requestStartGetRequests } from "../../actions/requests";
 
 const documentsStudent = [
   {
-    id: 1,
-    document: "Constancia de estudios con calificaciones",
-  },
-  {
     id: 0,
-    document: "Constancia de estudios sin calificaciones",
+    document: "Constancia de estudios sin calificaciones.",
   },
   {
-    id: 10,
-    document: "Kardex",
-  },
-  {
-    id: 3,
-    document: "Solicitud de servicio",
+    id: 1,
+    document: "Constancia de estudios con calificaciones.",
   },
   {
     id: 2,
-    document: "Solicitud de prácticas",
+    document: "Constancia de estudios por cuatrimestre.",
   },
   {
-    id: 13,
-    document: "Liberación de servicio",
+    id: 3,
+    document: "Carta maestrante.",
   },
   {
-    id: 14,
-    document: "Liberación de prácticas",
+    id: 4,
+    document: "Carta de servicio social.",
+  },
+
+  {
+    id: 10,
+    document: "Cárdex.",
   },
   {
     id: 11,
-    document: "Acta de examen",
+    document: "Acta de examen.",
   },
 ];
 
@@ -43,12 +40,12 @@ export const StudentSelect = ({
   setDocumentSelected,
   setActiveModal,
 }) => {
-  const [documents, ] = useState(documentsStudent);
+  const [documents,] = useState(documentsStudent);
 
   const handleInputChange = ({ target }) => {
     const { value } = target;
     setDocumentSelected(value);
-    
+
   };
   const handleCancel = () => {
     setDocumentSelected("");
@@ -97,9 +94,8 @@ export const StudentSelect = ({
           </button>
         )}
         <button
-          className={`btn btn-request ${
-            !documentSelected ? "ui__disabledEffect " : "btn-request-color"
-          }`}
+          className={`btn btn-request ${!documentSelected ? "ui__disabledEffect " : "btn-request-color"
+            }`}
           onClick={() => handleRequestDocument(documentSelected)}
         >
           Solicitar

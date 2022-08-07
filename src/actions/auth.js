@@ -10,20 +10,29 @@ export const authStartLogin = (id, password) => {
         try {
             const res = await fetchSinToken('auth/login', { id, password }, 'POST')
             const body = await res.json()
-            console.log(res)
-            console.log(body);
             dispatch(authCheckingFinish())
             if (body.ok) {
                 localStorage.setItem('token', body.token);
                 localStorage.setItem('token-init-date', new Date().getTime());
                 console.log(body)
-                dispatch(authLogin(body))
+                if (body.user_type === 'student') {
+
+                    dispatch(authLogin(body))
+                }
+                else {
+                    Swal.fire({
+                        title: '¡Oops!',
+                        text: 'Tu matricula no corresponde a ningun estudiante.',
+                        icon: 'question',
+                        confirmButtonText: 'Tratar de nuevo.',
+                    })
+                }
             } else {
                 Swal.fire({
                     title: '¡Oops!',
                     text: body.msg,
                     icon: 'question',
-                    confirmButtonText: 'Tratar de nuevo'
+                    confirmButtonText: 'Tratar de nuevo.'
                 })
             }
         } catch (error) {
@@ -38,7 +47,7 @@ export const authStartResetPassword = (oldPass, newPass) => {
     return async (dispatch, getState) => {
         try {
             const { token, id_user } = getState().auth.user;
-            const res = await fetchConToken(`auth/resetPassword/${id_user}/${token}?knownPassword=1`, {oldPassword:oldPass, newPassword:newPass}, 'POST');
+            const res = await fetchConToken(`auth/resetPassword/${id_user}/${token}?knownPassword=1`, { oldPassword: oldPass, newPassword: newPass }, 'POST');
             const body = await res.json();
 
             if (body.ok) {
@@ -49,7 +58,7 @@ export const authStartResetPassword = (oldPass, newPass) => {
                     icon: 'success',
                 })
             } else {
-                if(!body.msg.includes('contraseña')){
+                if (!body.msg.includes('contraseña')) {
 
                     Swal.fire({
                         title: '¡Oops!',
@@ -58,7 +67,7 @@ export const authStartResetPassword = (oldPass, newPass) => {
                     })
                     console.log(body)
                 }
-                else{
+                else {
                     dispatch(authSetError(body.msg))
                 }
 
@@ -118,7 +127,7 @@ const authLogout = () => ({
 
 const authSetError = (error) => ({
     type: types.authSetError,
-    payload: error 
-}) 
+    payload: error
+})
 const authCheckingStart = () => ({ type: types.authCheckingStart })
 const authCheckingFinish = () => ({ type: types.authCheckingFinish })

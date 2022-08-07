@@ -9,9 +9,6 @@ export const StudentHistoryScreen = ({ setHistoryDocScreen }) => {
 
   const { data } = useSelector((state) => state.requests);
 
-  //TODO: Arreglar la altura para tabletas cuando no hay data
-  // const data = [];
-
   const handleHideHistoryData = () => {
     dispatch(requestClearResquests());
     setHistoryDocScreen(false);
@@ -43,27 +40,27 @@ export const StudentHistoryScreen = ({ setHistoryDocScreen }) => {
                 className="studentReqDoc__history__data-item"
                 style={{
                   border:
-                    status_request === 0
+                    status_request.includes("Adeudo") || status_request === 'No pagado'
                       ? "2px solid #BCB449 "
                       : "2px solid #053367",
                 }}
               >
-                <p className={`${status_request === 0 ? "owe" : "paid"} `}>
+                <p className={`${ status_request.includes("Adeudo") || status_request === 'No pagado' ? "owe" : "paid"} `}>
                   {document_name}
                 </p>
                 <p>{creation_date}</p>
                 <span
                   className={`${
-                    status_request === 0 ? "oweDecorarion" : "paidDecoration"
+                    status_request.includes("Adeudo") || status_request === 'No pagado' ? "oweDecorarion" : "paidDecoration"
                   } `}
                 >
                   <i
                     onClick={
-                      status_request === 0 &&
+                      status_request.includes("Adeudo") || status_request === 'No pagado' &&
                       (() => handleClickCancelRequest(id_request))
                     }
                     className={`isAproved fas ${
-                      status_request === 0
+                      status_request.includes("Adeudo") || status_request === 'No pagado'
                         ? "fa-times-circle isAproved-pointer"
                         : "fa-check-circle"
                     }`}

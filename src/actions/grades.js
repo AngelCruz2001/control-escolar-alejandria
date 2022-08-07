@@ -33,7 +33,7 @@ export const gradesStartGetGradesByMatricula = (matricula) => {
         try {
             dispatch(uiStartLoading())
 
-            const res = await fetchConToken(`grades/students/${matricula}`)
+            const res = await fetchConToken(`grades/students/${matricula}?offset=40`)
             const body = await res.json()
             if (body.ok) {
                 console.log(body)
