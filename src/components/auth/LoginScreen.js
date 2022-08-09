@@ -20,6 +20,11 @@ export const LoginScreen = () => {
     return (
         <div className="container auth__container">
             <div className="auth__login">
+                <div className='auth__login__image'>
+                    <img  src={logoAleNoText} alt="Logo Alejandría" />
+                    <h1 className="auth__hero-text">Instituto de Educación <br /> y Cultura Alejandría S.C.</h1>
+                </div>
+
                 <form className={`${(checking) && "ui_blur "}`} onSubmit={handleClickLogin}>
                     <div className="auth__login-inputs">
 
@@ -64,7 +69,7 @@ export const LoginScreen = () => {
 
 
             <div className="auth__hero">
-                <img className="auth__hero-logo" src={logoAleNoText}  alt="Logo Alejandría" />
+                <img className="auth__hero-logo" src={logoAleNoText} alt="Logo Alejandría" />
                 <h1 className="auth__hero-text">Instituto de Educación <br /> y Cultura Alejandría S.C.</h1>
             </div>
 

@@ -1,16 +1,46 @@
 .auth__container {
     height: 100vh;
     width: 100vw;
+    background-color: white;
 }
 
 .auth__login {
-    width: 45%;
+    width: 50%;
     height: 100%;
+    @include respond(tab-land) {
+        width: 80%;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    
+
+    &__image {
+        display: none;
+        @include respond(tab-land) {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            & img {
+                width: 50%;
+                height: auto;
+                object-fit: fill;
+            }
+            & h1 {
+                font-size: calc(23px - 0.5vh);
+                font-weight: bold;
+                color: $gray-bars;
+                margin-bottom: 1rem;
+            }
+
+        }
+      
+    }
 
     form {
         display: flex;
@@ -19,17 +49,26 @@
         align-items: center;
         height: 100%;
         width: 100%;
+        @include respond(tab-land) {
+           
+            margin-bottom: 10rem;
+        }
+        
         // transition: all 10s;
     }
 
     &-inputs {
+        @include respond(tab-land) {
+            width: 100%;
+            // margin-bottom: 10rem;
+        }
         position: relative;
         width: 45%;
         margin: 2% 0;
 
         input {
             width: 100%;
-            font-family: "Open Sans", sans-serif;
+            font-family: "Segoe UI", sans-serif;
         }
 
         &-input {
@@ -55,7 +94,7 @@
 
         &-icon {
             position: absolute;
-            top: 0;
+            top: 20%;
             right: 0;
             font-size: 90%;
             color: $gray-inputLogin;
@@ -64,9 +103,13 @@
     &-submit {
         background-color: $mustard;
         border-radius: 10px;
-        height: 4%;
+        height: 5%;
         width: 45%;
         color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
         border: none;
         transition: background-color 0.3s;
         font-size: 1.5rem;
@@ -74,10 +117,17 @@
             background-color: darken($color: $mustard, $amount: 3);
             transition: background-color 0.3s;
         }
+        @include respond(tab-land) {
+            width: 100%;
+            padding: 1rem 0;
+        }
     }
 }
 
 .auth__hero {
+    @include respond(tab-land) {
+        display: none;
+    }
     background-color: $blue-heroLogin;
     width: 55%;
     height: 100%;
